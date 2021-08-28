@@ -4,7 +4,7 @@ B1 : pull project
 
 B2 : cd Clinet and cd api (vào thư mục)
 
-B3 : yarn Build 
+B3 : yarn install
 
 b4 : yarn start
 
