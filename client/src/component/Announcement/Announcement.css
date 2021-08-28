@@ -1,0 +1,79 @@
+.announcement_wrapper {
+  position: relative;
+  max-width: 768px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.announcement_item-wrapper {
+  width: 3072px;
+  left: 0px;
+  display: block;
+  transition: all 2000ms ease 0s;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.announcement_item {
+  text-align: center;
+  width: 768px;
+}
+.announcement_item img {
+  display: inline;
+  font-size: 14px;
+  line-height: 60px;
+  margin: 0px 12px 0px 0px;
+  text-align: center;
+  max-width: 20px;
+}
+.announcement_title {
+  display: inline;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 60px;
+  text-align: center;
+}
+.announcement_text {
+  display: inline;
+  font-size: 12px;
+  line-height: 60px;
+  margin: 0px 0px 0px 10px;
+  text-align: center;
+}
+.annoucement_arrows-left {
+  display: inline;
+  font-size: 28px;
+  line-height: 30px;
+  margin: -16px 0px 0px;
+  text-align: center;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.annoucement_arrows-left span {
+  font-size: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-weight: normal;
+  float: left;
+}
+.annoucement_arrows-right {
+  display: inline;
+  font-size: 28px;
+  line-height: 30px;
+  margin: -16px 0px 0px;
+  text-align: center;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+.annoucement_arrows-right span {
+  font-size: 28px;
+  line-height: 28px;
+  text-align: center;
+  float: right;
+}

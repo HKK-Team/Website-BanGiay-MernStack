@@ -1,0 +1,18 @@
+.address_shop-title {
+  border-top: 1px solid #000000;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  padding: 20px 0px;
+  text-align: center;
+}
+.address_shop-title a {
+  background-color: #034ea1;
+  color: #ffffff;
+  display: inline-block;
+
+  font-size: 20px;
+  line-height: 28px;
+  padding: 5px 25px;
+  text-align: center;
+}
