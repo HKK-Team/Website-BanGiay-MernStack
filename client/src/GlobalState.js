@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState} from 'react'
 import Menu1API from './api/menu1Api'
 import Menu2API from './api/menu2Api'
 import BannerAPI from './api/bannerApi'
