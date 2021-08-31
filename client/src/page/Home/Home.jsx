@@ -16,7 +16,7 @@ import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
 import {GlobalState} from '../../GlobalState'
 //   Đổ dữ liệu dang foreach (éo thằng nào làm có tâm như tao)
 var array = [];
-for (let i = 0; i <= 7; i++) {
+for (let i = 0; i <= 16; i++) {
   array.push(
     <Product
       image={image}
@@ -37,7 +37,46 @@ export default function Home() {
   const state = useContext(GlobalState)
   const [bannerboys] = state. banner_boyAPI.bannerboys
   const [bannergirls] = state. banner_girlAPI.bannergirls
-  
+  const [product_boy] = state. product_boyApi.product_boy
+  const [product_girl] = state. product_girlApi.product_girl
+
+  var arrayPrBoy = [];
+  var arrayPrGirl = [];
+  for (let i = 0; i <= 16; i++) {
+    arrayPrBoy.push(
+      product_boy.map(item => (   
+          <Product  key={item._id}
+          image={item.image}
+          TotalSize={5}
+          valueSize_1={item.size.size1}
+          valueSize_2={item.size.size2}
+          valueSize_3={item.size.size3}
+          valueSize_4={item.size.size4}
+          valueSize_5={item.size.size5}
+          name={item.nameProduct}
+          type={item.nameCategoryProduct}
+          prime={item.price}
+        />
+      ))
+    );
+    arrayPrGirl.push(
+      product_girl.map(item => (   
+          <Product  key={item._id}
+          image={item.image}
+          TotalSize={5}
+          valueSize_1={item.size.size1}
+          valueSize_2={item.size.size2}
+          valueSize_3={item.size.size3}
+          valueSize_4={item.size.size4}
+          valueSize_5={item.size.size5}
+          name={item.nameProduct}
+          type={item.nameCategoryProduct}
+          prime={item.price}
+        />
+      ))
+    );
+  }
+
   return (
     <>
       <Header
@@ -56,8 +95,8 @@ export default function Home() {
       <Announcement />
       <Banner />
       {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}
-      <ListPageProductHome name="NAM" url="#" visible="none" datalist={array} />
-      <ListPageProductHome name="NỮ" url="#" visible="none" datalist={array} />
+      <ListPageProductHome name="NAM" url="#" visible="none" datalist={arrayPrBoy} />
+      <ListPageProductHome name="NỮ" url="#" visible="none" datalist={arrayPrGirl} />
       <ListPageProductHome
         name="PHỤ KIỆN"
         url="#"

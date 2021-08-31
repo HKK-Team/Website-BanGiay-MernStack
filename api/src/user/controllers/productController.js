@@ -11,7 +11,7 @@ const productCtrl = {
     },
     getproduct_girl: async(req, res) => {
         try {
-            const product_girl = await Products.find({ nameCategoryProduct: { $eq: "giaynu" } }).lean().sort({ dateCreate: 'desc' })
+            const product_girl = await Products.find({ nameCategoryProduct: { $eq: "Hunter Nữ" } }).lean().sort({ dateCreate: 'desc' })
             res.json(product_girl)
         } catch (err) {
             return res.status(500).json({ msg: err.message })

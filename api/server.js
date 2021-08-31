@@ -23,7 +23,7 @@ mongoose.connect(URI, {
     console.log('Connected to MongoDB')
 })
 
-app.use('/', require('./src/user/routers/homeRouter'))
+//app.use('/', require('./src/user/routers/homeRouter'))
 app.use('/api', require('./src/user/routers/menuRouter'))
 app.use('/api', require('./src/user/routers/bannerRouter'))
 app.use('/api', require('./src/user/routers/productRouter'))
