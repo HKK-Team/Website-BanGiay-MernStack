@@ -42,6 +42,10 @@ export default function Home() {
 
   var arrayPrBoy = [];
   var arrayPrGirl = [];
+  var arrayPrPK = [];
+  var arrayPrGosto = [];
+  var arrayPrBeTrai = [];
+  var arrayPrBeGai = [];
   for (let i = 0; i <= 16; i++) {
     arrayPrBoy.push(
       product_boy.map(item => (   
@@ -75,6 +79,70 @@ export default function Home() {
         />
       ))
     );
+    arrayPrPK.push(
+     product_girl.map(item => (   
+          <Product  key={item._id}
+          image={item.image}
+          TotalSize={5}
+          valueSize_1={item.size.size1}
+          valueSize_2={item.size.size2}
+          valueSize_3={item.size.size3}
+          valueSize_4={item.size.size4}
+          valueSize_5={item.size.size5}
+          name={item.nameProduct}
+          type={item.nameCategoryProduct}
+          prime={item.price}
+        />
+      ))
+    );
+    arrayPrGosto.push(
+      product_girl.map(item => (   
+           <Product  key={item._id}
+           image={item.image}
+           TotalSize={5}
+           valueSize_1={item.size.size1}
+           valueSize_2={item.size.size2}
+           valueSize_3={item.size.size3}
+           valueSize_4={item.size.size4}
+           valueSize_5={item.size.size5}
+           name={item.nameProduct}
+           type={item.nameCategoryProduct}
+           prime={item.price}
+         />
+       ))
+     );
+     arrayPrBeTrai.push(
+      product_girl.map(item => (   
+           <Product  key={item._id}
+           image={item.image}
+           TotalSize={5}
+           valueSize_1={item.size.size1}
+           valueSize_2={item.size.size2}
+           valueSize_3={item.size.size3}
+           valueSize_4={item.size.size4}
+           valueSize_5={item.size.size5}
+           name={item.nameProduct}
+           type={item.nameCategoryProduct}
+           prime={item.price}
+         />
+       ))
+     );
+     arrayPrBeGai.push(
+      product_girl.map(item => (   
+           <Product  key={item._id}
+           image={item.image}
+           TotalSize={5}
+           valueSize_1={item.size.size1}
+           valueSize_2={item.size.size2}
+           valueSize_3={item.size.size3}
+           valueSize_4={item.size.size4}
+           valueSize_5={item.size.size5}
+           name={item.nameProduct}
+           type={item.nameCategoryProduct}
+           prime={item.price}
+         />
+       ))
+     );
   }
 
   return (
