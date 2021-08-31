@@ -2,6 +2,7 @@
   background-color: #212121;
   font-size: 14px;
   line-height: 20px;
+  margin-bottom: 88px;
 }
 .header_top-list {
   display: flex;
@@ -100,7 +101,7 @@
   font-size: 15px;
   font-weight: 500;
   line-height: 21px;
-  padding: 33.5px 14px 34px 14px;
+  padding: 33.4px 14px 34px 14px;
 }
 .header_bottom-search {
   margin-left: 8px;

@@ -1,0 +1,24 @@
+#Titlebar {
+    background-color: #efefef;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0px 0px 20px;
+  }
+  .titlebar_list {
+    padding: 8px 15px;
+  }
+  .titlebar_list-item {
+    display: inline-block;
+    text-align: left;
+    color: #878087;
+    display: inline;
+    font-weight: 300;
+    cursor: pointer;
+
+  }
+  .titlebar_list-item span {
+    color: #878087;
+    display: inline;
+    font-weight: 300;
+    text-align: left;
+  }

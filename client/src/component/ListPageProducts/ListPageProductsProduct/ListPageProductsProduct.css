@@ -1,0 +1,41 @@
+.container-product_title {
+  padding: 0px 10px;
+  text-align: center;
+}
+.container-product_title h1 {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 28px;
+  margin: 20px 0px;
+  padding: 5px 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.menu_collection {
+  margin: 10px 0px 0px;
+  text-align: center;
+}
+.menu_collection a {
+  display: inline-block;
+
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 15px;
+  text-align: center;
+
+  color: #000000;
+
+  transition: all 1s ease;
+}
+.menu_collection a:hover {
+  color: red;
+}
+.container-product-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.container-product_list-products{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}

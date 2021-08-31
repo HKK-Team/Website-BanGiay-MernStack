@@ -6,7 +6,7 @@ import BannerBeGai from "../../images/images/BEGai.jpg";
 import image from "../../images/Hunter-Nam/02_fb96605aaf6941a19ca8a037ad2c769a_medium.jpg";
 
 import Header from "../../component/Header/Header";
-import SliderHome from "../../component/SliderHome/SliderHome";
+import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
 import Footer from "../../component/Footer/Footer";
 import Announcement from "../../component/Announcement/Announcement";
 import Banner from "../../component/Banners/Banner";
