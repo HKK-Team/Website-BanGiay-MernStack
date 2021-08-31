@@ -42,12 +42,13 @@ export default function Announcement() {
                   Tại tất cả cửa hàng, trong vòng 1 tuần{" "}
                 </span>
               </div>
+
               <div className="announcement_item">
                 <img src={Logo} alt="logo" />
                 <span className="announcement_title"> ĐỔI SIZE MIỄN PHÍ </span>
                 <span className="announcement_text">
                   {" "}
-                  Tại tất cả cửa hàng, trong vòng 1 tuần{" "}
+                  Tại tất cả cửa hàng, trong vòng 2 tuần{" "}
                 </span>
               </div>
             </div>

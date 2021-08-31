@@ -1,11 +1,18 @@
 import "./Header.css";
 import Vi from "../../images/images/vi.png";
 import Logo from "../../images/images/CôngtyTNHHABC.png";
-import  React, { useEffect, useState } from "react";
+import  React, { useEffect, useState, useContext } from "react"; 
+import {GlobalState} from '../../GlobalState'
 
 export default function Header(props) {
   const [small, setSmall] = useState(false);
 
+  const state = useContext(GlobalState)
+
+  const [menus] = state. menu1API.menus
+  const [menus2] = state.menu2API.menus2
+  
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
@@ -14,35 +21,23 @@ export default function Header(props) {
     } 
   }, []);
   return (
-    <header>
+      <header>
       <div className="header_top">
         {/* <header_top> */}
         <div className="container">
           {/* <row> */}
           <div className="row">
-            <div className="header_top-wrapper">
+          <div className="header_top-wrapper">
               {/* <header_top-list>*/}
               <ul className="header_top-list">
-                <li className="header_top-item">
-                  <a href={props.hotline} className="header_top-link">
-                    Hotline: 098 494 3851 (8h- 12h, 13h30- 17h)
-                  </a>
-                </li>
-                <li className="header_top-item">
-                  <a href={props.address} className="header_top-link">
-                    Tìm cửa hàng
-                  </a>
-                </li>
-                <li className="header_top-item">
-                  <a href={props.contact} className="header_top-link">
-                    Liên Hệ hợp tác
-                  </a>
-                </li>
-                <li className="header_top-item">
-                  <a href={props.checkOrder} className="header_top-link">
-                    Kiểm tra đơn hàng
-                  </a>
-                </li>
+              {/* <load dữ liệu >*/}
+                {menus.map(item => (
+                  <li className="header_top-item" key={item._id}>
+                  <a href={item.slug} className="header_top-link">
+                    {item.text}
+                    </a>
+                  </li>
+                ))}
                 <li className="header_top-item">
                   <span>
                     <a href={props.login} className="header_top-link">
@@ -60,8 +55,8 @@ export default function Header(props) {
               </ul>
               {/*</header_top-list> */}
             </div>
-            {/* </header_top-wrapper> */}
           </div>
+            {/* </header_top-wrapper> */}
           {/* </container> */}
         </div>
         {/* </row> */}
@@ -78,45 +73,19 @@ export default function Header(props) {
             <div className="header_bottom-wrapper">
               {/* <header_bottom-icon>  */}
               <div className="header_bottom-icon">
-                <img src={Logo} alt="" />
+                <img src={Logo} alt="/" />
               </div>
               <nav className="header_bottom-menu">
                 <ul className="header_bottom-list">
-                  <li className="header_bottom-item">
-                    <a href={props.home} className="header_bottom-link">
-                      HOME
+
+                {menus2.map(item => (
+                  <li className="header_bottom-item" key={item._id}>
+                  <a href={item.slug} className="header_bottom-link">
+                    {item.text}
                     </a>
                   </li>
-                  <li className="header_bottom-item">
-                    <a href={props.nam} className="header_bottom-link">
-                      NAM
-                    </a>
-                  </li>
-                  <li className="header_bottom-item">
-                    <a href={props.nu} className="header_bottom-link">
-                      NỮ
-                    </a>
-                  </li>
-                  <li className="header_bottom-item">
-                    <a href={props.gosto} className="header_bottom-link">
-                      GOSTO
-                    </a>
-                  </li>
-                  <li className="header_bottom-item">
-                    <a href={props.betrai} className="header_bottom-link">
-                      BÉ TRAI
-                    </a>
-                  </li>
-                  <li className="header_bottom-item">
-                    <a href={props.begai} className="header_bottom-link">
-                      BÉ GÁI
-                    </a>
-                  </li>
-                  <li className="header_bottom-item">
-                    <a href={props.phukien} className="header_bottom-link">
-                      PHỤ KIỆN
-                    </a>
-                  </li>
+                ))}
+                
                 </ul>
               </nav>
               <div className="header_bottom-search">
