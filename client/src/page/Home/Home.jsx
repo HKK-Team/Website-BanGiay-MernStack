@@ -4,7 +4,7 @@ import  React, { useContext } from "react";
 import LogoGosto from "../../images/images/GOSTO.png";
 
 import Header from "../../component/Header/Header";
-import SliderHome from "../../component/SliderHome/SliderHome";
+import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
 import Footer from "../../component/Footer/Footer"; 
 import Announcement from "../../component/Announcement/Announcement";
 import Banner from "../../component/Banners/Banner";
@@ -143,7 +143,7 @@ export default function Home() {
         register="/dang-ki"
         home="/"
         cart="gio-hang"
-        favorite="yeu-thich"
+        favorite="yeu-thich"      
       />
       <SliderHome /> 
       <Announcement />
