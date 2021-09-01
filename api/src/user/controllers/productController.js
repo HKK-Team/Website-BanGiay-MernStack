@@ -19,7 +19,7 @@ const productCtrl = {
     },
     getproduct_pk: async(req, res) => {
         try {
-            const product_pk = await Products.find({ nameCategoryProduct: { $eq: "phukien" } }).lean().sort({ dateCreate: 'desc' })
+            const product_pk = await Products.find({ nameCategoryProduct: { $eq: "Phụ Kiện" } }).lean().sort({ dateCreate: 'desc' })
             res.json(product_pk)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -27,7 +27,7 @@ const productCtrl = {
     },
     getproduct_gosto: async(req, res) => {
         try {
-            const product_gosto = await Products.find({ nameCategoryProduct: { $eq: "giaygosto" } }).lean().sort({ dateCreate: 'desc' })
+            const product_gosto = await Products.find({ nameCategoryProduct: { $eq: "Gosto" } }).lean().sort({ dateCreate: 'desc' })
             res.json(product_gosto)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -35,7 +35,7 @@ const productCtrl = {
     },
     getproduct_betrai: async(req, res) => {
         try {
-            const product_betrai = await Products.find({ nameCategoryProduct: { $eq: "giaybetrai" } }).lean().sort({ dateCreate: 'desc' })
+            const product_betrai = await Products.find({ nameCategoryProduct: { $eq: "Bé Nam" } }).lean().sort({ dateCreate: 'desc' })
             res.json(product_betrai)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -43,7 +43,7 @@ const productCtrl = {
     },
     getproduct_begai: async(req, res) => {
         try {
-            const product_begai = await Products.find({ nameCategoryProduct: { $eq: "giaybegai" } }).lean().sort({ dateCreate: 'desc' })
+            const product_begai = await Products.find({ nameCategoryProduct: { $eq: "Bé Nữ" } }).lean().sort({ dateCreate: 'desc' })
             res.json(product_begai)
         } catch (err) {
             return res.status(500).json({ msg: err.message })

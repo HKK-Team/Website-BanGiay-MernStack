@@ -21,17 +21,16 @@ export const DataProvider = ({children}) =>{
         token:[token, setToken],
         menu1API:Menu1API(),
         menu2API:Menu2API(),
-        banner_boyAPI:BannerBoyAPI(),
-        banner_girlAPI:BannerGirlAPI(),
+        bannerboyAPI:BannerBoyAPI(),
+        bannergirlAPI:BannerGirlAPI(),
         bannerAPI:BannerAPI(),
-        product_boyApi: ProductBoyApi(),
-        product_girlApi: ProductGirlApi(),
-        product_pkApi: ProductPkApi(),
-        product_gostoApi: ProductGostoApi(),
-        product_betraiApi: ProductBetraiApi(),
-        product_begaiApi: ProductBegaiApi(),
+        productboyApi: ProductBoyApi(),
+        productgirlApi: ProductGirlApi(),
+        productpkApi: ProductPkApi(),
+        productgostoApi: ProductGostoApi(),
+        productbetraiApi: ProductBetraiApi(),
+        productbegaiApi: ProductBegaiApi(),
     }
-
     return (
         <GlobalState.Provider value={state}>
             {children}

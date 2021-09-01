@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 //call api menu từ folder api
 function Menu1API() {
@@ -6,6 +6,7 @@ function Menu1API() {
 
     useEffect(() => {
         const getmenu1 = async() => {
+
             const res = await axios.get('http://localhost:5000/api/menu1')
             setMenus(res.data)
         }
