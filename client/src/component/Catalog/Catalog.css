@@ -1,0 +1,129 @@
+.sidebar_collection {
+  flex-shrink: 0;
+  width: 22.5%;
+  font-size: 13px;
+  line-height: 18.5714px;
+  padding: 30px 24px;
+}
+.container-product_list-products {
+  flex-shrink: 1;
+}
+#sort-by {
+  align-items: center;
+  border: 10x solid #767676;
+  color: #333333;
+  display: inline-block;
+  font-size: 11px;
+  padding: 5px 10px;
+
+  margin-bottom: 30px;
+}
+.sidebar_collection-catalog-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  margin: 0px 0px 10px;
+  display: block;
+
+  margin-bottom: 10px;
+}
+.sidebar_collection-catalog {
+  margin-bottom: 30px;
+}
+.sidebar_collection-catalog label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 18.5714px;
+  text-align: left;
+  cursor: pointer;
+}
+#amount-text {
+  display: inline;
+  font-size: 11.7px;
+  line-height: 16.7143px;
+  text-align: left;
+  width: 100%;
+}
+.sidebar_collection-size-item:hover span {
+  background-color: #000000;
+  color: #ffffff;
+}
+.sidebar_collection-size-item {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 42px;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+.sidebar_collection-size-item span {
+  display: inline;
+  font-size: 14px;
+  line-height: 42px;
+  text-align: center;
+  color: #767676;
+  padding: 12px;
+}
+.catalog_color {
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid #cccccc;
+  line-height: 18.5714px;
+  text-align: left;
+  width: 24px;
+  height: 24px;
+
+  margin: 5px;
+  cursor: pointer;
+}
+.cam {
+  background-color: #ff6600;
+}
+.den {
+  background-color: #000000;
+}
+.do-dam {
+  background-color: #cc0000;
+}
+.do {
+  background-color: #ff0000;
+}
+.nau-dat {
+  background-color: #974706;
+}
+.nau {
+  background-color: #9e4b07;
+}
+.reu {
+  background-color: #76933c;
+}
+.trang {
+  background-color: #f9f9f9;
+}
+.vang {
+  background-color: #ffff00;
+}
+.xam {
+  background-color: #a6a6a6;
+}
+.xanh-duong-dam {
+  background-color: #000099;
+}
+.xanh-duong {
+  background-color: #0000ff;
+}
+.xanh-duong-nhat {
+  background-color: #3399ff;
+}
+.xanh-mi-no {
+  background-color: #99ff33;
+}
+.xanh {
+  background-color: #003399;
+}
+.xanh-nhot {
+  background-color: #003399ec;
+}
+.hong {
+  background-color: #ff00cc;
+}

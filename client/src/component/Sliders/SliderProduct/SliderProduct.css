@@ -1,0 +1,12 @@
+.slider_wrapper{
+    width: 1518px;
+    height: 514px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 88px;
+}
+.slider_image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
