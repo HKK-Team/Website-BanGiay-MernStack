@@ -104,7 +104,7 @@ nav,
 section {
   display: block;
 }
-*{
+* {
   box-sizing: border-box;
 }
 body {
@@ -132,14 +132,29 @@ q:after {
 table {
   border-collapse: collapse;
 }
-a{
+a {
   text-decoration: none;
 }
-.container{
-  max-width: 1170px;
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.container {
   margin: 0 auto;
 }
-.row{
-  margin-left: 10px;
-  margin-right: 10px;
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
 }

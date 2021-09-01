@@ -8,24 +8,24 @@ export default function ListPageProductHome(props) {
   const [transition, settransition] = useState(`all 500ms ease 0s`);
   function arrow_left() {
     if (b === 0) {
-      b = -2579.5;
+      b = - 2928;
       settransition(`all 2000ms ease 0s`);
       settransform(`translate3d(${b}px, 0px, 0px)`);
     } else {
       settransition(`all 500ms ease 0s`);
-      settransform(`translate3d(${b + 234.5}px, 0px, 0px)`);
-      b += 234.5;
+      settransform(`translate3d(${b + 244}px, 0px, 0px)`);
+      b += 244;
     }
   }
   function arrow_right() {
-    if (b === -2579.5) {
+    if (b === -2928) {
       b = 0;
       settransition(`all 2000ms ease 0s`);
       settransform(`translate3d(${b}px, 0px, 0px)`);
     } else {
       settransition(`all 500ms ease 0s`);
-      settransform(`translate3d(${b - 234.5}px, 0px, 0px)`);
-      b -= 234.5;
+      settransform(`translate3d(${b - 244}px, 0px, 0px)`);
+      b -= 244;
     }
   }
 
