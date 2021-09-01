@@ -57,11 +57,9 @@ export default function ListPageProductHome(props) {
               </div>
             </div>
             <div className="arrow_product-slider">
-              <a
-                className="btn_prev"
+              <a className="btn_prev"
                 style={{ backgroundImage: `url(${Prev})` }}
-                onClick={arrow_left}
-              ></a>
+                onClick={arrow_left} ></a>
               <a
                 className="btn_next"
                 style={{ backgroundImage: `url(${Prev})` }}

@@ -1,11 +1,11 @@
 import "./Banner.css";
-import  React, { useEffect, useState, useContext } from "react"; 
+import  React, {useContext } from "react"; 
 import { GlobalState } from "../../GlobalState";
 
 export default function Banner() {
   const state = useContext(GlobalState)
 
-  const [bannes] = state. bannerAPI.bannes
+  const [bannes] = state.bannerAPI.bannes
 
   return (
     <section className="banner">

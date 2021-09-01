@@ -1,8 +1,7 @@
 
 import "./Home.css";
-import  React, { useEffect, useState, useContext } from "react"; 
+import  React, { useContext } from "react"; 
 import LogoGosto from "../../images/images/GOSTO.png";
-import image from "../../images/Hunter-Nam/02_fb96605aaf6941a19ca8a037ad2c769a_medium.jpg";
 
 import Header from "../../component/Header/Header";
 import SliderHome from "../../component/SliderHome/SliderHome";
@@ -15,30 +14,17 @@ import Product from "../../component/Products/Product";
 import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
 import {GlobalState} from '../../GlobalState'
 //   Đổ dữ liệu dang foreach (éo thằng nào làm có tâm như tao)
-var array = [];
-for (let i = 0; i <= 16; i++) {
-  array.push(
-    <Product
-      image={image}
-      TotalSize={5}
-      valueSize_1={39}
-      valueSize_2={39}
-      valueSize_3={39}
-      valueSize_4={39}
-      valueSize_5={39}
-      name="Giày Thể Thao Nam Biti’s Hunter X Z Collection InGreenZ DSMH06300REU"
-      type="Hunter Nam"
-      prime={699000}
-    />
-  );
-}
 
 export default function Home() {
   const state = useContext(GlobalState)
-  const [bannerboys] = state. banner_boyAPI.bannerboys
-  const [bannergirls] = state. banner_girlAPI.bannergirls
-  const [product_boy] = state. product_boyApi.product_boy
-  const [product_girl] = state. product_girlApi.product_girl
+  const [bannerboys] = state.bannerboyAPI.bannerboys
+  const [bannergirls] = state.bannergirlAPI.bannergirls
+  const [product_boy] = state.productboyApi.product_boy
+  const [product_girl] = state.productgirlApi.product_girl
+  const [product_pk] = state.productpkApi.product_pk
+  const [product_gosto] = state.productgostoApi.product_gosto
+  const [product_betrai] = state.productbetraiApi.product_betrai
+  const [product_begai] = state.productbegaiApi.product_begai
 
   var arrayPrBoy = [];
   var arrayPrGirl = [];
@@ -80,10 +66,10 @@ export default function Home() {
       ))
     );
     arrayPrPK.push(
-     product_girl.map(item => (   
+      product_pk.map(item => (   
           <Product  key={item._id}
           image={item.image}
-          TotalSize={5}
+          TotalSize={1}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -96,7 +82,7 @@ export default function Home() {
       ))
     );
     arrayPrGosto.push(
-      product_girl.map(item => (   
+      product_gosto.map(item => (   
            <Product  key={item._id}
            image={item.image}
            TotalSize={5}
@@ -112,7 +98,7 @@ export default function Home() {
        ))
      );
      arrayPrBeTrai.push(
-      product_girl.map(item => (   
+      product_betrai.map(item => (   
            <Product  key={item._id}
            image={item.image}
            TotalSize={5}
@@ -128,7 +114,7 @@ export default function Home() {
        ))
      );
      arrayPrBeGai.push(
-      product_girl.map(item => (   
+      product_begai.map(item => (   
            <Product  key={item._id}
            image={item.image}
            TotalSize={5}
@@ -169,13 +155,13 @@ export default function Home() {
         name="PHỤ KIỆN"
         url="#"
         visible="none"
-        datalist={array}
+        datalist={arrayPrPK}
       />
       <ListPageProductHome
         logo={LogoGosto}
         url="#"
         color="white"
-        datalist={array}
+        datalist={arrayPrGosto}
       />
       {bannerboys.map(item => (   
         <HomeBanner  banner={item.images.image1} key={item._id}/>
@@ -184,7 +170,7 @@ export default function Home() {
         name="BÉ TRAI"
         url=""
         visible="none"
-        datalist={array}
+        datalist={arrayPrBeTrai}
       />
       {bannergirls.map(item => (   
         <HomeBanner banner={item.images.image1} key={item._id}/>
@@ -193,7 +179,7 @@ export default function Home() {
         name="BÉ GÁI"
         url="#"
         visible="none"
-        datalist={array}
+        datalist={arrayPrBeGai}
       />
       <GoogleMaps />
       <Footer />

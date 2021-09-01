@@ -9,7 +9,7 @@ export default function Header(props) {
 
   const state = useContext(GlobalState)
 
-  const [menus] = state. menu1API.menus
+  const [menus] = state.menu1API.menus
   const [menus2] = state.menu2API.menus2
   
   

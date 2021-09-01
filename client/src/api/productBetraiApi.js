@@ -6,7 +6,7 @@ function ProductBetraiApi() {
 
     useEffect(() => {
         const getproducbetrai = async() => {
-            const res = await axios.get('http://localhost:5000/api/products_gosto')
+            const res = await axios.get('http://localhost:5000/api/products_betrai')
             setproduct_betrai(res.data)
         }
         getproducbetrai()
