@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
 import SliderProduct from "../../../component/Sliders/SliderProduct/SliderProduct";
@@ -28,13 +28,13 @@ for (let i = 0; i <= 15; i++) {
 }
 export default function ProductFemale() {
   return (
-    <>
+    <Fragment>
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
       <ListPageProductsProduct array={array} name="HUNTER NỮ" />
       <GoogleMap/>
       <Footer />
-    </>
+    </Fragment>
   );
 }

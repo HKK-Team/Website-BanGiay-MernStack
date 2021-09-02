@@ -7,6 +7,8 @@ import {
 import Home from "./page/Home/Home";
 import ProductMale from'./page/Product/ProductMale/ProductMale'
 import ProductDetail from './page/ProductDetails/ProductDetails'
+import Cart from "./page/Cart/Cart";
+import Favorite from "./page/Favorite/Favorite";
 import { DataProvider } from "./GlobalState";
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/ProductMale" component={ProductMale}></Route>
           <Route exact path="/ProductDetail" component={ProductDetail}></Route>
+          <Route exact path="/Cart" component={Cart}></Route>
+          <Route exact path="/Favorite" component={Favorite}></Route>
         </Switch>
       </Router>
     </DataProvider>

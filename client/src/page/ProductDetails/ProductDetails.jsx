@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import GoogleMap from "../../component/GoogleMap/GoogleMaps";
 import Header from "../../component/Header/Header";
 import Footer from "../../component/Footer/Footer";
@@ -8,7 +8,7 @@ import image from "../../images/Hunter-Nam/dsmh0400den-2_f9306264a1bf467fba65764
 
 export default function ProductDetails() {
   return (
-    <>
+    <Fragment>
       <Header />
       <ProductDetail
         name="Túi Đeo Chéo Biti's ATUH00200DEN (Đen)"
@@ -29,6 +29,6 @@ export default function ProductDetails() {
       />
       <GoogleMap />
       <Footer />
-    </>
+    </Fragment>
   );
 }

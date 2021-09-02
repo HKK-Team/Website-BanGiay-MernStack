@@ -1,7 +1,6 @@
 import "./Home.css";
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import LogoGosto from "../../images/images/GOSTO.png";
-
 import Header from "../../component/Header/Header";
 import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
 import Footer from "../../component/Footer/Footer";
@@ -137,7 +136,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <Fragment>
       <Header
         // # link đường dẫn các trang (coder chuyên nghiệp có tâm nhất hệ mặt trời)
         // hotline="#"
@@ -198,6 +197,6 @@ export default function Home() {
       />
       <GoogleMaps />
       <Footer />
-    </>
+    </Fragment>
   );
 }
