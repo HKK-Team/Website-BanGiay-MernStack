@@ -10,6 +10,7 @@ import ProductGostoApi from './api/productGostoApi'
 import ProductPkApi from './api/productPkApi'
 import ProductBetraiApi from './api/productBetraiApi'
 import ProductBegaiApi from './api/productBegaiApi'
+import ProductDetailApi from './api/productDetailApi'
 //gọi lại api ở file client/api chuyển thành dạng dữ liệu object state
 export const GlobalState = createContext()
 
@@ -30,6 +31,7 @@ export const DataProvider = ({children}) =>{
         productgostoApi: ProductGostoApi(),
         productbetraiApi: ProductBetraiApi(),
         productbegaiApi: ProductBegaiApi(),
+        productDetailApi : ProductDetailApi()
     }
     return (
         <GlobalState.Provider value={state}>

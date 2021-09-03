@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import {  useEffect } from "react";
 import "./ProductDetail.css";
 import zalopay from "../../images/images/zalopay.webp";
 import visa from "../../images/images/visa.webp";
@@ -8,7 +8,7 @@ import cod from "../../images/images/cod.webp";
 import logo from "../../images/images/new.webp";
 import AdvertisingCard from "./AdvertisingCard/AdvertisingCard";
 import Titlebar from "./Titlebar/Titlebar";
-import image from "../../images/Hunter-Nam/03_9eb0ee34c5f34c25b1a22a3a007e0339_medium.jpg";
+import {Link} from "react-router-dom";
 export default function ProductDetail(props) {
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
@@ -78,7 +78,7 @@ export default function ProductDetail(props) {
   }
   useEffect(() => {
     imageZoom("productDetail_image-image", "myresult");
-  });
+  },);
   return (
     <section className="productDetail">
       <Titlebar
@@ -93,11 +93,21 @@ export default function ProductDetail(props) {
                 <svg viewBox="0 0 24 24">
                   <path d="M20.902 17.279c0.325 0.322 0.851 0.322 1.175 0 0.325-0.322 0.325-0.841 0-1.163l-9.49-9.396c-0.324-0.322-0.85-0.322-1.174 0l-9.49 9.396c-0.324 0.322-0.325 0.841 0 1.163s0.85 0.322 1.175 0l8.902-8.569 8.902 8.569z"></path>
                 </svg>
-                <img src={props.imageValue1} alt="image" />
-                <img src={props.imageValue2} alt="image" />
-                <img src={props.imageValue3} alt="image" />
-                <img src={props.imageValue4} alt="image" />
-                <img src={props.imageValue5} alt="image" />
+                <Link to = "#" >
+                  <img src={props.imageValue1} alt="image" />
+                </Link>
+                <Link to = "#" >
+                  <img src={props.imageValue2} alt="image" />
+                </Link>
+                <Link to = "#" >
+                  <img src={props.imageValue3} alt="image" />
+                </Link>
+                <Link to = "#" >
+                  <img src={props.imageValue4} alt="image" />
+                </Link>
+                <Link to = "#" >
+                  <img src={props.imageValue5} alt="image" />
+                </Link>
                 <svg viewBox="0 0 24 24">
                   <path
                     d="M3.098 6.721c-0.325-0.322-0.851-0.322-1.175 0-0.324 0.32-0.324 0.841 0 1.163l9.49 9.396c0.325 0.322 0.85 0.322 1.175 0l9.49-9.396c0.324-0.322 0.325-0.841 0-1.163s-0.852-0.322-1.175-0.001l-8.903 8.569-8.902-8.568z"
@@ -128,8 +138,8 @@ export default function ProductDetail(props) {
               {props.name}
               </h1>
               <div className="productDetail_information-msp">
-                Mã sản phẩm:
-                <span>{props.ProductCode}</span>
+                Mã sản phẩm : 
+                <span>{" "+props.ProductCode}</span>
               </div>
               <div className="productDetail_information-price">
                 <span>{props.price} đ</span>
@@ -142,11 +152,21 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail_information-size">
                   <label htmlFor="">Kích thước</label>
-                  <span>{props.sizeValue1}</span>
-                  <span>{props.sizeValue2}</span>
-                  <span>{props.sizeValue3}</span>
-                  <span>{props.sizeValue4}</span>
-                  <span>{props.sizeValue5}</span>
+                  <Link to = {props.valueSize_1}>
+                    <span>{props.valueSize_1}</span>
+                  </Link>
+                  <Link to = {props.valueSize_2}>
+                    <span>{props.valueSize_2}</span>
+                  </Link>
+                  <Link to = {props.valueSize_3}>
+                    <span>{props.valueSize_3}</span>
+                  </Link>
+                  <Link to = {props.valueSize_4}>
+                    <span>{props.valueSize_4}</span>
+                  </Link>
+                  <Link to = {props.valueSize_5}>
+                    <span>{props.valueSize_5}</span>
+                  </Link>
                 </div>
                 <div className="productDetail_information-inventory">
                   <label htmlFor="">Còn hàng:</label>
@@ -156,14 +176,14 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail_information-action-cart">
                   <button>Mua Ngay</button>
-                  <a href="#">
+                  <Link to="#">
                     <i class="fas fa-heart"></i> Thêm vào yêu thích
-                  </a>
+                  </Link>
                 </div>
               </form>
               <div className="productDetail_information-hotline">
                 <div className="hotline-product">
-                  Tư vấn: <a href="#">0984 943 851</a>
+                  Tư vấn: <Link to="#">0984 943 851</Link>
                 </div>
                 <div className="payment-product">
                   <img src={zalopay} alt="zalo pay" />
@@ -185,21 +205,21 @@ export default function ProductDetail(props) {
               </h3>
               <div className="xlab-main">
                 <AdvertisingCard
-                  image={image}
-                  name="Giày Thể Thao Nam Biti’s Hunter Core Z Collection Stone DSMH06400DEN (Đen)"
-                  price="760000"
+                  image={props.image}
+                  name={props.name}
+                  price={props.price}
                   url="#"
                 />
                 <AdvertisingCard
-                  image={image}
-                  name="Giày Thể Thao Nam Biti’s Hunter Core Z Collection Stone DSMH06400DEN (Đen)"
-                  price="760000"
+                  image={props.image}
+                  name={props.name}
+                  price={props.price}
                   url="#"
                 />
                 <AdvertisingCard
-                  image={image}
-                  name="Giày Thể Thao Nam Biti’s Hunter Core Z Collection Stone DSMH06400DEN (Đen)"
-                  price="760000"
+                  image={props.image}
+                  name={props.name}
+                  price={props.price}
                   url="#"
                 />
               </div>

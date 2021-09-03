@@ -4,7 +4,7 @@ import  React, { useContext } from "react";
 import LogoGosto from "../../images/images/GOSTO.png";
 
 import Header from "../../component/Header/Header";
-import SliderHome from "../../component/SliderHome/SliderHome";
+import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
 import Footer from "../../component/Footer/Footer"; 
 import Announcement from "../../component/Announcement/Announcement";
 import Banner from "../../component/Banners/Banner";
@@ -12,7 +12,7 @@ import ListPageProductHome from "../../component/ListPageProducts/ListPageProduc
 import HomeBanner from "../../component/Banners/HomeBanner/HomeBanner";
 import Product from "../../component/Products/Product";
 import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
-import {GlobalState} from '../../GlobalState'
+import {GlobalState} from '../../GlobalState';
 //   Đổ dữ liệu dang foreach (éo thằng nào làm có tâm như tao)
 
 export default function Home() {
@@ -32,7 +32,6 @@ export default function Home() {
   var arrayPrGosto = [];
   var arrayPrBeTrai = [];
   var arrayPrBeGai = [];
-  for (let i = 0; i <= 16; i++) {
     arrayPrBoy.push(
       product_boy.map(item => (   
           <Product  key={item._id}
@@ -46,6 +45,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee = "nam"
+          masp = {item.idCategory_product}
         />
       ))
     );
@@ -62,6 +63,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee = "nu"
+          masp = {item.idCategory_product}
         />
       ))
     );
@@ -78,6 +81,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee = "phu-kien"
+          masp = {item.idCategory_product}
         />
       ))
     );
@@ -94,6 +99,8 @@ export default function Home() {
            name={item.nameProduct}
            type={item.nameCategoryProduct}
            prime={item.price}
+           typee = "gosto"
+           masp = {item.idCategory_product}
          />
        ))
      );
@@ -110,6 +117,8 @@ export default function Home() {
            name={item.nameProduct}
            type={item.nameCategoryProduct}
            prime={item.price}
+           typee = "be-trai"
+           masp = {item.idCategory_product}
          />
        ))
      );
@@ -126,10 +135,11 @@ export default function Home() {
            name={item.nameProduct}
            type={item.nameCategoryProduct}
            prime={item.price}
+           typee = "be-gai"
+           masp = {item.idCategory_product}
          />
        ))
      );
-  }
 
   return (
     <>
@@ -142,24 +152,34 @@ export default function Home() {
         login="/dang-nhap"
         register="/dang-ki"
         home="/"
-        cart="gio-hang"
-        favorite="yeu-thich"
+        cart="/gio-hang"
+        favorite="/yeu-thich"
       />
       <SliderHome /> 
       <Announcement />
       <Banner />
       {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}
-      <ListPageProductHome name="NAM" url="#" visible="none" datalist={arrayPrBoy} />
-      <ListPageProductHome name="NỮ" url="#" visible="none" datalist={arrayPrGirl} />
+      <ListPageProductHome 
+        name="NAM" 
+        url= "nam"
+        visible="none" 
+        datalist={arrayPrBoy} 
+      />
+      <ListPageProductHome 
+        name="NỮ" 
+        url="nu" 
+        visible="none" 
+        datalist={arrayPrGirl} 
+      />
       <ListPageProductHome
         name="PHỤ KIỆN"
-        url="#"
+        url="phu-kien"
         visible="none"
         datalist={arrayPrPK}
       />
       <ListPageProductHome
         logo={LogoGosto}
-        url="#"
+        url="gosto"
         color="white"
         datalist={arrayPrGosto}
       />
@@ -168,7 +188,7 @@ export default function Home() {
           ))}
       <ListPageProductHome
         name="BÉ TRAI"
-        url=""
+        url="be-trai"
         visible="none"
         datalist={arrayPrBeTrai}
       />
@@ -177,7 +197,7 @@ export default function Home() {
           ))}
       <ListPageProductHome
         name="BÉ GÁI"
-        url="#"
+        url="be-gai"
         visible="none"
         datalist={arrayPrBeGai}
       />

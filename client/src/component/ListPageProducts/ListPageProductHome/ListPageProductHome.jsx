@@ -1,7 +1,7 @@
 import Prev from "../../../images/images/arrow-next.webp"
 import "./ListPageProductHome.css";
 import React, { useState, useEffect } from "react";
-
+import {Link} from "react-router-dom";
 var b = 0;
 export default function ListPageProductHome(props) {
   const [transform, settransform] = useState(`translate3d(${b}px, 0px, 0px)`);
@@ -35,7 +35,7 @@ export default function ListPageProductHome(props) {
         <div className="row">
           <div className="home_cate-box-title">
             <h2 style={{ background: props.color }}>
-              <a href="#">{props.name}</a>
+              <Link to={props.url}>{props.name}</Link>
               <img
                 src={props.logo}
                 alt="logo"
@@ -68,9 +68,9 @@ export default function ListPageProductHome(props) {
             </div>
           </div>
           <div className="home_cate-link">
-            <a href={props.url} className="home_cate-link-text">
+            <Link to={props.url} className="home_cate-link-text">
               XEM THÊM
-            </a>
+            </Link>
           </div>
         </div>
       </div>

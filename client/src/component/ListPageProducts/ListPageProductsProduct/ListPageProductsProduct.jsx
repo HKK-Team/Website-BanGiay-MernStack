@@ -1,7 +1,6 @@
 import React from "react";
 import "./ListPageProductsProduct.css";
 import Catalog from "../../Catalog/Catalog";
-import Product from '../../Products/Product'
 
 
 export default function ListPageProductsProduct(props) {

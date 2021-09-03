@@ -1,14 +1,17 @@
 import React from "react";
 import "./Product.css";
 import iconNew from "../../images/images/new.webp";
-export default function Product(props) {
+import {Link} from "react-router-dom";
+export default function Product(props) {  // props là dữ liệu được lưu trong mảng
   return (
     <div className="product_item">
       <div className="product_item-image">
-        <img src={props.image} alt="image" className='image_Product' title={props.name}/>
-        <span className="new">
-          <img src={iconNew} alt="icon" />
-        </span>
+        <Link to={props.typee +"/"+props.masp}>
+          <img src={props.image} alt="image" className='image_Product' title={props.name}/>
+          <span className="new">
+            <img src={iconNew} alt="icon" />
+          </span>
+        </Link>
       </div>
       <div className="product_size">
         <div className="product_size-variant">
@@ -22,12 +25,12 @@ export default function Product(props) {
           </div>
         </div>
       </div>
-      <a href="#" className="product_item-name" title={props.name}>
+      <Link to={props.typee +"/"+ props.masp} className="product_item-name" title={props.name}>
         {props.name}
-      </a>
-      <a href="#" className="product_item-productType">
+      </Link>
+      <Link to={props.typee} className="product_item-productType">
         {props.type}
-      </a>
+      </Link>
       <span className="product_item-price">{props.prime} đ</span>
       <button className="product_item-addToCart" type="submit">
         Mua Hàng

@@ -3,7 +3,7 @@ import axios from 'axios'
 //call api menu từ folder api
 function Menu1API() {
     const [menus, setMenus] = useState([])
-
+    const [callback, setCallback] = useState(false)
     useEffect(() => {
         const getmenu1 = async() => {
 
@@ -11,10 +11,11 @@ function Menu1API() {
             setMenus(res.data)
         }
         getmenu1()
-    }, [])
+    }, [callback])
 
     return {
         menus: [menus, setMenus],
+        callback : [callback,setCallback]
     }
 }
 export default Menu1API
