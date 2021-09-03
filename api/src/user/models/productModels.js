@@ -25,7 +25,8 @@ const productSchema = new mongoose.Schema({
         image5: String
     },
     slug: String,
-    image: String
+    image: String,
+    detailCategory: String
 })
 
 module.exports = mongoose.model('Products', productSchema)

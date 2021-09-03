@@ -1,4 +1,4 @@
-import React from "react";
+import  React, { useContext } from "react"; 
 import silder from "../../../images/images/page-TrangChu-3.jpg";
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
@@ -8,31 +8,35 @@ import ListPageProductsProduct from "../../../component/ListPageProducts/ListPag
 import GoogleMap from "../../../component/GoogleMap/GoogleMaps";
 import Product from "../../../component/Products/Product";
 import image from "../../../images/Hunter-Nu/dsmh06100kem-2_661cd2a87990466393eebab7dad1ee7c_1024x1024.jpg";
+import {GlobalState} from '../../../GlobalState'
 
-var array = [];
-for (let i = 0; i <= 15; i++) {
-  array.push(
-    <Product
-      image={image}
-      TotalSize={7}
-      valueSize_1={39}
-      valueSize_2={39}
-      valueSize_3={39}
-      valueSize_4={39}
-      valueSize_5={39}
-      name="Giày Thể Thao Nam Biti’s Hunter X Z Collection InGreenZ DSMH06300REU"
-      type="Hunter Nam"
-      prime={699000}
-    />
-  );
-}
 export default function ProductMale() {
+  const state = useContext(GlobalState)
+  const [product_boy] = state.productboyApi.product_boy
+
+  var arrayPrBoy = [];
+  arrayPrBoy.push(
+    product_boy.map(item => (   
+        <Product  key={item._id}
+        image={item.image}
+        TotalSize={5}
+        valueSize_1={item.size.size1}
+        valueSize_2={item.size.size2}
+        valueSize_3={item.size.size3}
+        valueSize_4={item.size.size4}
+        valueSize_5={item.size.size5}
+        name={item.nameProduct}
+        type={item.nameCategoryProduct}
+        prime={item.price}
+      />
+    ))
+  );
   return (
     <>
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
-      <ListPageProductsProduct array={array} name="HUNTER NAM" />
+      <ListPageProductsProduct array={arrayPrBoy} name="HUNTER NAM" />
       <GoogleMap/>
       <Footer />
     </>

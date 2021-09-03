@@ -4,7 +4,7 @@ import  React, { useContext } from "react";
 import LogoGosto from "../../images/images/GOSTO.png";
 
 import Header from "../../component/Header/Header";
-import SliderHome from "../../component/SliderHome/SliderHome";
+import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
 import Footer from "../../component/Footer/Footer"; 
 import Announcement from "../../component/Announcement/Announcement";
 import Banner from "../../component/Banners/Banner";
@@ -26,13 +26,14 @@ export default function Home() {
   const [product_betrai] = state.productbetraiApi.product_betrai
   const [product_begai] = state.productbegaiApi.product_begai
 
+
   var arrayPrBoy = [];
   var arrayPrGirl = [];
   var arrayPrPK = [];
   var arrayPrGosto = [];
   var arrayPrBeTrai = [];
   var arrayPrBeGai = [];
-  for (let i = 0; i <= 16; i++) {
+    //load list sản phẩm lấy lên từ controllerproducts 16 sản phẩm mới nhất
     arrayPrBoy.push(
       product_boy.map(item => (   
           <Product  key={item._id}
@@ -129,7 +130,6 @@ export default function Home() {
          />
        ))
      );
-  }
 
   return (
     <>

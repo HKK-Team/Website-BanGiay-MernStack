@@ -1,9 +1,43 @@
 const Products = require('../models/productModels')
-    // //controller products
+    //controller products
+
+//class ApiFeatures sorting paging...
+class ApiFeatures {
+    constructor(query, queryString) {
+            this.query = query;
+            this.queryString = queryString;
+        }
+        //filtering product
+    filtering() {
+            const queryObj = {...this.queryString } //queryString = req.query
+
+            const excludedFields = ['page', 'sort', 'limit']
+            excludedFields.forEach(el => delete(queryObj[el]))
+
+            let queryStr = JSON.stringify(queryObj)
+            queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g, match => '$' + match)
+            this.query.find(JSON.parse(queryStr))
+
+            return this;
+        }
+        //sorting product
+    sort() {
+        if (this.queryString.sort) {
+            const sortBy = this.queryString.sort.split(',').join(' ')
+            this.query = this.query.sort(sortBy)
+        } else {
+            this.query = this.query.sort('-dateCreate')
+        }
+        return this;
+    }
+}
+
 const productCtrl = {
     getproduct_boy: async(req, res) => {
         try {
-            const product_boy = await Products.find({ nameCategoryProduct: { $eq: "Hunter Nam" } }).lean().sort({ dateCreate: 'desc' })
+            const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Hunter Nam" } })
+                .lean().sort({ dateCreate: 'desc' }), req.query).filtering().sort()
+            const product_boy = await features.query
             res.json(product_boy)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -11,7 +45,9 @@ const productCtrl = {
     },
     getproduct_girl: async(req, res) => {
         try {
-            const product_girl = await Products.find({ nameCategoryProduct: { $eq: "Hunter Nữ" } }).lean().sort({ dateCreate: 'desc' })
+            const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Hunter Nữ" } })
+                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+            const product_girl = await features.query
             res.json(product_girl)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -19,7 +55,10 @@ const productCtrl = {
     },
     getproduct_pk: async(req, res) => {
         try {
-            const product_pk = await Products.find({ nameCategoryProduct: { $eq: "Phụ Kiện" } }).lean().sort({ dateCreate: 'desc' })
+            const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Phụ Kiện" } })
+                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+            const product_pk = await features.query
+
 
             res.json(product_pk)
         } catch (err) {
@@ -28,7 +67,9 @@ const productCtrl = {
     },
     getproduct_gosto: async(req, res) => {
         try {
-            const product_gosto = await Products.find({ nameCategoryProduct: { $eq: "Gosto" } }).lean().sort({ dateCreate: 'desc' })
+            const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Gosto" } })
+                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+            const product_gosto = await features.query
             res.json(product_gosto)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -36,7 +77,9 @@ const productCtrl = {
     },
     getproduct_betrai: async(req, res) => {
         try {
-            const product_betrai = await Products.find({ nameCategoryProduct: { $eq: "Bé Nam" } }).lean().sort({ dateCreate: 'desc' })
+            const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Bé Nam" } })
+                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+            const product_betrai = await features.query
             res.json(product_betrai)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -44,11 +87,23 @@ const productCtrl = {
     },
     getproduct_begai: async(req, res) => {
         try {
-            const product_begai = await Products.find({ nameCategoryProduct: { $eq: "Bé Nữ" } }).lean().sort({ dateCreate: 'desc' })
+            const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Bé Nữ" } })
+                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+            const product_begai = await features.query
             res.json(product_begai)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
-    }
+    },
+    getallproduct: async(req, res) => {
+        try {
+            const features = new ApiFeatures(Products.find(), req.query)
+                .filtering()
+            const products = await features.query
+            res.json(products)
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
 }
 module.exports = productCtrl
