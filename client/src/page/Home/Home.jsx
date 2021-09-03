@@ -30,7 +30,6 @@ export default function Home() {
   var arrayPrGosto = [];
   var arrayPrBeTrai = [];
   var arrayPrBeGai = [];
-  for (let i = 0; i <= 16; i++) {
     arrayPrBoy.push(
       product_boy.map((item) => (
         <Product
@@ -45,6 +44,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee = "nam"
+          masp = {item.idCategory_product}
         />
       ))
     );
@@ -62,6 +63,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee = "nu"
+          masp = {item.idCategory_product}
         />
       ))
     );
@@ -79,6 +82,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee = "phu-kien"
+          masp = {item.idCategory_product}
         />
       ))
     );
@@ -146,34 +151,34 @@ export default function Home() {
         login="/dang-nhap"
         register="/dang-ki"
         home="/"
-        cart="gio-hang"
-        favorite="yeu-thich"
+        cart="/gio-hang"
+        favorite="/yeu-thich"
       />
       <SliderHome />
       <Announcement />
       <Banner />
       {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}
-      <ListPageProductHome
-        name="NAM"
-        url="#"
-        visible="none"
-        datalist={arrayPrBoy}
+      <ListPageProductHome 
+        name="NAM" 
+        url= "nam"
+        visible="none" 
+        datalist={arrayPrBoy} 
       />
-      <ListPageProductHome
-        name="NỮ"
-        url="#"
-        visible="none"
-        datalist={arrayPrGirl}
+      <ListPageProductHome 
+        name="NỮ" 
+        url="nu" 
+        visible="none" 
+        datalist={arrayPrGirl} 
       />
       <ListPageProductHome
         name="PHỤ KIỆN"
-        url="#"
+        url="phu-kien"
         visible="none"
         datalist={arrayPrPK}
       />
       <ListPageProductHome
         logo={LogoGosto}
-        url="#"
+        url="gosto"
         color="white"
         datalist={arrayPrGosto}
       />
@@ -182,7 +187,7 @@ export default function Home() {
       ))}
       <ListPageProductHome
         name="BÉ TRAI"
-        url=""
+        url="be-trai"
         visible="none"
         datalist={arrayPrBeTrai}
       />
@@ -191,7 +196,7 @@ export default function Home() {
       ))}
       <ListPageProductHome
         name="BÉ GÁI"
-        url="#"
+        url="be-gai"
         visible="none"
         datalist={arrayPrBeGai}
       />
@@ -199,4 +204,4 @@ export default function Home() {
       <Footer />
     </Fragment>
   );
-}
+

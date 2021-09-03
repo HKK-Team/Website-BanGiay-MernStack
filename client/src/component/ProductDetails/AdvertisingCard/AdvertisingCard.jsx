@@ -1,6 +1,5 @@
 import React from "react";
 import'./AdvertisingCard.css'
-
 export default function AdvertisingCard(props) {
   return (
     <div className="xlab-card">

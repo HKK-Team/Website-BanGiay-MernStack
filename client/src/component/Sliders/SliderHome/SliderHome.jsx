@@ -1,5 +1,5 @@
 import "./SliderHome.css";
-import React, {  useEffect } from "react";
+import React from "react";
 import page1 from "../../../images/images/page-TrangChu-1.jpg";
 import page2 from "../../../images/images/page-TrangChu-2.jpg";
 import page3 from "../../../images/images/page-TrangChu-3.jpg";

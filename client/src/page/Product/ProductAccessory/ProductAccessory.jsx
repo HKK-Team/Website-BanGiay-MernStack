@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import  React, { useContext } from "react"; 
+import {GlobalState} from '../../../GlobalState';
 import silder from "../../../images/images/page-TrangChu-3.jpg";
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
@@ -8,32 +10,36 @@ import ListPageProductsProduct from "../../../component/ListPageProducts/ListPag
 
 import GoogleMap from "../../../component/GoogleMap/GoogleMaps";
 import Product from "../../../component/Products/Product";
-import image from "../../../images/Phu-Kien/dsc_0040_02acac8a2c304768ab352120657b5a64_1024x1024.jpg";
 
-var array = [];
-for (let i = 0; i <= 15; i++) {
-  array.push(
-    <Product
-      image={image}
-      TotalSize={7}
-      valueSize_1={39}
-      valueSize_2={39}
-      valueSize_3={39}
-      valueSize_4={39}
-      valueSize_5={39}
-      name="Giày Thể Thao Nam Biti’s Hunter X Z Collection InGreenZ DSMH06300REU"
-      type="Hunter Nam"
-      prime={699000}
-    />
-  );
-}
 export default function ProductFemale() {
+  const state = useContext(GlobalState)
+  const [product_pk] = state.productpkApi.product_pk
+
+  var arrayPrPK = [];
+    arrayPrPK.push(        // lấy dữ liệu trong data ra rồi push vô mảng
+      product_pk.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
+          <Product  key={item._id}
+          masp = {item.idCategory_product}
+          image={item.image}
+          TotalSize={5}
+          valueSize_1={item.size.size1}
+          valueSize_2={item.size.size2}
+          valueSize_3={item.size.size3}
+          valueSize_4={item.size.size4}
+          valueSize_5={item.size.size5}
+          name={item.nameProduct}
+          typee="phu-kien"
+          type={item.nameCategoryProduct}
+          prime={item.price}
+        />
+      ))
+    );
   return (
     <Fragment>
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
-      <ListPageProductsProduct array={array} name="PHỤ KIỆN" />
+      <ListPageProductsProduct array={arrayPrPK} name="PHỤ KIỆN" />
       <GoogleMap />
       <Footer />
     </Fragment>

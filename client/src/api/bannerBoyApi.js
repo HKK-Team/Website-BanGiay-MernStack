@@ -3,6 +3,7 @@ import axios from 'axios'
 //call api baner từ folder api
 function BannerBoyAPI() {
     const [bannerboys, setBannerboys] = useState([])
+    const [callback, setCallback] = useState(false)
 
     useEffect(() => {
         const getbanerboy = async() => {
@@ -11,9 +12,10 @@ function BannerBoyAPI() {
         }
         getbanerboy()
 
-    }, [])
+    }, [callback])
     return {
-        bannerboys: [bannerboys, setBannerboys]
+        bannerboys: [bannerboys, setBannerboys],
+        callback : [callback,setCallback]
     }
 }
 export default BannerBoyAPI

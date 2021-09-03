@@ -1,7 +1,7 @@
 const Products = require('../models/productModels')
-    // //controller products
-const productCtrl = {
-    getproduct_boy: async(req, res) => {
+     //controller products
+const productCtrl = {           // $eq là biểu thức so sánh trong mongodb (truy vấn có điều kiện)
+    getproduct_boy: async(req, res) => { // tạo điểu khiển để hiển thị dữ liệu lên localhost
         try {
             const product_boy = await Products.find({ nameCategoryProduct: { $eq: "Hunter Nam" } }).lean().sort({ dateCreate: 'desc' })
             res.json(product_boy)
@@ -46,6 +46,14 @@ const productCtrl = {
         try {
             const product_begai = await Products.find({ nameCategoryProduct: { $eq: "Bé Nữ" } }).lean().sort({ dateCreate: 'desc' })
             res.json(product_begai)
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
+    getproduct: async(req, res) => {
+        try {
+            const product = await Products.find()
+            res.json(product)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
