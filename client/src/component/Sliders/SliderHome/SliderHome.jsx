@@ -14,7 +14,7 @@ export default function SliderHome() {
         counter = 1;
       }
     }, 4000);
-  });
+  },[]);
   return (
     <section className="slider_wrapper">
       <div className="slider">

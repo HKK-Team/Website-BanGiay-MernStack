@@ -6,6 +6,7 @@
   font-size: 24px;
   font-weight: 500;
   line-height: 33.6px;
+  
   margin: 25px 0px;
   text-align: center;
 }
@@ -22,16 +23,19 @@
 }
 .customer-wishlist-item-info {
   padding: 0 3px 20px;
-  border-bottom: 1px solid #000;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: normal;
-  text-align: center;
   padding-top: 0;
+
+  border-bottom: 1px solid #000;
+
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
 }
 .wish-empty {
   line-height: 22.8571px;
+  font-size: 18px;
+
   padding: 30px 0px;
   text-align: center;
-  font-size: 18px;
 }

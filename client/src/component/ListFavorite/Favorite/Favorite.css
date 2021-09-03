@@ -6,32 +6,38 @@
 }
 .customer-wishlist-item-image {
   display: table-cell;
+
   font-size: 14px;
   line-height: 20px;
+
   padding: 20px 10px;
   text-align: center;
 }
 .customer-wishlist-item-info {
   display: table-cell;
+
   font-size: 14px;
   line-height: 20px;
+
   padding: 20px 10px;
   border: none;
 }
 .customer-wishlist-item-info a {
   display: block;
+
   font-family: Open Sans;
   font-size: 13px;
   font-weight: 700;
   line-height: 18.2px;
   text-transform: uppercase;
+
   color: black;
   text-align: left;
 }
 .customer-wishlist-item-info span {
-  display: inline;
   font-size: 11px;
   line-height: 15.7143px;
+
   text-align: left;
   display: block;
 }
@@ -39,8 +45,9 @@
   font-family: Open Sans;
   font-size: 12px;
   line-height: 17.1429px;
-  float: left;
   text-transform: capitalize;
+
+  float: left;
   display: block;
   padding-right: 20px;
 }
@@ -49,20 +56,25 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 17.1429px;
+
   text-transform: capitalize;
   display: inline;
 }
 .customer-wishlist-item-quality {
   display: table-cell;
+
   font-size: 14px;
   line-height: 20px;
+
   padding: 20px 10px;
   text-align: center;
 }
 .customer-wishlist-item-price {
   display: table-cell;
+
   font-size: 14px;
   line-height: 20px;
+
   padding: 20px 10px;
   text-align: center;
 }
@@ -82,34 +94,42 @@
   display: table-cell;
   font-size: 14px;
   line-height: 20px;
+
   padding: 20px 10px;
 }
 .btn_cart {
   align-items: flex-start;
   background-color: #000000;
   color: #ffffff;
+
   display: inline-block;
+
   font-family: Open Sans;
   font-size: 12px;
   line-height: 17.1429px;
-  padding: 5px;
   text-align: center;
   text-transform: uppercase;
+
+  padding: 5px;
 }
 .customer-wishlist-item-remove {
   display: table-cell;
   font-size: 14px;
   line-height: 20px;
+
   padding: 20px 10px;
 }
 .favorite_remove {
-  color: #000000;
   display: inline-block;
+  
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;
+
   border: none;
+  color: #000000;
   background-color: #ffffff;
+
   cursor: pointer;
 }
 .favorite_remove:hover {
@@ -121,13 +141,17 @@
 }
 .Cart_quality {
   background-color: #ffffff;
+  color: #757575;
+
   border-radius: 3px;
   border: 1px solid #b5b5b5;
-  color: #757575;
+
   display: inline-block;
+
   font-family: Open Sans;
   font-size: 14px;
   line-height: 20px;
+  
   padding: 6px 10px;
   text-align: center;
 }
