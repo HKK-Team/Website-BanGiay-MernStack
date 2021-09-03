@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import  React, { useContext } from "react"; 
+import React, { Fragment , useContext } from "react";
 import {GlobalState} from '../../../GlobalState';
 import silder from "../../../images/images/page-TrangChu-3.jpg";
 import Header from "../../../component/Header/Header";

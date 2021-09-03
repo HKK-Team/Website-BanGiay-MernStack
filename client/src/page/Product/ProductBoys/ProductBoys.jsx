@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import  React, { useContext } from "react"; 
+import React, { Fragment,useContext } from "react";
+
 import {GlobalState} from '../../../GlobalState';
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";

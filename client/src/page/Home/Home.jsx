@@ -11,7 +11,7 @@ import HomeBanner from "../../component/Banners/HomeBanner/HomeBanner";
 import Product from "../../component/Products/Product";
 import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
 import { GlobalState } from "../../GlobalState";
-//   Đổ dữ liệu dang foreach (éo thằng nào làm có tâm như tao)
+
 
 export default function Home() {
   const state = useContext(GlobalState);
@@ -30,6 +30,7 @@ export default function Home() {
   var arrayPrGosto = [];
   var arrayPrBeTrai = [];
   var arrayPrBeGai = [];
+  for (let i = 0; i <= 16; i++) {
     arrayPrBoy.push(
       product_boy.map((item) => (
         <Product
@@ -44,8 +45,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
-          typee = "nam"
-          masp = {item.idCategory_product}
+          typee="nam"
+          masp={item.idCategory_product}
         />
       ))
     );
@@ -63,8 +64,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
-          typee = "nu"
-          masp = {item.idCategory_product}
+          typee="nu"
+          masp={item.idCategory_product}
         />
       ))
     );
@@ -82,8 +83,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
-          typee = "phu-kien"
-          masp = {item.idCategory_product}
+          typee="phu-kien"
+          masp={item.idCategory_product}
         />
       ))
     );
@@ -144,10 +145,6 @@ export default function Home() {
     <Fragment>
       <Header
         // # link đường dẫn các trang (coder chuyên nghiệp có tâm nhất hệ mặt trời)
-        // hotline="#"
-        // address="#"
-        // contact="#"
-        // checkOrder="#"
         login="/dang-nhap"
         register="/dang-ki"
         home="/"
@@ -158,17 +155,17 @@ export default function Home() {
       <Announcement />
       <Banner />
       {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}
-      <ListPageProductHome 
-        name="NAM" 
-        url= "nam"
-        visible="none" 
-        datalist={arrayPrBoy} 
+      <ListPageProductHome
+        name="NAM"
+        url="nam"
+        visible="none"
+        datalist={arrayPrBoy}
       />
-      <ListPageProductHome 
-        name="NỮ" 
-        url="nu" 
-        visible="none" 
-        datalist={arrayPrGirl} 
+      <ListPageProductHome
+        name="NỮ"
+        url="nu"
+        visible="none"
+        datalist={arrayPrGirl}
       />
       <ListPageProductHome
         name="PHỤ KIỆN"
@@ -204,4 +201,4 @@ export default function Home() {
       <Footer />
     </Fragment>
   );
-
+}

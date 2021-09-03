@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import  React, { useContext } from "react";
+import React, { Fragment ,useContext} from "react";
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
 import SliderProduct from "../../../component/Sliders/SliderProduct/SliderProduct";

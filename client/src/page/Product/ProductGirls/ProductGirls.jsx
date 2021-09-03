@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { Fragment } from "react";
-=======
-import  React, { useContext } from "react"; 
-import {GlobalState} from '../../../GlobalState';
->>>>>>> Huy-Huynh
+import React, { Fragment, useContext } from "react";
+import { GlobalState } from "../../../GlobalState";
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
 import SliderProduct from "../../../component/Sliders/SliderProduct/SliderProduct";
@@ -13,16 +9,20 @@ import Product from "../../../component/Products/Product";
 import GoogleMap from "../../../component/GoogleMap/GoogleMaps";
 import silder from "../../../images/images/banner-BeTrai.jpg";
 
-
 export default function ProductFemale() {
-  const state = useContext(GlobalState)
-  const [product_begai] = state.productbegaiApi.product_begai
+  const state = useContext(GlobalState);
+  const [product_begai] = state.productbegaiApi.product_begai;
 
   var arrayPrBeGai = [];
-    arrayPrBeGai.push(        // lấy dữ liệu trong data ra rồi push vô mảng
-      product_begai.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
-          <Product  key={item._id}
-          masp = {item.idCategory_product}
+  arrayPrBeGai.push(
+    // lấy dữ liệu trong data ra rồi push vô mảng
+    product_begai.map(
+      (
+        item // sử dụng map đẻ lấy dữ liệu trong collection
+      ) => (
+        <Product
+          key={item._id}
+          masp={item.idCategory_product}
           image={item.image}
           TotalSize={5}
           valueSize_1={item.size.size1}
@@ -35,15 +35,16 @@ export default function ProductFemale() {
           type={item.nameCategoryProduct}
           prime={item.price}
         />
-      ))
-    );
+      )
+    )
+  );
   return (
     <Fragment>
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
       <ListPageProductsProduct array={arrayPrBeGai} name="BÉ GÁI" />
-      <GoogleMap/>
+      <GoogleMap />
       <Footer />
     </Fragment>
   );

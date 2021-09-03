@@ -1,8 +1,8 @@
 import {
   BrowserRouter as Router,
-  // Switch,
-  // Route,
-  // Redirect,
+  Switch,
+  Route,
+  Redirect,
 } from "react-router-dom";
 import Home from "./page/Home/Home";
 import ProductMale from'./page/Product/ProductMale/ProductMale'
