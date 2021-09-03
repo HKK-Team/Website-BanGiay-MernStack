@@ -1,0 +1,112 @@
+
+.line_item {
+  padding: 20px 0px;
+  border-bottom: 1px solid #757575;
+}
+.line_item-img {
+  padding: 0px 20px;
+  text-align: center;
+  width: 192px;
+  height: 110px;
+}
+.Cart_image {
+  width: 75%;
+  height: 100%;
+  object-fit: cover;
+}
+.line_item-title {
+  padding: 0px 10px;
+  width: 383px;
+  height: 81px;
+}
+.line_item-title a {
+  color: #212121;
+  font-family: Open Sans;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  transition: all 0.6s ease;
+}
+.line_item-title a:hover{
+    color: red;
+}
+.variant_cart {
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 14px;
+  line-height: 25px;
+  margin: 10px 0px 5px;
+}
+.variant_cart-title {
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
+}
+.variant_cart-color {
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
+  color: red;
+}
+.variant_size {
+  border-radius: 3px;
+  border: 1px solid #696969;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 25px;
+  padding: 5px;
+  margin: 0px 20px 0px 0px;
+  text-align: center;
+  color: red;
+}
+.cart_delete {
+  border-radius: 4px;
+  color: #212121;
+  display: inline-block !important;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  margin: 5px 0px 0px;
+  text-align: left;
+}
+
+.line_item-quality {
+  padding: 0px 10px;
+  text-align: center;
+  width: 192px;
+  height: 34px;
+}
+.Cart_quality {
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #b5b5b5;
+  color: #757575;
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 6px 10px;
+  text-align: center;
+}
+.line_item-price {
+  color: #212121;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0px 10px;
+  text-align: center;
+  width: 192px;
+  height: 20px;
+}
+.line_item-total_price {
+  color: #db0f0f;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0px 10px;
+  text-align: center;
+  width: 192px;
+  height: 20px;
+}
+.line_item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

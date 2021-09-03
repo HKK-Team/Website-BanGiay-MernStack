@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import  React, { useContext } from "react"; 
 import {GlobalState} from '../../../GlobalState';
+=======
+import React, { Fragment } from "react";
+>>>>>>> main
 import silder from "../../../images/images/page-TrangChu-3.jpg";
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
@@ -34,13 +38,13 @@ export default function ProductFemale() {
       ))
     );
   return (
-    <>
+    <Fragment>
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
       <ListPageProductsProduct array={arrayPrPK} name="PHỤ KIỆN" />
       <GoogleMap />
       <Footer />
-    </>
+    </Fragment>
   );
 }

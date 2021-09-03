@@ -4,7 +4,13 @@ import {
   // Route,
   // Redirect,
 } from "react-router-dom";
-// import Home from "./page/Home/Home";
+import Home from "./page/Home/Home";
+import ProductMale from'./page/Product/ProductMale/ProductMale'
+import ProductDetail from './page/ProductDetails/ProductDetails'
+import Cart from "./page/Cart/Cart";
+import Favorite from "./page/Favorite/Favorite";
+import Register from "./page/Register/Register";
+import Login from "./page/Login/Login";
 import { DataProvider } from "./GlobalState";
 // import ProductMale from "./page/Product/ProductMale/ProductMale";
 // import ProductFemale from "./page/Product/ProductFemale/ProductFemale";

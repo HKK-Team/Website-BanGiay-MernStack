@@ -1,0 +1,130 @@
+.Cart_title {
+  padding: 0px 10px;
+}
+.Cart_title h1 {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 33.6px;
+  margin: 25px 0px;
+  text-align: center;
+}
+.Cart_table_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.modal_footer {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 30px 0px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.continue_shopping {
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+  margin: 0px 0px 15px;
+  text-align: left;
+}
+.comeback {
+  color: #2c6bf5;
+  display: inline-block;
+  font-family: Open Sans;
+  font-weight: 300;
+  line-height: 19.2px;
+  margin: 0px 0px 10px;
+  text-align: left;
+}
+.pull_right {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0px 10px;
+  text-align: right;
+}
+.total_price_modal {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0px 0px 15px;
+  text-align: right;
+}
+.item_total_title {
+  color: #212121;
+  display: inline;
+  font-size: 18px;
+  line-height: 25.7143px;
+  text-align: right;
+}
+.item_total {
+  color: #e61313;
+  display: inline;
+  font-size: 18px;
+  line-height: 25.7143px;
+  padding: 0px 0px 0px 5px;
+  text-align: right;
+}
+.feedback span {
+  color: #212121;
+  display: inline;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: right;
+}
+.feedback {
+  color: #212121;
+  font-family: Open Sans;
+  font-size: 24px;
+  line-height: 24px;
+  margin: 15px 0px;
+  text-align: right;
+}
+.text_right {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+}
+.checkout_wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  grid-gap: 5px;
+}
+#checkout {
+  align-items: flex-start;
+  background-color: #f72b3f;
+  border-radius: 3px;
+  color: #ffffff;
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 15px;
+  line-height: 21.4286px;
+  padding: 15px 30px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+#checkout-foreign {
+  cursor: pointer;
+  align-items: flex-start;
+  background-color: #034ea1;
+  border-radius: 3px;
+  color: #ffffff;
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 15px;
+  line-height: 21.4286px;
+  padding: 15px 30px;
+  text-align: center;
+}
+.cart_gift_note {
+  color: #f72b3f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  margin: 10px 0px 0px;
+  text-align: center;
+}

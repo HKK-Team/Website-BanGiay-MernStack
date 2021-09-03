@@ -1,0 +1,19 @@
+.Cart_table_title:first-child {
+    color: #212121;
+    font-size: 18px;
+    line-height: 25.7143px;
+    padding: 0px 10px;
+    text-transform: uppercase;
+    text-align: left;
+    width: 383px;
+    margin-left: 192px;
+  }
+  .Cart_table_title {
+    color: #212121;
+    font-size: 18px;
+    line-height: 25.7143px;
+    padding: 0px 10px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 192px;
+  }

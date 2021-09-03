@@ -1,4 +1,6 @@
 import  React, { useContext } from "react"; 
+import React, { Fragment } from "react";
+import GoogleMap from "../../component/GoogleMap/GoogleMaps";
 import Header from "../../component/Header/Header";
 import Footer from "../../component/Footer/Footer";
 import GoogleMap from "../../component/GoogleMap/GoogleMaps";
@@ -14,7 +16,7 @@ export default function ProductDetails() {
     return item.idCategory_product === params.id
   })
   return (
-    <>
+    <Fragment>
       <Header />
       {
         detail.map(item => 
@@ -39,6 +41,6 @@ export default function ProductDetails() {
       }
       <GoogleMap />
       <Footer />
-    </>
+    </Fragment>
   );
 }

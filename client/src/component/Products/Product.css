@@ -3,48 +3,49 @@
   line-height: 20px;
   padding: 10px;
   width: 234px;
-  height: 400px;
+  height: 408px;
   cursor: pointer;
   transition: all 1s ease;
   position: relative;
+  border: 1px solid #e1e1e1;
 }
-.product_item:hover{
-    box-shadow: #000000 0px 0px 20px 0px;
-    transform: translateY(-5px);
+.product_item:hover {
+  box-shadow: #000000 0px 0px 20px 0px;
+  transform: translateY(-5px);
 }
-.product_item:hover .product_item-size{
-    display: inline-block;
+.product_item:hover .product_item-size {
+  display: inline-block;
 }
-.product_item:hover .product_size-variant p{
-    display: none;
+.product_item:hover .product_size-variant p {
+  display: none;
 }
-.product_item:hover .product_item-addToCart{
-    opacity: 1;
-    visibility: visible;
+.product_item:hover .product_item-addToCart {
+  opacity: 1;
+  visibility: visible;
 }
-.new{
-    position: absolute;
-    left: 15px;
-    top: 15px;
-    z-index: 9;
+.new {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  z-index: 9;
 }
-.image_Product{
+.image_Product {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.product_size-variant{
-    margin-top: 5px;
-    max-height: 55px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #d4d3d3;
-    margin-bottom: 10px;
+.product_size-variant {
+  margin-top: 5px;
+  max-height: 55px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d4d3d3;
+  margin-bottom: 10px;
 }
-.product_size-variant p{
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 25px;
-    transition: all 1s ease;
+.product_size-variant p {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 25px;
+  transition: all 1s ease;
 }
 .product_item-size {
   font-size: 14px;
@@ -55,7 +56,7 @@
   display: none;
   transition: all 1s ease;
 }
-.product_item-name:hover{
+.product_item-name:hover {
   color: #f72b3f;
 }
 .product_item-name {
@@ -71,7 +72,7 @@
 
   transition: all 1s ease;
 }
-.product_item-productType:hover{
+.product_item-productType:hover {
   color: #f72b3f;
 }
 .product_item-productType {
@@ -98,7 +99,7 @@
   line-height: 18.5714px;
   padding: 9px 5px;
   text-align: center;
-  
+
   width: 100%;
   border: none;
   cursor: pointer;

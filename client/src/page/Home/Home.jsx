@@ -1,8 +1,6 @@
-
 import "./Home.css";
-import  React, { useContext } from "react"; 
+import React, { Fragment, useContext } from "react";
 import LogoGosto from "../../images/images/GOSTO.png";
-
 import Header from "../../component/Header/Header";
 import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
 import Footer from "../../component/Footer/Footer"; 
@@ -16,15 +14,15 @@ import {GlobalState} from '../../GlobalState';
 //   Đổ dữ liệu dang foreach (éo thằng nào làm có tâm như tao)
 
 export default function Home() {
-  const state = useContext(GlobalState)
-  const [bannerboys] = state.bannerboyAPI.bannerboys
-  const [bannergirls] = state.bannergirlAPI.bannergirls
-  const [product_boy] = state.productboyApi.product_boy
-  const [product_girl] = state.productgirlApi.product_girl
-  const [product_pk] = state.productpkApi.product_pk
-  const [product_gosto] = state.productgostoApi.product_gosto
-  const [product_betrai] = state.productbetraiApi.product_betrai
-  const [product_begai] = state.productbegaiApi.product_begai
+  const state = useContext(GlobalState);
+  const [bannerboys] = state.bannerboyAPI.bannerboys;
+  const [bannergirls] = state.bannergirlAPI.bannergirls;
+  const [product_boy] = state.productboyApi.product_boy;
+  const [product_girl] = state.productgirlApi.product_girl;
+  const [product_pk] = state.productpkApi.product_pk;
+  const [product_gosto] = state.productgostoApi.product_gosto;
+  const [product_betrai] = state.productbetraiApi.product_betrai;
+  const [product_begai] = state.productbegaiApi.product_begai;
 
   var arrayPrBoy = [];
   var arrayPrGirl = [];
@@ -33,8 +31,9 @@ export default function Home() {
   var arrayPrBeTrai = [];
   var arrayPrBeGai = [];
     arrayPrBoy.push(
-      product_boy.map(item => (   
-          <Product  key={item._id}
+      product_boy.map((item) => (
+        <Product
+          key={item._id}
           image={item.image}
           TotalSize={5}
           valueSize_1={item.size.size1}
@@ -51,8 +50,9 @@ export default function Home() {
       ))
     );
     arrayPrGirl.push(
-      product_girl.map(item => (   
-          <Product  key={item._id}
+      product_girl.map((item) => (
+        <Product
+          key={item._id}
           image={item.image}
           TotalSize={5}
           valueSize_1={item.size.size1}
@@ -69,8 +69,9 @@ export default function Home() {
       ))
     );
     arrayPrPK.push(
-      product_pk.map(item => (   
-          <Product  key={item._id}
+      product_pk.map((item) => (
+        <Product
+          key={item._id}
           image={item.image}
           TotalSize={1}
           valueSize_1={item.size.size1}
@@ -142,12 +143,12 @@ export default function Home() {
      );
 
   return (
-    <>
+    <Fragment>
       <Header
-      // # link đường dẫn các trang (coder chuyên nghiệp có tâm nhất hệ mặt trời)
+        // # link đường dẫn các trang (coder chuyên nghiệp có tâm nhất hệ mặt trời)
         // hotline="#"
         // address="#"
-        // contact="#" 
+        // contact="#"
         // checkOrder="#"
         login="/dang-nhap"
         register="/dang-ki"
@@ -155,7 +156,7 @@ export default function Home() {
         cart="/gio-hang"
         favorite="/yeu-thich"
       />
-      <SliderHome /> 
+      <SliderHome />
       <Announcement />
       <Banner />
       {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}
@@ -183,18 +184,18 @@ export default function Home() {
         color="white"
         datalist={arrayPrGosto}
       />
-      {bannerboys.map(item => (   
-        <HomeBanner  banner={item.images.image1} key={item._id}/>
-          ))}
+      {bannerboys.map((item) => (
+        <HomeBanner banner={item.images.image1} key={item._id} />
+      ))}
       <ListPageProductHome
         name="BÉ TRAI"
         url="be-trai"
         visible="none"
         datalist={arrayPrBeTrai}
       />
-      {bannergirls.map(item => (   
-        <HomeBanner banner={item.images.image1} key={item._id}/>
-          ))}
+      {bannergirls.map((item) => (
+        <HomeBanner banner={item.images.image1} key={item._id} />
+      ))}
       <ListPageProductHome
         name="BÉ GÁI"
         url="be-gai"
@@ -203,6 +204,6 @@ export default function Home() {
       />
       <GoogleMaps />
       <Footer />
-    </>
+    </Fragment>
   );
 }

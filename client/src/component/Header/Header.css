@@ -170,6 +170,8 @@
 .header_bottom-cart-cart:hover .header_bottom-cart-empty {
   opacity: 1;
   visibility: visible;
+  transform: translate(0,0);
+  
 }
 .header_bottom-cart-cart {
   padding-right: 5px;
@@ -205,25 +207,15 @@
   top: -16px;
   right: 5px;
 }
-@keyframes ontop {
-  0% {
-    top: 300%;
-  }
-  90% {
-    top: 140%;
-  }
-  100% {
-    top: 140%;
-  }
-}
+
 .header_bottom-cart-empty {
-  animation: ontop 2s infinite;
+  transform: translate(0,40px);
   position: absolute;
   top: 140%;
   left: -810%;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
   min-width: 300px;
   min-height: 161px;
 

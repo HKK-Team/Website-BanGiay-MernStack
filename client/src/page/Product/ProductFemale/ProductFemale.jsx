@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import  React, { useContext } from "react";
+=======
+import React, { Fragment } from "react";
+>>>>>>> main
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
 import SliderProduct from "../../../component/Sliders/SliderProduct/SliderProduct";
@@ -32,13 +36,13 @@ export default function ProductFemale() {
       ))
     );
   return (
-    <>
+    <Fragment>
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
       <ListPageProductsProduct array={arrayPrGirl} name="HUNTER NỮ" />
       <GoogleMap/>
       <Footer />
-    </>
+    </Fragment>
   );
 }
