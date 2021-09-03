@@ -1,7 +1,16 @@
-import React, {createContext, useState, useEffect} from 'react'
-import MenuAPI from './api/menuApi'
+import React, {createContext, useState} from 'react'
+import Menu1API from './api/menu1Api'
+import Menu2API from './api/menu2Api'
 import BannerAPI from './api/bannerApi'
-// import ProductAPI from './api/productApi'
+import BannerBoyAPI from './api/bannerBoyApi'
+import BannerGirlAPI from './api/bannerGirlApi'
+import ProductBoyApi from './api/productBoyApi'
+import ProductGirlApi from './api/productGirlApi'
+import ProductGostoApi from './api/productGostoApi'
+import ProductPkApi from './api/productPkApi'
+import ProductBetraiApi from './api/productBetraiApi'
+import ProductBegaiApi from './api/productBegaiApi'
+import ProductDetailApi from './api/productDetailApi'
 //gọi lại api ở file client/api chuyển thành dạng dữ liệu object state
 export const GlobalState = createContext()
 
@@ -11,20 +20,19 @@ export const DataProvider = ({children}) =>{
 
     const state = {
         token:[token, setToken],
-        menu1API:MenuAPI(),
-        menu2API:MenuAPI(),
-        banner_boyAPI:BannerAPI(),
-        banner_girlAPI:BannerAPI(),
+        menu1API:Menu1API(),
+        menu2API:Menu2API(),
+        bannerboyAPI:BannerBoyAPI(),
+        bannergirlAPI:BannerGirlAPI(),
         bannerAPI:BannerAPI(),
-        // product_boyApi: ProductAPI(),
-        // product_girlApi: ProductAPI(),
-        // product_pkApi: ProductAPI(),
-        // product_gostoApi: ProductAPI(),
-        // product_betraiApi: ProductAPI(),
-        // product_begaiApi: ProductAPI(),
+        productboyApi: ProductBoyApi(),
+        productgirlApi: ProductGirlApi(),
+        productpkApi: ProductPkApi(),
+        productgostoApi: ProductGostoApi(),
+        productbetraiApi: ProductBetraiApi(),
+        productbegaiApi: ProductBegaiApi(),
+        productDetailApi : ProductDetailApi()
     }
-
-
     return (
         <GlobalState.Provider value={state}>
             {children}

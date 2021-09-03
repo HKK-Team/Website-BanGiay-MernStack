@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     dateCreate: { type: Date, default: Date.now },
     codeHot: Boolean,
     codeSale: Boolean,
-    price: mongoose.Decimal128,
+    price: Number,
     codeNew: Boolean,
     detailImages: {
         image1: String,

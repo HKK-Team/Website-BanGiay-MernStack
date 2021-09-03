@@ -4,7 +4,7 @@ import axios from 'axios'
 function MenuAPI() {
     const [menus, setMenus] = useState([])
     const [menus2, setMenus2] = useState([])
-
+    const [callback, setCallback] = useState(false)
     useEffect(() => {
         // const getmenu = async() => {
         //     const res = await axios.get('http://localhost:5000/api/menu1');
@@ -14,7 +14,7 @@ function MenuAPI() {
         // }
         // getmenu();
 
-        const promise1 = axios.get('http://localhost:5000/api/menu1');
+        const promise1 = axios.get('/api/menu1');
         const promise2 = axios.get('http://localhost:5000/api/menu2');
 
         Promise.all([promise1, promise2])
@@ -23,11 +23,12 @@ function MenuAPI() {
                 setMenus2(promise2.data)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [callback])
 
     return {
         menus: [menus, setMenus],
-        menus2: [menus2, setMenus2]
+        menus2: [menus2, setMenus2],
+        callback : [callback,setCallback]
     }
 }
 export default MenuAPI

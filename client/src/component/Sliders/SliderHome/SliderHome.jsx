@@ -1,20 +1,20 @@
 import "./SliderHome.css";
-import React, {  useEffect } from "react";
+import React from "react";
 import page1 from "../../../images/images/page-TrangChu-1.jpg";
 import page2 from "../../../images/images/page-TrangChu-2.jpg";
 import page3 from "../../../images/images/page-TrangChu-3.jpg";
 import page4 from "../../../images/images/page-TrangChu-4.jpg";
 export default function SliderHome() {
-  useEffect(() => {
-    let counter = 1;
-    setInterval(function () {
-      document.getElementById("radio" + counter).checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
-      }
-    }, 4000);
-  });
+  // useEffect(() => {
+  //   let counter = 1;
+  //   setInterval(function () {
+  //     document.getElementById("radio" + counter).checked = true;
+  //     counter++;
+  //     if (counter > 4) {
+  //       counter = 1;
+  //     }
+  //   }, 4000);
+  // });
   return (
     <section className="slider_wrapper">
       <div className="slider">
