@@ -58,6 +58,8 @@ const productCtrl = {
             const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Phụ Kiện" } })
                 .lean().sort({ dateCreate: 'desc' }), req.query).sort()
             const product_pk = await features.query
+
+
             res.json(product_pk)
         } catch (err) {
             return res.status(500).json({ msg: err.message })

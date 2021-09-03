@@ -111,32 +111,27 @@ export default function Catalog() {
             <span>45</span>
           </label>
         </div>
-
-
-        <div className="sidebar_collection-catalog" >
+        <div className="sidebar_collection-catalog">
           <span className="sidebar_collection-catalog-subtitle">Màu sắc:</span>
-          <span className="catalog_color cam"value='color=Cam'></span>
-
-          <span className="catalog_color den" ></span>
-          
-          <span className="catalog_color do-dam"value='color=Đỏ cam'> </span>
-          <span className="catalog_color do"value='color=Đỏ'> </span>
-          <span className="catalog_color nau-dat"value='color=Nâu đất'> </span>
-          <span className="catalog_color nau"value='color=Nâu'> </span>
-          <span className="catalog_color reu"value='color=Rêu'> </span>
-          <span className="catalog_color trang"value='color=Trắng'> </span>
-          <span className="catalog_color vang"value='color=Vàng'> </span>
-          <span className="catalog_color xam"value='color=Xám'> </span>
-          <span className="catalog_color xanh-duong-dam"value='color=Xanh dương đậm'> </span>
-          <span className="catalog_color xanh-duong"value='color=Xanh dương'> </span>
-          <span className="catalog_color xanh-duong-nhat"value='color=Xanh dương nhạt'> </span>
-          <span className="catalog_color xanh-mi-no"value='color=Xanh mi no'> </span>
-          <span className="catalog_color xanh"value='color=Xanh'> </span>
-          <span className="catalog_color xanh-nhot"value='color=Xanh nhạt'> </span>
-          <span className="catalog_color hong"value='color=Hồng'> </span>
+          <span className="catalog_color cam"> </span>
+          <span className="catalog_color den"> </span>
+          <span className="catalog_color do-dam"> </span>
+          <span className="catalog_color do"> </span>
+          <span className="catalog_color nau-dat"> </span>
+          <span className="catalog_color nau"> </span>
+          <span className="catalog_color reu"> </span>
+          <span className="catalog_color trang"> </span>
+          <span className="catalog_color vang"> </span>
+          <span className="catalog_color xam"> </span>
+          <span className="catalog_color xanh-duong-dam"> </span>
+          <span className="catalog_color xanh-duong"> </span>
+          <span className="catalog_color xanh-duong-nhat"> </span>
+          <span className="catalog_color xanh-mi-no"> </span>
+          <span className="catalog_color xanh"> </span>
+          <span className="catalog_color xanh-nhot"> </span>
+          <span className="catalog_color hong"> </span>
         </div>
       </div>
     </aside>
   );
 }
-

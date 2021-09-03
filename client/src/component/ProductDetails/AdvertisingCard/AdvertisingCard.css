@@ -1,0 +1,76 @@
+.xlab-card {
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #efefef;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  line-height: 25.7143px;
+  margin: 5px;
+  padding: 10px;
+  transition: all 1s ease;
+}
+.xlab-card_image {
+  color: #034ea1;
+  font-family: Open Sans;
+  font-size: 18px;
+  line-height: 25.7143px;
+  padding: 0px 0px 48px;
+}
+.xlab-card_image img {
+  width: 131px;
+  height: 100%;
+  object-fit: cover;
+  line-height: 25.7143px;
+  margin: 0px 11.8375px 0px 11.825px;
+  text-align: center;
+}
+.xlab-card_pre {
+  font-size: 18px;
+  line-height: 25.7143px;
+  padding: 24px 0px 0px;
+}
+.xlab-card_pre a:hover {
+  color: #ed4e4e;
+}
+.xlab-card_pre a {
+  color: #4b1919;
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 13px;
+  line-height: 18.5714px;
+  width: 155px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 1s ease;
+}
+.xlab-card_price {
+  color: #ed4e4e;
+  line-height: 22.8571px;
+  margin: 10px 0px;
+}
+.xlab-card_btn {
+  width: 100%;
+  align-items: flex-start;
+  background-color: #f72b3f;
+  color: #ffffff;
+  font-family: Open Sans;
+  font-size: 13px;
+  line-height: 18.5714px;
+  padding: 10px 5px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.xlab-card:hover .xlab-card_btn {
+  opacity: 1;
+  visibility: visible;
+  color: white;
+}
+.xlab-card:hover {
+  transform: translateY(-5px);
+  box-shadow: #000000 0px 0px 20px 0px;
+}

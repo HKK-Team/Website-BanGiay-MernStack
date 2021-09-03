@@ -1,9 +1,9 @@
 import "./SliderHome.css";
-import React, { useState, useEffect } from "react";
-import page1 from "../../images/images/page-TrangChu-1.jpg";
-import page2 from "../../images/images/page-TrangChu-2.jpg";
-import page3 from "../../images/images/page-TrangChu-3.jpg";
-import page4 from "../../images/images/page-TrangChu-4.jpg";
+import React, {  useEffect } from "react";
+import page1 from "../../../images/images/page-TrangChu-1.jpg";
+import page2 from "../../../images/images/page-TrangChu-2.jpg";
+import page3 from "../../../images/images/page-TrangChu-3.jpg";
+import page4 from "../../../images/images/page-TrangChu-4.jpg";
 export default function SliderHome() {
   useEffect(() => {
     let counter = 1;
@@ -14,7 +14,7 @@ export default function SliderHome() {
         counter = 1;
       }
     }, 4000);
-  }, 4000);
+  });
   return (
     <section className="slider_wrapper">
       <div className="slider">
