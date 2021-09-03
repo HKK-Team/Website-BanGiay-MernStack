@@ -20,4 +20,7 @@ router.route('/products_begai')
     .get(productCtrl.getproduct_begai)
 router.route('/product')
     .get(productCtrl.getproduct)
+
+router.route('/productsall')
+    .get(productCtrl.getallproduct)
 module.exports = router

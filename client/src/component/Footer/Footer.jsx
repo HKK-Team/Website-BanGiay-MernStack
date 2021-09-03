@@ -5,9 +5,10 @@ import Model_2 from "../../images/mau/2.png";
 import Model_3 from "../../images/mau/3.png";
 import Model_4 from "../../images/mau/4.png";
 import Model_5 from "../../images/mau/5.png";
-import Model_6 from "../../images/mau/6.png";
+import Model_6 from "../../images/mau/6.png"; 
 import Model_7 from "../../images/mau/7.png";
 import Model_8 from "../../images/mau/8.png";
+import React, { Component }  from 'react';
 
 export default function Footer() {
   return (
