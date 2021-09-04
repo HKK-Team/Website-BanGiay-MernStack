@@ -6,21 +6,25 @@ function ProductBoyApi() {
     const [callback, setCallback] = useState(false)
     const [sort, setSort] = useState(' ')
     const [colorboy, setcolorboy] = useState(' ')
+    const [sizeminboy, setsizeminboy] = useState(' ')
+    const [sizemaxboy, setsizemaxboy] = useState(' ')
 
 
     useEffect(() => {
         const getproductboy = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_boy?${colorboy}&${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_boy?${sizeminboy}&${sizemaxboy}&${colorboy}&${sort}`)
             setproduct_boy(res.data)
         }
         getproductboy()
 
-    }, [callback, sort, colorboy])
+    }, [callback, sort, colorboy, sizeminboy, sizemaxboy])
     return {
         product_boy: [product_boy, setproduct_boy],
         callback: [callback, setCallback],
         sort: [sort, setSort],
-        colorboy: [colorboy, setcolorboy]
+        colorboy: [colorboy, setcolorboy],
+        sizeminboy: [sizeminboy, setsizeminboy],
+        sizemaxboy: [sizemaxboy, setsizemaxboy]
     }
 }
 export default ProductBoyApi
