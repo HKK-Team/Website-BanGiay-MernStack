@@ -44,13 +44,13 @@ export default function Header(props) {
                 ))}
                 <li className="header_top-item">
                   <span>
-                    <Link to={props.login} className="header_top-link">
+                    <Link to='/Login' className="header_top-link">
                       Đăng nhập
                     </Link>
                   </span>
                   <span>|</span>
                   <span>
-                    <Link to={props.register} className="header_top-link">
+                    <Link to='/Register' className="header_top-link">
                       Đăng ký
                     </Link>
                   </span>

@@ -145,11 +145,6 @@ export default function Home() {
     <Fragment>
       <Header
         // # link đường dẫn các trang (coder chuyên nghiệp có tâm nhất hệ mặt trời)
-        login="/dang-nhap"
-        register="/dang-ki"
-        home="/"
-        cart="/gio-hang"
-        favorite="/yeu-thich"
       />
       <SliderHome />
       <Announcement />

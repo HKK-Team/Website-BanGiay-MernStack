@@ -2,6 +2,7 @@ import React from "react";
 import "./Login.css";
 import facebook from "./../../images/images/fb-btn.png";
 import google from "./../../images/images/google-btn.png";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -46,7 +47,7 @@ export default function Login() {
                 </div>
                 <input type="submit" value="Đăng nhập" className="btn-signin" />
                 <div className="req_pass">
-                  <a href="#">Chưa có tài khoản? Đăng ký</a>
+                  <Link to='/Register'>Chưa có tài khoản? Đăng ký</Link>
                 </div>
                 <div className="req_pass">
                   <a href="#">Quên mật khẩu</a>
