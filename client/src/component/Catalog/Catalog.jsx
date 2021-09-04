@@ -3,6 +3,8 @@ import './Catalog.css'
 import {GlobalState} from '../../GlobalState'
 
 export default function Catalog() {
+  
+  
   const state = useContext(GlobalState)
   //sorting
   const [sortnam, setSortnam] = state.productboyApi.sort
@@ -13,9 +15,168 @@ export default function Catalog() {
   const [sortbegai, setSortgai] = state.productbegaiApi.sort
   
   //filtering by color
-  const [colorboy, setcolorboy] = state.productboyApi.color
-  console.log(colorboy);
+  const [colorboy, setcolorboy] = state.productboyApi.colorboy
+  const [colorgirl, setcolorgirl] = state.productgirlApi.colorgirl
+  const [colorpk, setcolorpk] = state.productpkApi.colorpk
+  const [colorgosto, setcolorgosto] = state.productgostoApi.colorgosto
+  const [colorbetrai, setcolorbetrai] = state.productbetraiApi.colorbetrai
+  const [colorbegai, setcolorbegai] = state.productbegaiApi.colorbegai
+
   
+  //add event cho mỗi màu khi click
+  function eventBlack(e) {
+    e.preventDefault();
+    setcolorboy('color=Đen')
+    setcolorgirl('color=Đen')
+    setcolorpk('color=Đen')
+    setcolorgosto('color=Đen')
+    setcolorbetrai('color=Đen')
+    setcolorbegai('color=Đen')
+}
+function eventWhile(e) {
+  e.preventDefault();
+  setcolorboy('color=Trắng')
+  setcolorgirl('color=Trắng')
+  setcolorpk('color=Trắng')
+  setcolorgosto('color=Trắng')
+  setcolorbetrai('color=Trắng')
+  setcolorbegai('color=Trắng')
+}
+function eventcam(e) {
+  e.preventDefault();
+  setcolorboy('color=Cam')
+  setcolorgirl('color=Cam')
+  setcolorpk('color=Cam')
+  setcolorgosto('color=Cam')
+  setcolorbetrai('color=Cam')
+  setcolorbegai('color=Cam')
+}
+function eventdocam(e) {
+  e.preventDefault();
+  setcolorboy('color=Đỏ Cam')
+  setcolorgirl('color=Đỏ Cam')
+  setcolorpk('color=Đỏ Cam')
+  setcolorgosto('color=Đỏ Cam')
+  setcolorbetrai('color=Đỏ Cam')
+  setcolorbegai('color=Đỏ Cam')
+}
+function eventdo(e) {
+  e.preventDefault();
+  setcolorboy('color=Đỏ')
+  setcolorgirl('color=Đỏ')
+  setcolorpk('color=Đỏ')
+  setcolorgosto('color=Đỏ')
+  setcolorbetrai('color=Đỏ')
+  setcolorbegai('color=Đỏ')
+}
+function eventkemdam(e) {
+  e.preventDefault();
+  setcolorboy('color=Kem Đậm')
+  setcolorgirl('color=Kem Đậm')
+  setcolorpk('color=Kem Đậm')
+  setcolorgosto('color=Kem Đậm')
+  setcolorbetrai('color=Kem Đậm')
+  setcolorbegai('color=Kem Đậm')
+}
+function eventnau(e) {
+  e.preventDefault();
+  setcolorboy('color=Nâu')
+  setcolorgirl('color=Nâu')
+  setcolorpk('color=Nâu')
+  setcolorgosto('color=Nâu')
+  setcolorbetrai('color=Nâu')
+  setcolorbegai('color=Nâu')
+}
+function eventreu(e) {
+  e.preventDefault();
+  setcolorboy('color=Rêu')
+  setcolorgirl('color=Rêu')
+  setcolorpk('color=Rêu')
+  setcolorgosto('color=Rêu')
+  setcolorbetrai('color=Rêu')
+  setcolorbegai('color=Rêu')
+}
+function eventvang(e) {
+  e.preventDefault();
+  setcolorboy('color=Vàng')
+  setcolorgirl('color=Vàng')
+  setcolorpk('color=Vàng')
+  setcolorgosto('color=Vàng')
+  setcolorbetrai('color=Vàng')
+  setcolorbegai('color=Vàng')
+}
+function eventxam(e) {
+  e.preventDefault();
+  setcolorboy('color=Xám')
+  setcolorgirl('color=Xám')
+  setcolorpk('color=Xám')
+  setcolorgosto('color=Xám')
+  setcolorbetrai('color=Xám')
+  setcolorbegai('color=Xám')
+}
+function eventxanhduongdam(e) {
+  e.preventDefault();
+  setcolorboy('color=Xanh Dương Đậm')
+  setcolorgirl('color=Xanh Dương Đậm')
+  setcolorpk('color=Xanh Dương Đậm')
+  setcolorgosto('color=Xanh Dương Đậm')
+  setcolorbetrai('color=Xanh Dương Đậm')
+  setcolorbegai('color=Xanh Dương Đậm')
+}
+function eventxanhduong(e) {
+  e.preventDefault();
+  setcolorboy('color=Xanh Dương')
+  setcolorgirl('color=Xanh Dương')
+  setcolorpk('color=Xanh Dương')
+  setcolorgosto('color=Xanh Dương')
+  setcolorbetrai('color=Xanh Dương')
+  setcolorbegai('color=Xanh Dương')
+}
+function eventxanhduongnhat(e) {
+  e.preventDefault();
+  setcolorboy('color=Xanh Dương Nhạt')
+  setcolorgirl('color=Xanh Dương Nhạt')
+  setcolorpk('color=Xanh Dương Nhạt')
+  setcolorgosto('color=Xanh Dương Nhạt')
+  setcolorbetrai('color=Xanh Dương Nhạt')
+  setcolorbegai('color=Xanh Dương Nhạt')
+}
+function eventxanhmino(e) {
+  e.preventDefault();
+  setcolorboy('color=Xanh Mi Nô')
+  setcolorgirl('color=Xanh Mi Nô')
+  setcolorpk('color=Xanh Mi Nô')
+  setcolorgosto('color=Xanh Mi Nô')
+  setcolorbetrai('color=Xanh Mi Nô')
+  setcolorbegai('color=Xanh Mi Nô')
+}
+function eventxanh(e) {
+  e.preventDefault();
+  setcolorboy('color=Xanh')
+  setcolorgirl('color=Xanh')
+  setcolorpk('color=Xanh')
+  setcolorgosto('color=Xanh')
+  setcolorbetrai('color=Xanh')
+  setcolorbegai('color=Xanh')
+}
+function eventxanhnhot(e) {
+  e.preventDefault();
+  setcolorboy('color=Xanh Nhạt')
+  setcolorgirl('color=Xanh Nhạt')
+  setcolorpk('color=Xanh Nhạt')
+  setcolorgosto('color=Xanh Nhạt')
+  setcolorbetrai('color=Xanh Nhạt')
+  setcolorbegai('color=Xanh Nhạt')
+}
+function eventhong(e) {
+  e.preventDefault();
+  setcolorboy('color=Hồng')
+  setcolorgirl('color=Hồng')
+  setcolorpk('color=Hồng')
+  setcolorgosto('color=Hồng')
+  setcolorbetrai('color=Hồng')
+  setcolorbegai('color=Hồng')
+}
   
   return (
     <aside className="sidebar_collection">
@@ -111,25 +272,26 @@ export default function Catalog() {
             <span>45</span>
           </label>
         </div>
+
         <div className="sidebar_collection-catalog">
           <span className="sidebar_collection-catalog-subtitle">Màu sắc:</span>
-          <span className="catalog_color cam"> </span>
-          <span className="catalog_color den"> </span>
-          <span className="catalog_color do-dam"> </span>
-          <span className="catalog_color do"> </span>
-          <span className="catalog_color nau-dat"> </span>
-          <span className="catalog_color nau"> </span>
-          <span className="catalog_color reu"> </span>
-          <span className="catalog_color trang"> </span>
-          <span className="catalog_color vang"> </span>
-          <span className="catalog_color xam"> </span>
-          <span className="catalog_color xanh-duong-dam"> </span>
-          <span className="catalog_color xanh-duong"> </span>
-          <span className="catalog_color xanh-duong-nhat"> </span>
-          <span className="catalog_color xanh-mi-no"> </span>
-          <span className="catalog_color xanh"> </span>
-          <span className="catalog_color xanh-nhot"> </span>
-          <span className="catalog_color hong"> </span>
+          <span className="catalog_color cam"onClick={eventcam}> </span>
+          <span className="catalog_color den" onClick={eventBlack}> </span>
+          <span className="catalog_color do-dam"onClick={eventdocam}> </span>
+          <span className="catalog_color do"onClick={eventdo}> </span>
+          <span className="catalog_color nau-dat"onClick={eventkemdam}> </span>
+          <span className="catalog_color nau"onClick={eventnau}> </span>
+          <span className="catalog_color reu"onClick={eventreu}> </span>
+          <span className="catalog_color trang" onClick={eventWhile}> </span>
+          <span className="catalog_color vang"onClick={eventvang}> </span>
+          <span className="catalog_color xam"onClick={eventxam}> </span>
+          <span className="catalog_color xanh-duong-dam"onClick={eventxanhduongdam}> </span>
+          <span className="catalog_color xanh-duong"onClick={eventxanhduong}> </span>
+          <span className="catalog_color xanh-duong-nhat"onClick={eventxanhduongnhat}> </span>
+          <span className="catalog_color xanh-mi-no"onClick={eventxanhmino}> </span>
+          <span className="catalog_color xanh"onClick={eventxanh}> </span>
+          <span className="catalog_color xanh-nhot"onClick={eventxanhnhot}> </span>
+          <span className="catalog_color hong"onClick={eventhong}> </span>
         </div>
       </div>
     </aside>

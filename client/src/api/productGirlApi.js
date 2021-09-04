@@ -5,18 +5,21 @@ function ProductGirlApi() {
     const [product_girl, setproduct_girl] = useState([])
     const [callback, setCallback] = useState(false)
     const [sort, setSort] = useState(' ')
+    const [colorgirl, setcolorgirl] = useState(' ')
+
     useEffect(() => {
         const getproductgirl = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_girl/?${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_girl?${colorgirl}&${sort}`)
             setproduct_girl(res.data)
         }
         getproductgirl()
 
-    }, [callback, sort])
+    }, [callback, sort, colorgirl])
     return {
         product_girl: [product_girl, setproduct_girl],
         callback: [callback, setCallback],
-        sort: [sort, setSort]
+        sort: [sort, setSort],
+        colorgirl: [colorgirl, setcolorgirl]
     }
 }
 export default ProductGirlApi
