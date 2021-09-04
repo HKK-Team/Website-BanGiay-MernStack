@@ -1,0 +1,31 @@
+.sort_by {
+  margin-top: 10px;
+  padding: 0px 10px;
+  margin-bottom: 10px;
+}
+.sort_by-wrapper label {
+  color: #212121;
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 13px;
+  line-height: 18.5714px;
+  margin: 0px 10px 0px 0px;
+}
+.sort_by-wrapper a {
+  border-color: #858585;
+  border: 1px solid #858585;
+  color: #212121;
+
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 13px;
+  line-height: 18.5714px;
+  margin: 0px 10px 5px 0px;
+  padding: 2px 15px;
+}
+.sort_by-wrapper a i {
+  color: #ed4e4e;
+  display: inline-block;
+  line-height: 16px;
+  margin: 0px 0px 0px 10px;
+}

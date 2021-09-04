@@ -34,8 +34,10 @@
   display: flex;
   justify-content: flex-start;
 }
-
 .container-product_list-products{
+  margin-bottom: 50px;
+}
+.container-product_list-products-wrapper{
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-gap:10px;

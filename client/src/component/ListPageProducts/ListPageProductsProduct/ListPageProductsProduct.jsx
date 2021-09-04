@@ -2,7 +2,7 @@ import React from "react";
 import "./ListPageProductsProduct.css";
 import Catalog from "../../Catalog/Catalog";
 import Pagination from "../../Pagination/Pagination";
-
+import SortBy from "./SortBy/SortBy";
 
 export default function ListPageProductsProduct(props) {
   return (
@@ -22,12 +22,15 @@ export default function ListPageProductsProduct(props) {
             <a href="#">Dép</a>
           </ul>
           <div className="container-product-wrapper">
-              <Catalog/>
+            <Catalog />
             <div className="container-product_list-products">
-              {props.array}
-            </div>      
+              <SortBy />
+              <div className="container-product_list-products-wrapper">
+                {props.array}
+              </div>
+              <Pagination />
+            </div>   
           </div>
-          <Pagination/>
         </div>
       </div>
     </section>
