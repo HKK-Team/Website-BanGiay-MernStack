@@ -1,40 +1,44 @@
 import "./Header.css";
 import Vi from "../../images/images/vi.png";
 import Logo from "../../images/images/CôngtyTNHHABC.png";
-import  React, { useEffect, useState, useContext } from "react"; 
-import {GlobalState} from '../../GlobalState'
-import {Link} from "react-router-dom"; // thu vien de chuyen trang ko bi load
+import React, { useEffect, useState, useContext } from "react";
+import { GlobalState } from "../../GlobalState";
+import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 export default function Header(props) {
   const [small, setSmall] = useState(false);
 
-  const state = useContext(GlobalState)
+  const state = useContext(GlobalState);
 
-  const [menus] = state.menu1API.menus // lấy dữ liệu từ model menus trong db
-  const [menus2] = state.menu2API.menus2
-  
-  
+  const [menus] = state.menu1API.menus; // lấy dữ liệu từ model menus trong db
+  const [menus2] = state.menu2API.menus2;
+
   useEffect(() => {
+    // tạo thanh header cố định khi scroll
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
         setSmall(window.pageYOffset > 10)
       );
-    } 
+    }
+  });
+  //luôn luôn xuất hiện đầu trang khi load page
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
   return (
-      <header>
+    <header>
       <div className="header_top">
         {/* <header_top> */}
         <div className="container">
           {/* <row> */}
           <div className="row">
-          <div className="header_top-wrapper">
+            <div className="header_top-wrapper">
               {/* <header_top-list>*/}
               <ul className="header_top-list">
-              {/* <load dữ liệu >*/}
-                {menus.map(item => (
+                {/* <load dữ liệu >*/}
+                {menus.map((item) => (
                   <li className="header_top-item" key={item._id}>
-                  <Link to={item.slug} className="header_top-link">
-                    {item.text}
+                    <Link to={item.slug} className="header_top-link">
+                      {item.text}
                     </Link>
                   </li>
                 ))}
@@ -56,7 +60,7 @@ export default function Header(props) {
               {/*</header_top-list> */}
             </div>
           </div>
-            {/* </header_top-wrapper> */}
+          {/* </header_top-wrapper> */}
           {/* </container> */}
         </div>
         {/* </row> */}
@@ -77,21 +81,20 @@ export default function Header(props) {
               </div>
               <nav className="header_bottom-menu">
                 <ul className="header_bottom-list">
-                {menus2.map(item => (
-                  <li className="header_bottom-item" key={item._id}>
-                  <Link to={item.slug} className="header_bottom-link">
-                    {item.text}
-                    </Link>
-                  </li>
-                ))}
-                
+                  {menus2.map((item) => (
+                    <li className="header_bottom-item" key={item._id}>
+                      <Link to={item.slug} className="header_bottom-link">
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </nav>
               <div className="header_bottom-search">
                 <form action>
                   <input
                     type="text"
-                    placeholder="Nhập thông tin cần tìm..." 
+                    placeholder="Nhập thông tin cần tìm..."
                     className="header_bottom-search-input"
                   />
                   <button type="submit" className="header_bottom-search-button">
@@ -101,17 +104,21 @@ export default function Header(props) {
               </div>
               <div className="header_bottom-cart">
                 <span className="header_bottom-cart-favorite">
-                  <Link to={props.favorite} className="" style={{color:"black"}}>
+                  <Link
+                    to={props.favorite}
+                    className=""
+                    style={{ color: "black" }}
+                  >
                     {" "}
                     <i class="far fa-heart"></i>{" "}
                     <span className="Cart_count">0</span>
                   </Link>
                 </span>
                 <span className="header_bottom-cart-cart">
-                  <Link to={props.cart} style={{color:"black"}}> 
-                  <i class="fas fa-shopping-cart">
-                    <span className="Cart_count">0</span>
-                  </i>
+                  <Link to={props.cart} style={{ color: "black" }}>
+                    <i class="fas fa-shopping-cart">
+                      <span className="Cart_count">0</span>
+                    </i>
                   </Link>
                   {/* Thẻ Cart ẩn  */}
                   <div className="header_bottom-cart-empty">

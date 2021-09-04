@@ -1,6 +1,7 @@
 import React from "react";
 import "./ListPageProductsProduct.css";
 import Catalog from "../../Catalog/Catalog";
+import Pagination from "../../Pagination/Pagination";
 
 
 export default function ListPageProductsProduct(props) {
@@ -24,9 +25,9 @@ export default function ListPageProductsProduct(props) {
               <Catalog/>
             <div className="container-product_list-products">
               {props.array}
-
-            </div>
+            </div>      
           </div>
+          <Pagination/>
         </div>
       </div>
     </section>
