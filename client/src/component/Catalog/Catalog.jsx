@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import Slider from "@material-ui/core/Slider";
 import "./Catalog.css";
 import { GlobalState } from "../../GlobalState";

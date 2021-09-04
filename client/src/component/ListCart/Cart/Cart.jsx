@@ -9,7 +9,7 @@ export default function Cart(props) {
         <img className="Cart_image" alt="" src={props.image}></img>
       </div>
       <div className="line_item-title">
-        <a href="#">
+        <a href>
           {props.name}
         </a>
         <p className="variant_cart">
@@ -20,7 +20,7 @@ export default function Cart(props) {
           <span className="variant_cart-title">Size: </span>
           <span className="variant_size">{props.size}</span>
         </p>
-        <a href="#" className="cart_delete">
+        <a href className="cart_delete">
           <i class="far fa-trash-alt"></i> Xóa
         </a>
       </div>

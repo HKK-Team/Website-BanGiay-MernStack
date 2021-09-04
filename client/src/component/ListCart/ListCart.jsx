@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{Link}from "react";
 import "./ListCart.css";
 import Cart from "./Cart/Cart";
 import CartEmpty from "./CartEmpty/CartEmpty";
@@ -36,9 +36,9 @@ export default function ListCart() {
           <div className="modal_footer">
             <div className="pull_left">
               <h3 className="continue_shopping">
-                <a href="#" className="comeback">
+                <Link to="/" className="comeback">
                   <i class="fa fa-reply"></i> Tiếp tục mua hàng
-                </a>
+                </Link>
               </h3>
             </div>
             <div className="pull_right">

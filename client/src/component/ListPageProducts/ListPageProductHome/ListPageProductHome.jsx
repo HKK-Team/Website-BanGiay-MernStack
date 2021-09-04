@@ -1,6 +1,6 @@
 import Prev from "../../../images/images/arrow-next.webp"
 import "./ListPageProductHome.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {Link} from "react-router-dom";
 var b = 0;
 export default function ListPageProductHome(props) {
@@ -57,14 +57,14 @@ export default function ListPageProductHome(props) {
               </div>
             </div>
             <div className="arrow_product-slider">
-              <a className="btn_prev"
+              <Link className="btn_prev"
                 style={{ backgroundImage: `url(${Prev})` }}
-                onClick={arrow_left} ></a>
-              <a
+                onClick={arrow_left} ></Link>
+              <Link
                 className="btn_next"
                 style={{ backgroundImage: `url(${Prev})` }}
                 onClick={arrow_right}
-              ></a>
+              ></Link>
             </div>
           </div>
           <div className="home_cate-link">

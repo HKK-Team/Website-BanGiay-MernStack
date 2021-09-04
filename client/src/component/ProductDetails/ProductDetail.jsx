@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import {  useEffect } from "react";
 import "./ProductDetail.css";

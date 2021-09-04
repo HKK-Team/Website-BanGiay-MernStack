@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{Link}from "react";
 import "./ListPageProductsProduct.css";
 import Catalog from "../../Catalog/Catalog";
 import Pagination from "../../Pagination/Pagination";
@@ -13,13 +13,12 @@ export default function ListPageProductsProduct(props) {
             <h1>{props.name}</h1>
           </div>
           <ul className="menu_collection">
-            <a href="#">Hunter</a>
-            <a href="#">Sandal</a>
-            <a href="#">Giày Thể Thao</a>
-            <a href="#">Giày Chạy Bộ</a>
-            <a href="#">Giày Đá Banh</a>
-            <a href="#">Giày Tây</a>
-            <a href="#">Dép</a>
+            <Link href="#">Hunter</Link>
+            <Link href="#">Sandal</Link>
+            <Link href="#">Giày Chạy Bộ</Link>
+            <Link href="#">Giày Đá Banh</Link>
+            <Link href="#">Giày Tây</Link>
+            <Link href="#">Dép</Link>
           </ul>
           <div className="container-product-wrapper">
             <Catalog />

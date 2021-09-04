@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import "./Favorite.css";
-import image from "./../../../images/Hunter-Nam/dsmh03500trg__6__d26559701138471888855c5a80a86ce1_1024x1024.jpg";
 export default function Favorite(props) {
   return (
     <tbody className="wish-list">
@@ -9,7 +9,7 @@ export default function Favorite(props) {
           <img src={props.image} alt="image" className="product_featured_image" />
         </td>
         <td className="customer-wishlist-item-info">
-          <a href="#">{props.name}</a>
+          <a href>{props.name}</a>
           <dt>
             Color: <dd>{props.color}</dd>
           </dt>

@@ -1,16 +1,16 @@
-import React from "react";
+import React ,{Link}from "react";
 import './Pagination.css'
 
 export default function Pagination() {
   return (
     <div id="pagination">
-      <a href="#" className="prev ">Trước</a>
-      <a href="" className="page_node">1</a>
-      <a href="" className="page_node">2</a>
-      <a href="" className="page_node">3</a>
+      <Link to="#" className="prev ">Trước</Link>
+      <Link to="" className="page_node">1</Link>
+      <Link to="" className="page_node">2</Link>
+      <Link to="" className="page_node">3</Link>
       <span className="page_node">...</span>
       <span className="page_node">25</span>
-      <a href="#" className="next">Tiếp</a>
+      <Link to="#" className="next">Tiếp</Link>
     </div>
   );
 }

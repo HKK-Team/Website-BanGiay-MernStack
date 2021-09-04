@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import "./ScrollToTop.css";
 
 export default function ScrollToTop() {
@@ -31,7 +31,7 @@ export default function ScrollToTop() {
     <div className="scroll-to-top">
       {isVisible && (
         <div onClick={scrollToTop}>
-          <a href="#">
+          <a href>
             <i class="fa fa-chevron-up"></i>
           </a>
         </div>

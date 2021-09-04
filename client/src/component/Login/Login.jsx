@@ -50,7 +50,7 @@ export default function Login() {
                   <Link to='/Register'>Chưa có tài khoản? Đăng ký</Link>
                 </div>
                 <div className="req_pass">
-                  <a href="#">Quên mật khẩu</a>
+                  <Link to="#">Quên mật khẩu</Link>
                 </div>
               </form>
               <div id="btn-facebook-login" className="face-btn">
