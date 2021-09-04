@@ -1,46 +1,67 @@
-import  React, { useEffect, useState, useContext } from "react"; 
-import './Catalog.css'
-import {GlobalState} from '../../GlobalState'
+import React, { useEffect, useState, useContext } from "react";
+import Slider from "@material-ui/core/Slider";
+import "./Catalog.css";
+import { GlobalState } from "../../GlobalState";
 
 export default function Catalog() {
-  const state = useContext(GlobalState)
+  const state = useContext(GlobalState);
   //sorting
-  const [sortnam, setSortnam] = state.productboyApi.sort
-  const [sortnu, setSortnu] = state.productgirlApi.sort
-  const [sortpk, setSortpk] = state.productpkApi.sort
-  const [sortgosto, setSortgosto] = state.productgostoApi.sort
-  const [sortbetrai, setSorttrai] = state.productbetraiApi.sort
-  const [sortbegai, setSortgai] = state.productbegaiApi.sort
-  
+  const [sortnam, setSortnam] = state.productboyApi.sort;
+  const [sortnu, setSortnu] = state.productgirlApi.sort;
+  const [sortpk, setSortpk] = state.productpkApi.sort;
+  const [sortgosto, setSortgosto] = state.productgostoApi.sort;
+  const [sortbetrai, setSorttrai] = state.productbetraiApi.sort;
+  const [sortbegai, setSortgai] = state.productbegaiApi.sort;
+
   //filtering by color
-  const [colorboy, setcolorboy] = state.productboyApi.color
+  const [colorboy, setcolorboy] = state.productboyApi.color;
   console.log(colorboy);
-  
-  
+
+  // thanh sắp xếp tiền
+  const [valueMoney, setValueMoney] = React.useState([0, 2000000]);
+  const rangeSelector = (event, newValue) => {
+    setValueMoney(newValue);
+    console.log(newValue);
+  };
+
   return (
     <aside className="sidebar_collection">
       <div className="block_content">
-
-        <select name="Sort" id="sort-by" value={sortnam,sortnu,sortpk,sortgosto,sortbetrai,sortbegai} 
-        onChange={e => {setSortnam(e.target.value);
-         setSortnu(e.target.value);
-         setSortpk(e.target.value);
-         setSortgosto(e.target.value);
-         setSorttrai(e.target.value);
-         setSortgai(e.target.value);}}>
-          <option value=''>Sắp xếp: </option>
-          <option value='sort=price'>Giá: Tăng dần</option>
-          <option value='sort=-price'>Giá: Giảm dần</option>
-          <option value='sort=nameProduct'>Tên : A - Z</option>
-          <option value='sort=-nameProduct'>Tên : Z - A</option>
-          <option value='sort=dateCreate'>Cũ Nhất</option>
-          <option value='sort=-dateCreate'>Mới Nhất</option>
+        <select
+          name="Sort"
+          id="sort-by"
+          value={(sortnam, sortnu, sortpk, sortgosto, sortbetrai, sortbegai)}
+          onChange={(e) => {
+            setSortnam(e.target.value);
+            setSortnu(e.target.value);
+            setSortpk(e.target.value);
+            setSortgosto(e.target.value);
+            setSorttrai(e.target.value);
+            setSortgai(e.target.value);
+          }}
+        >
+          <option value="">Sắp xếp: </option>
+          <option value="sort=price">Giá: Tăng dần</option>
+          <option value="sort=-price">Giá: Giảm dần</option>
+          <option value="sort=nameProduct">Tên : A - Z</option>
+          <option value="sort=-nameProduct">Tên : Z - A</option>
+          <option value="sort=dateCreate">Cũ Nhất</option>
+          <option value="sort=-dateCreate">Mới Nhất</option>
         </select>
 
         <div className="sidebar_collection-catalog">
           <span className="sidebar_collection-catalog-subtitle">Giá</span>
-          <label htmlFor="amount-text">Giá từ:</label>
-          <span id="amount-text"> 0 VND - 2000000 VND</span>
+          <label htmlFor="range-money">Giá từ:</label>
+          <span id="amount-text">
+            {" "}
+            {valueMoney[0]} VND - {valueMoney[1]} VND
+          </span>
+          <Slider id="range-money"
+            value={valueMoney}
+            onChange={rangeSelector}
+            valueLabelDisplay="auto"
+            max="2000000"
+          />
         </div>
         <div className="sidebar_collection-catalog">
           <span className="sidebar_collection-catalog-subtitle">Size:</span>
