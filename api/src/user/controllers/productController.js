@@ -52,7 +52,7 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
     getproduct_girl: async(req, res) => {
         try {
             const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Hunter Nữ" } })
-                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+                .lean().sort({ dateCreate: 'desc' }), req.query).filtering().sort()
             const product_girl = await features.query
             res.json(product_girl)
         } catch (err) {
@@ -62,7 +62,7 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
     getproduct_pk: async(req, res) => {
         try {
             const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Phụ Kiện" } })
-                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+                .lean().sort({ dateCreate: 'desc' }), req.query).filtering().sort()
             const product_pk = await features.query
 
 
@@ -74,7 +74,7 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
     getproduct_gosto: async(req, res) => {
         try {
             const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Gosto" } })
-                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+                .lean().sort({ dateCreate: 'desc' }), req.query).filtering().sort()
             const product_gosto = await features.query
             res.json(product_gosto)
         } catch (err) {
@@ -84,7 +84,7 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
     getproduct_betrai: async(req, res) => {
         try {
             const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Bé Nam" } })
-                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+                .lean().sort({ dateCreate: 'desc' }), req.query).filtering().sort()
             const product_betrai = await features.query
             res.json(product_betrai)
         } catch (err) {
@@ -94,7 +94,7 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
     getproduct_begai: async(req, res) => {
         try {
             const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Bé Nữ" } })
-                .lean().sort({ dateCreate: 'desc' }), req.query).sort()
+                .lean().sort({ dateCreate: 'desc' }), req.query).filtering().sort()
             const product_begai = await features.query
             res.json(product_begai)
         } catch (err) {
