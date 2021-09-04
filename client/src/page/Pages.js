@@ -7,6 +7,8 @@ import ProductGirls from "../page/Product/ProductGirls/ProductGirls";
 import ProductGosto from "../page/Product/ProductGosto/ProductGosto";
 import ProductAccessory from "../page/Product/ProductAccessory/ProductAccessory";
 import ProductDetails from "../page/ProductDetails/ProductDetails";
+import Login from './Login/Login';
+import Register from './Register/Register'
 import Home from "./Home/Home";
 function Pages() {
     return (
@@ -19,6 +21,8 @@ function Pages() {
             <Route exact path="/be-gai" component={ProductGirls}></Route>
             <Route exact path="/phu-kien" component={ProductAccessory}></Route>
             <Route exact path="/:typee/:id" component={ProductDetails}></Route>
+            <Route exact path="/Login" component={Login}></Route>
+            <Route exact path="/Register" component={Register}></Route>
         </Switch>
     )
 }

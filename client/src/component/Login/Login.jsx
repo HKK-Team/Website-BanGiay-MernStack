@@ -35,13 +35,14 @@ export default function Login() {
                     className="text"
                     placeholder="Mật khẩu"
                     size="32"
-                    pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"
+                    pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
                   />
                   {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
                     Mật khẩu phải chứa ít nhất một ký tự Latinh viết thường [a-z].
                     Mật khẩu phải chứa ít nhất một ký tự Latinh viết hoa [A-Z].
                     Mật khẩu phải chứa ít nhất một ký tự đặc biệt như! @ # & ().
                     Mật khẩu phải có độ dài ít nhất 6 ký tự và tối đa 20 ký tự. */}
+
                 </div>
                 <input type="submit" value="Đăng nhập" className="btn-signin" />
                 <div className="req_pass">

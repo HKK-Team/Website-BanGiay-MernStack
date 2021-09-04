@@ -57,7 +57,7 @@ export default function Register() {
                     className="text"
                     placeholder="Mật khẩu"
                     size="32"
-                    pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"
+                    pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
                   />
                   {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
                     Mật khẩu phải chứa ít nhất một ký tự Latinh viết thường [a-z].
