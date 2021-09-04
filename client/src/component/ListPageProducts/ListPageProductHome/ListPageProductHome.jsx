@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import Prev from "../../../images/images/arrow-next.webp"
 import "./ListPageProductHome.css";
 import React, { useState } from "react";
@@ -57,14 +58,14 @@ export default function ListPageProductHome(props) {
               </div>
             </div>
             <div className="arrow_product-slider">
-              <Link className="btn_prev"
+              <a href className="btn_prev"
                 style={{ backgroundImage: `url(${Prev})` }}
-                onClick={arrow_left} ></Link>
-              <Link
+                onClick={arrow_left} ></a>
+              <a href
                 className="btn_next"
                 style={{ backgroundImage: `url(${Prev})` }}
                 onClick={arrow_right}
-              ></Link>
+              ></a>
             </div>
           </div>
           <div className="home_cate-link">

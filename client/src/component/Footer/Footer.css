@@ -10,6 +10,10 @@
   text-align: center;
   text-transform: uppercase;
 }
+.footer_top-title span a{
+  color: blue;
+  cursor: pointer;
+}
 .footer_top-model {
   display: flex;
   justify-content: flex-start;

@@ -18,7 +18,7 @@ export default function Footer() {
         {/* footer_top-title */}
         <div className="footer_top-title">
           <span>
-            HASHTAG<a href> ABC </a> ĐỂ CÓ CƠ HỘI XUẤT HIỆN TRÊN WEBSITE
+            HASHTAG<a href='/'> ABC </a> ĐỂ CÓ CƠ HỘI XUẤT HIỆN TRÊN WEBSITE
             CỦA CHÚNG TÔI
           </span>
         </div>
