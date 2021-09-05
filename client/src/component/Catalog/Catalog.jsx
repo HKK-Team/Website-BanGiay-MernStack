@@ -23,7 +23,7 @@ export default function Catalog() {
   const [colorgosto, setcolorgosto] = state.productgostoApi.colorgosto;
   const [colorbetrai, setcolorbetrai] = state.productbetraiApi.colorbetrai;
   const [colorbegai, setcolorbegai] = state.productbegaiApi.colorbegai;
-
+  
   //filtering by size product
   const [sizeminboy, setsizeminboy] = state.productboyApi.sizeminboy;
   const [sizemaxboy, setsizemaxboy] = state.productboyApi.sizemaxboy;

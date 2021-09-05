@@ -11,10 +11,21 @@ import {GlobalState} from '../../../GlobalState';
 
 export default function ProductFemale() {
   const state = useContext(GlobalState)
+
   const [product_girl] = state.productgirlApi.product_girl // lấy sp ra từ api GlobalState
+
+  //Get current pages and post current
+  const [currentPagegirl, setcurrentPagegirl]= state.productgirlApi.currentPagegirl
+  const [postsPerPagegirl] = state.productgirlApi.postsPerPagegirl
+
+  // Get current posts
+  const indexofLastPost = currentPagegirl * postsPerPagegirl;
+  const indexofFirstPost = indexofLastPost - postsPerPagegirl;
+   const currentPost = product_girl.slice(indexofFirstPost, indexofLastPost)
+
   var arrayPrGirl = [];      // khởi tạo mảng lưu trữ
     arrayPrGirl.push(        // lấy dữ liệu trong data ra rồi push vô mảng được lưu trữ trong props
-      product_girl.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
+      currentPost.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
           <Product  key={item._id}
           masp = {item.idCategory_product}
           image={item.image}
