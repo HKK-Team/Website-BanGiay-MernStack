@@ -13,10 +13,19 @@ export default function ProductFemale() {
   const state = useContext(GlobalState);
   const [product_begai] = state.productbegaiApi.product_begai;
 
+    //Get current pages and post current
+    const [currentPagebegai, setcurrentPagebegai] = state.productbegaiApi.currentPagebegai
+    const [postsPerPagebegai] = state.productbegaiApi.postsPerPagebegai
+  
+    // Get current posts
+    const indexofLastPost = currentPagebegai * postsPerPagebegai;
+    const indexofFirstPost = indexofLastPost - postsPerPagebegai;
+     const currentPost = product_begai.slice(indexofFirstPost, indexofLastPost)
+
   var arrayPrBeGai = [];
   arrayPrBeGai.push(
     // lấy dữ liệu trong data ra rồi push vô mảng
-    product_begai.map(
+    currentPost.map(
       (
         item // sử dụng map đẻ lấy dữ liệu trong collection
       ) => (

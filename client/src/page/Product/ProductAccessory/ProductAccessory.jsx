@@ -14,9 +14,18 @@ export default function ProductFemale() {
   const state = useContext(GlobalState)
   const [product_pk] = state.productpkApi.product_pk
 
+    //Get current pages and post current
+    const [currentPagepk, setcurrentPagepk] = state.productpkApi.currentPagepk
+    const [postsPerPagepk] = state.productpkApi.postsPerPagepk
+  
+    // Get current posts
+    const indexofLastPost = currentPagepk * postsPerPagepk;
+    const indexofFirstPost = indexofLastPost - postsPerPagepk;
+     const currentPost = product_pk.slice(indexofFirstPost, indexofLastPost)
+
   var arrayPrPK = [];
     arrayPrPK.push(        // lấy dữ liệu trong data ra rồi push vô mảng
-      product_pk.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
+      currentPost.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
           <Product  key={item._id}
           masp = {item.idCategory_product}
           image={item.image}
