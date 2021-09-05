@@ -2,6 +2,7 @@
   position: fixed;
   right: 1%;
   bottom: 15%;
+  cursor: pointer;
 }
 .scroll-to-top a {
   background-color: #f72b3f;

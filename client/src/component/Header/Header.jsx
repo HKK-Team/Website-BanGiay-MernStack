@@ -3,6 +3,7 @@ import Vi from "../../images/images/vi.png";
 import Logo from "../../images/images/CôngtyTNHHABC.png";
 import React, { useEffect, useState, useContext } from "react";
 import { GlobalState } from "../../GlobalState";
+import { NavLink } from "react-router-dom";// thư viện dùng để lưu active link
 import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 export default function Header(props) {
   const [small, setSmall] = useState(false);
@@ -24,6 +25,7 @@ export default function Header(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <header>
       <div className="header_top">
@@ -44,13 +46,13 @@ export default function Header(props) {
                 ))}
                 <li className="header_top-item">
                   <span>
-                    <Link to='/Login' className="header_top-link">
+                    <Link to="/Login" className="header_top-link">
                       Đăng nhập
                     </Link>
                   </span>
                   <span>|</span>
                   <span>
-                    <Link to='/Register' className="header_top-link">
+                    <Link to="/Register" className="header_top-link">
                       Đăng ký
                     </Link>
                   </span>
@@ -83,9 +85,13 @@ export default function Header(props) {
                 <ul className="header_bottom-list">
                   {menus2.map((item) => (
                     <li className="header_bottom-item" key={item._id}>
-                      <Link to={item.slug} className="header_bottom-link">
+                      <NavLink
+                        activeClassName="active"
+                        to={item.slug}
+                        className="header_bottom-link"
+                      >
                         {item.text}
-                      </Link>
+                      </NavLink>
                     </li>
                   ))}
                 </ul>
@@ -104,18 +110,14 @@ export default function Header(props) {
               </div>
               <div className="header_bottom-cart">
                 <span className="header_bottom-cart-favorite">
-                  <Link
-                    to={props.favorite}
-                    className=""
-                    style={{ color: "black" }}
-                  >
+                  <Link to="/favorite" className="" style={{ color: "black" }}>
                     {" "}
                     <i class="far fa-heart"></i>{" "}
                     <span className="Cart_count">0</span>
                   </Link>
                 </span>
                 <span className="header_bottom-cart-cart">
-                  <Link to={props.cart} style={{ color: "black" }}>
+                  <Link to="/cart" style={{ color: "black" }}>
                     <i class="fas fa-shopping-cart">
                       <span className="Cart_count">0</span>
                     </i>
