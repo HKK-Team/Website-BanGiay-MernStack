@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useContext } from "react";
 import "./ListPageProductsProduct.css";
 import Catalog from "../../Catalog/Catalog";
@@ -87,13 +88,13 @@ export default function ListPageProductsProduct(props) {
             <h1>{props.name}</h1>
           </div>
           <ul className="menu_collection">
-            <a href="" onClick={eventhunter}>Hunter</a>
-            <a href=""onClick={eventsandal}>Sandal</a>
-            <a href=""onClick={eventthethao}>Giày Thể Thao</a>
-            <a href=""onClick={eventchaybo}>Giày Chạy Bộ</a>
-            <a href=""onClick={eventdabanh}>Giày Đá Banh</a>
-            <a href=""onClick={eventgiaytay}>Giày Tây</a>
-            <a href=""onClick={eventdep}>Dép</a>
+            <a href onClick={eventhunter}>Hunter</a>
+            <a href onClick={eventsandal}>Sandal</a>
+            <a href onClick={eventthethao}>Giày Thể Thao</a>
+            <a href onClick={eventchaybo}>Giày Chạy Bộ</a>
+            <a href onClick={eventdabanh}>Giày Đá Banh</a>
+            <a href onClick={eventgiaytay}>Giày Tây</a>
+            <a href onClick={eventdep}>Dép</a>
           </ul>
           <div className="container-product-wrapper">
             <Catalog />

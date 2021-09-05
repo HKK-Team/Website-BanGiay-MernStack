@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Fragment ,useContext} from "react";
 import Header from "../../../component/Header/Header";
 import Footer from "../../../component/Footer/Footer";
