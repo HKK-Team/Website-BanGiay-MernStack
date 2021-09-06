@@ -11,15 +11,17 @@ function ProductGirlApi() {
     const [sizemaxgirl, setsizemaxgirl] = useState(' ')
     const [currentPagegirl, setcurrentPagegirl] = useState(1)
     const [postsPerPagegirl] = useState(12)
+    const [maxPicegirl, setmaxPicegirl] = useState([])
+    const [minPricegirl, setminPricegirl] = useState([])
 
     useEffect(() => {
         const getproductgirl = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_girl?${detailCategorygirl}&${sizemingirl}&${sizemaxgirl}&${colorgirl}&${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_girl?${minPricegirl}&${maxPicegirl}&${detailCategorygirl}&${sizemingirl}&${sizemaxgirl}&${colorgirl}&${sort}`)
             setproduct_girl(res.data)
         }
         getproductgirl()
 
-    }, [callback, sort, colorgirl, sizemingirl, sizemaxgirl, detailCategorygirl])
+    }, [callback, sort, colorgirl, sizemingirl, sizemaxgirl, detailCategorygirl, maxPicegirl, minPricegirl])
     return {
         product_girl: [product_girl, setproduct_girl],
         callback: [callback, setCallback],
@@ -29,7 +31,9 @@ function ProductGirlApi() {
         sizemaxgirl: [sizemaxgirl, setsizemaxgirl],
         detailCategorygirl: [detailCategorygirl, setdetailCategorygirl],
         postsPerPagegirl: [postsPerPagegirl],
-        currentPagegirl: [currentPagegirl, setcurrentPagegirl]
+        currentPagegirl: [currentPagegirl, setcurrentPagegirl],
+        maxPicegirl: [maxPicegirl, setmaxPicegirl],
+        minPricegirl: [minPricegirl, setminPricegirl]
     }
 }
 export default ProductGirlApi

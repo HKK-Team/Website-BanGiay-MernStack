@@ -19,11 +19,6 @@ function App() {
         <Router>
           <Pages>
             {/* VD : localhost:3000/header */}
-            <Route exact path="/Cart" component={Cart}></Route>
-            <Route exact path="/Favorite" component={Favorite}></Route>
-            <Route exact path="/Register" component={Register}></Route>
-            <Route exact path="/dang-nhap" component={Login}></Route>
-            <Route exact path="/ProductDetail" component={ProductDetail}></Route>
           </Pages>
         </Router> 
       </DataProvider>

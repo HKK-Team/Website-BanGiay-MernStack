@@ -43,6 +43,28 @@ export default function Catalog() {
   const [sizeminbegai, setsizeminbegai] = state.productbegaiApi.sizeminbegai;
   const [sizemaxbegai, setsizemaxbegai] = state.productbegaiApi.sizemaxbegai;
 
+  //get max price product
+  const [priceProduct_max, setpriceProduct_max] = state.priceProduct_max.priceProduct_max;
+
+  //set min and max price for many product
+  const [maxPice, setmaxPice] = state.productboyApi.maxPice;
+  const [minPrice, setminPrice] = state.productboyApi.minPrice;
+
+  const [minPricegirl, setminPricegirl] = state.productgirlApi.minPricegirl;
+  const [maxPicegirl, setmaxPicegirl] = state.productgirlApi.maxPicegirl;
+
+  const [maxPicepk, setmaxPicepk] = state.productpkApi.maxPicepk;
+  const [minPricepk, setminPricepk] = state.productpkApi.minPricepk;
+
+  const [maxPicegosto, setmaxPicegosto] = state.productgostoApi.maxPicegosto;
+  const [minPricegosto, setminPricegosto]= state.productgostoApi.minPricegosto;
+
+  const  [maxPicebegai, setmaxPicebegai] = state.productbegaiApi.maxPicebegai;
+  const [minPricebegai, setminPricebegai] = state.productbegaiApi.minPricebegai;
+
+  const [minPricebetrai, setminPricebetrai] = state.productbetraiApi.minPricebetrai;
+  const [maxPicebetrai, setmaxPicebetrai] = state.productbetraiApi.maxPicebetrai;
+
 
   //add event cho mỗi màu khi click
   function eventBlack(e) {
@@ -640,10 +662,26 @@ function eventsize45(e) {
   setsizemaxbegai('size.size5[gte]=45')
 }
   // thanh sắp xếp tiền
-  const [valueMoney, setValueMoney] = React.useState([0, 2000000]);
+  const [valueMoney, setValueMoney] = React.useState([0, 1699000]);
   const rangeSelector = (event, newValue) => {
-    setValueMoney(newValue);
-    console.log(newValue);
+        setValueMoney(newValue);
+        setminPrice('price[gte]=' + newValue[0])
+        setmaxPice('price[lte]=' + newValue[1])
+
+        setminPricegirl('price[gte]=' + newValue[0])
+        setmaxPicegirl('price[lte]=' + newValue[1])
+
+        setminPricepk('price[gte]=' + newValue[0])
+        setmaxPicepk('price[lte]=' + newValue[1])
+
+        setminPricegosto('price[gte]=' + newValue[0])
+        setmaxPicegosto('price[lte]=' + newValue[1])
+
+        setminPricebegai('price[gte]=' + newValue[0])
+        setmaxPicebegai('price[lte]=' + newValue[1])
+
+        setminPricebetrai('price[gte]=' + newValue[0])
+        setmaxPicebetrai('price[lte]=' + newValue[1])
   };
   return (
     <aside className="sidebar_collection">
@@ -670,20 +708,20 @@ function eventsize45(e) {
           <option value="sort=-dateCreate">Mới Nhất</option>
         </select>
 
-        <div className="sidebar_collection-catalog">
+        <div className="sidebar_collection-catalog" >
           <span className="sidebar_collection-catalog-subtitle">Giá</span>
           <label htmlFor="range-money">Giá từ:</label>
           <span id="amount-text">
             {" "}
             {valueMoney[0]} VND - {valueMoney[1]} VND
           </span>
-          <Slider
-            id="range-money"
-            value={valueMoney}
-            onChange={rangeSelector}
-            valueLabelDisplay="auto"
-            max="2000000"
-          />
+                  <Slider 
+                  id="range-money"
+                  value={valueMoney}
+                  onChange={rangeSelector}
+                  valueLabelDisplay="auto"
+                  max={priceProduct_max.price}
+                />
         </div>
 
         <div className="sidebar_collection-catalog">
