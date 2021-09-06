@@ -46,6 +46,7 @@ function Login() {
                     name = "email"
                     placeholder="Email"
                     size="32"
+                    required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     autoComplete="on"
                     value={user.email} 

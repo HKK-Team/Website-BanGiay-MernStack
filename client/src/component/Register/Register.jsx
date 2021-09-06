@@ -89,9 +89,10 @@ const registerSubmit = async e =>{
                     name = "password"
                     placeholder="Mật khẩu"
                     size="32"
+                    required
                     pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
                     value={user.password} 
-                    onChange={onChangeInput}
+                    onChange={onChangeInput}                
                   />
                   {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
                     Mật khẩu phải chứa ít nhất một ký tự Latinh viết thường [a-z].
