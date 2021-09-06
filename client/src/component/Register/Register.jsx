@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import axios from 'axios'
 import "./Register.css";
 
@@ -18,7 +18,8 @@ const registerSubmit = async e =>{
     try {
         await axios.post('http://localhost:5000/user/register', {...user})
         localStorage.setItem('Created!', true)
-        window.location.href = "/";
+        alert("Created User Succesfully!")
+        window.location.href = "/Login";
     } catch (err) {
         alert(err.response.data.msg)
     }
@@ -38,11 +39,11 @@ const registerSubmit = async e =>{
                   <input
                     type="text"
                     id="last_name"
-                    name = "lastname"
+                    name = "firstname"
                     className="text"
                     placeholder="Họ"
                     size="32"
-                    value={user.lastname} 
+                    value={user.firstname} 
                     onChange={onChangeInput}
                   />
                 </div>
@@ -54,10 +55,10 @@ const registerSubmit = async e =>{
                     type="text"
                     id="fisrt_name"
                     className="text"
-                    name = "firstname"
+                    name = "lastname"
                     placeholder="Tên"
                     size="32"
-                    value={user.firstname} 
+                    value={user.lastname} 
                     onChange={onChangeInput}
                   />
                 </div>

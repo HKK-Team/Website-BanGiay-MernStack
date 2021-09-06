@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import facebook from "./../../images/images/fb-btn.png";
 import google from "./../../images/images/google-btn.png";
-import { Link , Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios'
 
 function Login() {
@@ -21,8 +21,8 @@ function Login() {
           await axios.post('http://localhost:5000/user/login', {...user})
 
           localStorage.setItem('firstLogin', true)
-          
-          window.location.href = "/";
+          alert("Login Successfully!")
+          window.location.href = "/Loading";
       } catch (err) {
           alert(err.response.data.msg)
       }

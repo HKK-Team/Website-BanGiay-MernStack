@@ -1,11 +1,8 @@
 import "./SliderHome.css";
 import React from "react";
-import page1 from "../../../images/images/page-TrangChu-1.jpg";
-import page2 from "../../../images/images/page-TrangChu-2.jpg";
-import page3 from "../../../images/images/page-TrangChu-3.jpg";
-import page4 from "../../../images/images/page-TrangChu-4.jpg";
-import {  useEffect} from "react";
-export default function SliderHome() {
+// import {  useEffect} from "react";
+export default function SliderHome(props) {
+
   // useEffect(() => {
   //   let counter = 1;
   //   setInterval(function () {
@@ -15,6 +12,7 @@ export default function SliderHome() {
   //       counter = 1;
   //     }
   //   }, 4000);
+    
   // },[]);
   return (
     <section className="slider_wrapper">
@@ -26,16 +24,16 @@ export default function SliderHome() {
           <input type="radio" name="slider-btn" id="radio4" />
 
           <div className="slide first">
-            <img src={page1} alt="page" className="slide_image" />
+            <img src={props.banner1} alt="page" className="slide_image" />
           </div>
           <div className="slide">
-            <img src={page2} alt="page" className="slide_image" />
+            <img src={props.banner2} alt="page" className="slide_image" />
           </div>
           <div className="slide">
-            <img src={page3} alt="page" className="slide_image" />
+            <img src={props.banner3} alt="page" className="slide_image" />
           </div>
           <div className="slide">
-            <img src={page4} alt="page" className="slide_image" />
+            <img src={props.banner4} alt="page" className="slide_image" />
           </div>
           <div className="navigation_auto">
             <div className="auto-btn1"></div>

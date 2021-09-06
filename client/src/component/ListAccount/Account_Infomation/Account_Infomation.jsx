@@ -1,14 +1,14 @@
 import React from "react";
 import "./Account_Infomation.css";
-
+import {Link} from "react-router-dom"
 export default function Account_Infomation(props) {
   return (
     <div className="user-box">
       <h2 className="title-detail">
         Thông tin tài khoản
-        <a href="/updateAccount">
+        <Link to="/updateAccount">
           <i class="fas fa-edit"></i> Cập nhật thông tin khách hàng
-        </a>
+        </Link>
       </h2>
       <p>Họ và Tên: </p>
       <p className="email">Email: </p>
@@ -16,12 +16,12 @@ export default function Account_Infomation(props) {
       <p>Quốc gia: </p>
       <p>Điện thoại: </p>
       <span className="p">Hạng thẻ tiếp theo Silver - chiết khẩu 3%</span>
-      <a href className="a">
+      <Link to = "#" className="a">
         Xem thêm chính sách khách hàng thân thiết.
-      </a>
-      <a href id="view-address">
+      </Link>
+      <Link to = "#" id="view-address">
         Xem địa chỉ <i class="fa fa-share"></i>
-      </a>
+      </Link>
       <h2 className="title-detail">Danh sách đơn hàng mới nhất</h2>
       <p>Bạn chưa đặt mua sản phẩm nào</p>
     </div>
