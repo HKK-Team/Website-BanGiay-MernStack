@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+/* eslint-disable no-sequences */
+/* eslint-disable no-unused-vars */
+import React, { useContext } from "react";
 import Slider from "@material-ui/core/Slider";
 import "./Catalog.css";
 import { GlobalState } from "../../GlobalState";
@@ -13,6 +15,7 @@ export default function Catalog() {
   const [sortbetrai, setSorttrai] = state.productbetraiApi.sort;
   const [sortbegai, setSortgai] = state.productbegaiApi.sort;
 
+  
   //filtering by color
   const [colorboy, setcolorboy] = state.productboyApi.colorboy;
   const [colorgirl, setcolorgirl] = state.productgirlApi.colorgirl;
@@ -20,7 +23,7 @@ export default function Catalog() {
   const [colorgosto, setcolorgosto] = state.productgostoApi.colorgosto;
   const [colorbetrai, setcolorbetrai] = state.productbetraiApi.colorbetrai;
   const [colorbegai, setcolorbegai] = state.productbegaiApi.colorbegai;
-
+  
   //filtering by size product
   const [sizeminboy, setsizeminboy] = state.productboyApi.sizeminboy;
   const [sizemaxboy, setsizemaxboy] = state.productboyApi.sizemaxboy;

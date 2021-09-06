@@ -1,17 +1,7 @@
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
 } from "react-router-dom";
-import React, { Component }  from 'react';
-import Home from "./page/Home/Home";
-import ProductMale from'./page/Product/ProductMale/ProductMale'
-import ProductDetail from './page/ProductDetails/ProductDetails'
-import Cart from "./page/Cart/Cart";
-import Favorite from "./page/Favorite/Favorite";
-import Register from "./page/Register/Register";
-import Login from "./page/Login/Login";
+import React from 'react';
 // import Home from "./page/Home/Home";
 import { DataProvider } from "./GlobalState";
 // import ProductFemale from "./page/Product/ProductFemale/ProductFemale";

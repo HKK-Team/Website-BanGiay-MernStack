@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Fragment, useContext } from "react";
 import { GlobalState } from "../../../GlobalState";
 import silder from "../../../images/images/page-TrangChu-2.jpg";
@@ -13,10 +14,19 @@ export default function ProductMale() {
   const state = useContext(GlobalState);
   const [product_gosto] = state.productgostoApi.product_gosto;
 
+  //Get current pages and post current
+  const [currentPagegosto, setcurrentPagegosto] = state.productgostoApi.currentPagegosto
+  const [postsPerPagegosto] = state.productgostoApi.postsPerPagegosto
+
+  // Get current posts
+  const indexofLastPost = currentPagegosto * postsPerPagegosto;
+  const indexofFirstPost = indexofLastPost - postsPerPagegosto;
+   const currentPost = product_gosto.slice(indexofFirstPost, indexofLastPost)
+
   var arrayPrGosto = [];
   arrayPrGosto.push(
     // lấy dữ liệu trong data ra rồi push vô mảng
-    product_gosto.map(
+    currentPost.map(
       (
         item // sử dụng map đẻ lấy dữ liệu trong collection
       ) => (

@@ -5,7 +5,6 @@ import {
   withScriptjs,
   GoogleMap,
   Marker,
-  InfoBox,
 } from "react-google-maps";
 const Map = () => {
   return (

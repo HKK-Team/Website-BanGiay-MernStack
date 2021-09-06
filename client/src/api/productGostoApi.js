@@ -7,23 +7,29 @@ function ProductGostoApi() {
     const [sort, setSort] = useState(' ')
     const [colorgosto, setcolor] = useState(' ')
     const [sizemingosto, setsizemingosto] = useState(' ')
+    const [detailCategorygosto, setdetailCategorygosto] = useState(' ')
     const [sizemaxgosto, setsizemaxgosto] = useState(' ')
+    const [currentPagegosto, setcurrentPagegosto] = useState(1)
+    const [postsPerPagegosto] = useState(12)
 
     useEffect(() => {
         const getproducgosto = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_gosto?${sizemingosto}&${sizemaxgosto}&${colorgosto}&${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_gosto?${detailCategorygosto}&${sizemingosto}&${sizemaxgosto}&${colorgosto}&${sort}`)
             setproduct_gosto(res.data)
         }
         getproducgosto()
 
-    }, [callback, sort, colorgosto, sizemingosto, sizemaxgosto])
+    }, [callback, sort, colorgosto, sizemingosto, sizemaxgosto, detailCategorygosto])
     return {
         product_gosto: [product_gosto, setproduct_gosto],
         callback: [callback, setCallback],
         sort: [sort, setSort],
         colorgosto: [colorgosto, setcolor],
         sizemingosto: [sizemingosto, setsizemingosto],
-        sizemaxgosto: [sizemaxgosto, setsizemaxgosto]
+        sizemaxgosto: [sizemaxgosto, setsizemaxgosto],
+        detailCategorygosto: [detailCategorygosto, setdetailCategorygosto],
+        currentPagegosto: [currentPagegosto, setcurrentPagegosto],
+        postsPerPagegosto: [postsPerPagegosto]
     }
 }
 export default ProductGostoApi

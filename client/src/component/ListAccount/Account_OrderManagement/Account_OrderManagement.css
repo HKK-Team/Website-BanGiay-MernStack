@@ -1,0 +1,18 @@
+.title_detail {
+  color: #f72b3f;
+
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+
+  margin: 10px 0px;
+  padding: 0px 0px 10px;
+  border-bottom: 1px solid #ebebeb;
+}
+.user-box p {
+  font-family: Open Sans;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0px 0px 10px;
+}

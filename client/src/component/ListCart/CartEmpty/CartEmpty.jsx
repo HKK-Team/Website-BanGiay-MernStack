@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import "./CartEmpty.css";
 import emptyCart from "./../../../images/images/icon_empty_cart.webp";
@@ -14,10 +15,10 @@ export default function CartEmpty() {
             <p className="message">
               Không có sản phẩm nào trong giỏ hàng của bạn.
             </p>
-            <a href="#" className="btn">
+            <a href className="btn">
               Tra cứu tình trang <span>đơn hàng</span>
             </a>
-            <a href="#" className="btn btn-yellow">
+            <a href className="btn btn-yellow">
               Tiếp tục mua hàng
             </a>
           </div>

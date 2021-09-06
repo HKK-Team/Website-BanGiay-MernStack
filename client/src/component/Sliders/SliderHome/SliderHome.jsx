@@ -4,7 +4,7 @@ import page1 from "../../../images/images/page-TrangChu-1.jpg";
 import page2 from "../../../images/images/page-TrangChu-2.jpg";
 import page3 from "../../../images/images/page-TrangChu-3.jpg";
 import page4 from "../../../images/images/page-TrangChu-4.jpg";
-// import { useState , useEffect} from "react";
+import {  useEffect} from "react";
 export default function SliderHome() {
   // useEffect(() => {
   //   let counter = 1;

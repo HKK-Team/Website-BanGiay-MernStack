@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import {  useEffect } from "react";
 import "./ProductDetail.css";
@@ -93,19 +94,19 @@ export default function ProductDetail(props) {
                 <svg viewBox="0 0 24 24">
                   <path d="M20.902 17.279c0.325 0.322 0.851 0.322 1.175 0 0.325-0.322 0.325-0.841 0-1.163l-9.49-9.396c-0.324-0.322-0.85-0.322-1.174 0l-9.49 9.396c-0.324 0.322-0.325 0.841 0 1.163s0.85 0.322 1.175 0l8.902-8.569 8.902 8.569z"></path>
                 </svg>
-                <Link to = "#" >
+                <Link to  >
                   <img src={props.imageValue1} alt="image" />
                 </Link>
-                <Link to = "#" >
+                <Link to  >
                   <img src={props.imageValue2} alt="image" />
                 </Link>
-                <Link to = "#" >
+                <Link to  >
                   <img src={props.imageValue3} alt="image" />
                 </Link>
-                <Link to = "#" >
+                <Link to  >
                   <img src={props.imageValue4} alt="image" />
                 </Link>
-                <Link to = "#" >
+                <Link to >
                   <img src={props.imageValue5} alt="image" />
                 </Link>
                 <svg viewBox="0 0 24 24">

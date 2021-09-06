@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Fragment, useContext } from "react";
 import silder from "../../../images/images/page-TrangChu-3.jpg";
 import Header from "../../../component/Header/Header";
@@ -12,10 +13,20 @@ import { GlobalState } from "../../../GlobalState";
 export default function ProductMale() {
   const state = useContext(GlobalState);
   const [product_boy] = state.productboyApi.product_boy; // lấy sp ra từ api GlobalState
+
+  //Get current pages and post current
+  const [currentPageboy, setcurrentPageboy] = state.productboyApi.currentPageboy
+  const [postsPerPageboy] = state.productboyApi.postsPerPageboy
+
+  // Get current posts
+  const indexofLastPost = currentPageboy * postsPerPageboy;
+  const indexofFirstPost = indexofLastPost - postsPerPageboy;
+   const currentPost = product_boy.slice(indexofFirstPost, indexofLastPost)
+  
   var arrayPrBoy = []; // khởi tạo mảng lưu trữ
   arrayPrBoy.push(
     // lấy dữ liệu trong data ra rồi push vô mảng
-    product_boy.map(
+    currentPost.map(
       (
         item // sử dụng map đẻ lấy dữ liệu trong collection
       ) => (

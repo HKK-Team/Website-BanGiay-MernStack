@@ -30,13 +30,13 @@ export default function Home() {
   var arrayPrGosto = [];
   var arrayPrBeTrai = [];
   var arrayPrBeGai = [];
-  for (let i = 0; i <= 16; i++) {
+  // for (let i = 0; i <= 16; i++) {
     arrayPrBoy.push(
       product_boy.map((item) => (
         <Product
           key={item._id}
           image={item.image}
-          TotalSize={5}
+          TotalSize={item.size.length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -55,7 +55,7 @@ export default function Home() {
         <Product
           key={item._id}
           image={item.image}
-          TotalSize={5}
+          TotalSize={item.size.length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -74,7 +74,7 @@ export default function Home() {
         <Product
           key={item._id}
           image={item.image}
-          TotalSize={1}
+          TotalSize={item.size.length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -93,7 +93,7 @@ export default function Home() {
         <Product
           key={item._id}
           image={item.image}
-          TotalSize={5}
+          TotalSize={item.size.length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -112,7 +112,7 @@ export default function Home() {
         <Product
           key={item._id}
           image={item.image}
-          TotalSize={5}
+          TotalSize={item.size.length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -131,7 +131,7 @@ export default function Home() {
         <Product
           key={item._id}
           image={item.image}
-          TotalSize={5}
+          TotalSize={item.size.length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -145,7 +145,7 @@ export default function Home() {
         />
       ))
     );
-  }
+  //}
 
   return (
     <Fragment>

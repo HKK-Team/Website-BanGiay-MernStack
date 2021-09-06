@@ -1,14 +1,14 @@
 import "./Footer.css";
-import ScrollToOnTop from '../ScrollToTop/ScrollToTop'
+import ScrollToOnTop from "../ScrollToTop/ScrollToTop";
 import Model_1 from "../../images/mau/1.png";
 import Model_2 from "../../images/mau/2.png";
 import Model_3 from "../../images/mau/3.png";
 import Model_4 from "../../images/mau/4.png";
 import Model_5 from "../../images/mau/5.png";
-import Model_6 from "../../images/mau/6.png"; 
+import Model_6 from "../../images/mau/6.png";
 import Model_7 from "../../images/mau/7.png";
 import Model_8 from "../../images/mau/8.png";
-import React, { Component }  from 'react';
+import React from "react";
 
 export default function Footer() {
   return (
@@ -18,8 +18,8 @@ export default function Footer() {
         {/* footer_top-title */}
         <div className="footer_top-title">
           <span>
-            HASHTAG<a href="#"> ABC </a> ĐỂ CÓ CƠ HỘI XUẤT HIỆN TRÊN WEBSITE CỦA
-            CHÚNG TÔI
+            HASHTAG<a href='/'> ABC </a> ĐỂ CÓ CƠ HỘI XUẤT HIỆN TRÊN WEBSITE
+            CỦA CHÚNG TÔI
           </span>
         </div>
         {/*</ footer_top-title >*/}
@@ -80,7 +80,7 @@ export default function Footer() {
               Facebook :
               <a
                 href="https://www.facebook.com/profile.php?id=100013505409162"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Minh Khánh
               </a>
@@ -96,7 +96,7 @@ export default function Footer() {
               Facebook :
               <a
                 href="https://www.facebook.com/profile.php?id=100041352821968"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 {" "}
                 Khánh vũ
@@ -111,7 +111,7 @@ export default function Footer() {
             </p>
             <p className="footer_bottom-infor-text">
               Facebook :
-              <a href="https://www.facebook.com/hyuezh01" target="_blank">
+              <a href="https://www.facebook.com/hyuezh01" target="_blank" rel="noreferrer">
                 {" "}
                 Huy Huỳnh
               </a>
@@ -127,7 +127,7 @@ export default function Footer() {
               Facebook :
               <a
                 href="https://www.facebook.com/profile.php?id=100033150050382"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Tiến Đạt
               </a>
@@ -141,7 +141,7 @@ export default function Footer() {
           Website bán giày công ty TNHH 4 thành viên
         </h2>
       </div>
-      <ScrollToOnTop/>
+      <ScrollToOnTop />
     </footer>
   );
 }

@@ -1,53 +1,53 @@
 .prev {
-  background-color: #000000;
-  color: #ffffff ;
-  border: 1px solid #000000;
-
-  display: inline-block;
-  font-family: Open Sans;
-  font-size: 14px;
-  line-height: 20px;
-
-  margin: 0px 25px 0px 0px;
-  padding: 4px 10px;
-  text-align: center;
-  transition: all 0.5s ease;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    display: inline-block;
+    font-family: Open Sans;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0px 25px 0px 0px;
+    padding: 4px 10px;
+    text-align: center;
+    transition: all 0.5s ease;
 }
-.prev:hover{
+
+.prev:hover {
     background-color: white;
     color: black;
 }
-.next:hover{
+
+.next:hover {
     background-color: white;
     color: black;
 }
+
 .next {
-  background-color: #000000;
-
-  border: 1px solid #000000;
-
-  display: inline-block;
-  font-family: Open Sans;
-  font-size: 14px;
-  line-height: 20px;
-
-  margin: 0px 0px 0px 25px;
-  padding: 4px 10px;
-  text-align: center;
-  transition: all 0.5s ease;
-  color: #ffffff ;
+    background-color: #000000;
+    border: 1px solid #000000;
+    display: inline-block;
+    font-family: Open Sans;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0px 0px 0px 25px;
+    padding: 4px 10px;
+    text-align: center;
+    transition: all 0.5s ease;
+    color: #ffffff;
 }
+
 .page_node {
-  display: inline-block;
-  font-family: Open Sans;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 4px 10px;
-  text-align: center;
-  cursor: pointer;
-  color: black;
+    display: inline-block;
+    font-family: Open Sans;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 4px 10px;
+    text-align: center;
+    cursor: pointer;
+    color: black;
 }
-#pagination{
+
+#pagination {
     text-align: center;
     margin-bottom: 30px;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Fragment,useContext } from "react";
 
 import {GlobalState} from '../../../GlobalState';
@@ -15,9 +16,19 @@ import silder from "../../../images/images/banner-BeTrai.jpg";
 export default function ProductFemale() {
   const state = useContext(GlobalState)
   const [product_betrai] = state.productbetraiApi.product_betrai
+
+  //Get current pages and post current
+  const [currentPagebetrai, setcurrentPagebetrai] = state.productbetraiApi.currentPagebetrai
+  const [postsPerPagebetrai] = state.productbetraiApi.postsPerPagebetrai
+
+  // Get current posts
+  const indexofLastPost = currentPagebetrai * postsPerPagebetrai;
+  const indexofFirstPost = indexofLastPost - postsPerPagebetrai;
+   const currentPost = product_betrai.slice(indexofFirstPost, indexofLastPost)
+
   var arrayPrBeTrai = [];
     arrayPrBeTrai.push(        // lấy dữ liệu trong data ra rồi push vô mảng
-      product_betrai.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
+      currentPost.map(item => (   // sử dụng map đẻ lấy dữ liệu trong collection
           <Product  key={item._id}
           masp = {item.idCategory_product}
           image={item.image}

@@ -1,0 +1,63 @@
+.Cart_title {
+  padding: 0px 10px;
+}
+.Cart_title h1 {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 33.6px;
+  margin: 25px 0px;
+  padding: 10px 0px;
+  text-align: center;
+}
+.account_wrapper {
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+.account_box-menu {
+  padding: 0px 10px;
+}
+.account_box-menu h2 {
+  font-family: Open Sans;
+  font-weight: 500;
+  line-height: 20px;
+
+  margin: 10px 0px;
+  margin-bottom: 20px;
+  padding: 0px 0px 10px;
+
+  text-align: left;
+  text-transform: uppercase;
+  position: relative;
+}
+.account_box-menu h2::before {
+  position: absolute;
+  top: 100%;
+  content: "";
+  width: 45px;
+  height: 2px;
+  background-color: #f72b3f;
+}
+.account_box-menu a:hover {
+  color: #034ea1;
+}
+.account_box-menu a {
+  color: #000103;
+  font-family: Open Sans;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0px 0px 15px;
+  text-align: left;
+  display: block;
+}
+.account_box-menu a i {
+  color: #000000;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0px 5px 0px 0px;
+  text-align: left;
+}
+.account_box-info {
+  padding: 0px 10px;
+}
