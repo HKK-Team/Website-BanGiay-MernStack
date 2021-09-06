@@ -27,6 +27,7 @@ mongoose.connect(URI, {
 app.use('/api', require('./src/user/routers/menuRouter'))
 app.use('/api', require('./src/user/routers/bannerRouter'))
 app.use('/api', require('./src/user/routers/productRouter'))
+app.use('/user', require('./src/user/routers/userRouter'))
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {

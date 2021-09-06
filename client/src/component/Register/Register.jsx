@@ -1,7 +1,28 @@
-import React from "react";
+import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
 import "./Register.css";
 
 export default function Register() {
+  const [user, setUser] = useState({
+    firstname:'', lastname : '', email:'', password: ''
+})
+
+const onChangeInput = e =>{
+    const {name, value} = e.target;
+    setUser({...user, [name]:value})
+}
+
+const registerSubmit = async e =>{
+    e.preventDefault()
+    try {
+        await axios.post('http://localhost:5000/user/register', {...user})
+        localStorage.setItem('Created!', true)
+        window.location.href = "/";
+    } catch (err) {
+        alert(err.response.data.msg)
+    }
+}
   return (
     <section className="register">
       <div className="container">
@@ -9,7 +30,7 @@ export default function Register() {
           <div className="register_wrapper">
             <div id="login" className="user_box">
               <h1 className="account-title">Đăng ký</h1>
-              <form action="/register" id="customer_register">
+              <form action="/register" id="customer_register" onSubmit={registerSubmit}>
                 <div className="last-name input">
                   <label htmlFor="" className="icon-field">
                     <i className="fa fa-user"></i>
@@ -17,9 +38,12 @@ export default function Register() {
                   <input
                     type="text"
                     id="last_name"
+                    name = "lastname"
                     className="text"
                     placeholder="Họ"
                     size="32"
+                    value={user.lastname} 
+                    onChange={onChangeInput}
                   />
                 </div>
                 <div className="fisrt-name input">
@@ -30,8 +54,11 @@ export default function Register() {
                     type="text"
                     id="fisrt_name"
                     className="text"
+                    name = "firstname"
                     placeholder="Tên"
                     size="32"
+                    value={user.firstname} 
+                    onChange={onChangeInput}
                   />
                 </div>
                 <div className="email input">
@@ -42,9 +69,12 @@ export default function Register() {
                     type="email"
                     id="email-user"
                     className="text"
+                    name = "email"
                     placeholder="Email"
                     size="32"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    value={user.email} 
+                    onChange={onChangeInput}
                   />
                 </div>
                 <div className="password input">
@@ -55,9 +85,12 @@ export default function Register() {
                     type="password"
                     id="password-user"
                     className="text"
+                    name = "password"
                     placeholder="Mật khẩu"
                     size="32"
                     pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
+                    value={user.password} 
+                    onChange={onChangeInput}
                   />
                   {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
                     Mật khẩu phải chứa ít nhất một ký tự Latinh viết thường [a-z].

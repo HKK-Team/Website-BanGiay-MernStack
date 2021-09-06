@@ -102,6 +102,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee="gosto"
+          masp={item.idCategory_product}
         />
       ))
     );
@@ -119,6 +121,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee="be-trai"
+          masp={item.idCategory_product}
         />
       ))
     );
@@ -136,6 +140,8 @@ export default function Home() {
           name={item.nameProduct}
           type={item.nameCategoryProduct}
           prime={item.price}
+          typee="be-gai"
+          masp={item.idCategory_product}
         />
       ))
     );

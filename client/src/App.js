@@ -20,21 +20,24 @@ import { DataProvider } from "./GlobalState";
 // import ProductGosto from "./page/Product/ProductGosto/ProductGosto";
 // import ProductAccessory from "./page/Product/ProductAccessory/ProductAccessory";
 import Pages from "./page/Pages";
+import { Provider } from 'react-redux';
+import store from './store';
 function App() {
   return (
-    // Định tuyển path cho các pages . sử dụng react dom router
-    <DataProvider>
-      <Router>
-        <Pages>
-          {/* VD : localhost:3000/header */}
-          <Route exact path="/Cart" component={Cart}></Route>
-          <Route exact path="/Favorite" component={Favorite}></Route>
-          <Route exact path="/Register" component={Register}></Route>
-          <Route exact path="/dang-nhap" component={Login}></Route>
-          <Route exact path="/ProductDetail" component={ProductDetail}></Route>
-        </Pages>
-      </Router> 
-    </DataProvider>
+  <Provider store = {store}>
+      <DataProvider>
+        <Router>
+          <Pages>
+            {/* VD : localhost:3000/header */}
+            <Route exact path="/Cart" component={Cart}></Route>
+            <Route exact path="/Favorite" component={Favorite}></Route>
+            <Route exact path="/Register" component={Register}></Route>
+            <Route exact path="/dang-nhap" component={Login}></Route>
+            <Route exact path="/ProductDetail" component={ProductDetail}></Route>
+          </Pages>
+        </Router> 
+      </DataProvider>
+    </Provider>
   );
 }
 
