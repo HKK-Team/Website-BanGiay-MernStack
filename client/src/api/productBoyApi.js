@@ -11,15 +11,17 @@ function ProductBoyApi() {
     const [detailCategoryboy, setdetailCategoryboy] = useState(' ')
     const [currentPageboy, setcurrentPageboy] = useState(1)
     const [postsPerPageboy] = useState(12)
+    const [maxPice, setmaxPice] = useState([])
+    const [minPrice, setminPrice] = useState([])
 
     useEffect(() => {
         const getproductboy = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_boy?${detailCategoryboy}&${sizeminboy}&${sizemaxboy}&${colorboy}&${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_boy?${minPrice}&${maxPice}&${detailCategoryboy}&${sizeminboy}&${sizemaxboy}&${colorboy}&${sort}`)
             setproduct_boy(res.data)
         }
         getproductboy()
 
-    }, [callback, sort, colorboy, sizeminboy, sizemaxboy, detailCategoryboy])
+    }, [callback, sort, colorboy, sizeminboy, sizemaxboy, detailCategoryboy, maxPice, minPrice])
 
     return {
         product_boy: [product_boy, setproduct_boy],
@@ -30,7 +32,9 @@ function ProductBoyApi() {
         sizemaxboy: [sizemaxboy, setsizemaxboy],
         detailCategoryboy: [detailCategoryboy, setdetailCategoryboy],
         postsPerPageboy: [postsPerPageboy],
-        currentPageboy: [currentPageboy, setcurrentPageboy]
+        currentPageboy: [currentPageboy, setcurrentPageboy],
+        maxPice: [maxPice, setmaxPice],
+        minPrice: [minPrice, setminPrice]
     }
 }
 export default ProductBoyApi

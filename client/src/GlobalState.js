@@ -11,6 +11,7 @@ import ProductPkApi from './api/productPkApi'
 import ProductBetraiApi from './api/productBetraiApi'
 import ProductBegaiApi from './api/productBegaiApi'
 import ProductDetailApi from './api/productDetailApi'
+import PriceProductApimax from './api/getmaxPrice'
 import UserApi from './api/userApi'
 import Banner_mainAPI from './api/banner_mainApi'
 import axios from 'axios'
@@ -49,6 +50,7 @@ export const DataProvider = ({children}) =>{
         productbetraiApi: ProductBetraiApi(),
         productbegaiApi: ProductBegaiApi(),
         productDetailApi : ProductDetailApi(),
+        priceProduct_max:PriceProductApimax(),
         userApi : UserApi(),
         banner_mainApi : Banner_mainAPI()
     }

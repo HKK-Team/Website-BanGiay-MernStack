@@ -11,15 +11,17 @@ function ProductBegaiApi() {
     const [sizemaxbegai, setsizemaxbegai] = useState(' ')
     const [currentPagebegai, setcurrentPagebegai] = useState(1)
     const [postsPerPagebegai] = useState(12)
+    const [maxPicebegai, setmaxPicebegai] = useState([])
+    const [minPricebegai, setminPricebegai] = useState([])
 
     useEffect(() => {
         const getproducbegai = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_begai?${detailCategorybegai}&${sizeminbegai}&${sizemaxbegai}&${colorbegai}&${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_begai?${minPricebegai}&${maxPicebegai}&${detailCategorybegai}&${sizeminbegai}&${sizemaxbegai}&${colorbegai}&${sort}`)
             setproduct_begai(res.data)
         }
         getproducbegai()
 
-    }, [callback, sort, colorbegai, sizeminbegai, sizemaxbegai, detailCategorybegai])
+    }, [callback, sort, colorbegai, sizeminbegai, sizemaxbegai, detailCategorybegai, maxPicebegai, minPricebegai])
     return {
         product_begai: [product_begai, setproduct_begai],
         callback: [callback, setCallback],
@@ -29,7 +31,9 @@ function ProductBegaiApi() {
         sizemaxbegai: [sizemaxbegai, setsizemaxbegai],
         detailCategorybegai: [detailCategorybegai, setdetailCategorybegai],
         currentPagebegai: [currentPagebegai, setcurrentPagebegai],
-        postsPerPagebegai: [postsPerPagebegai]
+        postsPerPagebegai: [postsPerPagebegai],
+        maxPicebegai: [maxPicebegai, setmaxPicebegai],
+        minPricebegai: [minPricebegai, setminPricebegai]
     }
 }
 export default ProductBegaiApi

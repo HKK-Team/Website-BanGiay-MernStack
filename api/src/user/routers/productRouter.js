@@ -23,4 +23,7 @@ router.route('/product')
 
 router.route('/productsall')
     .get(productCtrl.getallproduct)
+
+router.route('/maxprice')
+    .get(productCtrl.getmaxprice)
 module.exports = router

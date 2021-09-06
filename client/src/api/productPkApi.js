@@ -11,15 +11,17 @@ function ProductPkApi() {
     const [sizemaxpk, setsizemaxpk] = useState(' ')
     const [currentPagepk, setcurrentPagepk] = useState(1)
     const [postsPerPagepk] = useState(12)
+    const [maxPicepk, setmaxPicepk] = useState([])
+    const [minPricepk, setminPricepk] = useState([])
 
     useEffect(() => {
         const getproducpk = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_pk?${detailCategorypk}&${sizeminpk}&${sizemaxpk}&${colorpk}&${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_pk?${minPricepk}&${maxPicepk}&${detailCategorypk}&${sizeminpk}&${sizemaxpk}&${colorpk}&${sort}`)
             setproduct_pk(res.data)
         }
         getproducpk()
 
-    }, [callback, sort, colorpk, sizeminpk, sizemaxpk, detailCategorypk])
+    }, [callback, sort, colorpk, sizeminpk, sizemaxpk, detailCategorypk, maxPicepk, minPricepk])
     return {
         product_pk: [product_pk, setproduct_pk],
         callback: [callback, setCallback],
@@ -29,7 +31,9 @@ function ProductPkApi() {
         sizemaxpk: [sizemaxpk, setsizemaxpk],
         detailCategorypk: [detailCategorypk, setdetailCategorypk],
         currentPagepk: [currentPagepk, setcurrentPagepk],
-        postsPerPagepk: [postsPerPagepk]
+        postsPerPagepk: [postsPerPagepk],
+        maxPicepk: [maxPicepk, setmaxPicepk],
+        minPricepk: [minPricepk, setminPricepk]
     }
 }
 export default ProductPkApi

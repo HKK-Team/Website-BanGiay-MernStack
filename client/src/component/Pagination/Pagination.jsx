@@ -3,7 +3,6 @@ import React, { useEffect, useState, useContext } from "react";
 import './Pagination.css'
 import {GlobalState} from '../../GlobalState'
 
-
 export default function Pagination() {
   const state = useContext(GlobalState);
   const [product_boy] = state.productboyApi.product_boy;
@@ -16,11 +15,15 @@ export default function Pagination() {
   //Get post current
   const [postsPerPageboy] = state.productboyApi.postsPerPageboy
 
+  const total = Math.ceil((product_boy.length) / postsPerPageboy);
+
   const pageNumber = [];
 
-  for(let i = 1; i <= Math.ceil((product_boy.length) / postsPerPageboy);i++){
+  for(let i = 1; i <= total;i++){
     pageNumber.push(i)
   }
+  
+  
   function paginate(number){
     setcurrentPageboy(number)
     setcurrentPagegirl(number)
@@ -33,15 +36,76 @@ export default function Pagination() {
       behavior: 'smooth'
   });
   }
-  return(
-    <div id="pagination">
-      <a href className="prev ">Trước</a>
-          {pageNumber.map(number =>(
-                    <a onClick={() => paginate(number)} href className='page_node' key={number}>
-                        {number}
-                    </a>
-          ))}
-          <a href className="next">Tiếp</a>
-    </div>
-  );
+
+  function eventpre(e){
+    e.preventDefault();
+    setcurrentPageboy(currentPageboy -1)
+    setcurrentPagegirl(currentPagegirl - 1)
+    setcurrentPagepk(currentPagepk - 1)
+    setcurrentPagegosto(currentPagegosto - 1)
+    setcurrentPagebetrai(currentPagebetrai -1)
+    setcurrentPagebegai(currentPagebegai -1)
+    
+    window.scrollTo({
+      top: 700,
+      behavior: 'smooth'
+  });
+  }
+  
+  function eventnext(e){
+    e.preventDefault();
+    setcurrentPageboy(currentPageboy +1)
+    setcurrentPagegirl(currentPagegirl + 1)
+    setcurrentPagepk(currentPagepk + 1)
+    setcurrentPagegosto(currentPagegosto + 1)
+    setcurrentPagebetrai(currentPagebetrai +1)
+    setcurrentPagebegai(currentPagebegai +1)
+    window.scrollTo({
+      top: 700,
+      behavior: 'smooth'
+  });
+  }
+  if(currentPageboy === 1 || currentPagegirl === 1 || currentPagepk === 1 || currentPagegosto === 1
+    || currentPagebetrai === 1 || currentPagebegai === 1){
+    return(
+      <div id="pagination">
+        <button Style ={{display : "none"}}  className="prev " onClick={eventpre}disabled={currentPageboy <= 1}>Trước</button>
+            {pageNumber.map(number =>(
+                      <a onClick={() => paginate(number)} href className='page_node' key={number} >
+                          {number}
+                      </a>
+            ))}
+            <button  className="next " onClick={eventnext}disabled={currentPageboy >= total}>Tiếp</button>
+      </div>
+    );
+  }
+  else if(currentPageboy >= total || currentPagegirl >= total || currentPagepk >= total || currentPagegosto >= total
+    || currentPagebetrai >= total || currentPagebegai >= total)
+  {
+    return(
+      <div id="pagination">
+        <button  className="prev " onClick={eventpre}disabled={currentPageboy <= 1}>Trước</button>
+            {pageNumber.map(number =>(
+                      <a onClick={() => paginate(number)} href className='page_node' key={number} >
+                          {number}
+                      </a>
+            ))}
+            <button Style ={{display : "none"}}  className="next " onClick={eventnext}disabled={currentPageboy >= total}>Tiếp</button>
+      </div>
+    );
+  }
+  else{
+    return(
+      <div id="pagination">
+        <button className="prev " onClick={eventpre}disabled={currentPageboy <= 1}>Trước</button>
+            {pageNumber.map(number =>(
+                      <a onClick={() => paginate(number)} href className='page_node' key={number} >
+                          {number}
+                      </a>
+            ))}
+            <button  className="next " onClick={eventnext}disabled={currentPageboy >= total}>Tiếp</button>
+      </div>
+    );
+  }
+    
 }

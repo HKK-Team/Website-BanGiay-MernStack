@@ -9,6 +9,7 @@ function App() {
       <DataProvider>
         <Router>
           <Pages>
+            {/* VD : localhost:3000/header */}
           </Pages>
         </Router> 
       </DataProvider>

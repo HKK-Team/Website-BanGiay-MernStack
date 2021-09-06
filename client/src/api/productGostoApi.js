@@ -11,15 +11,17 @@ function ProductGostoApi() {
     const [sizemaxgosto, setsizemaxgosto] = useState(' ')
     const [currentPagegosto, setcurrentPagegosto] = useState(1)
     const [postsPerPagegosto] = useState(12)
+    const [maxPicegosto, setmaxPicegosto] = useState([])
+    const [minPricegosto, setminPricegosto] = useState([])
 
     useEffect(() => {
         const getproducgosto = async() => {
-            const res = await axios.get(`http://localhost:5000/api/products_gosto?${detailCategorygosto}&${sizemingosto}&${sizemaxgosto}&${colorgosto}&${sort}`)
+            const res = await axios.get(`http://localhost:5000/api/products_gosto?${minPricegosto}&${maxPicegosto}&${detailCategorygosto}&${sizemingosto}&${sizemaxgosto}&${colorgosto}&${sort}`)
             setproduct_gosto(res.data)
         }
         getproducgosto()
 
-    }, [callback, sort, colorgosto, sizemingosto, sizemaxgosto, detailCategorygosto])
+    }, [callback, sort, colorgosto, sizemingosto, sizemaxgosto, detailCategorygosto, maxPicegosto, minPricegosto])
     return {
         product_gosto: [product_gosto, setproduct_gosto],
         callback: [callback, setCallback],
@@ -29,7 +31,9 @@ function ProductGostoApi() {
         sizemaxgosto: [sizemaxgosto, setsizemaxgosto],
         detailCategorygosto: [detailCategorygosto, setdetailCategorygosto],
         currentPagegosto: [currentPagegosto, setcurrentPagegosto],
-        postsPerPagegosto: [postsPerPagegosto]
+        postsPerPagegosto: [postsPerPagegosto],
+        maxPicegosto: [maxPicegosto, setmaxPicegosto],
+        minPricegosto: [minPricegosto, setminPricegosto]
     }
 }
 export default ProductGostoApi
