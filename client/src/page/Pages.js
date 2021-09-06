@@ -15,6 +15,10 @@ import Account from './Account/Account_Infomation'
 import Account_OderManagement from "./Account/Account_OderManagement";
 import Account_Address from "./Account/Account_Address";
 import Home from "./Home/Home";
+import Loading from '../page/Loading/Loading';
+import Profile from "../page/Account/Account_Infomation"
+import Address from "../page/Account/Account_Address"
+import Oder from "../page/Account/Account_OderManagement"
 function Pages() {
   return (
     <Switch>
@@ -33,6 +37,10 @@ function Pages() {
       <Route exact path="/Account" component={Account}></Route>
       <Route exact path="/AccountOderManagement" component={Account_OderManagement}></Route>
       <Route exact path="/AccountAddress" component={Account_Address}></Route>
+      <Route exact path="/Loading" component={Loading}></Route>
+      <Route exact path="/Profile" component={Profile}></Route>
+      <Route exact path="/AccountAddress" component={Address}></Route>
+      <Route exact path="/AccountOderManagement" component={Oder}></Route>
     </Switch>
   );
 }

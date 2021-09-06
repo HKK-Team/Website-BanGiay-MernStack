@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const userCtrl = {
+    // register
     register: async (req, res) =>{
         try {
             const {firstname,lastname, email, password} = req.body;
@@ -38,6 +39,7 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
+    // login
     login: async (req, res) =>{
         try {
             const {email, password} = req.body;
@@ -46,7 +48,7 @@ const userCtrl = {
             if(!user) return res.status(400).json({msg: "User does not exist."})
 
             const isMatch = await bcrypt.compare(password, user.password)
-            if(!isMatch) return res.status(400).json({msg: "Incorrect password."})
+            if(!isMatch) return res.status(400).json({msg: "Wrong email or password, Please re-enter your account or password."})
 
             // If login success , create access token and refresh token
             const accesstoken = createAccessToken({id: user._id})
@@ -64,6 +66,7 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
+    // logout
     logout: async (req, res) =>{
         try {
             res.clearCookie('refreshtoken', {path: '/user/refresh_token'})
@@ -72,6 +75,7 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
+    // refreshToken
     refreshToken: (req, res) =>{
         try {
             const rf_token = req.cookies.refreshtoken;
@@ -100,6 +104,14 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
+    User : async(req,res) =>{
+        try {
+            const user = await Users.find()
+            res.json(user)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    }
     // addCart: async (req, res) =>{
     //     try {
     //         const user = await Users.findById(req.user.id)
