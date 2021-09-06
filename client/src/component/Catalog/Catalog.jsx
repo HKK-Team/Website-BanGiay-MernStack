@@ -683,6 +683,7 @@ function eventsize45(e) {
         setminPricebetrai('price[gte]=' + newValue[0])
         setmaxPicebetrai('price[lte]=' + newValue[1])
   };
+
   return (
     <aside className="sidebar_collection">
       <div className="block_content">
