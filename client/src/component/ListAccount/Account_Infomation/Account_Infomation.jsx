@@ -6,7 +6,7 @@ export default function Account_Infomation(props) {
     <div className="user-box">
       <h2 className="title-detail">
         Thông tin tài khoản
-        <Link to="/updateAccount">
+        <Link to="/UpdateAccount">
           <i class="fas fa-edit"></i> Cập nhật thông tin khách hàng
         </Link>
       </h2>
