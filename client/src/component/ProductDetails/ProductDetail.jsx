@@ -11,6 +11,7 @@ import AdvertisingCard from "./AdvertisingCard/AdvertisingCard";
 import Titlebar from "./Titlebar/Titlebar";
 import {Link} from "react-router-dom";
 export default function ProductDetail(props) {
+  // zoom hình khi hover
   function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
     img = document.getElementById(imgID);

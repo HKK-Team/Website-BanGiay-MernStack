@@ -1,19 +1,19 @@
 import "./SliderHome.css";
 import React from "react";
-// import {  useEffect} from "react";
+import {  useEffect} from "react";
 export default function SliderHome(props) {
-
-  // useEffect(() => {
-  //   let counter = 1;
-  //   setInterval(function () {
-  //     document.getElementById("radio" + counter).checked = true;
-  //     counter++;
-  //     if (counter > 4) {
-  //       counter = 1;
-  //     }
-  //   }, 4000);
-    
-  // },[]);
+  // auto chuyển hình slider home
+  useEffect(() => {
+    let counter = 1;
+    const loop = setInterval(function () {
+      document.getElementById("radio" + counter).checked = true;
+      counter++;
+      if (counter > 4) {
+        counter = 1;
+      }
+    }, 4000);  
+    return ()=> clearInterval(loop);
+  },[]);
   return (
     <section className="slider_wrapper">
       <div className="slider">

@@ -11,41 +11,42 @@ export default function SortBy() {
   const [sizeminboy, setsizeminboy] = state.productboyApi.sizeminboy;
 
   //đỉnh cao việt nam là đây
-  const temp=[];
-    for(let i = colorboy.length -1; i >= 0;i--)
-    {
-      if(colorboy[i] === '=')
-      break;
-      temp.push(colorboy[i])
-    }
-    //thêm đây nữa
-    const tempsize=[];
-    for(let i = sizeminboy.length -1; i >= 0;i--)
-    {
-      if(sizeminboy[i] === '=')
-      break;
-      tempsize.push(sizeminboy[i])
-    }
-    function eventchangecolor(e){
-      e.preventDefault();
-      setcolorboy("")
-    }
-    function eventchangesize(e){
-      e.preventDefault();
-      setsizeminboy("")
-    }
+  const temp = [];
+  for (let i = colorboy.length - 1; i >= 0; i--) {
+    if (colorboy[i] === "=") break;
+    temp.push(colorboy[i]);
+  }
+  //thêm đây nữa
+  const tempsize = [];
+  for (let i = sizeminboy.length - 1; i >= 0; i--) {
+    if (sizeminboy[i] === "=") break;
+    tempsize.push(sizeminboy[i]);
+  }
+  function eventchangecolor(e) {
+    e.preventDefault();
+    setcolorboy(" ");
+  }
+  function eventchangesize(e) {
+    e.preventDefault();
+    setsizeminboy(" ");
+  }
+  if (colorboy !== " " || sizeminboy !== " ") {
     return (
       <div className="sort_by">
         <div className="sort_by-wrapper">
           <label htmlFor="">LỌC THEO : </label>
           <a href>
-              {temp.reverse().toString().replaceAll(",","")}
+            {temp.reverse().toString().replaceAll(",", "")}
             <i class="fas fa-times" onClick={eventchangecolor}></i>
           </a>
           <a href>
-            {tempsize.reverse().toString().replaceAll(",","")} <i class="fas fa-times"onClick={eventchangesize}></i>
+            {tempsize.reverse().toString().replaceAll(",", "")}{" "}
+            <i class="fas fa-times" onClick={eventchangesize}></i>
           </a>
         </div>
       </div>
     );
+  }else{
+    return<></>
+  }
 }
