@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
-import {  useEffect } from "react";
+import {  useEffect,useState } from "react";
 import "./ProductDetail.css";
 import zalopay from "../../images/images/zalopay.webp";
 import visa from "../../images/images/visa.webp";
@@ -81,6 +81,30 @@ export default function ProductDetail(props) {
   useEffect(() => {
     imageZoom("productDetail_image-image", "myresult");
   },);
+  //unfavorite or favorite product
+  const [check, setCheck] = useState(true);
+  var favorite;
+  function eventfavorite(e){
+    e.preventDefault();
+    setCheck(false);
+    alert("Sản phẩm đã được thêm vào yêu thích !!")
+  }
+  function eventunfavorite(e){
+    e.preventDefault();
+    setCheck(true);
+    alert("Sản phẩm đã được bỏ khỏi yêu thích !!")
+  }
+  if(check){
+    favorite = <Link to="#" onClick={eventfavorite}>
+    <i class="fas fa-heart"></i> Thêm vào yêu thích
+    </Link>
+  }
+  else{
+    favorite = <Link to="#" onClick={eventunfavorite}>
+        <i class="fas fa-heart-broken"></i> Bỏ yêu thích
+        </Link>
+  }
+
   return (
     <section className="productDetail">
       <Titlebar
@@ -178,9 +202,7 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail_information-action-cart">
                   <button>Mua Ngay</button>
-                  <Link to="#">
-                    <i class="fas fa-heart"></i> Thêm vào yêu thích
-                  </Link>
+                  {favorite}
                 </div>
               </form>
               <div className="productDetail_information-hotline">

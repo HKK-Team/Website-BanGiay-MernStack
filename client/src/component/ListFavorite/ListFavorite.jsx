@@ -4,7 +4,7 @@ import Favorite from "./Favorite/Favorite";
 import image from "./../../images/Hunter-Nam/dsmh04200den__3__483c6547abee43c2acac5850822072f0_1024x1024.jpg";
 
 export default function ListFavorite() {
-  var favoriteCount = 0;
+  var favoriteCount = 2;
   return (
     <section className="favortite">
       <div className="container">
