@@ -18,11 +18,11 @@ function Login() {
   const loginSubmit = async e =>{
       e.preventDefault()
       try {
-          await axios.post('http://localhost:5000/user/login', {...user})
+          await axios.post('/user/login', {...user})
 
           localStorage.setItem('firstLogin', true)
           alert("Login Successfully!")
-          window.location.href = "/Loading";
+          window.location.href = "/";
       } catch (err) {
           alert(err.response.data.msg)
       }
@@ -64,6 +64,7 @@ function Login() {
                     name = "password"
                     placeholder="Mật khẩu"
                     size="32"
+                    required
                     pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
                     autoComplete="on"
                     value={user.password} 
