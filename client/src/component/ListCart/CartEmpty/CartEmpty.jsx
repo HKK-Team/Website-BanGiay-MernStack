@@ -15,10 +15,10 @@ export default function CartEmpty() {
             <p className="message">
               Không có sản phẩm nào trong giỏ hàng của bạn.
             </p>
-            <a href className="btn">
-              Tra cứu tình trang <span>đơn hàng</span>
+            <a href className="myoder">
+              Đơn hàng của tôi
             </a>
-            <a href className="btn btn-yellow">
+            <a href className="btn-red">
               Tiếp tục mua hàng
             </a>
           </div>

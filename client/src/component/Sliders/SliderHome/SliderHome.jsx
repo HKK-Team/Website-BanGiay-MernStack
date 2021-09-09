@@ -2,7 +2,7 @@ import "./SliderHome.css";
 import React from "react";
 import {  useEffect} from "react";
 export default function SliderHome(props) {
-
+  // auto chuyển hình slider home
   useEffect(() => {
     let counter = 1;
     const loop = setInterval(function () {

@@ -1,0 +1,48 @@
+.input_text {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  color: #757575;
+
+  display: block;
+  font-family: Open Sans;
+  font-size: 13px;
+  line-height: 18.5714px;
+  width: 100%;
+  margin-bottom: 15px;
+
+  padding: 8px 15px;
+}
+.user-boxx {
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+
+  box-shadow: #000000 0px 2px 4px 0px;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 20px 0px 0px;
+  padding: 15px;
+}
+.btn {
+  align-items: flex-start;
+  background-color: #034ea1;
+  color: #ffffff;
+  display: block;
+
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+
+  width: 100%;
+  margin: 0px 0px 10px;
+  padding: 6px 12px;
+  text-align: center;
+  cursor: pointer;
+}
+.button{
+    text-align: center;
+}
+.button a{
+    color: blue;
+    cursor: pointer;
+}
