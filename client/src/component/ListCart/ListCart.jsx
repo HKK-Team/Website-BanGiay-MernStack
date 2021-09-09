@@ -1,4 +1,4 @@
-import React ,{Link}from "react";
+import React from "react";
 import "./ListCart.css";
 import Cart from "./Cart/Cart";
 import CartEmpty from "./CartEmpty/CartEmpty";
@@ -7,7 +7,7 @@ import image from "../../images/Hunter-Nam/dsmh04200den__3__483c6547abee43c2acac
 
 export default function ListCart() {
   var CartCount = 0;
-  if (CartCount > 1) {
+  if (CartCount >= 1) {
     return (
       <section className="Cart">
         <div className="container">
@@ -36,9 +36,9 @@ export default function ListCart() {
           <div className="modal_footer">
             <div className="pull_left">
               <h3 className="continue_shopping">
-                <Link to="/" className="comeback">
+                <a href='/' className="comeback">
                   <i class="fa fa-reply"></i> Tiếp tục mua hàng
-                </Link>
+                </a>
               </h3>
             </div>
             <div className="pull_right">

@@ -5,7 +5,7 @@ import iconNew from "../../images/images/new.webp";
 import {Link} from "react-router-dom";
 export default function Product(props) {  // props là dữ liệu được lưu trong mảng
   return (
-    <div className="product_item">
+    <div className="product_item" style={{width:`${props.width}`,height:`${props.height}`}}>
       <div className="product_item-image">
         <Link to={props.typee +"/"+props.masp}>
           <img src={props.image} alt="image" className='image_Product' title={props.name}/>

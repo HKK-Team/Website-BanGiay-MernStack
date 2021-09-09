@@ -1,0 +1,13 @@
+.wrap {
+  margin: 0px 140.85px;
+  padding: 0px 76.75px;
+  color: #737373;
+  font-size: 14px;
+  font-family: Helvetica Neue;
+  display: flex;
+  flex-direction: row-reverse;
+  grid-gap: 67px;
+
+  font-size: 14px;
+  line-height: 18.2px;
+}
