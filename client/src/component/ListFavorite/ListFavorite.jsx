@@ -16,7 +16,7 @@ export default function ListFavorite() {
           <div className="wish-empty">
           Hãy nhấn <i class="fas fa-heartbeat"></i> sản phẩm bạn yêu thích khi mua sắm để xem lại thuận tiện nhất.
           </div>}
-          {favoriteCount > 1 && (
+          {favoriteCount >= 1 && (
             <div className="favortite_box">
               <table className="table-wislist">
                 <thead>

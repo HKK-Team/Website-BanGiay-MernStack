@@ -5,10 +5,61 @@ import React, { useEffect, useState, useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import { NavLink } from "react-router-dom";// thư viện dùng để lưu active link
 import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
+import axios from 'axios'
 export default function Header(props) {
-  const [small, setSmall] = useState(false);
 
-  const state = useContext(GlobalState);
+  const state = useContext(GlobalState)
+  const [isLogged] = state.userAPI.isLogged
+  const logoutUser = async () =>{
+      await axios.get('/user/logout')
+      
+      localStorage.removeItem('firstLogin')
+      
+      window.location.href = "/";
+  }
+
+  // Logged
+  const loggedRouter = () =>{
+      return(
+          <>
+              <span><Link to="/Profile" className="header_top-link">Wellcom to</Link></span>
+              <span><Link to="/" onClick={logoutUser} className="header_top-link">Logout</Link></span>
+          </>
+      )
+  };
+  // not logged in
+  const nologgedRouter =() =>{
+    return(
+      <>
+          <span><Link to="/Login" className="header_top-link">Đăng nhập</Link></span>
+          <span><Link to="/Register" className="header_top-link">Đăng ký</Link></span>
+      </>
+  )
+  };
+  // Logged
+  const IsFavorite =() =>{
+    return(
+      <>
+        <Link to="/favorite" className="" style={{ color: "black" }}>{" "}
+          <i class="far fa-heart"></i>{" "}
+          <span className="Cart_count">0</span>
+        </Link>
+      </>
+  )
+  };
+  // no logged in
+  const NotFavorite =() =>{
+    return(
+      <>
+        <Link to="/Login" className="" style={{ color: "black" }}>{" "}
+          <i class="far fa-heart"></i>{" "}
+          <span className="Cart_count">0</span>
+        </Link>
+      </>
+  )
+  };
+
+  const [small, setSmall] = useState(false);
 
   const [menus] = state.menu1API.menus; // lấy dữ liệu từ model menus trong db
   const [menus2] = state.menu2API.menus2;
@@ -44,18 +95,10 @@ export default function Header(props) {
                     </Link>
                   </li>
                 ))}
-                <li className="header_top-item">
-                  <span>
-                    <Link to="/Login" className="header_top-link">
-                      Đăng nhập
-                    </Link>
-                  </span>
-                  <span>|</span>
-                  <span>
-                    <Link to="/Register" className="header_top-link">
-                      Đăng ký
-                    </Link>
-                  </span>
+                <li className="header_top-item"> {/*check logged */}
+                {
+                    isLogged ? loggedRouter() : nologgedRouter()
+                } 
                 </li>
                 <img src={Vi} alt="Viet Nam" className="header_top-VN" />
               </ul>
@@ -110,11 +153,10 @@ export default function Header(props) {
               </div>
               <div className="header_bottom-cart">
                 <span className="header_bottom-cart-favorite">
-                  <Link to="/favorite" className="" style={{ color: "black" }}>
-                    {" "}
-                    <i class="far fa-heart"></i>{" "}
-                    <span className="Cart_count">0</span>
-                  </Link>
+                  {
+                    isLogged ? IsFavorite() : NotFavorite()
+                  }
+
                 </span>
                 <span className="header_bottom-cart-cart">
                   <Link to="/cart" style={{ color: "black" }}>

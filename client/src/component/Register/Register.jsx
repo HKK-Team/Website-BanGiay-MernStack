@@ -17,7 +17,7 @@ const registerSubmit = async e =>{
     e.preventDefault()
     try {
         await axios.post('http://localhost:5000/user/register', {...user})
-        localStorage.setItem('Created!', true)
+        localStorage.setItem('firstLogin', true)
         alert("Created User Succesfully!")
         window.location.href = "/Login";
     } catch (err) {
@@ -43,6 +43,7 @@ const registerSubmit = async e =>{
                     className="text"
                     placeholder="Họ"
                     size="32"
+                    required
                     value={user.firstname} 
                     onChange={onChangeInput}
                   />
@@ -58,6 +59,7 @@ const registerSubmit = async e =>{
                     name = "lastname"
                     placeholder="Tên"
                     size="32"
+                    required
                     value={user.lastname} 
                     onChange={onChangeInput}
                   />
@@ -73,6 +75,7 @@ const registerSubmit = async e =>{
                     name = "email"
                     placeholder="Email"
                     size="32"
+                    required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     value={user.email} 
                     onChange={onChangeInput}
@@ -91,6 +94,7 @@ const registerSubmit = async e =>{
                     size="32"
                     required
                     pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
+                    autoComplete="on"
                     value={user.password} 
                     onChange={onChangeInput}                
                   />
