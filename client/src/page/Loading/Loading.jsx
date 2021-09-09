@@ -22,6 +22,7 @@ export default function Home() {
   const [product_gosto] = state.productgostoApi.product_gosto;
   const [product_betrai] = state.productbetraiApi.product_betrai;
   const [product_begai] = state.productbegaiApi.product_begai;
+  const [banner_main] = state.banner_mainApi.banner_main;
 
   var arrayPrBoy = [];
   var arrayPrGirl = [];
@@ -151,7 +152,17 @@ export default function Home() {
       <Loading
         // # link đường dẫn các trang (coder chuyên nghiệp có tâm nhất hệ mặt trời)
       />
-      <SliderHome />
+      {
+        banner_main.map((item) =>(
+          // load banner_main
+          <SliderHome
+            banner1 = {item.images.image1}
+            banner2 = {item.images.image2}
+            banner3 = {item.images.image3}
+            banner4 = {item.images.image4}
+          />
+        ))
+      }
       <Announcement />
       <Banner />
       {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}

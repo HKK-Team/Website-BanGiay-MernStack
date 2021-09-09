@@ -34,18 +34,23 @@ export default function SortBy() {
       e.preventDefault();
       setsizeminboy("")
     }
-    return (
-      <div className="sort_by">
-        <div className="sort_by-wrapper">
-          <label htmlFor="">LỌC THEO : </label>
-          <a href>
-              {temp.reverse().toString().replaceAll(",","")}
-            <i class="fas fa-times" onClick={eventchangecolor}></i>
-          </a>
-          <a href>
-            {tempsize.reverse().toString().replaceAll(",","")} <i class="fas fa-times"onClick={eventchangesize}></i>
-          </a>
+    if (colorboy !== " " || sizeminboy !== " ") {
+      return (
+        <div className="sort_by">
+          <div className="sort_by-wrapper">
+            <label htmlFor="">LỌC THEO : </label>
+            <a href>
+              {temp.reverse().toString().replaceAll(",", "")}
+              <i class="fas fa-times" onClick={eventchangecolor}></i>
+            </a>
+            <a href>
+              {tempsize.reverse().toString().replaceAll(",", "")}{" "}
+              <i class="fas fa-times" onClick={eventchangesize}></i>
+            </a>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }else{
+      return<></>
+    }
 }

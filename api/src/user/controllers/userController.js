@@ -9,8 +9,9 @@ const userCtrl = {
             const {firstname,lastname, email, password} = req.body;
 
             const user = await Users.findOne({email})
+            // check email
             if(user) return res.status(400).json({msg: "The email already exists."})
-
+            // check password
             if(password.length < 6) 
                 return res.status(400).json({msg: "Password is at least 6 characters long."})
 
@@ -26,7 +27,6 @@ const userCtrl = {
             // Then create jsonwebtoken to authentication
             const accesstoken = createAccessToken({id: newUser._id})
             const refreshtoken = createRefreshToken({id: newUser._id})
-
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
                 path: '/user/refresh_token',
@@ -45,15 +45,16 @@ const userCtrl = {
             const {email, password} = req.body;
 
             const user = await Users.findOne({email})
+            // check user
             if(!user) return res.status(400).json({msg: "User does not exist."})
 
             const isMatch = await bcrypt.compare(password, user.password)
+            // check password
             if(!isMatch) return res.status(400).json({msg: "Wrong email or password, Please re-enter your account or password."})
-
             // If login success , create access token and refresh token
+            // accesstoken = chìa khóa để lấy đc thông tin cá nhân vd email, passs...
             const accesstoken = createAccessToken({id: user._id})
             const refreshtoken = createRefreshToken({id: user._id})
-
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
                 path: '/user/refresh_token',
@@ -69,6 +70,7 @@ const userCtrl = {
     // logout
     logout: async (req, res) =>{
         try {
+            // clear refreshtoken (refresh_token = thẻ để ra vào) 
             res.clearCookie('refreshtoken', {path: '/user/refresh_token'})
             return res.json({msg: "Logged out"})
         } catch (err) {
@@ -78,9 +80,10 @@ const userCtrl = {
     // refreshToken
     refreshToken: (req, res) =>{
         try {
+            // refresh token when login or gegister 
             const rf_token = req.cookies.refreshtoken;
             if(!rf_token) return res.status(400).json({msg: "Please Login or Register"})
-
+            // verify token
             jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
                 if(err) return res.status(400).json({msg: "Please Login or Register"})
 
@@ -104,14 +107,15 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
-    User : async(req,res) =>{
-        try {
-            const user = await Users.find()
-            res.json(user)
-        } catch (err) {
-            return res.status(500).json({msg: err.message})
-        }
-    }
+    // User : async(req,res) =>{
+    //     try {
+    //         const user = await Users.find()
+    //         res.json(user)
+    //     } catch (err) {
+    //         return res.status(500).json({msg: err.message})
+    //     }
+    // }
+    
     // addCart: async (req, res) =>{
     //     try {
     //         const user = await Users.findById(req.user.id)
