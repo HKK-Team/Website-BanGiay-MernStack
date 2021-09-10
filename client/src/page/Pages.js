@@ -11,7 +11,6 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Cart from "./Cart/Cart";
 import Favorite from "./Favorite/Favorite";
-import Account from "./Account/Account_Infomation";
 import Account_OderManagement from "./Account/Account_OderManagement";
 import Account_Address from "./Account/Account_Address";
 import Home from "./Home/Home";
@@ -19,10 +18,6 @@ import Loading from '../page/Loading/Loading';
 import Profile from "../page/Account/Account_Infomation"
 import {GlobalState} from '../GlobalState'
 import NotFound from '../component/utils/not_found/NotFound'
-import Loading from "../page/Loading/Loading";
-import Profile from "../page/Account/Account_Infomation";
-import Address from "../page/Account/Account_Address";
-import Oder from "../page/Account/Account_OderManagement";
 import UpdateAccount from "../page/Account/Update_Account";
 import Search from "./Search/Search";
 import Payment from "./Payment/Payment";
@@ -43,11 +38,13 @@ function Pages() {
       <Route exact path="/Register" component={isLogged ? NotFound :Register}></Route>
       <Route exact path="/Cart" component={Cart}></Route>
       <Route exact path="/Favorite" component={Favorite}></Route>
-      <Route exact path="/Account" component={isLogged ? NotFound :Account}></Route>
-      <Route exact path="/AccountOderManagement" component={isLogged ? NotFound :Account_OderManagement}></Route>
-      <Route exact path="/AccountAddress" component={isLogged ? NotFound :Account_Address}></Route>
+      <Route exact path="/AccountOderManagement" component={isLogged ?   Account_OderManagement: NotFound }></Route>
+      <Route exact path="/AccountAddress" component={isLogged ?  Account_Address : NotFound }></Route>
       <Route exact path="/Loading" component={Loading}></Route>
       <Route exact path="/Profile" component={Profile}></Route>
+      <Route exact path="/Search" component={Search}></Route>
+      <Route exact path="/Payment" component={Payment}></Route>
+      <Route exact path="/UpdateAccount" component={UpdateAccount}></Route>
     </Switch>
   );
 }

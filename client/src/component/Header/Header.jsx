@@ -10,6 +10,7 @@ export default function Header(props) {
 
   const state = useContext(GlobalState)
   const [isLogged] = state.userAPI.isLogged
+  const [profile] = state.userAPI.user;
   const logoutUser = async () =>{
       await axios.get('/user/logout')
       
@@ -22,7 +23,7 @@ export default function Header(props) {
   const loggedRouter = () =>{
       return(
           <>
-              <span><Link to="/Profile" className="header_top-link">Wellcom to</Link></span>
+              <span><Link to="/Profile" className="header_top-link">Wellcom {profile.lastname}</Link></span>
               <span><Link to="/" onClick={logoutUser} className="header_top-link">Logout</Link></span>
           </>
       )
