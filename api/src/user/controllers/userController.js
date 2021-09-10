@@ -6,7 +6,7 @@ const userCtrl = {
     // register
     register: async (req, res) =>{
         try {
-            const {firstname,lastname, email, password} = req.body;
+            const {firstname,lastname, email, password,address,nationality,phonenumber} = req.body;
 
             const user = await Users.findOne({email})
             // check email
@@ -18,7 +18,7 @@ const userCtrl = {
             // Password Encryption
             const passwordHash = await bcrypt.hash(password, 10)
             const newUser = new Users({
-                firstname, lastname, email, password: passwordHash
+                firstname, lastname, email, password: passwordHash,address,nationality,phonenumber
             })
 
             // Save mongodb
@@ -107,15 +107,19 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
-    // User : async(req,res) =>{
-    //     try {
-    //         const user = await Users.find()
-    //         res.json(user)
-    //     } catch (err) {
-    //         return res.status(500).json({msg: err.message})
-    //     }
-    // }
-    
+    editUser : async (req,res) =>{
+        // check your id
+        let user = await Users.findById(req.body._id);
+        user = req.body;
+        // update to mongodb
+        const editUser = new Users(user);
+        try {
+            await Users.updateOne({ _id: req.body._id }, editUser);
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    }
     // addCart: async (req, res) =>{
     //     try {
     //         const user = await Users.findById(req.user.id)

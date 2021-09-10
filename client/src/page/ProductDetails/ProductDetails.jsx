@@ -15,6 +15,7 @@ export default function ProductDetails() {
     return item.idCategory_product === params.id;
 
   });
+  console.log(detail);
   return (
     <Fragment>
       <Header />
