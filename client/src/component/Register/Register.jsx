@@ -5,7 +5,7 @@ import "./Register.css";
 
 export default function Register() {
   const [user, setUser] = useState({
-    firstname:'', lastname : '', email:'', password: ''
+    firstname:'', lastname : '', email:'', password: '',address : '', nationality : '' ,phonenumber : '',
 })
 
 const onChangeInput = e =>{

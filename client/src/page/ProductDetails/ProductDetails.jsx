@@ -14,6 +14,7 @@ export default function ProductDetails() {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.idCategory_product === params.id;
   });
+  console.log(detail);
   return (
     <Fragment>
       <Header />

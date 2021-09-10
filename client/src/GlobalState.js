@@ -50,7 +50,7 @@ export const DataProvider = ({children}) =>{
         productbegaiApi: ProductBegaiApi(),
         productDetailApi : ProductDetailApi(),
         priceProduct_max:PriceProductApimax(),
-        banner_mainApi : Banner_mainAPI()
+        banner_mainApi : Banner_mainAPI(),
     }
     return (
         <GlobalState.Provider value={state}>

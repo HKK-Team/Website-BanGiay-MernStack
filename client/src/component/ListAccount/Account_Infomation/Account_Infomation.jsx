@@ -1,7 +1,11 @@
-import React from "react";
+import React,{useContext} from "react";
 import "./Account_Infomation.css";
 import {Link} from "react-router-dom"
-export default function Account_Infomation(props) {
+import { GlobalState } from "../../../GlobalState";
+export default function Account_Infomation() {
+  // get object
+  const state = useContext(GlobalState);
+  const [profile] = state.userAPI.user;
   return (
     <div className="user-box">
       <h2 className="title-detail">
@@ -10,11 +14,11 @@ export default function Account_Infomation(props) {
           <i class="fas fa-edit"></i> Cập nhật thông tin khách hàng
         </Link>
       </h2>
-      <p>Họ và Tên: </p>
-      <p className="email">Email: </p>
-      <p>Địa chỉ: </p>
-      <p>Quốc gia: </p>
-      <p>Điện thoại: </p>
+      <p>Họ và Tên : {profile.firstname +" "+ profile.lastname}</p>
+      <p className="email">Email: {profile.email}</p>
+      <p>Địa chỉ : {profile.address}</p>
+      <p>Tỉnh / Thành Phố : {profile.nationality}</p>
+      <p>Điện thoại : {profile.phonenumber}</p>
       <span className="p">Hạng thẻ tiếp theo Silver - chiết khẩu 3%</span>
       <Link to = "#" className="a">
         Xem thêm chính sách khách hàng thân thiết.
