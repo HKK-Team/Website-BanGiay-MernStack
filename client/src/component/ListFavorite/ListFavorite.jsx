@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ListFavorite.css";
 import Favorite from "./Favorite/Favorite";
-import image from "./../../images/Hunter-Nam/dsmh04200den__3__483c6547abee43c2acac5850822072f0_1024x1024.jpg";
+import { GlobalState } from "../../GlobalState";
 
 export default function ListFavorite() {
+  const state = useContext(GlobalState);
+  const [productFavorites] = state.productFavorites.productFavorites;
+  const [iduser, setiduser] = state.userAPI.iduser
+  const detail = productFavorites.filter((item) => {
+    // tìm và trả về đối tượng chứa thuộc tính của giày
+    return item.iduser === iduser;
+  });
+
   var favoriteCount = 2;
   return (
     <section className="favortite">
@@ -31,13 +39,15 @@ export default function ListFavorite() {
                   </tr>
                 </thead>
                 {/* list favorite */}
-                <Favorite
-                  image={image}
-                  name="Dentsu Redder - Vietnamese Canvas of Pride (Women)"
-                  color="Trắng"
-                  size="39"
-                  price="999000"
-                />
+                {detail.map(item => (
+                      <Favorite key={item._id}
+                      image={item.image}
+                      name={item.nameProduct}
+                      color={item.color}
+                      size={item.size}
+                      price={item.price}
+                    />
+                ))}
                 {/* list favorite */}
               </table>
             </div>

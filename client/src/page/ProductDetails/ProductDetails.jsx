@@ -13,6 +13,7 @@ export default function ProductDetails() {
   const detail = productDetail.filter((item) => {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.idCategory_product === params.id;
+
   });
   return (
     <Fragment>
