@@ -39,6 +39,24 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
             return res.status(500).json({ msg: err.message })
         }
     },
+    // return all product
+    getProducts: async(req, res) =>{
+        try {
+            const features = new ApiFeatures(Products.find(), req.query)
+            .filtering()
+
+            const products = await features.query
+
+            res.json({
+                status: 'success',
+                result: products.length,
+                products: products
+            })
+            
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
     getproduct_boy: async(req, res) => {
         try {
             const features = new ApiFeatures(Products.find({ nameCategoryProduct: { $eq: "Hunter Nam" } })
