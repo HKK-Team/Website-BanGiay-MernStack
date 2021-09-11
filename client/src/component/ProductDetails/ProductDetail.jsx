@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+var arrid = [];
+var arrcheck = [];
 
 export default function ProductDetail(props) {
   // zoom hình khi hover
@@ -102,6 +104,38 @@ export default function ProductDetail(props) {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.idCategory_product === params.id;
   });
+  const favoriteforuser = productFavorites.filter((item) => {
+    // tìm và trả về đối tượng chứa thuộc tính của giày
+    return item.iduser === iduser;
+  });
+  const favoriteOne = productFavorites.filter((item) => {
+    // tìm và trả về đối tượng chứa thuộc tính của giày
+    return item.iduser === iduser;
+  });
+  console.log(favoriteOne)
+
+  // var data = { check: true, id: detail[0]._id }
+  // localStorage.setItem("data", JSON.stringify(data))
+  //let storedSettings = JSON.parse(localStorage.getItem('data'));
+   
+
+//   if(arrid.indexOf(detail[0]._id) === -1) {
+//     arrid.push(detail[0]._id);
+//     localStorage.setItem("arrid", JSON.stringify(arrid))
+//     let storedforarrid = JSON.parse(localStorage.getItem('arrid'));
+//     arrcheck.push(true)
+//     localStorage.setItem("arrcheck", JSON.stringify(arrcheck))
+//      let storedforarrcheck = JSON.parse(localStorage.getItem('arrcheck'));
+// }
+  //console.log(arrid)
+  // localStorage.setItem("arrid", JSON.stringify(arrid))
+  // let storedforarrid = JSON.parse(localStorage.getItem('arrid'));
+  //console.log(storedforarrid)
+
+  //console.log(arrcheck)
+  // localStorage.setItem("arrcheck", JSON.stringify(arrcheck))
+  // let storedforarrcheck = JSON.parse(localStorage.getItem('arrcheck'));
+  //console.log(storedforarrcheck)
 
   function eventfavorite(e) {
     e.preventDefault();
@@ -110,6 +144,14 @@ export default function ProductDetail(props) {
   }
   function eventfavoriteIsLogin(e) {
     e.preventDefault();
+    const data = { idCategory_product: detail[0].idCategory_product,
+      nameProduct: detail[0].nameProduct,
+      color: detail[0].color,
+      price: detail[0].price,
+      image: detail[0].image,
+      size: sizebychoice,
+      iduser: iduser,}
+      console.log(data)
     if (sizebychoice === 0) {
       alert("Vui lòng chọn size sản phẩm !!");
     } else {
@@ -126,46 +168,68 @@ export default function ProductDetail(props) {
           iduser: iduser,
         },
       });
+      //window.location.reload(false);
       alert("Sản phẩm đã được thêm vào yêu thích !!");
       setCheck(false);
+      // var data = { check: false, id: detail[0]._id }
+      // localStorage.setItem("data", JSON.stringify(data))
+      // let storedSettings = JSON.parse(localStorage.getItem('data'));
+      // for(let i = 0; i < arrid.length;i++){
+      //   if(arrid[i] === detail[0]._id ){
+      //     arrcheck[i] = storedSettings.check
+      //   }
+      // }
     }
   }
   function eventunfavorite(e) {
     e.preventDefault();
     setCheck(true);
+    // var data = { check: true, id: detail[0]._id }
+    //   localStorage.setItem("data", JSON.stringify(data))
+    //   let storedSettings = JSON.parse(localStorage.getItem('data'));
+    //   for(let i = 0; i < arrid.length;i++){
+    //     if(arrid[i] === detail[0]._id ){
+    //       arrcheck[i] = storedSettings.check
+    //     }
+    //   }
     alert("Sản phẩm đã được bỏ khỏi yêu thích !!");
-    const favoriteOne = productFavorites.filter((item) => {
-      return item.idCategory_product === params.id;
-    });
-    //axios.delete(`http://localhost:5000/api/favorite/${favoriteOne[0]._id}`);
-    // axios({
-    //   method: 'delete',
-    //   url: `http://localhost:5000/api/favorite/${favoriteOne[0]._id}`
-    // })
+    //window.location.reload(false);
+    axios.delete(`http://localhost:5000/api/favorite/${favoriteOne[0]._id}`);
   }
-
   //check isLogged == true then accept favorite else redirect to login
-  if (check) {
-    if (isLogged) {
-      favorite = (
-        <Link to="#" onClick={eventfavoriteIsLogin}>
-          <i class="fas fa-heart"></i> Thêm vào yêu thích
-        </Link>
-      );
-    } else {
-      favorite = (
-        <Link to="#" onClick={eventfavorite}>
-          <i class="fas fa-heart"></i> Thêm vào yêu thích
-        </Link>
-      );
-    }
-  } else {
-    favorite = (
-      <Link to="#" onClick={eventunfavorite}>
-        <i class="fas fa-heart-broken"></i> Bỏ yêu thích
-      </Link>
-    );
-  }
+  //for(let i = 0; i < arrid.length;i++){
+    //if(arrid[i] === detail[0]._id ){
+      if (check === true) {
+        if (isLogged) {
+          favorite = (
+            <Link to="#" onClick={eventfavoriteIsLogin}>
+              <i class="fas fa-heart"></i> Thêm vào yêu thích
+            </Link>
+          );
+        } else {
+          favorite = (
+            <Link to="#" onClick={eventfavorite}>
+              <i class="fas fa-heart"></i> Thêm vào yêu thích
+            </Link>
+          );
+        }
+      }
+      else if(check === false) {
+        favorite = (
+          <Link to="#" onClick={eventunfavorite}>
+            <i class="fas fa-heart-broken"></i> Bỏ yêu thích
+          </Link>
+        );
+      }
+    //}
+  //}
+
+  // for(let i = 0; i < favoriteforuser.length;i++){
+  //   if(favoriteforuser[i].idCategory_product === detail[0].idCategory_product){
+  //     setCheck(false);
+  //   }
+  // }
+
 
   function eventchoice1(size) {
     setsizebychoice(size);

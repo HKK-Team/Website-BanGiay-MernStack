@@ -3,8 +3,6 @@ const mongoose = require('mongoose')
 const product_favorites = new mongoose.Schema({
     idCategory_product: {
         type: String,
-        required: true,
-        unique: true
     },
     nameProduct: {
         type: String,
