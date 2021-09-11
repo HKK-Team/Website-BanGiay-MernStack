@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
     //models favorite
-const product_favorites = new mongoose.Schema({
+const favorites = new mongoose.Schema({
     idCategory_product: {
         type: String,
     },
@@ -27,4 +27,4 @@ const product_favorites = new mongoose.Schema({
 }, {
     timestamps: true
 })
-module.exports = mongoose.model('Product_favorites', product_favorites)
+module.exports = mongoose.model('Favorites', favorites)

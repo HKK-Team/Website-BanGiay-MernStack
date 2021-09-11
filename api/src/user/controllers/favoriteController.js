@@ -1,14 +1,14 @@
-const Product_favorites = require('../models/favoriteModels')
+const Favorites = require('../models/favoriteModels')
     // controller banner 
 const favoriteCtrl = {
     savefavoritePro: async(req, res) => {
         try {
             const { idCategory_product, nameProduct, color, price, image, size, iduser } = req.body;
 
-            const IdCategory_product = await Product_favorites.findOne({ idCategory_product })
+            const IdCategory_product = await Favorites.findOne({ $and: [{ idCategory_product }, { iduser }] })
             if (IdCategory_product) return res.status(400).json({ msg: "Products already exists." })
 
-            const newfavorite = new Product_favorites({
+            const newfavorite = new Favorites({
                     idCategory_product,
                     nameProduct,
                     color,
@@ -20,14 +20,14 @@ const favoriteCtrl = {
                 // Save mongodb
             await newfavorite.save()
 
-            res.json({ msg: "luu" })
+            res.json(newfavorite)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
     },
     deletefavoritePro: async(req, res) => {
         try {
-            await Product_favorites.findByIdAndDelete(req.params.id)
+            await Favorites.findByIdAndDelete(req.params.id)
             res.json({ msg: "Deleted a Product" })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -35,7 +35,7 @@ const favoriteCtrl = {
     },
     getallProductsFavorite: async(req, res) => {
         try {
-            const favoritePro = await Product_favorites.find().lean().sort({ createdAt: -1 })
+            const favoritePro = await Favorites.find().lean().sort({ createdAt: -1 })
             res.json(favoritePro)
         } catch (err) {
             return res.status(500).json({ msg: err.message })

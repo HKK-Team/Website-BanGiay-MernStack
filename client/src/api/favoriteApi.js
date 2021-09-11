@@ -10,6 +10,7 @@ function ProductFavorites() {
             setproductFavorites(res.data)
         }
         productFavorites()
+
     }, [])
 
     return {
