@@ -15,6 +15,7 @@ import PriceProductApimax from './api/getmaxPrice'
 import UserApi from './api/userApi'
 import Banner_mainAPI from './api/banner_mainApi'
 import axios from 'axios'
+import SearchProductApi from './api/searchProductApi';
 //gọi lại api ở file client/api chuyển thành dạng dữ liệu object state
 export const GlobalState = createContext()
 
@@ -51,6 +52,7 @@ export const DataProvider = ({children}) =>{
         productDetailApi : ProductDetailApi(),
         priceProduct_max:PriceProductApimax(),
         banner_mainApi : Banner_mainAPI(),
+        searchProductApi : SearchProductApi()
     }
     return (
         <GlobalState.Provider value={state}>

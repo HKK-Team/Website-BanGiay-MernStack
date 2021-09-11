@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext} from "react";
 import Header from "./../../component/Header/Header";
 import Footer from "./../../component/Footer/Footer";
 import Titlebar from "../../component/ProductDetails/Titlebar/Titlebar";
@@ -10,21 +10,12 @@ import { GlobalState } from "../../GlobalState";
 
 export default function Search() {
   const state = useContext(GlobalState);
-  const [product_boy] = state.productboyApi.product_boy; // lấy sp ra từ api GlobalState
-
-  //Get current pages and post current
-  const [currentPageboy, setcurrentPageboy] =
-    state.productboyApi.currentPageboy;
-  const [postsPerPageboy] = state.productboyApi.postsPerPageboy;
-
-  // Get current posts
-  const indexofLastPost = currentPageboy * postsPerPageboy;
-  const indexofFirstPost = indexofLastPost - postsPerPageboy;
-  const currentPost = product_boy.slice(indexofFirstPost, indexofLastPost);
-  var arrayPrBoy = []; // khởi tạo mảng lưu trữ
-  arrayPrBoy.push(
+  const [products] = state.searchProductApi.products
+  var allproduct = []; // khởi tạo mảng lưu trữ
+  // push all product
+  allproduct.push(
     // lấy dữ liệu trong data ra rồi push vô mảng
-    currentPost.map(
+    products.map(
       (
         item // sử dụng map đẻ lấy dữ liệu trong collection
       ) => (
@@ -52,7 +43,7 @@ export default function Search() {
     <Fragment>
       <Header />
       <Titlebar name="Tìm kiếm" />
-      <ListSearch arraylist={arrayPrBoy} />
+      <ListSearch arraylist={allproduct} />
       <GoogleMap />
       <Footer />
     </Fragment>
