@@ -93,7 +93,7 @@ const EditUserSubmit = async e =>{
             Vui lòng chọn tỉnh/thành phố
           </option>
           <option value="">Tất cả</option>
-          <option value="HC">Hồ Chí Minh</option>
+          <option value="HCM">Hồ Chí Minh</option>
           <option value="HI">Hà Nội</option>
           <option value="AG">An Giang</option>
           <option value="BD">Bình Định</option>

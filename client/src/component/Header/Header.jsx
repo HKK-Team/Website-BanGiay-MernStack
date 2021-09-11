@@ -9,8 +9,10 @@ import axios from 'axios'
 export default function Header(props) {
 
   const state = useContext(GlobalState)
-  const [isLogged] = state.userAPI.isLogged
+  const [isLogged] = state.userAPI.isLogged;
   const [profile] = state.userAPI.user;
+  const [search, setSearch] = state.searchProductApi.search;
+  // Logout
   const logoutUser = async () =>{
       await axios.get('/user/logout')
       
@@ -146,10 +148,15 @@ export default function Header(props) {
                     type="text"
                     placeholder="Nhập thông tin cần tìm..."
                     className="header_bottom-search-input"
+                    name = "search"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
                   />
-                  <button type="submit" className="header_bottom-search-button">
-                    <i class="fas fa-search"></i>
-                  </button>
+                  <Link to = "/Search">
+                    <button type="submit" className="header_bottom-search-button">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </Link>
                 </form>
               </div>
               <div className="header_bottom-cart">
