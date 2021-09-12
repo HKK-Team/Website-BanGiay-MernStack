@@ -1,0 +1,81 @@
+
+.logo-nav {
+  text-align: center;
+  padding: 12px 0px 5px;
+  width: 100%;
+  background: white;
+}
+.logo-nav img {
+  width: 50%;
+  height: 10%;
+  object-fit: cover;
+}
+.account-moble {
+  background: red;
+  color: white;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: left;
+  height: 66px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+}
+.account-moble img {
+  width: 20%;
+  height: 90%;
+  object-fit: cover;
+}
+.account-moble p {
+  text-align: left;
+  font-size: 12px;
+  line-height: 24px;
+  margin-left: 20px;
+}
+.account-moble p .XinChao {
+  display: block;
+  margin: 0;
+}
+.account-moble a {
+    font-size: 14px;
+    color: #ffffff;
+  margin-top: 22px;
+}
+.account-moble .link{
+    margin-left: 30px;
+}
+.mplus-menu {
+  height: 100%;
+}
+.mm-panel{
+    display: flex;
+    flex-direction: column;
+    background: rgb(232, 232, 232);
+}
+.mm-panel li{
+    padding: 12px 10px;
+    border-bottom: 1px dotted black;
+    transition: all 0.5s ease;
+}
+.mm-panel li:hover{
+    background: wheat;
+
+}
+.mm-panel li a {
+  color: #333333;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 10px 15px;
+  text-align: left;
+  text-shadow: #ffffff 0px 0px 1px;
+  text-transform: uppercase;
+}
+.back{
+    font-size: 40px;
+    float: right;
+    padding: 15px;
+    cursor: pointer;
+}
