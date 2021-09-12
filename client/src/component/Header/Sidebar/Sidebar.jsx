@@ -47,26 +47,16 @@ export default function Sidebar() {
     var lock = setInterval(function () {
       if (document.getElementById("root").clientWidth > 1024 && !check) {
         setsidebarOpen(false);
-
         document.getElementsByClassName("home_cate-products")[0].style.display =
           "block";
-        document.getElementsByClassName("navigation_manual")[0].style.display =
-          "flex";
-        document.getElementsByClassName("navigation_auto")[0].style.display =
-          "flex";
         document.getElementsByClassName(
           "announcement_wrapper"
         )[0].style.display = "block";
-        document.getElementsByClassName("sidebars")[0].style.display =
-          "none";
+        document.getElementsByClassName("sidebars")[0].style.display = "none";
+      } else {
+        document.getElementsByClassName("sidebars")[0].style.display = "block";
+        document.getElementsByClassName("slider")[0].style.zIndex = "-1";
       }
-      else{
-        document.getElementsByClassName("sidebars")[0].style.display =
-        "block";
-        document.getElementsByClassName("slider")[0].style.zIndex =
-        "-1";
-      }
-   
     });
     return () => {
       clearInterval(lock);
