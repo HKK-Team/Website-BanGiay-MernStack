@@ -1,13 +1,5 @@
 /* Reponsive Windows */
-#toggle i {
-  display: none;
-  font-size: 30px;
-  padding: 9px 10px;
-  text-align: center;
 
-  border-radius: 4px;
-  line-height: 20px;
-}
 .header_top {
   background-color: #212121;
   font-size: 14px;
@@ -377,7 +369,8 @@
   }
   /* search */
   .header_bottom-search {
-    padding: 62px 0px 0px !important;
+    margin: 62px 0px 0px !important;
+    padding: 0;
     width: 100%;
   }
   .header_bottom-search-input {
@@ -394,12 +387,6 @@
   }
   .header_bottom-cart-empty {
     display: none;
-  }
-  /* toggle */
-  #toggle i {
-    display: block;
-    position: absolute;
-    top: 10%;
   }
   /* fixed header */
   .small {
@@ -437,7 +424,8 @@
   }
   /* search */
   .header_bottom-search {
-    padding: 62px 0px 0px !important;
+    margin: 62px 0px 0px !important;
+    padding: 0;
     width: 100%;
   }
   .header_bottom-search-input {
@@ -454,12 +442,6 @@
   }
   .header_bottom-cart-empty {
     display: none;
-  }
-  /* toggle */
-  #toggle i {
-    display: block;
-    position: absolute;
-    top: 10%;
   }
   /* fixed header */
   .small {

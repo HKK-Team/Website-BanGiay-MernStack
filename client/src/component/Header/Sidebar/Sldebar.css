@@ -1,0 +1,28 @@
+#toggle i{
+  font-size: 30px;
+  cursor: pointer;
+  padding: 20px 50px;
+}
+#toggle{
+    display: none;
+    cursor: none;
+    z-index: 10;
+}
+@media screen and (max-width: 1024px) {
+  #toggle{
+    display: inline-block;
+  }
+}
+.stop-scrolling{
+  height: 100vh;
+  overflow: hidden;
+}
+.sidebar{
+  width: 300px !important;
+  height: 100%;
+  overflow-x: hidden;
+  padding: 0 !important;
+}
+.sidebars{
+  height: 100vh;  
+}
