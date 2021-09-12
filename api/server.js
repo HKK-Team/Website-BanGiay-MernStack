@@ -11,25 +11,26 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 app.use(fileUpload({
-    useTempFiles: true
-}))
-// connect to mongodb
+        useTempFiles: true
+    }))
+    // connect to mongodb
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, err => {
-    if (err) throw err;
-    console.log('Connected to MongoDB')
-})
-// Routes
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }, err => {
+        if (err) throw err;
+        console.log('Connected to MongoDB')
+    })
+    // Routes
 app.use('/api', require('./src/user/routers/menuRouter'))
 app.use('/api', require('./src/user/routers/bannerRouter'))
 app.use('/api', require('./src/user/routers/productRouter'))
 app.use('/user', require('./src/user/routers/userRouter'))
+app.use('/api', require('./src/user/routers/favoriteRouter'))
 
 // load token for server
-if(process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from "react";
+import React, { useContext } from "react";
 import "./Favorite.css";
 export default function Favorite(props) {
   return (

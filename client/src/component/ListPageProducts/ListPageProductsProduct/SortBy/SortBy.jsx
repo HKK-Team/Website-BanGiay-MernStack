@@ -9,6 +9,7 @@ export default function SortBy() {
   const [colorboy, setcolorboy] = state.productboyApi.colorboy;
   //information by size product
   const [sizeminboy, setsizeminboy] = state.productboyApi.sizeminboy;
+  const [sizemaxboy, setsizemaxboy] = state.productboyApi.sizemaxboy;
 
   //đỉnh cao việt nam là đây
   const temp = [];
@@ -29,6 +30,7 @@ export default function SortBy() {
   function eventchangesize(e) {
     e.preventDefault();
     setsizeminboy(" ");
+    setsizemaxboy(" ");
   }
   if (colorboy !== " " || sizeminboy !== " ") {
     return (

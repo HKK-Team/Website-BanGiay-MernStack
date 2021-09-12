@@ -9,8 +9,18 @@ import axios from 'axios'
 export default function Header(props) {
 
   const state = useContext(GlobalState)
-  const [isLogged] = state.userAPI.isLogged
+  const [isLogged] = state.userAPI.isLogged;
   const [profile] = state.userAPI.user;
+  //get id user current
+  const [iduser, setiduser] = state.userAPI.iduser;
+  const [search, setSearch] = state.searchProductApi.search;
+  const [productFavorites, setproductFavorites] =
+  state.productFavorites.productFavorites;
+  const detail = productFavorites.filter((item) => {
+    // tìm và trả về đối tượng chứa thuộc tính của giày
+    return item.iduser === iduser;
+  });
+  // Logout
   const logoutUser = async () =>{
       await axios.get('/user/logout')
       
@@ -43,7 +53,7 @@ export default function Header(props) {
       <>
         <Link to="/favorite" className="" style={{ color: "black" }}>{" "}
           <i class="far fa-heart"></i>{" "}
-          <span className="Cart_count">0</span>
+          <span className="Cart_count">{detail.length}</span>
         </Link>
       </>
   )
@@ -150,10 +160,15 @@ export default function Header(props) {
                     type="text"
                     placeholder="Nhập thông tin cần tìm..."
                     className="header_bottom-search-input"
+                    name = "search"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
                   />
-                  <button type="submit" className="header_bottom-search-button">
-                    <i class="fas fa-search"></i>
-                  </button>
+                  <Link to = "/Search">
+                    <button type="submit" className="header_bottom-search-button">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </Link>
                 </form>
               </div>
               <div className="header_bottom-cart">

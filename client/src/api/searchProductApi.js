@@ -2,17 +2,20 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 //call api baner từ folder api
 function ProductDetailApi() {
-    const [productDetail, setproductDetail] = useState([])
+    const [products, setProducts] = useState([])
+    const [search, setSearch] = useState('')
     const [callback, setCallback] = useState(false)
     useEffect(() => {
         const getproductDetail = async() => {
-            const res = await axios.get('http://localhost:5000/api/product')
-            setproductDetail(res.data)
+            // search
+            const res = await axios.get(`/api/products?nameProduct[regex]=${search}`)
+            setProducts(res.data.products)
         }
         getproductDetail()
-    }, [callback])
+    }, [callback,search])
     return {
-        productDetail: [productDetail, setproductDetail],
+        products: [products, setProducts],
+        search: [search, setSearch],
         callback : [callback,setCallback],
     }
 }

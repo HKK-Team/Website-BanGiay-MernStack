@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from "react";
-import {  useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./ProductDetail.css";
 import zalopay from "../../images/images/zalopay.webp";
 import visa from "../../images/images/visa.webp";
@@ -9,7 +8,11 @@ import cod from "../../images/images/cod.webp";
 import logo from "../../images/images/new.webp";
 import AdvertisingCard from "./AdvertisingCard/AdvertisingCard";
 import Titlebar from "./Titlebar/Titlebar";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { GlobalState } from "../../GlobalState";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 export default function ProductDetail(props) {
   // zoom hình khi hover
   function imageZoom(imgID, resultID) {
@@ -80,12 +83,127 @@ export default function ProductDetail(props) {
   }
   useEffect(() => {
     imageZoom("productDetail_image-image", "myresult");
-  },);
+  });
+
+  const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.userAPI.isLogged;
+  const [iduser, setiduser] = state.userAPI.iduser;
+  const [productFavorites, setproductFavorites] =
+    state.productFavorites.productFavorites;
+
+  //unfavorite or favorite product
+  const [check, setCheck] = useState(true);
+  var favorite;
+  const params = useParams();
+  const [productDetail] = state.productDetailApi.productDetail;
+  //create array for save size by user choice
+  const [sizebychoice, setsizebychoice] = useState(0);
+  const detail = productDetail.filter((item) => {
+    // tìm và trả về đối tượng chứa thuộc tính của giày
+    return item.idCategory_product === params.id;
+  });
+
+
+  function eventfavorite(e) {
+    e.preventDefault();
+    window.location.href = "/Login";
+    alert("Bạn cần đăng nhập để thêm sản phẩm yêu thích !!");
+  }
+  function eventfavoriteIsLogin(e) {
+    e.preventDefault();
+    if (sizebychoice === 0) {
+      alert("Vui lòng chọn size sản phẩm !!");
+    } else {
+      axios({
+        method: "post",
+        url: "http://localhost:5000/api/favorite",
+        data: {
+          idCategory_product: detail[0].idCategory_product,
+          nameProduct: detail[0].nameProduct,
+          color: detail[0].color,
+          price: detail[0].price,
+          image: detail[0].image,
+          size: sizebychoice,
+          iduser: iduser,
+        },
+      })
+      alert("Sản phẩm đã được thêm vào yêu thích !!");
+     window.location.reload(false);
+    }
+  }
+  function eventunfavorite(e) {
+    e.preventDefault();
+    alert("Sản phẩm đã được bỏ khỏi yêu thích !!");
+    for (let i = 0; i < productFavorites.length; i++) {
+      if (
+        iduser === productFavorites[i].iduser &&
+        detail[0].idCategory_product === productFavorites[i].idCategory_product
+      ) {
+        axios.delete(
+          `http://localhost:5000/api/favorite/${productFavorites[i]._id}`
+        );
+      }
+    }
+    window.location.reload(false);
+  }
+  
+  setTimeout(() => {
+      for (let i = 0; i < detail.length; i++) {
+        var temp = detail[i].idCategory_product;
+        break;
+      }
+    for (let i = 0; i < productFavorites.length; i++) {
+      if (
+        iduser === productFavorites[i].iduser &&
+        temp === productFavorites[i].idCategory_product
+      )
+      {
+        setCheck(false);
+      }
+    }
+  }, 1000);
+
+  if (check === true) {
+    if (isLogged) {
+      favorite = (
+        <Link to="#" onClick={eventfavoriteIsLogin}>
+          <i class="fas fa-heart"></i> Thêm vào yêu thích
+        </Link>
+      );
+    } else {
+      favorite = (
+        <Link to="#" onClick={eventfavorite}>
+          <i class="fas fa-heart"></i> Thêm vào yêu thích
+        </Link>
+      );
+    }
+  } else if (check === false) {
+    favorite = (
+      <Link to="#" onClick={eventunfavorite}>
+        <i class="fas fa-heart-broken"></i> Bỏ yêu thích
+      </Link>
+    );
+  }
+
+  function eventchoice1(size) {
+    setsizebychoice(size);
+  }
+  function eventchoice2(size) {
+    setsizebychoice(size);
+  }
+  function eventchoice3(size) {
+    setsizebychoice(size);
+  }
+  function eventchoice4(size) {
+    setsizebychoice(size);
+  }
+  function eventchoice5(size) {
+    setsizebychoice(size);
+  }
+
   return (
     <section className="productDetail">
-      <Titlebar
-        name={props.name}
-      />
+      <Titlebar name={props.name} />
       <div className="container">
         <div className="row">
           <div className="productDetail_wrapper">
@@ -95,19 +213,19 @@ export default function ProductDetail(props) {
                 <svg viewBox="0 0 24 24">
                   <path d="M20.902 17.279c0.325 0.322 0.851 0.322 1.175 0 0.325-0.322 0.325-0.841 0-1.163l-9.49-9.396c-0.324-0.322-0.85-0.322-1.174 0l-9.49 9.396c-0.324 0.322-0.325 0.841 0 1.163s0.85 0.322 1.175 0l8.902-8.569 8.902 8.569z"></path>
                 </svg>
-                <Link to  >
+                <Link to>
                   <img src={props.imageValue1} alt="" />
                 </Link>
-                <Link to  >
+                <Link to>
                   <img src={props.imageValue2} alt="" />
                 </Link>
-                <Link to  >
+                <Link to>
                   <img src={props.imageValue3} alt="" />
                 </Link>
-                <Link to  >
+                <Link to>
                   <img src={props.imageValue4} alt="" />
                 </Link>
-                <Link to >
+                <Link to>
                   <img src={props.imageValue5} alt="" />
                 </Link>
                 <svg viewBox="0 0 24 24">
@@ -122,9 +240,13 @@ export default function ProductDetail(props) {
               {/* sliderProductDetail */}
               <div className="productDetail_image-image-box">
                 <div className="wrapper-image">
-                  <img src={props.image} alt="image" id="productDetail_image-image" />
+                  <img
+                    src={props.image}
+                    alt="image"
+                    id="productDetail_image-image"
+                  />
                   <div id="myresult" class="img-zoom-result"></div>
-                </div>         
+                </div>
                 <span className="new">
                   <img src={logo} alt="new" />
                 </span>
@@ -136,12 +258,9 @@ export default function ProductDetail(props) {
               </div>
             </div>
             <div className="productDetail_information">
-              <h1 className="productDetail_information-name">
-              {props.name}
-              </h1>
+              <h1 className="productDetail_information-name">{props.name}</h1>
               <div className="productDetail_information-msp">
-                Mã sản phẩm : 
-                <span>{" "+props.ProductCode}</span>
+                Mã sản phẩm :<span>{" " + props.ProductCode}</span>
               </div>
               <div className="productDetail_information-price">
                 <span>{props.price} đ</span>
@@ -154,20 +273,30 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail_information-size">
                   <label htmlFor="">Kích thước</label>
-                  <Link to = {props.valueSize_1}>
-                    <span>{props.valueSize_1}</span>
+                  <Link to={props.valueSize_1}>
+                    <span onClick={() => eventchoice1(props.valueSize_1)}>
+                      {props.valueSize_1}
+                    </span>
                   </Link>
-                  <Link to = {props.valueSize_2}>
-                    <span>{props.valueSize_2}</span>
+                  <Link to={props.valueSize_2}>
+                    <span onClick={() => eventchoice2(props.valueSize_2)}>
+                      {props.valueSize_2}
+                    </span>
                   </Link>
-                  <Link to = {props.valueSize_3}>
-                    <span>{props.valueSize_3}</span>
+                  <Link to={props.valueSize_3}>
+                    <span onClick={() => eventchoice3(props.valueSize_3)}>
+                      {props.valueSize_3}
+                    </span>
                   </Link>
-                  <Link to = {props.valueSize_4}>
-                    <span>{props.valueSize_4}</span>
+                  <Link to={props.valueSize_4}>
+                    <span onClick={() => eventchoice4(props.valueSize_4)}>
+                      {props.valueSize_4}
+                    </span>
                   </Link>
-                  <Link to = {props.valueSize_5}>
-                    <span>{props.valueSize_5}</span>
+                  <Link to={props.valueSize_5}>
+                    <span onClick={() => eventchoice5(props.valueSize_5)}>
+                      {props.valueSize_5}
+                    </span>
                   </Link>
                 </div>
                 <div className="productDetail_information-inventory">
@@ -178,9 +307,7 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail_information-action-cart">
                   <button>Mua Ngay</button>
-                  <Link to="#">
-                    <i class="fas fa-heart"></i> Thêm vào yêu thích
-                  </Link>
+                  {favorite}
                 </div>
               </form>
               <div className="productDetail_information-hotline">
