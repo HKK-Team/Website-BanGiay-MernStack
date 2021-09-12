@@ -77,3 +77,15 @@
   text-align: center;
   float: right;
 }
+/* Reponsive Moble */
+@media screen and (max-width: 500px) {
+  .announcement_item {
+    text-align: start;
+  }
+  .announcement_title {
+    font-size: 14px;
+  }
+  .announcement_item img {
+    margin-left: 2%;
+  }
+}
