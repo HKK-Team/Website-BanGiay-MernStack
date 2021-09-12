@@ -412,7 +412,7 @@
   }
 }
 /* Reponsize tablet */
-@media screen and (max-width: 1024px) and (min-width:768px) {
+@media screen and (max-width: 1024px) and (min-width:767px){
   .header_top {
     display: none;
   }

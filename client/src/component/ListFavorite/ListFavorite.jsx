@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import "./ListFavorite.css";
 import Favorite from "./Favorite/Favorite";
