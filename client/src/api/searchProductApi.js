@@ -8,15 +8,15 @@ function ProductDetailApi() {
     useEffect(() => {
         const getproductDetail = async() => {
             // search
-            const res = await axios.get(`/api/products?nameProduct[regex]=${search}`)
+            const res = await axios.get(`/api/products?api/products?nameProduct[regex]=${search}&&nameCategoryProduct[regex]=${search}`)
             setProducts(res.data.products)
         }
         getproductDetail()
-    }, [callback,search])
+    }, [callback, search])
     return {
         products: [products, setProducts],
         search: [search, setSearch],
-        callback : [callback,setCallback],
+        callback: [callback, setCallback],
     }
 }
 export default ProductDetailApi
