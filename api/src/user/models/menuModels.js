@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
     //models menu
-const menuSchema = new mongoose.Schema({
+const menu1Schema = new mongoose.Schema({
     text: String,
     slug: String,
     category: String,
-    dateCreate: { type: Date, default: Date.now }
+    stt: Number
 })
 
-module.exports = mongoose.model('Menus', menuSchema)
+module.exports = mongoose.model('Menu1s', menu1Schema)
