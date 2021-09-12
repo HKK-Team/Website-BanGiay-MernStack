@@ -13,7 +13,7 @@ export default function ListFavorite() {
     return item.iduser === iduser;
   });
 
-  var favoriteCount = 2;
+  var favoriteCount = detail.length;
   return (
     <section className="favortite">
       <div className="container">

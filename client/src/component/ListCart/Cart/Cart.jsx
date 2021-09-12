@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext,useState } from "react";
 
 import "./Cart.css";
 
 export default function Cart(props) {
+  const [quantity,setquantity] = useState(1);
+  function eventdelete(e){
+    e.preventDefault();
+    window.confirm("Bạn thực sự muốn bỏ yêu thích sản phẩm ?")
+  }
   return (
     <div className="line_item">
       <div className="line_item-img">
@@ -26,6 +31,10 @@ export default function Cart(props) {
       </div>
       <div className="line_item-quality">
         <input
+                  value={quantity}
+                  onChange={(e) => {
+                    setquantity(e.target.value);
+                  }}
           type="number"
           className="Cart_quality"
           min="1"
@@ -34,7 +43,7 @@ export default function Cart(props) {
         />
       </div>
       <div className="line_item-price">{props.price} đ</div>
-      <div className="line_item-total_price">{props.totalprice} đ</div>
+      <div className="line_item-total_price">{props.totalprice * quantity} đ</div>
     </div>
   );
 }

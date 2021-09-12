@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ListCart.css";
 import Cart from "./Cart/Cart";
 import CartEmpty from "./CartEmpty/CartEmpty";
 import CartTable from "./CartTable/CartTable";
-import image from "../../images/Hunter-Nam/dsmh04200den__3__483c6547abee43c2acac5850822072f0_1024x1024.jpg";
+import { GlobalState } from "../../GlobalState";
 
 export default function ListCart() {
-  var CartCount = 0;
+  const state = useContext(GlobalState);
+  const [productCarts,setproductCarts] = state.productCarts.productCarts
+  const [iduser, setiduser] = state.userAPI.iduser
+  const detail = productCarts.filter((item) => {
+    // tìm và trả về đối tượng chứa thuộc tính của giày
+    return item.iduser === iduser;
+  });
+  
+
+  var CartCount = detail.length;
   if (CartCount >= 1) {
     return (
       <section className="Cart">
@@ -17,14 +26,16 @@ export default function ListCart() {
             </div>
             {/* list cart */}
             <CartTable />
-            <Cart
-              image={image}
-              name="Giày Thể Thao Nam Biti’s Hunter Core Z Collection Earth DSMH06400KED (Kem Đậm)"
-              color="Kem Đậm"
-              size={40}
-              price="699000"
-              totalprice="699,000"
-            />
+            {detail.map(item => (
+                <Cart key={item._id}
+                image={item.image}
+                name={item.nameProduct}
+                color={item.color}
+                size={item.size}
+                price={item.price}
+                totalprice={item.price}
+              />
+            ))}
             {/* List cart */}
           </div>
           <div className="cart_gift_note">

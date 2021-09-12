@@ -8,6 +8,8 @@ import { GlobalState } from "../../GlobalState";
 import { NavLink } from "react-router-dom"; // thư viện dùng để lưu active link
 import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 import axios from "axios";
+
+
 export default function Header(props) {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
@@ -21,6 +23,7 @@ export default function Header(props) {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.iduser === iduser;
   });
+  const [productCarts,setproductCarts] = state.productCarts.productCarts
   // Logout
   const logoutUser = async () => {
     await axios.get("/user/logout");
@@ -198,7 +201,7 @@ export default function Header(props) {
                   <span className="header_bottom-cart-cart">
                     <Link to="/cart" style={{ color: "black" }}>
                       <i class="fas fa-shopping-cart">
-                        <span className="Cart_count">0</span>
+                        <span className="Cart_count">{productCarts.length}</span>
                       </i>
                     </Link>
                     {/* Thẻ Cart ẩn  */}
