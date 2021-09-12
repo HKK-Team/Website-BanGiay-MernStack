@@ -1,7 +1,9 @@
 .slider_wrapper {
-  margin: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
   padding: 0;
-  height: 514px;
+
   display: flex;
   justify-content: center;
   align-content: center;
@@ -9,17 +11,17 @@
 }
 .slider {
   width: 100%;
-  height: 514px;
+  height: 100%;
   overflow: hidden;
 }
 .slides {
   width: 500%;
-  height: 514px;
+  height: 100%;
   display: flex;
 }
 .slide_image {
   width: 100%;
-  height: 514px;
+  height: 100%;
   object-fit: cover;
 }
 .slides input {
@@ -28,11 +30,12 @@
 .slide {
   width: 20%;
   transition: 2s;
+  height: 100%;
 }
 .navigation_manual {
   position: absolute;
-  width: 800px;
-  margin-top: -30px;
+  width: 100%;
+  margin-top: -39px;
   display: flex;
   justify-content: center;
 
@@ -40,7 +43,7 @@
   transform: translateX(-50%);
 }
 .manual-btn {
-  border: 2px solid #40D3DC;
+  border: 2px solid #40d3dc;
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
@@ -50,7 +53,7 @@
   margin-right: 40px;
 }
 .manual-btn:hover {
-  background-color: #40D3DC;
+  background-color: #40d3dc;
 }
 
 #radio1:checked ~ .first {
@@ -66,35 +69,74 @@
   margin-left: -60%;
 }
 
-.navigation_auto{
-    position: absolute;
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    margin-top: 484px;
+.navigation_auto {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 80.7%;
 
-    left: 50%;
-    transform: translateX(-50%);
-
+  left: 50%;
+  transform: translateX(-50%);
 }
-.navigation_auto div{
-    border: 2px solid #40D3DC;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 1s;
+.navigation_auto div {
+  border: 2px solid #40d3dc;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
 }
-.navigation_auto div:not(:last-child){
-    margin-right: 40px;
+.navigation_auto div:not(:last-child) {
+  margin-right: 40px;
 }
-#radio1:checked ~ .navigation_auto .auto-btn1{
-    background: #40D3DC;
+#radio1:checked ~ .navigation_auto .auto-btn1 {
+  background: #40d3dc;
 }
-#radio2:checked ~ .navigation_auto .auto-btn2{
-    background: #40D3DC;
+#radio2:checked ~ .navigation_auto .auto-btn2 {
+  background: #40d3dc;
 }
-#radio3:checked ~ .navigation_auto .auto-btn3{
-    background: #40D3DC;
+#radio3:checked ~ .navigation_auto .auto-btn3 {
+  background: #40d3dc;
 }
-#radio4:checked ~ .navigation_auto .auto-btn4{
-    background: #40D3DC;
+#radio4:checked ~ .navigation_auto .auto-btn4 {
+  background: #40d3dc;
+}
+/* Reponsive Window */
+@media screen and (min-width:1280px) {
+  .slide{
+    height: 523.26px;
+  }
+}
+/* Reponsive moble */
+@media screen and (max-width:768px) {
+  .slider_wrapper{
+    width: 100%;
+    height: 259.88px;
+    margin-top:118px;
+  }
+  .navigation_auto{
+    top: 44.7%;
+  }
+  
+}
+/* Reponsize tablet */
+@media screen and (max-width: 1024px) and (min-width:768px){
+  .slider_wrapper{
+    width: 100%;
+    height: 344px;
+    margin-top:118px;
+  }
+  .navigation_auto{
+    top:55.7%;
+  }
+}
+/* Reponsize tablet pro */
+@media screen and (min-width: 1024px) and (max-width:1280px){
+  .slider_wrapper{
+    width: 100%;
+    height: 439px;
+    margin-top:88px;
+  }
+  .navigation_auto{
+    top:109.7%;
+  }
 }

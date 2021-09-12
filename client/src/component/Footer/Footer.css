@@ -44,6 +44,7 @@
   font-size: 14px;
   line-height: 20px;
   padding: 21px 184px;
+  width: 100%;
 }
 .footer_top-sendmail-warpper {
   display: flex;
@@ -58,7 +59,7 @@
   min-width: 490px;
 }
 .footer_top-sendmail-input {
-  min-width: 469px;
+  width: 60%;
   max-height: 34px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -68,7 +69,7 @@
 }
 .footer_top-sendmail-button {
   margin-left: 10px;
-  min-width: 207px;
+  width: 40%;
   align-items: flex-start;
   background-color: #f72b3f;
   border: 1px solid #f72b3f;
@@ -94,7 +95,7 @@
   background-color: #fafafa;
   font-size: 14px;
   line-height: 20px;
-  padding: 50px 174px 20px 174px;
+  padding: 50px 80px 20px 80px;
 }
 .footer_bottom-infor-title {
   font-size: 18px;
@@ -134,4 +135,74 @@
 .footer_top-email-form {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+/* Reponsize Moble */
+@media screen and (max-width: 767px) {
+  .footer_top-sendmail{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0px;
+  }
+  .footer_top-sendmail-title{
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .footer_top-sendmail-warpper{
+    flex-direction: column;
+  }
+  .footer_bottom{
+   padding: 20px;
+  }
+  .footer_bottom-wrapper{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .footer_bottom-box{
+    padding: 20px;
+  }
+  .footer_bottom-box-title{
+    font-size: 20px;
+  }
+}
+/* Reponsize tablet */
+@media screen and (max-width: 1024px) and (min-width:768px){
+  .footer_top-sendmail{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0px;
+  }
+  .footer_top-sendmail-title{
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .footer_top-sendmail-warpper{
+    flex-direction: column;
+  }
+  .footer_bottom{
+   padding: 20px;
+  }
+  .footer_bottom-wrapper{
+    grid-template-columns: repeat(2,1fr);
+  }
+  .footer_bottom-box{
+    padding: 40px;
+  }
+  .footer_bottom-box-title{
+    font-size: 25px;
+  }
+}
+/* Reponsize tablet pro */
+@media screen and (min-width: 1024px) and (max-width:1280px){
+  .footer_bottom{
+    padding: 40px;
+  }
+  .footer_bottom-wrapper{
+    grid-template-columns: repeat(3,1fr);
+  }
+  .footer_top-sendmail{
+    padding: 24px ;
+  }
 }

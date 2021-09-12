@@ -14,7 +14,6 @@ import Favorite from "./Favorite/Favorite";
 import Account_OderManagement from "./Account/Account_OderManagement";
 import Account_Address from "./Account/Account_Address";
 import Home from "./Home/Home";
-import Loading from '../page/Loading/Loading';
 import Profile from "../page/Account/Account_Infomation"
 import {GlobalState} from '../GlobalState'
 import NotFound from '../component/utils/not_found/NotFound'
@@ -40,7 +39,6 @@ function Pages() {
       <Route exact path="/Favorite" component={Favorite}></Route>
       <Route exact path="/AccountOderManagement" component={isLogged ?   Account_OderManagement: NotFound }></Route>
       <Route exact path="/AccountAddress" component={isLogged ?  Account_Address : NotFound }></Route>
-      <Route exact path="/Loading" component={Loading}></Route>
       <Route exact path="/Profile" component={Profile}></Route>
       <Route exact path="/Search" component={Search}></Route>
       <Route exact path="/Payment" component={Payment}></Route>

@@ -25,7 +25,7 @@
 }
 .home_cate-products-wrapper-outer {
   overflow: hidden;
-  width: 103%;
+  width: 104%;
   position: relative;
 }
 .home_cate-product-wrapper {
@@ -41,6 +41,7 @@
 }
 .home_cate-products {
   position: relative;
+  margin-left: -4%;
 }
 .btn_next {
   position: absolute;
@@ -52,7 +53,7 @@
   background-size: 80%;
   background-position: center center;
   cursor: pointer;
-  right: -75px;
+  right: -97px;
 }
 .btn_prev {
   position: absolute;
@@ -64,7 +65,7 @@
   background-size: 80%;
   background-position: center center;
   cursor: pointer;
-  left: -40px;
+  left: -50px;
 
   transform: rotate(180deg);
 }
@@ -80,4 +81,72 @@
   line-height: 20px;
   padding: 10px 0px 0px;
   text-align: center;
+}
+
+/* Reponsize Moble */
+@media screen and (max-width: 500px) {
+  .home_cate-product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: calc(216px * 8 - 50px);
+    width: 100%;
+    overflow: hidden;
+    grid-gap: 10px;
+    padding: 0;
+    padding-top: 10px;
+  }
+  .btn_next {
+    display: none;
+  }
+  .btn_prev {
+    display: none;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .home_cate-product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 31.3%);
+    width: 100%;
+    overflow: hidden;
+    grid-gap: 10px;
+    padding: 0;
+    padding-top: 10px;
+  }
+  .btn_next {
+    display: none;
+  }
+  .btn_prev {
+    display: none;
+  }
+}
+/* Reponsize tablet */
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+  .home_cate-product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    width: 100%;
+    overflow: hidden;
+    grid-gap: 10px;
+    padding: 0;
+    padding-top: 10px;
+  }
+  .btn_next {
+    display: none;
+  }
+  .btn_prev {
+    display: none;
+  }
+  .home_cate-products {
+    margin-bottom: 20px;
+  }
+}
+/* Reponsize tablet pro */
+@media screen and (min-width: 1024px) and (max-width:1280px){
+  .home_cate-products{
+    margin-left: -20px;
+  }
+  .home_cate-products-wrapper-outer{
+    width: 103%;
+
+  }
 }

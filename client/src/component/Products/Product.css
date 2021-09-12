@@ -108,3 +108,26 @@
   visibility: hidden;
   transition: all 0.6s ease;
 }
+/* Reponsive Moble */
+@media screen and (max-width: 500px) {
+  .product_item{
+    width: 216px;
+  }
+}
+/* Reponsize tablet */
+@media screen and (min-width: 501px) and (max-width: 767px) {
+  .product_item{
+    width: 96%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .product_item{
+    width: 96%;
+    height: 98%;
+  }
+  .product_item-addToCart{
+    display: none;
+  }
+}

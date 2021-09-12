@@ -23,7 +23,7 @@ export default function Header(props) {
   const loggedRouter = () =>{
       return(
           <>
-              <span><Link to="/Profile" className="header_top-link">Wellcom {profile.lastname}</Link></span>
+              <span><Link to="/Profile" className="header_top-link">{profile.lastname} {profile.firstname}</Link></span>
               <span><Link to="/" onClick={logoutUser} className="header_top-link">Logout</Link></span>
           </>
       )
@@ -82,10 +82,11 @@ export default function Header(props) {
     <header>
       <div className="header_top">
         {/* <header_top> */}
-        <div className="container">
+        <div className="container width-1280">
           {/* <row> */}
           <div className="row">
             <div className="header_top-wrapper">
+
               {/* <header_top-list>*/}
               <ul className="header_top-list">
                 {/* <load dữ liệu >*/}
@@ -116,11 +117,14 @@ export default function Header(props) {
       {/* < header_bottom>  */}
       <div className={`header_bottom ${small ? "small" : ""}`}>
         {/* < container>  */}
-        <div className="container">
+        <div className="container width-1280">
           {/* <row>  */}
           <div className="row">
             {/* header_bottom-wrapper */}
             <div className="header_bottom-wrapper">
+              <div id="toggle">
+                  <i className="fas fa-bars"></i>
+              </div>
               {/* <header_bottom-icon>  */}
               <div className="header_bottom-icon">
                 <img src={Logo} alt="/" />
