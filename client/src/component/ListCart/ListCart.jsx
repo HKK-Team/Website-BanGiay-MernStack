@@ -6,7 +6,7 @@ import CartTable from "./CartTable/CartTable";
 import image from "../../images/Hunter-Nam/dsmh04200den__3__483c6547abee43c2acac5850822072f0_1024x1024.jpg";
 
 export default function ListCart() {
-  var CartCount = 1;
+  var CartCount = 0;
   if (CartCount >= 1) {
     return (
       <section className="Cart">
