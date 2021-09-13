@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 import axios from "axios";
 import Navbar from "./Sidebar/Navbar/Navbar";
 
+
 export default function Header(props) {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
@@ -21,6 +22,29 @@ export default function Header(props) {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.iduser === iduser;
   });
+
+  //create variable count for carts
+  var storedArray = JSON.parse(sessionStorage.getItem('arr'));
+  var ltg;
+  if(storedArray === null){
+     ltg = 0;
+  }
+  else{
+    ltg =  storedArray.length;
+  }
+  //create for quantity cart
+  var quantity = 1;
+  for (let i = 0; i < ltg; i++) {
+    if (storedArray[i].idproduct === props.idproduct) {
+      quantity = storedArray[i].quantity;
+    }
+  }
+  //create sum cart
+  var sum = 0;
+
+  for (let i = 0; i < ltg; i++) {
+    sum += storedArray[i].totalprice;
+  }
   // Logout
   const logoutUser = async () => {
     await axios.get("/user/logout");
@@ -28,6 +52,7 @@ export default function Header(props) {
     localStorage.removeItem("firstLogin");
 
     window.location.href = "/";
+    sessionStorage.removeItem('arr');
   };
 
   // Logged
@@ -121,7 +146,7 @@ export default function Header(props) {
     return () => clearInterval(lock);
   }, []);
   //overflow y cart-empty
-  var cartCount = 0; // số lượng sản phẩm trong giỏ hàng
+  var cartCount = ltg; // số lượng sản phẩm trong giỏ hàng
   useEffect(() => {
     var setHeight = cartCount * 135.6;
     if (cartCount !== 0) {
@@ -227,10 +252,20 @@ export default function Header(props) {
                   <span className="header_bottom-cart-cart">
                     <Link to="/cart" style={{ color: "black" }}>
                       <i class="fas fa-shopping-cart">
-                        <span className="Cart_count">0</span>
+                        <span className="Cart_count">{ltg}</span>
                       </i>
                     </Link>
                     {/* Thẻ Cart ẩn  */}
+
+
+
+
+
+
+
+
+
+
                     <div className="header_bottom-cart-empty">
                       {cartCount < 1 && (
                         <div className="Cart_empty">
@@ -240,22 +275,24 @@ export default function Header(props) {
                       {cartCount >= 1 && (
                         <div className="cart_box_wrapper">
                           {/* cart_box_wrapper */}
-                          <div className="cart_item clearfix">
-                            <i class="fa fa-times"></i>
-                            <img src={Logo} alt="" />
-                            <div className="cart_item-info">
-                              <a href>
-                                Giày Thể Thao Nam Biti’s Hunter X Z Collection
-                                InGreenZ DSMH06300REU (Rêu) <br /> trắng - 25{" "}
-                              </a>
-                              <input
-                                type="text"
-                                id="update-quality"
-                                value="1"
-                              />
-                              <span className="cart_item-price">188999 đ</span>
-                            </div>
-                          </div>
+                          {storedArray.map((item) => (
+                                <div className="cart_item clearfix">
+                                <i class="fa fa-times"></i>
+                                <img src={item.image} alt="" />
+                                <div className="cart_item-info">
+                                  <a href>
+                                    {item.nameProduct} <br /> {item.color} - {item.size}{" "}
+                                  </a>
+                                  <input
+                                    value={quantity}
+                                    type="text"
+                                    id="update-quality"
+                                  />
+                                  <span className="cart_item-price">{item.totalprice} đ</span>
+                                </div>
+                              </div>
+                            ))}
+                          
                         </div>
                       )}
                       {/*  */}
@@ -264,7 +301,7 @@ export default function Header(props) {
                         <span className="Cart_TotalPrime-title">
                           Tổng Tiền:
                         </span>
-                        <span className="Cart_TotalPrime-prime">0 đ</span>
+                        <span className="Cart_TotalPrime-prime">{sum} đ</span>
                       </div>
                       <div className="Cart_button">
                         <Link to={props.cart} className="Cart_button-watch">

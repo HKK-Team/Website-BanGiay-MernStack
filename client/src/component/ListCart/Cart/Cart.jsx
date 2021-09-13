@@ -40,9 +40,6 @@ export default function Cart(props) {
       <div className="line_item-quality">
         <input
           value={quantity}
-          // onChange={(e) => {
-          //   quantity = e.target.value;
-          // }}
           type="number"
           className="Cart_quality"
           min="1"
