@@ -9,7 +9,7 @@ import { useParams} from "react-router-dom";
 export default function ProductDetails() {
   const params = useParams();
   const state = useContext(GlobalState);
-  const [products] = state.searchProductApi.products
+  const [products] = state.productDetailApi.productDetail
   const detail = products.filter((item) => {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.idCategory_product === params.id;
