@@ -38,7 +38,7 @@ export default function Header(props) {
       <>
         <span>
           <Link to="/Profile" className="header_top-link">
-            {profile.lastname} {profile.firstname}
+            {profile.lastname}
           </Link>
         </span>
         <span>
