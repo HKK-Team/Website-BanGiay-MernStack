@@ -13,6 +13,7 @@ import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
 import { GlobalState } from "../../GlobalState";
 
 
+
 export default function Home() {
   const state = useContext(GlobalState);
   const [bannerboys] = state.bannerboyAPI.bannerboys;
@@ -150,7 +151,8 @@ export default function Home() {
   //}
 
   return (
-    <Fragment>
+    <Fragment> 
+
       <Header/>
       {
         banner_main.map((item) =>(

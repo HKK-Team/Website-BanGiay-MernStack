@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useContext,useState } from "react";
+import React, { useState } from "react";
 import "./Favorite.css";
 export default function Favorite(props) {
   const [quantity,setquantity] = useState(1);
