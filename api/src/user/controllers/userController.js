@@ -97,6 +97,7 @@ const userCtrl = {
         }
         
     },
+    // get User
     getUser: async (req, res) =>{
         try {
             const user = await Users.findById(req.user.id).select('-password')
@@ -107,6 +108,7 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
+    // edit User
     editUser : async (req,res) =>{
         // check your id
         let user = await Users.findById(req.body._id);
