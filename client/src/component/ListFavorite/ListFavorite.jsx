@@ -47,6 +47,7 @@ export default function ListFavorite() {
                       color={item.color}
                       size={item.size}
                       price={item.price}
+                      idproduct={item._id}
                     />
                 ))}
                 {/* list favorite */}

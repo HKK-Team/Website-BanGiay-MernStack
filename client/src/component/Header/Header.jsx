@@ -22,11 +22,6 @@ export default function Header(props) {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.iduser === iduser;
   });
-  const [productCarts,setproductCarts] = state.productCarts.productCarts
-  const detailcarts = productCarts.filter((item) => {
-    // tìm và trả về đối tượng chứa thuộc tính của giày
-    return item.iduser === iduser;
-  });
   // Logout
   const logoutUser = async () => {
     await axios.get("/user/logout");
@@ -219,7 +214,7 @@ export default function Header(props) {
                   <span className="header_bottom-cart-cart">
                     <Link to="/cart" style={{ color: "black" }}>
                       <i class="fas fa-shopping-cart">
-                        <span className="Cart_count">{detailcarts.length}</span>
+                        <span className="Cart_count">0</span>
                       </i>
                     </Link>
                     {/* Thẻ Cart ẩn  */}

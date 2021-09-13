@@ -4,19 +4,23 @@ import "./ListCart.css";
 import Cart from "./Cart/Cart";
 import CartEmpty from "./CartEmpty/CartEmpty";
 import CartTable from "./CartTable/CartTable";
-import { GlobalState } from "../../GlobalState";
 
 export default function ListCart() {
-  const state = useContext(GlobalState);
-  const [productCarts,setproductCarts] = state.productCarts.productCarts
-  const [iduser, setiduser] = state.userAPI.iduser
-  const detail = productCarts.filter((item) => {
-    // tìm và trả về đối tượng chứa thuộc tính của giày
-    return item.iduser === iduser;
-  });
-  
+  var storedArray = JSON.parse(sessionStorage.getItem('arr'));
+  var ltg;
+  if(storedArray === null){
+     ltg = 0;
+  }
+  else{
+    ltg =  storedArray.length;
+  }
+  var sum = 0;
 
-  var CartCount = detail.length;
+  for (let i = 0; i < ltg; i++) {
+    sum += storedArray[i].totalprice;
+  }
+
+  var CartCount = ltg;
   if (CartCount >= 1) {
     return (
       <section className="Cart">
@@ -26,15 +30,16 @@ export default function ListCart() {
               <h1>GIỎ HÀNG CỦA BẠN</h1>
             </div>
             {/* list cart */}
-            <CartTable />
-            {detail.map(item => (
-                <Cart key={item._id}
+            {storedArray.map((item) => (
+              <Cart
+                key={item._id}
                 image={item.image}
                 name={item.nameProduct}
                 color={item.color}
                 size={item.size}
                 price={item.price}
-                totalprice={item.price}
+                totalprice={item.totalprice}
+                idproduct={item.idproduct}
               />
             ))}
             {/* List cart */}
@@ -48,7 +53,7 @@ export default function ListCart() {
           <div className="modal_footer">
             <div className="pull_left">
               <h3 className="continue_shopping">
-                <a href='/' className="comeback">
+                <a href="/" className="comeback">
                   <i class="fa fa-reply"></i> Tiếp tục mua hàng
                 </a>
               </h3>
@@ -56,7 +61,7 @@ export default function ListCart() {
             <div className="pull_right">
               <div className="total_price_modal">
                 <strong className="item_total_title">Tạm Tính: </strong>
-                <span className="item_total">0 đ</span>
+                <span className="item_total">{sum} đ</span>
               </div>
               <div className="text_right">
                 <div className="checkout_wrapper">
