@@ -12,9 +12,9 @@ export default function Header(props) {
   const [isLogged] = state.userAPI.isLogged;
   const [profile] = state.userAPI.user;
   //get id user current
-  const [iduser, setiduser] = state.userAPI.iduser;
+  const [iduser] = state.userAPI.iduser;
   const [search, setSearch] = state.searchProductApi.search;
-  const [productFavorites, setproductFavorites] =
+  const [productFavorites] =
   state.productFavorites.productFavorites;
   const detail = productFavorites.filter((item) => {
     // tìm và trả về đối tượng chứa thuộc tính của giày
@@ -33,7 +33,7 @@ export default function Header(props) {
   const loggedRouter = () =>{
       return(
           <>
-              <span><Link to="/Profile" className="header_top-link">{profile.lastname} {profile.firstname}</Link></span>
+              <span><Link to="/Profile" className="header_top-link">{profile.lastname}</Link></span>
               <span><Link to="/" onClick={logoutUser} className="header_top-link">Logout</Link></span>
           </>
       )
