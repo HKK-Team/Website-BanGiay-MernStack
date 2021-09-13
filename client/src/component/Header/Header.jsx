@@ -16,8 +16,7 @@ export default function Header(props) {
   //get id user current
   const [iduser] = state.userAPI.iduser;
   const [search, setSearch] = state.searchProductApi.search;
-  const [productFavorites] =
-  state.productFavorites.productFavorites;
+  const [productFavorites] = state.productFavorites.productFavorites;
   const detail = productFavorites.filter((item) => {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.iduser === iduser;
@@ -37,7 +36,7 @@ export default function Header(props) {
       <>
         <span>
           <Link to="/Profile" className="header_top-link">
-            {profile.lastname} {profile.firstname}
+            {profile.lastname}
           </Link>
         </span>
         <span>
@@ -106,24 +105,38 @@ export default function Header(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  // Đóng mở sidebar 
+  // Đóng mở sidebar
   const open = () => {
-      document.getElementById("navbar").style.transform="translate3d(300px,0px,0px)";
+    document.getElementById("navbar").style.transform =
+      "translate3d(300px,0px,0px)";
   };
   //  auto đóng sidebar
   useEffect(() => {
     var lock = setInterval(function () {
-      if (document.getElementById("root").clientWidth > 1024 ) {
-        document.getElementById("navbar").style.transform="translate3d(0px,0px,0px)";
-      } 
+      if (document.getElementById("root").clientWidth > 1024) {
+        document.getElementById("navbar").style.transform =
+          "translate3d(0px,0px,0px)";
+      }
     });
     return () => clearInterval(lock);
   }, []);
+  //overflow y cart-empty
+  var cartCount = 0; // số lượng sản phẩm trong giỏ hàng
+  useEffect(() => {
+    var setHeight = cartCount * 135.6;
+    if (cartCount !== 0) {
+      var loop = setInterval(function () {
+        document.getElementsByClassName(
+          "cart_box_wrapper"
+        )[0].style.height = `${setHeight}px`;
+      });
+    }
+    return () => clearInterval(loop);
+  });
   return (
     <Fragment>
       <header>
         <div className="header_top">
-   
           {/* <header_top> */}
           <div className="container width-1280">
             {/* <row> */}
@@ -158,7 +171,7 @@ export default function Header(props) {
 
         {/* < header_bottom>  */}
         <div className={`header_bottom ${small ? "small" : ""}`}>
-        <Navbar/>
+          <Navbar />
           {/* < container>  */}
           <div className="container width-1280">
             {/* <row>  */}
@@ -219,9 +232,33 @@ export default function Header(props) {
                     </Link>
                     {/* Thẻ Cart ẩn  */}
                     <div className="header_bottom-cart-empty">
-                      <div className="Cart_empty">
-                        <span>Hiện chưa có sản phẩm.</span>
-                      </div>
+                      {cartCount < 1 && (
+                        <div className="Cart_empty">
+                          <span>Hiện chưa có sản phẩm.</span>
+                        </div>
+                      )}
+                      {cartCount >= 1 && (
+                        <div className="cart_box_wrapper">
+                          {/* cart_box_wrapper */}
+                          <div className="cart_item clearfix">
+                            <i class="fa fa-times"></i>
+                            <img src={Logo} alt="" />
+                            <div className="cart_item-info">
+                              <a href>
+                                Giày Thể Thao Nam Biti’s Hunter X Z Collection
+                                InGreenZ DSMH06300REU (Rêu) <br /> trắng - 25{" "}
+                              </a>
+                              <input
+                                type="text"
+                                id="update-quality"
+                                value="1"
+                              />
+                              <span className="cart_item-price">188999 đ</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {/*  */}
                       <span className="line"></span>
                       <div className="Cart_TotalPrime">
                         <span className="Cart_TotalPrime-title">
