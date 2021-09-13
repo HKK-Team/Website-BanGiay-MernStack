@@ -14,10 +14,10 @@ export default function Header(props) {
   const [isLogged] = state.userAPI.isLogged;
   const [profile] = state.userAPI.user;
   //get id user current
-  const [iduser, setiduser] = state.userAPI.iduser;
+  const [iduser] = state.userAPI.iduser;
   const [search, setSearch] = state.searchProductApi.search;
-  const [productFavorites, setproductFavorites] =
-    state.productFavorites.productFavorites;
+  const [productFavorites] =
+  state.productFavorites.productFavorites;
   const detail = productFavorites.filter((item) => {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.iduser === iduser;
