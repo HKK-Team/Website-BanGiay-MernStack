@@ -3,12 +3,11 @@ import "./Header.css";
 import Vi from "../../images/images/vi.png";
 import Logo from "../../images/images/CôngtyTNHHABC.png";
 import React, { useEffect, useState, useContext, Fragment } from "react";
-import Sidebar from "./Sidebar/Sidebar";
 import { GlobalState } from "../../GlobalState";
 import { NavLink } from "react-router-dom"; // thư viện dùng để lưu active link
 import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 import axios from "axios";
-
+import Navbar from "./Sidebar/Navbar/Navbar";
 
 export default function Header(props) {
   const state = useContext(GlobalState);
@@ -23,7 +22,7 @@ export default function Header(props) {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.iduser === iduser;
   });
-  const [productCarts,setproductCarts] = state.productCarts.productCarts
+  const [productCarts, setproductCarts] = state.productCarts.productCarts;
   // Logout
   const logoutUser = async () => {
     await axios.get("/user/logout");
@@ -108,12 +107,24 @@ export default function Header(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  // Đóng mở sidebar 
+  const open = () => {
+      document.getElementById("navbar").style.transform="translate3d(300px,0px,0px)";
+  };
+  //  auto đóng sidebar
+  useEffect(() => {
+    var lock = setInterval(function () {
+      if (document.getElementById("root").clientWidth > 1024 ) {
+        document.getElementById("navbar").style.transform="translate3d(0px,0px,0px)";
+      } 
+    });
+    return () => clearInterval(lock);
+  }, []);
   return (
     <Fragment>
-    
       <header>
         <div className="header_top">
+   
           {/* <header_top> */}
           <div className="container width-1280">
             {/* <row> */}
@@ -148,6 +159,7 @@ export default function Header(props) {
 
         {/* < header_bottom>  */}
         <div className={`header_bottom ${small ? "small" : ""}`}>
+        <Navbar/>
           {/* < container>  */}
           <div className="container width-1280">
             {/* <row>  */}
@@ -155,7 +167,9 @@ export default function Header(props) {
               {/* header_bottom-wrapper */}
               <div className="header_bottom-wrapper">
                 {/* <header_bottom-icon>  */}
-                <Sidebar />
+                <div id="toggle">
+                  <i class="fas fa-bars" onClick={open}></i>
+                </div>
                 <div className="header_bottom-icon">
                   <img src={Logo} alt="/" />
                 </div>
@@ -201,7 +215,9 @@ export default function Header(props) {
                   <span className="header_bottom-cart-cart">
                     <Link to="/cart" style={{ color: "black" }}>
                       <i class="fas fa-shopping-cart">
-                        <span className="Cart_count">{productCarts.length}</span>
+                        <span className="Cart_count">
+                          {productCarts.length}
+                        </span>
                       </i>
                     </Link>
                     {/* Thẻ Cart ẩn  */}

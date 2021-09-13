@@ -1,4 +1,13 @@
-
+#navbar{
+  position: absolute;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  z-index: 100;
+  transition: all 1s ease;
+  background: rgb(232, 232, 232);
+}
 .logo-nav {
   text-align: center;
   padding: 12px 0px 5px;
@@ -52,17 +61,19 @@
     display: flex;
     flex-direction: column;
     background: rgb(232, 232, 232);
+    overflow-y: auto;
+    height: 100vh;
 }
-.mm-panel li{
+.mm-panel a{
     padding: 12px 10px;
     border-bottom: 1px dotted black;
     transition: all 0.5s ease;
 }
-.mm-panel li:hover{
+.mm-panel a:hover{
     background: wheat;
 
 }
-.mm-panel li a {
+.mm-panel a {
   color: #333333;
   font-family: Open Sans;
   font-size: 14px;

@@ -28,7 +28,10 @@ export default function Navbar(props) {
           <a href className="XinChao">
             Xin chào!
           </a>{" "}
-          <Link to="/Profile"> {profile.lastname} {profile.firstname}</Link>
+          <Link to="/Profile">
+            {" "}
+            {profile.lastname} {profile.firstname}
+          </Link>
         </p>
         <Link to="/" onClick={logoutUser} className="link">
           Đăng xuất
@@ -54,12 +57,17 @@ export default function Navbar(props) {
     );
   };
   const [menus2] = state.menu2API.menus2;
+  // close toggle
+  const close = () => {
+    document.getElementById("navbar").style.transform =
+      "translate3d(0px,0px,0px)";
+  };
   return (
     <div id="navbar">
       <div className="logo-nav">
         <img src={logo} alt="" />
         <span className="back" onClick={props.event}>
-          <i class="fas fa-chevron-left"></i>
+          <i class="fas fa-chevron-left" onClick={close}></i>
         </span>
       </div>
       {/* login */}
@@ -68,11 +76,9 @@ export default function Navbar(props) {
       <div className="mplus-menu">
         <ul className="mm-panel">
           {menus2.map((item) => (
-            <li key={item._id}>
-              <Link to={item.slug}>
-                <a href>{item.text}</a>
-              </Link>
-            </li>
+            <Link to={item.slug} key={item._id}>
+              {item.text}
+            </Link>
           ))}
         </ul>
       </div>
