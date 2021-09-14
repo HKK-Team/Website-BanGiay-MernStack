@@ -276,7 +276,7 @@ export default function Header(props) {
                                   id="update-quality"
                                 />
                                 <span className="cart_item-price">
-                                  {item.totalprice} đ
+                                  {item.totalprice.toLocaleString()} đ
                                 </span>
                               </div>
                             </div>
@@ -289,7 +289,9 @@ export default function Header(props) {
                         <span className="Cart_TotalPrime-title">
                           Tổng Tiền:
                         </span>
-                        <span className="Cart_TotalPrime-prime">{sum} đ</span>
+                        <span className="Cart_TotalPrime-prime">
+                          {sum.toLocaleString()} đ
+                        </span>
                       </div>
                       <div className="Cart_button">
                         <Link to='/Cart' className="Cart_button-watch">
