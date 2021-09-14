@@ -22,7 +22,7 @@ export default function ProductDetails() {
         <ProductDetail
           name={item.nameProduct}
           ProductCode={item.idCategory_product}
-          price={item.price}
+          price={item.price.toLocaleString()}
           color={item.color}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}

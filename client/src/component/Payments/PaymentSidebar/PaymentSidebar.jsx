@@ -2,6 +2,20 @@ import React from "react";
 import "./PaymentSidebar.css";
 
 export default function PaymentSidebar(props) {
+  // get totalPrice
+  var storedArray = JSON.parse(sessionStorage.getItem('arr'));
+  var ltg;
+  if(storedArray === null){
+     ltg = 0;
+  }
+  else{
+    ltg =  storedArray.length;
+  }
+  var sum = 0;
+
+  for (let i = 0; i < ltg; i++) {
+    sum += storedArray[i].totalprice;
+  }
   return (
     <div className="sidebar">
       <div className="sidebar_content">
@@ -29,7 +43,7 @@ export default function PaymentSidebar(props) {
         <div className="oder-summary payment-lines">
           <div className="total-line">
             <span className="total-line-name">Tạm tính</span>
-            <span className="total-line-price">185000 đ</span>
+            <span className="total-line-price">{sum.toLocaleString()} đ</span>
           </div>
           <div className="total-line">
             <span className="total-line-name">Phí vận chuyển</span>
@@ -41,7 +55,7 @@ export default function PaymentSidebar(props) {
           <div className="total-line">
             <span className="total-line-name price">Tổng cộng</span>
             <span className="total-line-Totalprice">
-              <span className="price">VND</span> 185,000 đ
+              <span className="price">VND</span> {sum.toLocaleString()} đ
             </span>
           </div>
         </div>

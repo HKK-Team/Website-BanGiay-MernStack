@@ -2,6 +2,7 @@
 import React from "react";
 import "./CartEmpty.css";
 import emptyCart from "./../../../images/images/icon_empty_cart.webp";
+import {Link} from "react-router-dom"
 export default function CartEmpty() {
   return (
     <section className="Cart">
@@ -15,12 +16,12 @@ export default function CartEmpty() {
             <p className="message">
               Không có sản phẩm nào trong giỏ hàng của bạn.
             </p>
-            <a href className="myoder">
+            <Link to = "" className="myoder">
               Đơn hàng của tôi
-            </a>
-            <a href className="btn-red">
+            </Link>
+            <Link to = "/" className="btn-red">
               Tiếp tục mua hàng
-            </a>
+            </Link>
           </div>
           <div className="cart_gift_note">
             Bộ Y tế đã ra thông điệp 5K: “Khẩu trang - Khử khuẩn - Khoảng cách -

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useState, useContext } from "react";
+import React, {  useState, useContext } from "react";
 import "./Favorite.css";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
@@ -7,8 +7,8 @@ var arr = [];
 
 export default function Favorite(props) {
   const state = useContext(GlobalState);
-  const [iduser, setiduser] = state.userAPI.iduser;
-  const [productFavorites, setproductFavorites] =
+  const [iduser] = state.userAPI.iduser;
+  const [productFavorites] =
     state.productFavorites.productFavorites;
 
   const detail = productFavorites.filter((item) => {
@@ -34,6 +34,7 @@ export default function Favorite(props) {
     e.preventDefault();
       const settings = {
       idproduct:props.idproduct,
+      id_product : props.id_product,
       nameProduct: props.name,
       color: props.color,
       price: props.price,

@@ -3,7 +3,6 @@ import Header from './../../component/Header/Header'
 import Footer from './../../component/Footer/Footer'
 import Titlebar from '../../component/ProductDetails/Titlebar/Titlebar'
 import ListCart from '../../component/ListCart/ListCart'
-
 export default function Cart() {
     return (
         <Fragment>
