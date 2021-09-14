@@ -14,7 +14,6 @@ import Product from "../../../component/Products/Product";
 export default function ProductFemale() {
   const state = useContext(GlobalState)
   const [product_pk] = state.productpkApi.product_pk
-
     //Get current pages and post current
     const [currentPagepk, setcurrentPagepk] = state.productpkApi.currentPagepk
     const [postsPerPagepk] = state.productpkApi.postsPerPagepk
