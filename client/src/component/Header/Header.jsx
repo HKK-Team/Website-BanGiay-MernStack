@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom"; // thư viện dùng để lưu acti
 import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 import axios from "axios";
 import Navbar from "./Sidebar/Navbar/Navbar";
+import CatalogLeft from "../Catalog/CatalogLeft/CatalogLeft";
 
 export default function Header(props) {
   const state = useContext(GlobalState);
@@ -57,7 +58,7 @@ export default function Header(props) {
       <>
         <span>
           <Link to="/Profile" className="header_top-link">
-          {profile.lastname}
+            {profile.lastname}
           </Link>
         </span>
         <span>
@@ -193,6 +194,7 @@ export default function Header(props) {
         {/* < header_bottom>  */}
         <div className={`header_bottom ${small ? "small" : ""}`}>
           <Navbar />
+          <CatalogLeft />
           {/* < container>  */}
           <div className="container width-1280">
             {/* <row>  */}
@@ -294,10 +296,10 @@ export default function Header(props) {
                         </span>
                       </div>
                       <div className="Cart_button">
-                        <Link to='/Cart' className="Cart_button-watch">
+                        <Link to="/Cart" className="Cart_button-watch">
                           XEM GIỎ HÀNG
                         </Link>
-                        <Link to='/payment' className="Cart_button-pay">
+                        <Link to="/payment" className="Cart_button-pay">
                           THANH TOÁN
                         </Link>
                       </div>

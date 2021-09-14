@@ -6,6 +6,7 @@ import Pagination from "../../Pagination/Pagination";
 import SortBy from "./SortBy/SortBy";
 import { GlobalState } from '../../../GlobalState'
 
+
 export default function ListPageProductsProduct(props) {
 
   const state = useContext(GlobalState);
@@ -80,6 +81,20 @@ export default function ListPageProductsProduct(props) {
     setdetailCategorybetrai('detailCategory=dep')
     setdetailCategorybegai('detailCategory=dep')
   }
+  //open catalogLeft
+  const open =()=>{
+    document.getElementById("catalogleft").style.transform="translate3d(-234.2px,0px,0px)"
+  }
+  //auto close catalogLeft
+  useEffect(() => {
+    var lock = setInterval(function () {
+      if (document.getElementById("root").clientWidth > 1024) {
+        document.getElementById("catalogleft").style.transform =
+          "translate3d(0px,0px,0px)";
+      }
+    });
+    return () => clearInterval(lock);
+  }, []);
   return (
     <section className="container-product">
       <div className="container">
@@ -100,6 +115,11 @@ export default function ListPageProductsProduct(props) {
             <Catalog />
             <div className="container-product_list-products">
               <SortBy />
+              <div className="dis_inline">
+                <a href>
+                  <i className="fa fa-filter" onClick={open}></i>
+                </a>
+              </div>
               <div className="container-product_list-products-wrapper">
                 {props.array}
               </div>

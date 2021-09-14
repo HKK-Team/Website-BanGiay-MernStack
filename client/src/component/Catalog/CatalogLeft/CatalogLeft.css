@@ -1,9 +1,29 @@
-.sidebar_collection {
-  flex-shrink: 0;
-  width: 22.5%;
+#catalogleft {
+  width: 234.2px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: -234.2px;
+  transition: all 1s ease;
+  z-index: 10;
+  background: #ffffff;
+}
+.close{
+    float: right;
+    font-size: 25px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    transition: all 0.5s ease;
+}
+.close:hover{
+    color: red;
+}
+.sidebar_collection_left {
+  width: 100%;
   font-size: 13px;
   line-height: 18.5714px;
   padding: 30px 24px;
+  z-index: 10;
 }
 .container-product_list-products {
   flex-shrink: 1;
@@ -126,10 +146,4 @@
 }
 .hong {
   background-color: #ff00cc;
-}
-/* Reponsive table and mobile */
-@media screen  and (max-width:1023px){
-  .sidebar_collection{
-    display: none;
-  }
 }

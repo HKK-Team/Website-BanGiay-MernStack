@@ -34,16 +34,59 @@
   display: flex;
   justify-content: flex-start;
 }
-.container-product_list-products{
+.container-product_list-products {
   margin-bottom: 50px;
+  width: 100%;
 }
-.container-product_list-products-wrapper{
+.container-product_list-products-wrapper {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-gap:10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
   margin-bottom: 30px;
 }
-#range-money{
+#range-money {
   margin-top: 30px;
   color: black;
+}
+.dis_inline{
+  display: none;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.dis_inline a {
+  border: 1px solid #212121;
+  color: #212121;
+  font-family: Open Sans;
+  font-size: 20px;
+
+  line-height: 28.5714px;
+  text-align: center;
+}
+.dis_inline a i {
+  color: #212121;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  padding: 5px;
+}
+/* Reponsive table pro */
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+  .container-product_list-products-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sidebar_collection {
+    width: 26.5%;
+  }
+ 
+}
+/* Reponsive table and mobile */
+@media screen and (max-width: 1023px) {
+  .container-product_list-products-wrapper {
+    grid-template-columns: repeat(2, 50%);
+  }
+  .dis_inline{
+    display: block;
+  }
 }

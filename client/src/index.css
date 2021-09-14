@@ -145,7 +145,7 @@ a {
 /* reponsive table */
 @media screen and (min-width: 768px) {
   .container {
-    min-width: 750px;
+    width: 750px;
   }
 }
 @media screen and (min-width: 1281px) {
