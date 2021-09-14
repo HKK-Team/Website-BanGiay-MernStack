@@ -9,7 +9,6 @@ import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 import axios from "axios";
 import Navbar from "./Sidebar/Navbar/Navbar";
 
-
 export default function Header(props) {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
@@ -24,13 +23,12 @@ export default function Header(props) {
   });
 
   //create variable count for carts
-  var storedArray = JSON.parse(sessionStorage.getItem('arr'));
+  var storedArray = JSON.parse(sessionStorage.getItem("arr"));
   var ltg;
-  if(storedArray === null){
-     ltg = 0;
-  }
-  else{
-    ltg =  storedArray.length;
+  if (storedArray === null) {
+    ltg = 0;
+  } else {
+    ltg = storedArray.length;
   }
   //create for quantity cart
   var quantity = 1;
@@ -41,7 +39,6 @@ export default function Header(props) {
   }
   //create sum cart
   var sum = 0;
-
   for (let i = 0; i < ltg; i++) {
     sum += storedArray[i].totalprice;
   }
@@ -52,16 +49,15 @@ export default function Header(props) {
     localStorage.removeItem("firstLogin");
 
     window.location.href = "/";
-    sessionStorage.removeItem('arr');
+    sessionStorage.removeItem("arr");
   };
-
   // Logged
   const loggedRouter = () => {
     return (
       <>
         <span>
           <Link to="/Profile" className="header_top-link">
-            {profile.lastname}
+          {profile.lastname}
           </Link>
         </span>
         <span>
@@ -149,7 +145,7 @@ export default function Header(props) {
   var cartCount = ltg; // số lượng sản phẩm trong giỏ hàng
   useEffect(() => {
     var setHeight = cartCount * 135.6;
-    if (cartCount !== 0) {
+    if (cartCount !== 0 && setHeight <= 350) {
       var loop = setInterval(function () {
         document.getElementsByClassName(
           "cart_box_wrapper"
@@ -157,7 +153,7 @@ export default function Header(props) {
       });
     }
     return () => clearInterval(loop);
-  });
+  }, [cartCount]);
   return (
     <Fragment>
       <header>
@@ -256,16 +252,6 @@ export default function Header(props) {
                       </i>
                     </Link>
                     {/* Thẻ Cart ẩn  */}
-
-
-
-
-
-
-
-
-
-
                     <div className="header_bottom-cart-empty">
                       {cartCount < 1 && (
                         <div className="Cart_empty">
@@ -276,23 +262,25 @@ export default function Header(props) {
                         <div className="cart_box_wrapper">
                           {/* cart_box_wrapper */}
                           {storedArray.map((item) => (
-                                <div className="cart_item clearfix">
-                                <i class="fa fa-times"></i>
-                                <img src={item.image} alt="" />
-                                <div className="cart_item-info">
-                                  <a href>
-                                    {item.nameProduct} <br /> {item.color} - {item.size}{" "}
-                                  </a>
-                                  <input
-                                    value={quantity}
-                                    type="text"
-                                    id="update-quality"
-                                  />
-                                  <span className="cart_item-price">{item.totalprice} đ</span>
-                                </div>
+                            <div className="cart_item clearfix">
+                              <i class="fa fa-times"></i>
+                              <img src={item.image} alt="" />
+                              <div className="cart_item-info">
+                                <a href>
+                                  {item.nameProduct} <br /> {item.color} -{" "}
+                                  {item.size}{" "}
+                                </a>
+                                <input
+                                  value={quantity}
+                                  type="text"
+                                  id="update-quality"
+                                />
+                                <span className="cart_item-price">
+                                  {item.totalprice} đ
+                                </span>
                               </div>
-                            ))}
-                          
+                            </div>
+                          ))}
                         </div>
                       )}
                       {/*  */}
@@ -304,10 +292,10 @@ export default function Header(props) {
                         <span className="Cart_TotalPrime-prime">{sum} đ</span>
                       </div>
                       <div className="Cart_button">
-                        <Link to={props.cart} className="Cart_button-watch">
+                        <Link to='/Cart' className="Cart_button-watch">
                           XEM GIỎ HÀNG
                         </Link>
-                        <Link to={props.payment} className="Cart_button-pay">
+                        <Link to='/payment' className="Cart_button-pay">
                           THANH TOÁN
                         </Link>
                       </div>

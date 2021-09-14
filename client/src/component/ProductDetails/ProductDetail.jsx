@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState, useContext } from "react";
@@ -82,9 +83,15 @@ export default function ProductDetail(props) {
       return { x: x, y: y };
     }
   }
+  //zoom hover image
   useEffect(() => {
     imageZoom("productDetail_image-image", "myresult");
-  });
+  }, []);
+  const [changeImg, setchangeImg] = useState(1);
+  useEffect(() => {
+    imageZoom("productDetail_image-image", "myresult");
+    document.getElementsByClassName("img-zoom-lens")[0].remove("img-zoom-lens");
+  }, [changeImg]);
 
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state.userAPI.isLogged;
@@ -103,7 +110,6 @@ export default function ProductDetail(props) {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.idCategory_product === params.id;
   });
-
 
   function eventfavorite(e) {
     e.preventDefault();
@@ -127,9 +133,9 @@ export default function ProductDetail(props) {
           size: sizebychoice,
           iduser: iduser,
         },
-      })
+      });
       alert("Sản phẩm đã được thêm vào yêu thích !!");
-     window.location.reload(false);
+      window.location.reload(false);
     }
   }
   function eventunfavorite(e) {
@@ -147,18 +153,17 @@ export default function ProductDetail(props) {
     }
     window.location.reload(false);
   }
-  
+
   setTimeout(() => {
-      for (let i = 0; i < detail.length; i++) {
-        var temp = detail[i].idCategory_product;
-        break;
-      }
+    for (let i = 0; i < detail.length; i++) {
+      var temp = detail[i].idCategory_product;
+      break;
+    }
     for (let i = 0; i < productFavorites.length; i++) {
       if (
         iduser === productFavorites[i].iduser &&
         temp === productFavorites[i].idCategory_product
-      )
-      {
+      ) {
         setCheck(false);
       }
     }
@@ -215,19 +220,64 @@ export default function ProductDetail(props) {
                   <path d="M20.902 17.279c0.325 0.322 0.851 0.322 1.175 0 0.325-0.322 0.325-0.841 0-1.163l-9.49-9.396c-0.324-0.322-0.85-0.322-1.174 0l-9.49 9.396c-0.324 0.322-0.325 0.841 0 1.163s0.85 0.322 1.175 0l8.902-8.569 8.902 8.569z"></path>
                 </svg>
                 <Link to>
-                  <img src={props.imageValue1} alt="" />
+                  <img
+                    src={props.imageValue1}
+                    alt="image"
+                    onClick={() => {
+                      document.getElementById(
+                        "productDetail_image-image"
+                      ).src = `${props.imageValue1}`;
+                      setchangeImg(1);
+                    }}
+                  />
                 </Link>
                 <Link to>
-                  <img src={props.imageValue2} alt="" />
+                  <img
+                    src={props.imageValue2}
+                    alt=" "
+                    onClick={() => {
+                      document.getElementById(
+                        "productDetail_image-image"
+                      ).src = `${props.imageValue2}`;
+                      setchangeImg(2);
+                    }}
+                  />
                 </Link>
                 <Link to>
-                  <img src={props.imageValue3} alt="" />
+                  <img
+                    src={props.imageValue3}
+                    alt=" "
+                    onClick={() => {
+                      document.getElementById(
+                        "productDetail_image-image"
+                      ).src = `${props.imageValue3}`;
+                      setchangeImg(3);
+                    }}
+                  />
                 </Link>
                 <Link to>
-                  <img src={props.imageValue4} alt="" />
+                  <img
+                    src={props.imageValue4}
+                    alt=" "
+                    onClick={() => {
+                      document.getElementById(
+                        "productDetail_image-image"
+                      ).src = `${props.imageValue4}`;
+                      setchangeImg(4);
+                    }}
+                  />
                 </Link>
                 <Link to>
-                  <img src={props.imageValue5} alt="" />
+                  <img
+                    src={props.imageValue5}
+                    alt=" "
+                    onClick={() => {
+                      document.getElementById(
+                        "productDetail_image-image"
+                      ).src = `${props.imageValue5}`;
+                      setchangeImg(5);
+                    }}
+                  />
                 </Link>
                 <svg viewBox="0 0 24 24">
                   <path
@@ -247,6 +297,7 @@ export default function ProductDetail(props) {
                     id="productDetail_image-image"
                   />
                   <div id="myresult" class="img-zoom-result"></div>
+                  <div id="ZoomTint" ></div>
                 </div>
                 <span className="new">
                   <img src={logo} alt="new" />
