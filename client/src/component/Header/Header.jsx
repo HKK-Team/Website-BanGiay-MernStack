@@ -9,7 +9,6 @@ import { Link } from "react-router-dom"; // thu vien de chuyen trang ko bi load
 import axios from "axios";
 import Navbar from "./Sidebar/Navbar/Navbar";
 
-
 export default function Header(props) {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
@@ -24,13 +23,12 @@ export default function Header(props) {
   });
 
   //create variable count for carts
-  var storedArray = JSON.parse(sessionStorage.getItem('arr'));
+  var storedArray = JSON.parse(sessionStorage.getItem("arr"));
   var ltg;
-  if(storedArray === null){
-     ltg = 0;
-  }
-  else{
-    ltg =  storedArray.length;
+  if (storedArray === null) {
+    ltg = 0;
+  } else {
+    ltg = storedArray.length;
   }
   //create for quantity cart
   var quantity = 1;
@@ -52,7 +50,7 @@ export default function Header(props) {
     localStorage.removeItem("firstLogin");
 
     window.location.href = "/";
-    sessionStorage.removeItem('arr');
+    sessionStorage.removeItem("arr");
   };
 
   // Logged
@@ -257,15 +255,6 @@ export default function Header(props) {
                     </Link>
                     {/* Thẻ Cart ẩn  */}
 
-
-
-
-
-
-
-
-
-
                     <div className="header_bottom-cart-empty">
                       {cartCount < 1 && (
                         <div className="Cart_empty">
@@ -276,23 +265,25 @@ export default function Header(props) {
                         <div className="cart_box_wrapper">
                           {/* cart_box_wrapper */}
                           {storedArray.map((item) => (
-                                <div className="cart_item clearfix" key={item._id}>
-                                <i class="fa fa-times"></i>
-                                <img src={item.image} alt="" />
-                                <div className="cart_item-info">
-                                  <a href>
-                                    {item.nameProduct} <br /> {item.color} - {item.size}{" "}
-                                  </a>
-                                  <input
-                                    value={quantity}
-                                    type="text"
-                                    id="update-quality"
-                                  />
-                                  <span className="cart_item-price">{item.totalprice.toLocaleString()} đ</span>
-                                </div>
+                            <div className="cart_item clearfix" key={item._id}>
+                              <i class="fa fa-times"></i>
+                              <img src={item.image} alt="" />
+                              <div className="cart_item-info">
+                                <a href>
+                                  {item.nameProduct} <br /> {item.color} -{" "}
+                                  {item.size}{" "}
+                                </a>
+                                <input
+                                  value={quantity}
+                                  type="text"
+                                  id="update-quality"
+                                />
+                                <span className="cart_item-price">
+                                  {item.totalprice.toLocaleString()} đ
+                                </span>
                               </div>
-                            ))}
-                          
+                            </div>
+                          ))}
                         </div>
                       )}
                       {/*  */}
@@ -301,7 +292,9 @@ export default function Header(props) {
                         <span className="Cart_TotalPrime-title">
                           Tổng Tiền:
                         </span>
-                        <span className="Cart_TotalPrime-prime">{sum.toLocaleString()} đ</span>
+                        <span className="Cart_TotalPrime-prime">
+                          {sum.toLocaleString()} đ
+                        </span>
                       </div>
                       <div className="Cart_button">
                         <Link to={props.cart} className="Cart_button-watch">
