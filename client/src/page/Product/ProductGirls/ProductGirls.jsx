@@ -43,7 +43,7 @@ export default function ProductFemale() {
           name={item.nameProduct}
           typee="be-gai"
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
         />
       )
     )

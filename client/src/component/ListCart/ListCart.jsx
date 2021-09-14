@@ -61,7 +61,7 @@ export default function ListCart() {
             <div className="pull_right">
               <div className="total_price_modal">
                 <strong className="item_total_title">Tạm Tính: </strong>
-                <span className="item_total">{sum} đ</span>
+                <span className="item_total">{sum.toLocaleString()} đ</span>
               </div>
               <div className="text_right">
                 <div className="checkout_wrapper">

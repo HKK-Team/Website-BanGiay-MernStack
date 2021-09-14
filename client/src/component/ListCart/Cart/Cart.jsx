@@ -16,7 +16,17 @@ export default function Cart(props) {
 
   function eventdelete(e) {
     e.preventDefault();
-    window.confirm("Bạn thực sự muốn xóa sản phẩm khỏi giỏ hàng ?");
+    for (let i = 0; i < storedArray.length; i++) {
+      if (storedArray[i].idproduct === props.idproduct) {
+        if (window.confirm("Bạn thực sự muốn xóa sản phẩm khỏi giỏ hàng ?")) {
+          storedArray.splice([i], 1);
+          sessionStorage.setItem("arr", JSON.stringify(storedArray));
+          window.location.reload(false);
+        } else {
+          break;
+        }
+      }
+    }
   }
   return (
     <div className="line_item">
@@ -46,9 +56,9 @@ export default function Cart(props) {
           max="100"
         />
       </div>
-      <div className="line_item-price">{props.price} đ</div>
+      <div className="line_item-price">{props.price.toLocaleString()} đ</div>
       <div className="line_item-total_price">
-        {props.totalprice} đ
+        {props.totalprice.toLocaleString()} đ
       </div>
     </div>
   );

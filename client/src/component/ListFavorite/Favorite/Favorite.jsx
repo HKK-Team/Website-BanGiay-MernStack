@@ -97,7 +97,7 @@ export default function Favorite(props) {
         </td>
         <td className="customer-wishlist-item-price">
           <p className="special-price">
-            <span className="price">{props.price * quantity} đ</span>
+            <span className="price">{(props.price * quantity).toLocaleString()} đ</span>
           </p>
         </td>
         <td className="customer-wishlist-item-cart">
