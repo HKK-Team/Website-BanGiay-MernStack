@@ -47,7 +47,7 @@ export default function Home() {
           valueSize_5={item.size.size5}
           name={item.nameProduct}
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
           typee="nam"
           masp={item.idCategory_product}
         />
@@ -66,7 +66,7 @@ export default function Home() {
           valueSize_5={item.size.size5}
           name={item.nameProduct}
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
           typee="nu"
           masp={item.idCategory_product}
         />
@@ -85,7 +85,7 @@ export default function Home() {
           valueSize_5={item.size.size5}
           name={item.nameProduct}
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
           typee="phu-kien"
           masp={item.idCategory_product}
         />
@@ -104,7 +104,7 @@ export default function Home() {
           valueSize_5={item.size.size5}
           name={item.nameProduct}
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
           typee="gosto"
           masp={item.idCategory_product}
         />
@@ -123,7 +123,7 @@ export default function Home() {
           valueSize_5={item.size.size5}
           name={item.nameProduct}
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
           typee="be-trai"
           masp={item.idCategory_product}
         />
@@ -142,7 +142,7 @@ export default function Home() {
           valueSize_5={item.size.size5}
           name={item.nameProduct}
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
           typee="be-gai"
           masp={item.idCategory_product}
         />

@@ -276,7 +276,7 @@ export default function Header(props) {
                         <div className="cart_box_wrapper">
                           {/* cart_box_wrapper */}
                           {storedArray.map((item) => (
-                                <div className="cart_item clearfix">
+                                <div className="cart_item clearfix" key={item._id}>
                                 <i class="fa fa-times"></i>
                                 <img src={item.image} alt="" />
                                 <div className="cart_item-info">
@@ -288,7 +288,7 @@ export default function Header(props) {
                                     type="text"
                                     id="update-quality"
                                   />
-                                  <span className="cart_item-price">{item.totalprice} đ</span>
+                                  <span className="cart_item-price">{item.totalprice.toLocaleString()} đ</span>
                                 </div>
                               </div>
                             ))}
@@ -301,7 +301,7 @@ export default function Header(props) {
                         <span className="Cart_TotalPrime-title">
                           Tổng Tiền:
                         </span>
-                        <span className="Cart_TotalPrime-prime">{sum} đ</span>
+                        <span className="Cart_TotalPrime-prime">{sum.toLocaleString()} đ</span>
                       </div>
                       <div className="Cart_button">
                         <Link to={props.cart} className="Cart_button-watch">

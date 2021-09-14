@@ -46,9 +46,9 @@ export default function Cart(props) {
           max="100"
         />
       </div>
-      <div className="line_item-price">{props.price} đ</div>
+      <div className="line_item-price">{props.price.toLocaleString()} đ</div>
       <div className="line_item-total_price">
-        {props.totalprice} đ
+        {props.totalprice.toLocaleString()} đ
       </div>
     </div>
   );
