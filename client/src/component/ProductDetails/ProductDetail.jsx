@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+var arr = [];
 
 export default function ProductDetail(props) {
   // zoom hình khi hover
@@ -116,6 +117,28 @@ export default function ProductDetail(props) {
     window.location.href = "/Login";
     alert("Bạn cần đăng nhập để thêm sản phẩm yêu thích !!");
   }
+
+  function eventbuynow(e) {
+    e.preventDefault();
+    if (sizebychoice === 0) {
+      alert("Vui lòng chọn size sản phẩm !!");
+    } else {
+        const settings = {
+          idproduct: detail[0]._id,
+          nameProduct:detail[0].nameProduct,
+          color: detail[0].color,
+          price: detail[0].price,
+          totalprice: detail[0].price,
+          size: sizebychoice,
+          image: detail[0].image,
+          quantity: 1,
+        };
+        arr.push(settings)
+        alert("Sản phẩm đã được thêm vào giỏ hàng !!!")
+       sessionStorage.setItem('arr', JSON.stringify(arr));
+    }
+  }
+
   function eventfavoriteIsLogin(e) {
     e.preventDefault();
     if (sizebychoice === 0) {
@@ -297,7 +320,7 @@ export default function ProductDetail(props) {
                     id="productDetail_image-image"
                   />
                   <div id="myresult" class="img-zoom-result"></div>
-                  <div id="ZoomTint" ></div>
+                  <div id="ZoomTint"></div>
                 </div>
                 <span className="new">
                   <img src={logo} alt="new" />
@@ -315,7 +338,7 @@ export default function ProductDetail(props) {
                 Mã sản phẩm :<span>{" " + props.ProductCode}</span>
               </div>
               <div className="productDetail_information-price">
-                <span>{props.price} đ</span>
+                <span>{props.price.toLocaleString()} đ</span>
                 <div id="vat">*Đã bao gồm VAT</div>
               </div>
               <form action="">
@@ -354,10 +377,13 @@ export default function ProductDetail(props) {
                 <div className="productDetail_information-inventory">
                   <label htmlFor="">Còn hàng:</label>
                   <span>
-                    <strong>40</strong> Sản phẩm
+                    <strong>4</strong> Sản phẩm
                   </span>
                 </div>
-                <div className="productDetail_information-action-cart">
+                <div
+                  onClick={eventbuynow}
+                  className="productDetail_information-action-cart"
+                >
                   <button>Mua Ngay</button>
                   {favorite}
                 </div>
@@ -388,7 +414,7 @@ export default function ProductDetail(props) {
                 <AdvertisingCard
                   image={props.image}
                   name={props.name}
-                  price={props.price}
+                  price={props.price.toLocaleString()}
                   url="#"
                 />
                 <AdvertisingCard
@@ -400,7 +426,7 @@ export default function ProductDetail(props) {
                 <AdvertisingCard
                   image={props.image}
                   name={props.name}
-                  price={props.price}
+                  price={props.price.toLocaleString()}
                   url="#"
                 />
               </div>
