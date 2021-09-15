@@ -110,6 +110,13 @@ export default function ProductDetail(props) {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.idCategory_product === params.id;
   });
+  const recomment = productDetail.filter((item) => {
+    return (
+      item.nameCategoryProduct === detail[0].nameCategoryProduct &&
+      item.detailCategory === detail[0].detailCategory &&
+      item.idCategory_product !== detail[0].idCategory_product
+    );
+  });
 
   function eventfavorite(e) {
     e.preventDefault();
@@ -124,7 +131,7 @@ export default function ProductDetail(props) {
     } else {
       const settings = {
         idproduct: detail[0]._id,
-        id_product : detail[0].idCategory_product,
+        id_product: detail[0].idCategory_product,
         nameProduct: detail[0].nameProduct,
         color: detail[0].color,
         price: detail[0].price,
@@ -133,7 +140,6 @@ export default function ProductDetail(props) {
         image: detail[0].image,
         quantity: 1,
       };
-      
 
       if (sessionStorage.getItem("settings") === null) {
         var data = [];
@@ -142,16 +148,14 @@ export default function ProductDetail(props) {
         alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
       } else {
         data = JSON.parse(sessionStorage.getItem("settings"));
-        if(data.map(e => e.id_product).indexOf(settings.id_product) === -1){
+        if (data.map((e) => e.id_product).indexOf(settings.id_product) === -1) {
           data.push(settings);
           alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
-        }
-        else{
+        } else {
           alert("Sản phẩm đã tồn tại trong giỏ hàng !!!");
         }
         sessionStorage.setItem("settings", JSON.stringify(data));
       }
-
     }
   }
 
@@ -424,24 +428,14 @@ export default function ProductDetail(props) {
                 Có thể bạn sẽ thích
               </h3>
               <div className="xlab-main">
-                <AdvertisingCard
-                  image={props.image}
-                  name={props.name}
-                  price={props.price.toLocaleString()}
-                  url="#"
-                />
-                <AdvertisingCard
-                  image={props.image}
-                  name={props.name}
-                  price={props.price}
-                  url="#"
-                />
-                <AdvertisingCard
-                  image={props.image}
-                  name={props.name}
-                  price={props.price.toLocaleString()}
-                  url="#"
-                />
+                {recomment.slice(0, 4).map((item) => (
+                  <AdvertisingCard key={item._id}
+                    image={item.image}
+                    name={item.nameProduct}
+                    price={item.price.toLocaleString()}
+                    masp={item.idCategory_product}
+                  />
+                ))}
               </div>
             </div>
           </div>
