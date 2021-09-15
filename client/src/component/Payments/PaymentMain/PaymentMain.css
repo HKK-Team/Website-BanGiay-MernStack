@@ -67,13 +67,13 @@
   box-sizing: border-box;
 }
 
-.step_footer a {
+.btn-addPaymentMethods {
   color: #338dbc;
-  margin: 0px 14px 0px 0px;
-  display: inline-block;
-  width: 278px;
+  display: inline;
+  /* width: 278px; */
+  float: right;
 }
-.step_footer button {
+.btn-addPaymentMethods {
   background-color: #338dbc;
   border-radius: 4px;
   border: none;
@@ -85,10 +85,13 @@
   padding: 19.6px 23.8px;
   cursor: pointer;
 }
-.step_footer button span {
+.btn-addPaymentMethods span {
   color: #ffffff;
   display: inline;
   font-size: 14px;
   font-weight: 500;
   text-align: center;
+}
+.step_footer a{
+  display: inline;
 }

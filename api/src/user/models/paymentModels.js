@@ -2,27 +2,25 @@ const mongoose = require('mongoose')
 const paymentSchema = new mongoose.Schema({
     user_id :{
         type : String,
-        required : true
-    },
-    product_id : {
-        type :String,
-        required : true
     },
     fullName : {
         type : String,
-        required : true
     },
     email : {
         type : String,
-        required : true
+    },
+    phone_number :{
+        type : String,
     },
     address : {
         type : String,
-        required : true
     },
-    quantity :{
+    cart:{
+        type: Array,
+        default: []
+    },
+    total_price : {
         type : Number,
-        required : true
     },
     orderDate : {
         type: Date, 

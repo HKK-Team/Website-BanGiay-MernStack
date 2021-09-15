@@ -1,10 +1,9 @@
 import React from "react";
 import "./ListPayment.css";
 import logo from "./../../images/images/CôngtyTNHHABC.png";
-import PaymentMain from "./PaymentMain/PaymentMain";
 import PaymentProduct from "./PaymentProduct/PaymentProduct";
 import PaymentSidebar from "./PaymentSidebar/PaymentSidebar";
-export default function ListPayment() {
+export default function ListPayment(props) {
   // get product in sessionStorage and payment
   var storedArray = JSON.parse(sessionStorage.getItem("arr"));
   var arr = [];
@@ -19,8 +18,7 @@ export default function ListPayment() {
         price={item.price}
       />
     ))
-  );
-  console.log(arr);
+  )
   return (
     <section className="payment">
       <div className="banner_payment">
@@ -28,7 +26,7 @@ export default function ListPayment() {
       </div>
       <div className="wrap">
         <PaymentSidebar arraylist={arr} />
-        <PaymentMain />
+        {props.payname}
       </div>
     </section>
   );
