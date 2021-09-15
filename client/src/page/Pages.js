@@ -20,6 +20,7 @@ import NotFound from "../component/utils/not_found/NotFound";
 import UpdateAccount from "../page/Account/Update_Account";
 import Search from "./Search/Search";
 import Payment from "./Payment/Payment";
+import PaymentNoLogged from "./Payment/Payment";
 import PaymentMethods from "../page/PaymentMethods/PaymentMethods";
 function Pages() {
   const state = useContext(GlobalState);
@@ -59,6 +60,7 @@ function Pages() {
       <Route exact path="/Profile" component={Profile}></Route>
       <Route exact path="/Search" component={Search}></Route>
       <Route exact path="/Payment" component={Payment}></Route>
+      <Route exact path="/PaymentNoLogged" component={PaymentNoLogged}></Route>
       <Route exact path="/UpdateAccount" component={UpdateAccount}></Route>
       <Route exact path="/PaymentMethods" component={PaymentMethods}></Route>
     </Switch>
