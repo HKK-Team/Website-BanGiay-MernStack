@@ -62,3 +62,9 @@
 .account_box-info {
   padding: 0px 15px;
 }
+/* Reponsive  */
+@media screen and (max-width:715px) {
+  .account_wrapper{
+    grid-template-columns: 100%;
+  }
+}

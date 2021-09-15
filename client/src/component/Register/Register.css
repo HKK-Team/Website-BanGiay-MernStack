@@ -8,8 +8,10 @@
   border: 1px solid #eeeeee;
   box-shadow: #000000 0px 2px 4px 0px;
 
-  margin: 20px 407.5px 0px;
+  margin: 0 auto;
   padding: 15px;
+  width: 344px;
+
 }
 .account-title {
   font-family: Open Sans;
@@ -51,6 +53,7 @@
   line-height: 20px;
 
   padding: 8px 15px;
+  width: 100%;
 }
 .btn-signin {
     font-size: 14px;

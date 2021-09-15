@@ -68,9 +68,9 @@ export default function PaymentMain() {
       <div className="sections">
         <div className="section_header">
           <h2 className="section_title">Thông tin giao hàng</h2>
-          <p className="section_text">
+          <Link to ='/Profile' className="section_text">
           {profile.firstname} {profile.lastname} ({profile.email})
-          </p>
+          </Link>
         </div>
         <div className="section_content">
           <div className="fieldset">
