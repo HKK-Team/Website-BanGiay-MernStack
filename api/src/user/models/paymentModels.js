@@ -3,6 +3,9 @@ const paymentSchema = new mongoose.Schema({
     user_id :{
         type : String,
     },
+    paymentID:{
+        type: String,
+    },
     fullName : {
         type : String,
     },
