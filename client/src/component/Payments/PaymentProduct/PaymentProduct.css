@@ -58,6 +58,7 @@
     justify-content: flex-end;
     display: flex;
     align-items: center;
+    width: 85px;
 }
 .product-price span {
   color: #4b4b4b;

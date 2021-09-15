@@ -21,3 +21,15 @@
     font-weight: 300;
     text-align: left;
   }
+  /* Reponsive Mobile */
+  @media screen and (max-width:500px){
+    #Titlebar{
+      width: 100%;
+    }
+  }
+  /* Reponsive table and Moblie */
+@media screen and (max-width:1024px) {
+  #Titlebar{
+    margin-top: 115px;
+  }
+}

@@ -4,6 +4,7 @@
 .productDetail_wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
 }
 #sliderProductDetail {
   padding: 0px 10px;
@@ -374,17 +375,13 @@
 }
 @media screen and (max-width:500px){
   #sliderProductDetail{
-    justify-content: flex-start;
-  }
-  .productDetail_image-image-box{
-    justify-content: flex-start;
-    display: grid;
+    justify-content: center;
   }
   .xlab-main{
     grid-template-columns: repeat(2,1fr);
   }
   .productDetail_description{
-    width: 95%;
+    width: 100%;
   }
   .payment-product{
     float: none;
@@ -392,5 +389,17 @@
   }
  .payment-product img{
    margin: 0px 10px 0px 0px !important;
+ }
+ .wrapper-image {
+   width: 100% !important;
+ }
+ .wrapper-image img{
+   width: 100% !important;
+ }
+ .productDetail_image{
+   width: 374px;
+ }
+ .productDetail_image{
+   grid-template-columns: 100%;
  }
 }

@@ -402,6 +402,7 @@
   background-color: #034ea1;
 }
 /* Reponsize Moble */
+
 @media screen and (max-width: 767px) {
   .header_top {
     display: none;
@@ -409,6 +410,7 @@
   .header_bottom {
     height: 118.2px;
     top: 0 !important;
+    width: 100%;
   }
   .header_bottom-wrapper {
     display: block;

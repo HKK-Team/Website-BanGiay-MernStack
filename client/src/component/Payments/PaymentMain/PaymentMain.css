@@ -46,9 +46,11 @@
   margin-bottom: 26px;
 }
 .section_text {
+  cursor: pointer;
   font-size: 16px;
   line-height: 21px;
   margin: 0px 0px 10.5px;
+  display: block;
 }
 .section_text a {
   color: #338dbc;

@@ -1,6 +1,9 @@
 .wish-list {
   border-bottom: 1px solid #e5e5e5;
 }
+.wish-item{
+  width: 100%;
+}
 .wish-list td{
     vertical-align: middle;
 }
@@ -96,8 +99,10 @@
   line-height: 20px;
 
   padding: 20px 10px;
+
 }
 .btn_cart {
+  cursor: pointer;
   align-items: flex-start;
   background-color: #000000;
   color: #ffffff;
@@ -154,4 +159,23 @@
   
   padding: 6px 10px;
   text-align: center;
+}
+/* Reponsive mobile */
+@media screen and (max-width:550px) {
+  .customer-wishlist-item-info a{
+    font-size: 11px;
+  }
+  .customer-wishlist-item-info dt{
+    font-size: 8px;
+  }
+  .wish-list td{
+    padding:10px 5px;
+  }
+  .customer-wishlist-item-quality input{
+    font-size: 11px;
+    padding:10px 5px;
+  }
+  .special-price span {
+    font-size: 11px;
+  }
 }
