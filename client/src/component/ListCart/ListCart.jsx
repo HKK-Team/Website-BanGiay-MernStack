@@ -21,7 +21,6 @@ export default function ListCart() {
   var sum = 0;
 
   for (let i = 0; i < ltg; i++) {
-    console.log(storedArray[i].totalprice)
     sum += storedArray[i].totalprice;
   }
   // Logged

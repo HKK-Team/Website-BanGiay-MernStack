@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import "./Product.css";
 import iconNew from "../../images/images/new.webp";
 import {Link} from "react-router-dom";

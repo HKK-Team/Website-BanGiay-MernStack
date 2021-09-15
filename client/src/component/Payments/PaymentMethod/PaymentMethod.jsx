@@ -1,17 +1,13 @@
-import React,{useContext} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./../PaymentMain/PaymentMain.css";
 import "./PaymentMethod.css";
 import logo from "./../../../images/images/CôngtyTNHHABC.png";
 import axios from "axios"
 import PaypalButton from "../../PaymentPayPal/PaypalButton"
-import { GlobalState } from "../../../GlobalState";
 export default function PaymentMethod() {
-  // call api
-  const state = useContext(GlobalState)
-  const [token] = state.token
   // get information payment
-  const payments = JSON.parse(sessionStorage.getItem("payment"));
+  const payment = JSON.parse(sessionStorage.getItem("payment"));
   var storedArray = JSON.parse(sessionStorage.getItem('settings'));
   var ltg;
   if(storedArray === null){
@@ -29,7 +25,7 @@ export default function PaymentMethod() {
   const paymentSubmit = async e =>{
     e.preventDefault()
     try{
-      await axios.post('http://localhost:5000/payment/creat_payment', payments)
+      await axios.post('http://localhost:5000/payment/creat_payment', payment)
       alert("You have successfully placed your order!")
       window.sessionStorage.removeItem('settings');
       window.sessionStorage.removeItem('payment');
@@ -39,20 +35,13 @@ export default function PaymentMethod() {
     };
   }
   // payment with paypal
-  const tranSuccess = async(payment) => {
-    const {paymentID} = payment;
+  const tranSuccess = async(payments) => {
+    const {paymentID} = payments;
 
-    try{
-      await axios.post('http://localhost:5000/payment/creat_payment', payments,{ paymentID},{
-        headers: {Authorization: token}
-      })
-      alert("You have successfully placed your order!")
-      window.sessionStorage.removeItem('settings');
-      window.sessionStorage.removeItem('payment');
-      window.location.href('/');
-    }
-    catch (err) {
-    };
+    await axios.post('http://localhost:5000/payment/creat_payment', payment,{ paymentID})
+    alert("You have successfully placed your order!")
+    window.sessionStorage.removeItem('settings');
+    window.sessionStorage.removeItem('payment');
 }
   return (
     <div className="main">
