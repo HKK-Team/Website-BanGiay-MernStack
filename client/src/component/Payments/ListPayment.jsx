@@ -5,7 +5,7 @@ import PaymentProduct from "./PaymentProduct/PaymentProduct";
 import PaymentSidebar from "./PaymentSidebar/PaymentSidebar";
 export default function ListPayment(props) {
   // get product in sessionStorage and payment
-  var storedArray = JSON.parse(sessionStorage.getItem("arr"));
+  var storedArray = JSON.parse(sessionStorage.getItem("settings"));
   var arr = [];
   arr.push(
     storedArray.map((item) => (
