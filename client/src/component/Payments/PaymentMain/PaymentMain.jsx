@@ -42,11 +42,13 @@ export default function PaymentMain() {
   // post  
   const paymentSubmit = async e =>{
     e.preventDefault()
-    try {
-        await axios.post('http://localhost:5000/payment/creat_payment', {...payment})
-        alert("You have successfully placed your order!")
-    } catch (err) {
-        alert(err.response.data.msg)
+    try{
+      await axios.post('http://localhost:5000/payment/creat_payment', {...payment})
+      alert("You have successfully placed your order!")
+      window.sessionStorage.removeItem('arr');
+    }
+    catch (err) {
+      alert(err.response.data.msg)
     }
   }
   // noLogged
