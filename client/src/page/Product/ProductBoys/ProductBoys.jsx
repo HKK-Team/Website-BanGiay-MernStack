@@ -32,7 +32,7 @@ export default function ProductFemale() {
           <Product  key={item._id}
           masp = {item.idCategory_product}
           image={item.image}
-          TotalSize={5}
+          TotalSize={Object.keys(item.size).length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
