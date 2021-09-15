@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-var arr = [];
 
 export default function ProductDetail(props) {
   // zoom hình khi hover
@@ -123,19 +122,36 @@ export default function ProductDetail(props) {
     if (sizebychoice === 0) {
       alert("Vui lòng chọn size sản phẩm !!");
     } else {
-        const settings = {
-          idproduct: detail[0]._id,
-          nameProduct:detail[0].nameProduct,
-          color: detail[0].color,
-          price: detail[0].price,
-          totalprice: detail[0].price,
-          size: sizebychoice,
-          image: detail[0].image,
-          quantity: 1,
-        };
-        arr.push(settings)
-        alert("Sản phẩm đã được thêm vào giỏ hàng !!!")
-       sessionStorage.setItem('arr', JSON.stringify(arr));
+      const settings = {
+        idproduct: detail[0]._id,
+        id_product : detail[0].idCategory_product,
+        nameProduct: detail[0].nameProduct,
+        color: detail[0].color,
+        price: detail[0].price,
+        totalprice: detail[0].price,
+        size: sizebychoice,
+        image: detail[0].image,
+        quantity: 1,
+      };
+      
+
+      if (sessionStorage.getItem("settings") === null) {
+        var data = [];
+        data.push(settings);
+        sessionStorage.setItem("settings", JSON.stringify(data));
+        alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+      } else {
+        data = JSON.parse(sessionStorage.getItem("settings"));
+        if(data.map(e => e.id_product).indexOf(settings.id_product) === -1){
+          data.push(settings);
+          alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+        }
+        else{
+          alert("Sản phẩm đã tồn tại trong giỏ hàng !!!");
+        }
+        sessionStorage.setItem("settings", JSON.stringify(data));
+      }
+
     }
   }
 
@@ -380,11 +396,8 @@ export default function ProductDetail(props) {
                     <strong>4</strong> Sản phẩm
                   </span>
                 </div>
-                <div
-                  onClick={eventbuynow}
-                  className="productDetail_information-action-cart"
-                >
-                  <button>Mua Ngay</button>
+                <div className="productDetail_information-action-cart">
+                  <button onClick={eventbuynow}>Mua Ngay</button>
                   {favorite}
                 </div>
               </form>

@@ -4,7 +4,6 @@ import React, {  useState, useContext } from "react";
 import "./Favorite.css";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
-var arr = [];
 
 export default function Favorite(props) {
   const state = useContext(GlobalState);
@@ -45,22 +44,23 @@ export default function Favorite(props) {
       quantity: quantity,
     };
 
-   if(arr.length === 0){
-    arr.push(settings)
-    alert("Sản phẩm đã được thêm vào giỏ hàng !!!")
-   }else{
-    for(let  i = 0; i < arr.length;i++){
-      if(arr[i].idproduct === settings.idproduct){
-        alert("Sản phẩm đã tồn tại trong giỏ hàng !!!")
-        break;
+    if (sessionStorage.getItem("settings") === null) {
+      var data = [];
+      data.push(settings);
+      sessionStorage.setItem("settings", JSON.stringify(data));
+      alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+    } else {
+      data = JSON.parse(sessionStorage.getItem("settings"));
+      
+      if(data.map(e => e.id_product).indexOf(settings.id_product) === -1){
+        data.push(settings);
+        alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
       }
-      else if (i ===  arr.length - 1 && arr[i].idproduct !== settings.idproduct){
-        arr.push(settings)
-        alert("Sản phẩm đã được thêm vào giỏ hàng !!!")
+      else{
+        alert("Sản phẩm đã tồn tại trong giỏ hàng !!!");
       }
+      sessionStorage.setItem("settings", JSON.stringify(data));
     }
-   }
-   sessionStorage.setItem('arr', JSON.stringify(arr));
   }
     
 

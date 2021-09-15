@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import "./Cart.css";
 
 export default function Cart(props) {
-  var storedArray = JSON.parse(sessionStorage.getItem("arr"));
+  var storedArray = JSON.parse(sessionStorage.getItem("settings"));
   const ltg = storedArray.length;
 
   var quantity = 1;
@@ -20,7 +20,7 @@ export default function Cart(props) {
       if (storedArray[i].idproduct === props.idproduct) {
         if (window.confirm("Bạn thực sự muốn xóa sản phẩm khỏi giỏ hàng ?")) {
           storedArray.splice([i], 1);
-          sessionStorage.setItem("arr", JSON.stringify(storedArray));
+          sessionStorage.setItem("settings", JSON.stringify(storedArray));
           window.location.reload(false);
         } else {
           break;

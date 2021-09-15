@@ -7,7 +7,7 @@ import CartTable from "./CartTable/CartTable";
 import {Link} from "react-router-dom";
 
 export default function ListCart() {
-  var storedArray = JSON.parse(sessionStorage.getItem('arr'));
+  var storedArray = JSON.parse(sessionStorage.getItem('settings'));
   var ltg;
   if(storedArray === null){
      ltg = 0;
