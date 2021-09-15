@@ -1,0 +1,42 @@
+.section_payment_methods{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.radio-label {
+  color: #737373;
+  display: flex;
+  font-family: Helvetica Neue;
+
+  font-size: 14px;
+  line-height: 18.2px;
+  padding: 18.2px;
+  
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+}
+.radio-label-primary {
+  font-size: 16px;
+}
+.radio-accessory {
+  font-size: 16px;
+  margin-left: 60%;
+}
+.radio-input {
+  padding: 0px 10.5px 0px 0px;
+}
+.input-radio::checked {
+  border: none;
+  box-shadow: 0 0 0 10px #338dbc inset;
+}
+.input-radio {
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+
+  cursor: pointer;
+  vertical-align: -4px;
+  outline: 0;
+
+  width: 18px;
+  height: 18px;
+}

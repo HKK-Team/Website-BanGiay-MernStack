@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import "./Header.css";
 import Vi from "../../images/images/vi.png";
@@ -133,17 +134,18 @@ export default function Header(props) {
       "translate3d(300px,0px,0px)";
   };
   //  auto đóng sidebar
-  useEffect(() => {
-    var lock = setInterval(function () {
-      if (document.getElementById("root").clientWidth > 1024) {
-        document.getElementById("navbar").style.transform =
-          "translate3d(0px,0px,0px)";
-      }
-    });
-    return () => clearInterval(lock);
-  }, []);
+  // useEffect(() => {
+  //   var lock = setInterval(function () {
+  //     if (document.getElementById("root").clientWidth > 1024) {
+  //       document.getElementById("navbar").style.transform =
+  //         "translate3d(0px,0px,0px)";
+  //     }
+  //   });
+  //   return () => clearInterval(lock);
+  // },[]);
   //overflow y cart-empty
-  var cartCount = ltg; // số lượng sản phẩm trong giỏ hàng
+  // số lượng sản phẩm trong giỏ hàng
+  var cartCount = ltg;
   useEffect(() => {
     var setHeight = cartCount * 135.6;
     if (cartCount !== 0 && setHeight <= 350) {
@@ -154,7 +156,7 @@ export default function Header(props) {
       });
     }
     return () => clearInterval(loop);
-  }, [cartCount]);
+  },[]);
   return (
     <Fragment>
       <header>

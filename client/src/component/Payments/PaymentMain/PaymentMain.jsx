@@ -196,9 +196,9 @@ export default function PaymentMain() {
                 }
                 <div className="step_footer">
                   <Link to="/cart">Giỏ hàng</Link>
-                  <button type="submit">
+                  <Link to="/PaymentMethods" className="btn-addPaymentMethods">
                     <span>Tiếp tục đến phương thức thanh toán</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
