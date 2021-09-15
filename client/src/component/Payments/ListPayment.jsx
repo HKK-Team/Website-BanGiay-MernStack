@@ -19,8 +19,7 @@ export default function ListPayment() {
         price={item.price}
       />
     ))
-  );
-  console.log(arr);
+  )
   return (
     <section className="payment">
       <div className="banner_payment">
