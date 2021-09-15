@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext,} from "react";
+
 import "./Navbar.css";
 import logo from "./../../../../images/images/CôngtyTNHHABC.png";
 import logoMember from "./../../../../images/images/member.webp";
@@ -63,25 +64,25 @@ export default function Navbar(props) {
       "translate3d(0px,0px,0px)";
   };
   return (
-    <div id="navbar">
-      <div className="logo-nav">
-        <img src={logo} alt="" />
-        <span className="back" onClick={props.event}>
-          <i class="fas fa-chevron-left" onClick={close}></i>
-        </span>
+      <div id="navbar">
+        <div className="logo-nav">
+          <img src={logo} alt="" />
+          <span className="back" onClick={props.event}>
+            <i class="fas fa-chevron-left" onClick={close}></i>
+          </span>
+        </div>
+        {/* login */}
+        {isLogged ? loggedRouter() : nologgedRouter()}
+        {/* menu */}
+        <div className="mplus-menu">
+          <ul className="mm-panel">
+            {menus2.map((item) => (
+              <Link to={item.slug} key={item._id}>
+                {item.text}
+              </Link>
+            ))}
+          </ul>
+        </div>
       </div>
-      {/* login */}
-      {isLogged ? loggedRouter() : nologgedRouter()}
-      {/* menu */}
-      <div className="mplus-menu">
-        <ul className="mm-panel">
-          {menus2.map((item) => (
-            <Link to={item.slug} key={item._id}>
-              {item.text}
-            </Link>
-          ))}
-        </ul>
-      </div>
-    </div>
   );
 }

@@ -4,6 +4,7 @@ import "./ListCart.css";
 import Cart from "./Cart/Cart";
 import CartEmpty from "./CartEmpty/CartEmpty";
 import CartTable from "./CartTable/CartTable";
+import {Link} from "react-router-dom";
 
 export default function ListCart() {
   var storedArray = JSON.parse(sessionStorage.getItem('arr'));
@@ -29,6 +30,7 @@ export default function ListCart() {
             <div className="Cart_title">
               <h1>GIỎ HÀNG CỦA BẠN</h1>
             </div>
+            <CartTable/>
             {/* list cart */}
             {storedArray.map((item) => (
               <Cart
@@ -53,9 +55,9 @@ export default function ListCart() {
           <div className="modal_footer">
             <div className="pull_left">
               <h3 className="continue_shopping">
-                <a href="/" className="comeback">
+                <Link to="/" className="comeback">
                   <i class="fa fa-reply"></i> Tiếp tục mua hàng
-                </a>
+                </Link>
               </h3>
             </div>
             <div className="pull_right">
@@ -65,14 +67,18 @@ export default function ListCart() {
               </div>
               <div className="text_right">
                 <div className="checkout_wrapper">
-                  <button type="submit" name="checkout" id="checkout">
-                    THANH TOÁN NGAY <br />
-                    (áp dụng cho Việt Nam)
-                  </button>
-                  <buton type="submit" name="checkout" id="checkout-foreign">
-                    ĐẶT HÀNG QUỐC TẾ <br />
-                    (cho các quốc gia khác)
-                  </buton>
+                  <Link to = "/Payment">
+                    <button type="submit" name="checkout" id="checkout">
+                      THANH TOÁN NGAY <br />
+                      (áp dụng cho Việt Nam)
+                    </button>
+                  </Link>
+                  <Link to = "/Payment">
+                    <buton type="submit" name="checkout" id="checkout-foreign">
+                      ĐẶT HÀNG QUỐC TẾ <br />
+                      (cho các quốc gia khác)
+                    </buton>
+                  </Link>
                 </div>
                 <p className="feedback">
                   <span>Phản hồi:</span> 0984 943 851

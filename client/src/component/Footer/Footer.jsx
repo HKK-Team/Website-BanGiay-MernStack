@@ -9,7 +9,6 @@ import Model_6 from "../../images/mau/6.png";
 import Model_7 from "../../images/mau/7.png";
 import Model_8 from "../../images/mau/8.png";
 import React from "react";
-
 export default function Footer() {
   return (
     <footer>

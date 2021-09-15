@@ -110,3 +110,28 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+/* Reponsive  */
+@media screen and (max-width:1024px) {
+  .Cart_table_header{
+    display: none;
+  }
+  .line_item{
+    grid-gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .Cart_image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+@media screen and (max-width:500px) {
+  .checkout_wrapper{
+    flex-direction: column;
+  }
+  .feedback{
+    text-align: left;
+    font-size: 22px;
+  }
+}
