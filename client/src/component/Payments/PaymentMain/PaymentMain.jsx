@@ -1,13 +1,54 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React,{useContext} from "react";
+import React,{useContext,useState} from "react";
 import logo from "./../../../images/images/CôngtyTNHHABC.png";
 import "./PaymentMain.css";
 import {Link} from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
+import axios from "axios"
 export default function PaymentMain() {
+  //call api
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
   const [profile] = state.userAPI.user;
+  // get totalPrice
+  var storedArray = JSON.parse(sessionStorage.getItem('arr'));
+  var ltg;
+  if(storedArray === null){
+    ltg = 0;
+  }
+  else{
+    ltg =  storedArray.length;
+  }
+  var sum = 0;
+    
+  for (let i = 0; i < ltg; i++) {
+        sum += storedArray[i].totalprice;
+  }
+  // useState no login
+  const [payments,setpayments] = useState({
+    user_id : '', fullName : '',phone_number : '',
+    email : '', address : '', cart : storedArray,total_price : sum
+  })
+  // onchage no login
+  const onChangeInput = e =>{
+    const {name, value} = e.target;
+    setpayments({...payments, [name]:value})
+  }
+  // useState Logged
+  const [payment] = useState({
+    user_id : profile._id, fullName : profile.firstname + " " + profile.lastname,
+    email : profile.email,phone_number : profile.phonenumber , address : profile.address, cart : storedArray,total_price : sum
+  })
+  // post  
+  const paymentSubmit = async e =>{
+    e.preventDefault()
+    try {
+        await axios.post('http://localhost:5000/payment/creat_payment', {...payment})
+        alert("You have successfully placed your order!")
+    } catch (err) {
+        alert(err.response.data.msg)
+    }
+  }
   // noLogged
   const noLogged = () =>{
     return(
@@ -27,6 +68,9 @@ export default function PaymentMain() {
               className="field-input"
               placeholder="Họ và tên"
               required
+              name = "fullname"
+              value = {payments.fullName}
+              onChange={onChangeInput}
             />
           </div>
           <div className="field">
@@ -36,6 +80,9 @@ export default function PaymentMain() {
               type="email"
               size="30"
               required
+              name = "email"
+              value = {payments.email}
+              onChange={onChangeInput}
             />
           </div>
           <div className="field">
@@ -46,6 +93,9 @@ export default function PaymentMain() {
               className="field-input"
               placeholder="Số điện thoại"
               required
+              name = "phone_number"
+              value = {payments.phone_number}
+              onChange={onChangeInput}
             />
           </div>
           <div className="field">
@@ -55,6 +105,9 @@ export default function PaymentMain() {
               className="field-input"
               placeholder="Địa chỉ"
               required
+              name = "address"
+              value = {payments.address}
+              onChange={onChangeInput}
             />
           </div>
         </div>
@@ -124,31 +177,33 @@ export default function PaymentMain() {
             <img src={logo} alt="" />
           </h1>
         </Link>
-        <ul class="breadcrumb">
-          <li class="breadcrumb-item" data-metatip="true">
-            <Link to="/cart">Giỏ hàng {">"}</Link>
-          </li>
-          <li class="breadcrumb-item breadcrumb-item-current">
-            Thông tin giao hàng {">"}
-          </li>
-          <li class="breadcrumb-item ">Phương thức thanh toán</li>
-        </ul>
-      </div>
-      <div className="main_content">
-        <div className="step">
-          <div className="step_sections">
-            {
-              isLogged ? Logged() : noLogged()
-            }
-            <div className="step_footer">
-              <Link to="/cart">Giỏ hàng</Link>
-              <button type="submit">
-                <span>Tiếp tục đến phương thức thanh toán</span>
-              </button>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item" data-metatip="true">
+              <Link to="/cart">Giỏ hàng {">"}</Link>
+            </li>
+            <li class="breadcrumb-item breadcrumb-item-current">
+              Thông tin giao hàng {">"}
+            </li>
+            <li class="breadcrumb-item ">Phương thức thanh toán</li>
+          </ul>
+        </div>
+        <form onSubmit = {paymentSubmit}>
+          <div className="main_content">
+            <div className="step">
+              <div className="step_sections">
+                {
+                  isLogged ? Logged() : noLogged()
+                }
+                <div className="step_footer">
+                  <Link to="/cart">Giỏ hàng</Link>
+                  <button type="submit">
+                    <span>Tiếp tục đến phương thức thanh toán</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </form>
     </div>
   );
 }

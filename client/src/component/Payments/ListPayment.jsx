@@ -19,7 +19,6 @@ export default function ListPayment() {
       />
     ))
   )
-  console.log(arr)
   return (
     <section className="payment">
       <div className="wrap">
