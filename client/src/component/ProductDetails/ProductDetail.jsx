@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 /* eslint-disable no-const-assign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/img-redundant-alt */
@@ -233,21 +234,52 @@ export default function ProductDetail(props) {
       </Link>
     );
   }
+  // Hiện thị UI click size
+  const [active, setactive] = useState();
+  useEffect(() => {
+    var flag = false;
+    var btnContainer = document.getElementsByClassName(
+      "productDetail_information-size"
+    );
+    var btns = btnContainer[0].getElementsByClassName(
+      "productDetail_information-sizeValue"
+    );
+    for (let j = 0; j < btns.length; j++) {
+      btns[j].addEventListener("click", function () {
+        var current = document.getElementsByClassName("checkedListSize");
+        if (current.length > 0) {
+          current[0].className = current[0].className.replace(
+            " checkedListSize",
+            ""
+          );
+        }
+        this.className += " checkedListSize";
+        flag = true;
+      });
+      if (flag === true) return;
+    }
+    return () => null;
+  }, [active]);
 
   function eventchoice1(size) {
     setsizebychoice(size);
+    setactive(0);
   }
   function eventchoice2(size) {
     setsizebychoice(size);
+    setactive(1);
   }
   function eventchoice3(size) {
     setsizebychoice(size);
+    setactive(2);
   }
   function eventchoice4(size) {
     setsizebychoice(size);
+    setactive(3);
   }
   function eventchoice5(size) {
     setsizebychoice(size);
+    setactive(4);
   }
 
   return (
@@ -368,31 +400,36 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail_information-size">
                   <label htmlFor="">Kích thước</label>
-                  <Link to={props.valueSize_1}>
-                    <span onClick={() => eventchoice1(props.valueSize_1)}>
-                      {props.valueSize_1}
-                    </span>
-                  </Link>
-                  <Link to={props.valueSize_2}>
-                    <span onClick={() => eventchoice2(props.valueSize_2)}>
-                      {props.valueSize_2}
-                    </span>
-                  </Link>
-                  <Link to={props.valueSize_3}>
-                    <span onClick={() => eventchoice3(props.valueSize_3)}>
-                      {props.valueSize_3}
-                    </span>
-                  </Link>
-                  <Link to={props.valueSize_4}>
-                    <span onClick={() => eventchoice4(props.valueSize_4)}>
-                      {props.valueSize_4}
-                    </span>
-                  </Link>
-                  <Link to={props.valueSize_5}>
-                    <span onClick={() => eventchoice5(props.valueSize_5)}>
-                      {props.valueSize_5}
-                    </span>
-                  </Link>
+                  <span
+                    onClick={() => eventchoice1(props.valueSize_1)}
+                    className="productDetail_information-sizeValue"
+                  >
+                    {props.valueSize_1}
+                  </span>
+                  <span
+                    onClick={() => eventchoice2(props.valueSize_2)}
+                    className="productDetail_information-sizeValue"
+                  >
+                    {props.valueSize_2}
+                  </span>
+                  <span
+                    onClick={() => eventchoice3(props.valueSize_3)}
+                    className="productDetail_information-sizeValue"
+                  >
+                    {props.valueSize_3}
+                  </span>
+                  <span
+                    onClick={() => eventchoice4(props.valueSize_4)}
+                    className="productDetail_information-sizeValue"
+                  >
+                    {props.valueSize_4}
+                  </span>
+                  <span
+                    onClick={() => eventchoice5(props.valueSize_5)}
+                    className="productDetail_information-sizeValue"
+                  >
+                    {props.valueSize_5}
+                  </span>
                 </div>
                 <div className="productDetail_information-inventory">
                   <label htmlFor="">Còn hàng:</label>
@@ -429,7 +466,8 @@ export default function ProductDetail(props) {
               </h3>
               <div className="xlab-main">
                 {recomment.slice(0, 4).map((item) => (
-                  <AdvertisingCard key={item._id}
+                  <AdvertisingCard
+                    key={item._id}
                     image={item.image}
                     name={item.nameProduct}
                     price={item.price.toLocaleString()}

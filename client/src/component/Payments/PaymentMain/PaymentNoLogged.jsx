@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React,{useContext,useState} from "react";
 import logo from "./../../../images/images/CôngtyTNHHABC.png";
 import "./PaymentMain.css";
 import {Link} from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
+
 export default function PaymentMain() {
   //call api
   const state = useContext(GlobalState);
