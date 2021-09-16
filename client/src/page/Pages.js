@@ -20,7 +20,7 @@ import NotFound from "../component/utils/not_found/NotFound";
 import UpdateAccount from "../page/Account/Update_Account";
 import Search from "./Search/Search";
 import Payment from "./Payment/Payment";
-import PaymentNoLogged from "./Payment/Payment";
+import PaymentNoLogged from "./Payment/PaymentNoLogged";
 import PaymentMethods from "../page/PaymentMethods/PaymentMethods";
 function Pages() {
   const state = useContext(GlobalState);
