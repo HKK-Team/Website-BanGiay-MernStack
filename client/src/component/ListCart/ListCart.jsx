@@ -5,8 +5,11 @@ import Cart from "./Cart/Cart";
 import CartEmpty from "./CartEmpty/CartEmpty";
 import CartTable from "./CartTable/CartTable";
 import {Link} from "react-router-dom";
-
+import { GlobalState } from "../../GlobalState";
 export default function ListCart() {
+  //call api
+  const state = useContext(GlobalState);
+  const [isLogged] = state.userAPI.isLogged;
   var storedArray = JSON.parse(sessionStorage.getItem('settings'));
   var ltg;
   if(storedArray === null){
@@ -18,11 +21,46 @@ export default function ListCart() {
   var sum = 0;
 
   for (let i = 0; i < ltg; i++) {
-    console.log(storedArray[i].totalprice)
     sum += storedArray[i].totalprice;
   }
-  console.log(sum)
-
+  // Logged
+  const logged = ()=>{
+    return(
+      <div className="checkout_wrapper">
+        <Link to = "/Payment">
+          <button type="submit" name="checkout" id="checkout">
+            THANH TOÁN NGAY <br />
+            (áp dụng cho Việt Nam)
+          </button>
+        </Link>
+        <Link to = "/Payment">
+          <buton type="submit" name="checkout" id="checkout-foreign">
+            ĐẶT HÀNG QUỐC TẾ <br />
+            (cho các quốc gia khác)
+          </buton>
+        </Link>
+      </div>
+    )
+  };
+  // No Logged
+  const noLogged = () =>{
+    return(
+      <div className="checkout_wrapper">
+        <Link to = "/PaymentNoLogged">
+          <button type="submit" name="checkout" id="checkout">
+            THANH TOÁN NGAY <br />
+            (áp dụng cho Việt Nam)
+          </button>
+        </Link>
+        <Link to = "/PaymentNoLogged">
+          <buton type="submit" name="checkout" id="checkout-foreign">
+            ĐẶT HÀNG QUỐC TẾ <br />
+            (cho các quốc gia khác)
+          </buton>
+        </Link>
+      </div>
+    )
+  }
   var CartCount = ltg;
   if (CartCount >= 1) {
     return (
@@ -68,20 +106,9 @@ export default function ListCart() {
                 <span className="item_total">{sum.toLocaleString()} đ</span>
               </div>
               <div className="text_right">
-                <div className="checkout_wrapper">
-                  <Link to = "/Payment">
-                    <button type="submit" name="checkout" id="checkout">
-                      THANH TOÁN NGAY <br />
-                      (áp dụng cho Việt Nam)
-                    </button>
-                  </Link>
-                  <Link to = "/Payment">
-                    <buton type="submit" name="checkout" id="checkout-foreign">
-                      ĐẶT HÀNG QUỐC TẾ <br />
-                      (cho các quốc gia khác)
-                    </buton>
-                  </Link>
-                </div>
+                {
+                  isLogged ? logged() : noLogged()
+                }
                 <p className="feedback">
                   <span>Phản hồi:</span> 0984 943 851
                 </p>

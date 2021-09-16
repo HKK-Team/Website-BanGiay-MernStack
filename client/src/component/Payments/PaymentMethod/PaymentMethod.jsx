@@ -3,7 +3,45 @@ import { Link } from "react-router-dom";
 import "./../PaymentMain/PaymentMain.css";
 import "./PaymentMethod.css";
 import logo from "./../../../images/images/CôngtyTNHHABC.png";
+import axios from "axios"
+import PaypalButton from "../../PaymentPayPal/PaypalButton"
 export default function PaymentMethod() {
+  // get information payment
+  const payment = JSON.parse(sessionStorage.getItem("payment"));
+  var storedArray = JSON.parse(sessionStorage.getItem('settings'));
+  var ltg;
+  if(storedArray === null){
+    ltg = 0;
+  }
+  else{
+    ltg =  storedArray.length;
+  }
+  var sum = 0;
+    
+  for (let i = 0; i < ltg; i++) {
+        sum += storedArray[i].totalprice;
+  }
+  // post  
+  const paymentSubmit = async e =>{
+    e.preventDefault()
+    try{
+      await axios.post('http://localhost:5000/payment/creat_payment', payment)
+      alert("You have successfully placed your order!")
+      window.sessionStorage.removeItem('settings');
+      window.sessionStorage.removeItem('payment');
+      window.location.href('/');
+    }
+    catch (err) {
+    };
+  }
+  // payment with paypal
+  const tranSuccess = async(payments) => {
+    const {paymentID} = payments;
+    await axios.post('http://localhost:5000/payment/creat_payment', payment,{ paymentID})
+    alert("You have successfully placed your order!")
+    window.sessionStorage.removeItem('settings');
+    window.sessionStorage.removeItem('payment');
+}
   return (
     <div className="main">
       <div className="main_header">
@@ -29,7 +67,7 @@ export default function PaymentMethod() {
             <input type="radio" id="shipping-rate" className="input-radio" name="rate-id" checked="true"/>
           </div>
           <span className="radio-label-primary">Freeship cho đơn hàng</span>
-          <div className="radio-accessory">0đ</div>
+          <div className="radio-accessory">0 đ</div>
         </label>
       </div>
       <div className="section_payment_methods">
@@ -51,11 +89,19 @@ export default function PaymentMethod() {
           </span>
         </label>
       </div>
-      <div className="step_footer">
-        <Link to="/Payment">Quay lại thông tin giao hàng</Link>
-        <Link to="" className="btn-addPaymentMethods">
-          <span>Hoàn tất đơn hàng</span>
-        </Link>
+      <form onSubmit = {paymentSubmit}>
+        <div className="step_footer">
+          <Link to="/Payment">Quay lại thông tin giao hàng</Link>
+          <button className="btn-addPaymentMethods" onSubmit = {paymentSubmit}>
+            <span>Hoàn tất đơn hàng</span>
+          </button>
+        </div>
+      </form>
+      <div className="total">
+        <h3>Total: $ {sum.toLocaleString()}</h3>
+        <PaypalButton
+        total={sum}
+        tranSuccess={tranSuccess} />
       </div>
     </div>
   );

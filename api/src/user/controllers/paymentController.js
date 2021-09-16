@@ -4,9 +4,9 @@ const paymentCtrl = {
     // creat bills
     creatPayment : async (req,res) =>{
         try {
-            const {user_id,fullName,email,phone_number,address,cart,total_price} = req.body;
+            const {user_id,paymentID,fullName,email,phone_number,address,cart,total_price} = req.body;
             const newPayment = new Payments({
-                user_id,fullName,email,phone_number,address,cart,total_price
+                user_id,paymentID,fullName,email,phone_number,address,cart,total_price
             })
             // Save mongodb
             await newPayment.save()
