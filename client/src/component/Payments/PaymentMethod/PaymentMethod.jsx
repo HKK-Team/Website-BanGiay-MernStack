@@ -37,7 +37,6 @@ export default function PaymentMethod() {
   // payment with paypal
   const tranSuccess = async(payments) => {
     const {paymentID} = payments;
-
     await axios.post('http://localhost:5000/payment/creat_payment', payment,{ paymentID})
     alert("You have successfully placed your order!")
     window.sessionStorage.removeItem('settings');

@@ -1,14 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React,{useContext,useState} from "react";
+import React,{useState} from "react";
 import logo from "./../../../images/images/CôngtyTNHHABC.png";
 import "./PaymentMain.css";
 import {Link} from "react-router-dom";
-import { GlobalState } from "../../../GlobalState";
-
 export default function PaymentMain() {
-  //call api
-  const state = useContext(GlobalState);
   // get totalPrice
   var storedArray = JSON.parse(sessionStorage.getItem('settings'));
   var ltg;
@@ -71,7 +67,7 @@ export default function PaymentMain() {
                         className="field-input"
                         placeholder="Họ và tên"
                         required
-                        name = "fullname"
+                        name = "fullName"
                         value = {payments.fullName}
                         onChange={onChangeInput}
                         />
@@ -119,9 +115,7 @@ export default function PaymentMain() {
                 <div className="step_footer">
                   <Link to="/cart">Giỏ hàng</Link>
                   <Link to="/PaymentMethods" className="btn-addPaymentMethods">
-                    <button type = "submit">
                     <span>Tiếp tục đến phương thức thanh toán</span>
-                    </button>
                   </Link>
                 </div>
               </div>
