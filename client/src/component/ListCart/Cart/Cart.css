@@ -61,12 +61,16 @@
   border-radius: 4px;
   color: #212121;
   display: inline-block !important;
+
   font-family: Open Sans;
   font-size: 14px;
   font-weight: 300;
+
   line-height: 20px;
   margin: 5px 0px 0px;
   text-align: left;
+
+  cursor: pointer;
 }
 
 .line_item-quality {
@@ -79,20 +83,25 @@
   background-color: #ffffff;
   border-radius: 3px;
   border: 1px solid #b5b5b5;
+
   color: #757575;
   display: inline-block;
   font-family: Open Sans;
+
   font-size: 14px;
   line-height: 20px;
   padding: 6px 10px;
+
   text-align: center;
 }
 .line_item-price {
   color: #212121;
   font-size: 14px;
   line-height: 20px;
+
   padding: 0px 10px;
   text-align: center;
+
   width: 192px;
   height: 20px;
 }
@@ -100,8 +109,10 @@
   color: #db0f0f;
   font-size: 14px;
   line-height: 20px;
+
   padding: 0px 10px;
   text-align: center;
+  
   width: 192px;
   height: 20px;
 }
