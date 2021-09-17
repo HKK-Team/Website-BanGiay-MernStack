@@ -8,7 +8,7 @@ export default function Product(props) {
   // props là dữ liệu được lưu trong mảng
   const [sizebychoice, setsizebychoice] = useState(0);
 
-  function eventdelete(e) {
+  function eventaddcart(e) {
     e.preventDefault();
     if (sizebychoice === 0) {
       alert("Vui lòng chọn size sản phẩm !!");
@@ -152,7 +152,7 @@ export default function Product(props) {
       </Link>
       <span className="product_item-price">{props.prime} đ</span>
       <button
-        onClick={eventdelete}
+        onClick={eventaddcart}
         className="product_item-addToCart"
         type="submit"
       >
