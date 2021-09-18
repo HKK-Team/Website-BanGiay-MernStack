@@ -10,7 +10,7 @@ function ProductBoyApi() {
     const [sizemaxboy, setsizemaxboy] = useState(' ')
     const [detailCategoryboy, setdetailCategoryboy] = useState(' ')
     const [currentPageboy, setcurrentPageboy] = useState(1)
-    const [postsPerPageboy] = useState(12)
+    const [postsPerPageboy] = useState(9)
     const [maxPice, setmaxPice] = useState([])
     const [minPrice, setminPrice] = useState([])
 

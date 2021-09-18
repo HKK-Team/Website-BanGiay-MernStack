@@ -48,7 +48,7 @@ export default function ProductFemale() {
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
-      <ListPageProductsProduct array={arrayPrGirl} name="HUNTER NỮ" />
+      <ListPageProductsProduct arrayall={product_girl} array={arrayPrGirl} name="HUNTER NỮ" />
       <GoogleMap/>
       <Footer />
     </Fragment>

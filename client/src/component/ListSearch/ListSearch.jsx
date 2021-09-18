@@ -5,6 +5,7 @@ import { GlobalState } from "../../GlobalState";
 export default function ListSearch(props) {
   const state = useContext(GlobalState)
   const [search] = state.searchProductApi.search;
+  const [products] = state.searchProductApi.products
   return (
     <section className="search">
       <div className="container">
@@ -13,7 +14,8 @@ export default function ListSearch(props) {
             <h1>Kết quả tìm kiếm cho "{search}"</h1>
           </div>
           <div id="product_list">{props.arraylist}</div>
-          <Paginaton />
+          <Paginaton
+          quantity = {products}/>
         </div>
       </div>
     </section>

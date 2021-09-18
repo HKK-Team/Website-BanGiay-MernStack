@@ -10,7 +10,7 @@ function ProductPkApi() {
     const [detailCategorypk, setdetailCategorypk] = useState(' ')
     const [sizemaxpk, setsizemaxpk] = useState(' ')
     const [currentPagepk, setcurrentPagepk] = useState(1)
-    const [postsPerPagepk] = useState(12)
+    const [postsPerPagepk] = useState(9)
     const [maxPicepk, setmaxPicepk] = useState([])
     const [minPricepk, setminPricepk] = useState([])
 

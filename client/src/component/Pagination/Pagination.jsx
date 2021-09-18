@@ -3,9 +3,8 @@ import React, { useEffect, useState, useContext ,NavLink } from "react";
 import "./Pagination.css";
 import { GlobalState } from "../../GlobalState";
 
-export default function Pagination() {
+export default function Pagination({quantity}) {
   const state = useContext(GlobalState);
-  const [product_boy] = state.productboyApi.product_boy;
   const [currentPageboy, setcurrentPageboy] =
     state.productboyApi.currentPageboy;
   const [currentPagegirl, setcurrentPagegirl] =
@@ -19,10 +18,9 @@ export default function Pagination() {
     state.productbegaiApi.currentPagebegai;
     const [currentPagesearch, setcurrentPagesearch] =
      state.searchProductApi.currentPagesearch
-  //Get post current
-  const [postsPerPageboy] = state.productboyApi.postsPerPageboy;
 
-  const total = Math.ceil(product_boy.length / postsPerPageboy);
+  //Get post current
+  const total = Math.ceil(quantity.length / 9);
 
   const pageNumber = [];
 

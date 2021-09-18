@@ -10,7 +10,7 @@ function ProductBegaiApi() {
     const [detailCategorybegai, setdetailCategorybegai] = useState(' ')
     const [sizemaxbegai, setsizemaxbegai] = useState(' ')
     const [currentPagebegai, setcurrentPagebegai] = useState(1)
-    const [postsPerPagebegai] = useState(12)
+    const [postsPerPagebegai] = useState(9)
     const [maxPicebegai, setmaxPicebegai] = useState([])
     const [minPricebegai, setminPricebegai] = useState([])
 

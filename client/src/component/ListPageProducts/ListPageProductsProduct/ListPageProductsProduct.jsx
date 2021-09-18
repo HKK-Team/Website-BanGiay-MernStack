@@ -20,12 +20,12 @@ export default function ListPageProductsProduct(props) {
 
   function eventhunter(e) {
     e.preventDefault();
-    setdetailCategoryboy('detailCategory=Hunter')
-    setdetailCategorygirl('detailCategory=Hunter')
-    setdetailCategorypk('detailCategory=Hunter')
-    setdetailCategorygosto('detailCategory=Hunter')
-    setdetailCategorybetrai('detailCategory=Hunter')
-    setdetailCategorybegai('detailCategory=Hunter')
+    setdetailCategoryboy('detailCategory=hunter')
+    setdetailCategorygirl('detailCategory=hunter')
+    setdetailCategorypk('detailCategory=hunter')
+    setdetailCategorygosto('detailCategory=hunter')
+    setdetailCategorybetrai('detailCategory=hunter')
+    setdetailCategorybegai('detailCategory=hunter')
   }
   function eventsandal(e) {
     e.preventDefault();
@@ -38,30 +38,30 @@ export default function ListPageProductsProduct(props) {
   }
   function eventthethao(e) {
     e.preventDefault();
-    setdetailCategoryboy('detailCategory=thethao')
-    setdetailCategorygirl('detailCategory=thethao')
-    setdetailCategorypk('detailCategory=thethao')
-    setdetailCategorygosto('detailCategory=thethao')
-    setdetailCategorybetrai('detailCategory=thethao')
-    setdetailCategorybegai('detailCategory=thethao')
+    setdetailCategoryboy('detailCategory=giaythethao')
+    setdetailCategorygirl('detailCategory=giaythethao')
+    setdetailCategorypk('detailCategory=giaythethao')
+    setdetailCategorygosto('detailCategory=giaythethao')
+    setdetailCategorybetrai('detailCategory=giaythethao')
+    setdetailCategorybegai('detailCategory=giaythethao')
   }
   function eventchaybo(e) {
     e.preventDefault();
-    setdetailCategoryboy('detailCategory=giaydibo')
-    setdetailCategorygirl('detailCategory=giaydibo')
-    setdetailCategorypk('detailCategory=giaydibo')
-    setdetailCategorygosto('detailCategory=giaydibo')
-    setdetailCategorybetrai('detailCategory=giaydibo')
-    setdetailCategorybegai('detailCategory=giaydibo')
+    setdetailCategoryboy('detailCategory=giaychaybo')
+    setdetailCategorygirl('detailCategory=giaychaybo')
+    setdetailCategorypk('detailCategory=giaychaybo')
+    setdetailCategorygosto('detailCategory=giaychaybo')
+    setdetailCategorybetrai('detailCategory=giaychaybo')
+    setdetailCategorybegai('detailCategory=giaychaybo')
   }
   function eventdabanh(e) {
     e.preventDefault();
-    setdetailCategoryboy('detailCategory=dabanh')
-    setdetailCategorygirl('detailCategory=dabanh')
-    setdetailCategorypk('detailCategory=dabanh')
-    setdetailCategorygosto('detailCategory=dabanh')
-    setdetailCategorybetrai('detailCategory=dabanh')
-    setdetailCategorybegai('detailCategory=dabanh')
+    setdetailCategoryboy('detailCategory=giaydabanh')
+    setdetailCategorygirl('detailCategory=giaydabanh')
+    setdetailCategorypk('detailCategory=giaydabanh')
+    setdetailCategorygosto('detailCategory=giaydabanh')
+    setdetailCategorybetrai('detailCategory=giaydabanh')
+    setdetailCategorybegai('detailCategory=giaydabanh')
   }
   function eventgiaytay(e) {
     e.preventDefault();
@@ -124,6 +124,7 @@ export default function ListPageProductsProduct(props) {
                 {props.array}
               </div>
               <Pagination
+              quantity={props.arrayall}
               />
             </div>   
           </div>

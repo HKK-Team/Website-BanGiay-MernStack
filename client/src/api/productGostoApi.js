@@ -10,7 +10,7 @@ function ProductGostoApi() {
     const [detailCategorygosto, setdetailCategorygosto] = useState(' ')
     const [sizemaxgosto, setsizemaxgosto] = useState(' ')
     const [currentPagegosto, setcurrentPagegosto] = useState(1)
-    const [postsPerPagegosto] = useState(12)
+    const [postsPerPagegosto] = useState(9)
     const [maxPicegosto, setmaxPicegosto] = useState([])
     const [minPricegosto, setminPricegosto] = useState([])
 

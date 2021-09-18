@@ -53,7 +53,7 @@ export default function ProductMale() {
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
-      <ListPageProductsProduct array={arrayPrBoy} name="HUNTER NAM" />
+      <ListPageProductsProduct arrayall={product_boy} array={arrayPrBoy} name="HUNTER NAM" />
       <GoogleMap />
       <Footer />
     </Fragment>
