@@ -22,6 +22,9 @@ import Search from "./Search/Search";
 import Payment from "./Payment/Payment";
 import PaymentNoLogged from "./Payment/PaymentNoLogged";
 import PaymentMethods from "../page/PaymentMethods/PaymentMethods";
+
+// admin 
+import AdminLogin from './AdminLogins/AdminLogins'
 function Pages() {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
@@ -63,6 +66,8 @@ function Pages() {
       <Route exact path="/PaymentNoLogged" component={PaymentNoLogged}></Route>
       <Route exact path="/UpdateAccount" component={UpdateAccount}></Route>
       <Route exact path="/PaymentMethods" component={PaymentMethods}></Route>
+      {/* admin  */}
+      <Route exact path="/Admin" component={AdminLogin}></Route>
     </Switch>
   );
 }

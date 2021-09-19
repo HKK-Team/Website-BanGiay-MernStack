@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Alert } from '@mui/material';
 
 export default function ProductDetail(props) {
   // zoom hình khi hover
@@ -122,7 +123,7 @@ export default function ProductDetail(props) {
   function eventfavorite(e) {
     e.preventDefault();
     window.location.href = "/Login";
-    alert("Bạn cần đăng nhập để thêm sản phẩm yêu thích !!");
+    alert('Bạn cần đăng nhập để thêm sản phẩm yêu thích !!'); 
   }
 
   function eventbuynow(e) {
