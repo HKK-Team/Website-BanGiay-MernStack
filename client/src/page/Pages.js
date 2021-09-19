@@ -24,7 +24,7 @@ import PaymentNoLogged from "./Payment/PaymentNoLogged";
 import PaymentMethods from "../page/PaymentMethods/PaymentMethods";
 
 // admin 
-import AdminLogin from './AdminLogins/AdminLogins'
+import AdminDashboard from './../admins/app'
 function Pages() {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
@@ -67,7 +67,7 @@ function Pages() {
       <Route exact path="/UpdateAccount" component={UpdateAccount}></Route>
       <Route exact path="/PaymentMethods" component={PaymentMethods}></Route>
       {/* admin  */}
-      <Route exact path="/Admin" component={AdminLogin}></Route>
+      <AdminDashboard/>
     </Switch>
   );
 }
