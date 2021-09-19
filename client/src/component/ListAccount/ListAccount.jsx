@@ -22,7 +22,9 @@ export default function ListAccount(props) {
                 <i class="fa fa-map-marker"></i>Danh sách địa chỉ
               </Link>
             </div>
-            <div className="account_box-info">{props.link}</div>
+            <div className="account_box-info">
+              {props.link}
+            </div>
           </div>
         </div>
       </div>
