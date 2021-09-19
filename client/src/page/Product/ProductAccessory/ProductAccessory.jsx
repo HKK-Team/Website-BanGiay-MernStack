@@ -39,6 +39,7 @@ export default function ProductFemale() {
           typee="phu-kien"
           type={item.nameCategoryProduct}
           prime={item.price.toLocaleString()}
+          price={item.price}
         />
       ))
     );
