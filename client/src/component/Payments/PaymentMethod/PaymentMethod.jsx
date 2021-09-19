@@ -26,17 +26,14 @@ export default function PaymentMethod() {
     try {
       await axios.post("http://localhost:5000/payment/creat_payment", payment);
       alert("You have successfully placed your order!");
-      window.location.href = "/";
       window.sessionStorage.removeItem("settings");
       window.sessionStorage.removeItem("payment");
     } catch (err) {}
   };
   // payment with paypal
-  const tranSuccess = async (payments) => {
-    const { paymentID } = payments;
-    await axios.post("http://localhost:5000/payment/creat_payment", payment, {
-      paymentID,
-    });
+  const tranSuccess = async () => {
+    await axios.post("http://localhost:5000/payment/creat_payment",payment
+    );
     alert("You have successfully placed your order!");
     window.sessionStorage.removeItem("settings");
     window.sessionStorage.removeItem("payment");

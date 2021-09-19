@@ -8,6 +8,7 @@ import Model_5 from "../../images/mau/5.png";
 import Model_6 from "../../images/mau/6.png";
 import Model_7 from "../../images/mau/7.png";
 import Model_8 from "../../images/mau/8.png";
+import {Link} from "react-router-dom";
 import React from "react";
 export default function Footer() {
   return (
@@ -17,7 +18,7 @@ export default function Footer() {
         {/* footer_top-title */}
         <div className="footer_top-title">
           <span>
-            HASHTAG<a href='/'> ABC </a> ĐỂ CÓ CƠ HỘI XUẤT HIỆN TRÊN WEBSITE
+            HASHTAG<Link to='/'> ABC </Link> ĐỂ CÓ CƠ HỘI XUẤT HIỆN TRÊN WEBSITE
             CỦA CHÚNG TÔI
           </span>
         </div>
