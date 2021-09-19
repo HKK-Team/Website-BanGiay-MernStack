@@ -9,8 +9,9 @@ import NewUser from "./pages/NewUser/NewUser";
 import ProductList from "./pages/ProductList/ProductList";
 import Product from "./pages/Product/Product";
 import NewProduct from "./pages/NewProduct/NewProduct";
+import BillList from "./pages/BillList/BillList";
 import AdminLogin from './../admins/pages/AdminLogins/AdminLogins'
-function App() {
+function NavBarAdmin() {
   return (
     <Router>
       <Route exact path="/Admin" component={AdminLogin}></Route>
@@ -40,6 +41,9 @@ function App() {
           <Route path="/newproductAdmin">
             <NewProduct />
           </Route>
+          <Route path="/BillsAdmin">
+            <BillList />
+          </Route>
         </Switch>
         {/* Link url */}
       </div>
@@ -48,4 +52,4 @@ function App() {
   );
 }
 
-export default App;
+export default NavBarAdmin;

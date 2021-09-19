@@ -1,5 +1,5 @@
 import "./ProductList.css";
-import { DataGrid } from "@material-ui/data-grid";
+import {  DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../TotalData";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ export default function ProductList() {
   };
 // khởi tạo dữ liệu sản phẩm dạng cột
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 250 },
     { field: "idCategory_product", headerName: "Mã sản phẩm", width: 165 },
     {
       field: "product",
@@ -22,7 +22,7 @@ export default function ProductList() {
       width: 300,
       renderCell: (params) => {
         return (
-          <div className="productListItem">
+          <div className="productListItem" style={{overflow:'auto'}}>
             <img className="productListImg" src={params.row.image} alt="" />
             {params.row.name}
           </div>
@@ -75,6 +75,17 @@ export default function ProductList() {
         columns={columns}
         pageSize={8}
         checkboxSelection
+
+        localeText={{
+          toolbarDensity: 'Size',
+          toolbarDensityLabel: 'Size',
+          toolbarDensityCompact: 'Small',
+          toolbarDensityStandard: 'Medium',
+          toolbarDensityComfortable: 'Large',
+        }}
+        components={{
+          Toolbar: GridToolbar,
+        }}
       />
     </div>
   );

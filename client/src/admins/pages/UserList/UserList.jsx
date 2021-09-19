@@ -1,5 +1,5 @@
 import "./UserList.css";
-import { DataGrid } from "@material-ui/data-grid";
+import {  DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../TotalData";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ export default function UserList() {
   };
 // khởi tạo dữ liệu bảng
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 250 },
     {
       field: "user",
       headerName: "User",
@@ -29,11 +29,11 @@ export default function UserList() {
         );
       },
     },
-    { field: "email", headerName: "Email", width: 200 },
+    { field: "email", headerName: "Email", width: 250 },
     {
       field: "bornday",
       headerName: "Ngày tạo",
-      width: 150,
+      width: 260,
     },
     {
       field: "transaction",
@@ -68,6 +68,17 @@ export default function UserList() {
         columns={columns}
         pageSize={8}
         checkboxSelection
+
+        localeText={{
+          toolbarDensity: 'Size',
+          toolbarDensityLabel: 'Size',
+          toolbarDensityCompact: 'Small',
+          toolbarDensityStandard: 'Medium',
+          toolbarDensityComfortable: 'Large',
+        }}
+        components={{
+          Toolbar: GridToolbar,
+        }}
       />
     </div>
   );

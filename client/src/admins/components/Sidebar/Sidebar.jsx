@@ -53,10 +53,12 @@ export default function Sidebar() {
                 Các sản phảm
               </li>
             </Link>
+            <Link to="/BillsAdmin" className="link">
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Giao dịch
             </li>
+            </Link>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Báo cáo

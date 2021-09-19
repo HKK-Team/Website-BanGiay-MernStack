@@ -88,3 +88,21 @@ export const productRows = [
     price: "699000",
   },
 ];
+// khởi tạo dữ liêu hóa đơn
+export const billRows = [
+  {
+    id: "61418541fe13317461458808",
+    user_id: "6135998ac8727f629ac60f11",
+    fullName: "Huỳnh Đức Huy",
+    email: "huynhduchuy2001@gmail.com",
+    address: "Bình Phước",
+    phone_number: "0336755506",
+    total_price: 1897000,
+    Cart: [
+      { id_product: "DSMH02400CAM34", quality: 1 },
+      { id_product: "DSMH02400CAM34", quality: 1 },
+      { id_product: "DSMH02400CAM34", quality: 1 },
+    ],
+    createdAt: "2021-09-15T05:31:45.273+00:00",
+  },
+];
