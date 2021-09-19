@@ -24,6 +24,34 @@ export default function Header(props) {
     return item.iduser === iduser;
   });
 
+  //get values form input search
+  const [statetemp, setstatetemp]= useState('');
+  function handleChange(e){
+    setstatetemp(e.toString());
+  }
+  // event enter then begin search
+  function eventSearch() {
+    if (statetemp === "") {
+      setSearch("Không tìm thấy sản phẩm!!!");
+    }
+    else {
+      var temp = statetemp[0].toUpperCase();
+      for (let i = 1; i < statetemp.length; i++) {
+        let code = statetemp.charCodeAt(i);
+        let codeprev = statetemp.charCodeAt(i - 1);
+        if (code >= 97 && code <= 122 && codeprev === 32) {
+          code -= 32;
+        }
+        else if(statetemp[i] === 'đ'){
+          temp += 'Đ';
+          continue;
+        }
+        temp += String.fromCharCode(code);
+      }
+      setSearch(temp);
+    }
+  }
+
   //create variable count for carts
   var storedArray = JSON.parse(sessionStorage.getItem("settings"));
   var ltg;
@@ -156,7 +184,7 @@ export default function Header(props) {
       });
     }
     return () => clearInterval(loop);
-  },[]);
+  }, []);
   return (
     <Fragment>
       <header>
@@ -232,13 +260,15 @@ export default function Header(props) {
                       placeholder="Nhập thông tin cần tìm..."
                       className="header_bottom-search-input"
                       name="search"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
+                      onChange={(e) =>
+                        handleChange(e.target.value.toLowerCase())
+                      }
                     />
                     <Link to="/Search">
                       <button
                         type="submit"
                         className="header_bottom-search-button"
+                        onClick={eventSearch}
                       >
                         <i class="fas fa-search"></i>
                       </button>

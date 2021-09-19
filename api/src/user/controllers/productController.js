@@ -13,7 +13,7 @@ class ApiFeatures {
             excludedFields.forEach(el => delete(queryObj[el]))
 
             let queryStr = JSON.stringify(queryObj)
-            queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g, match => '$' + match)
+            queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex|eq)\b/g, match => '$' + match)
             this.query.find(JSON.parse(queryStr))
 
             return this;
@@ -40,10 +40,10 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
         }
     },
     // return all product
-    getProducts: async(req, res) =>{
+    getProducts: async(req, res) => {
         try {
             const features = new ApiFeatures(Products.find(), req.query)
-            .filtering()
+                .filtering()
 
             const products = await features.query
 
@@ -52,9 +52,9 @@ const productCtrl = { // $eq là biểu thức so sánh trong mongodb (truy vấ
                 result: products.length,
                 products: products
             })
-            
+
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({ msg: err.message })
         }
     },
     getproduct_boy: async(req, res) => {

@@ -47,7 +47,7 @@ export default function ProductFemale() {
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
-      <ListPageProductsProduct array={arrayPrPK} name="PHỤ KIỆN" />
+      <ListPageProductsProduct arrayall={product_pk} array={arrayPrPK} name="PHỤ KIỆN" />
       <GoogleMap />
       <Footer />
     </Fragment>

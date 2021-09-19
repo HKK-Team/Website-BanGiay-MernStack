@@ -3,9 +3,8 @@ import React, { useEffect, useState, useContext ,NavLink } from "react";
 import "./Pagination.css";
 import { GlobalState } from "../../GlobalState";
 
-export default function Pagination() {
+export default function Pagination({quantity}) {
   const state = useContext(GlobalState);
-  const [product_boy] = state.productboyApi.product_boy;
   const [currentPageboy, setcurrentPageboy] =
     state.productboyApi.currentPageboy;
   const [currentPagegirl, setcurrentPagegirl] =
@@ -17,10 +16,11 @@ export default function Pagination() {
     state.productbetraiApi.currentPagebetrai;
   const [currentPagebegai, setcurrentPagebegai] =
     state.productbegaiApi.currentPagebegai;
-  //Get post current
-  const [postsPerPageboy] = state.productboyApi.postsPerPageboy;
+    const [currentPagesearch, setcurrentPagesearch] =
+     state.searchProductApi.currentPagesearch
 
-  const total = Math.ceil(product_boy.length / postsPerPageboy);
+  //Get post current
+  const total = Math.ceil(quantity.length / 9);
 
   const pageNumber = [];
 
@@ -35,8 +35,9 @@ export default function Pagination() {
     setcurrentPagegosto(number);
     setcurrentPagebetrai(number);
     setcurrentPagebegai(number);
+    setcurrentPagesearch(number);
     window.scrollTo({
-      top: 700,
+      top: 400,
       behavior: "smooth",
     });
   }
@@ -49,9 +50,10 @@ export default function Pagination() {
     setcurrentPagegosto(currentPagegosto - 1);
     setcurrentPagebetrai(currentPagebetrai - 1);
     setcurrentPagebegai(currentPagebegai - 1);
+    setcurrentPagesearch(currentPagesearch - 1);
 
     window.scrollTo({
-      top: 700,
+      top: 400,
       behavior: "smooth",
     });
   }
@@ -64,8 +66,10 @@ export default function Pagination() {
     setcurrentPagegosto(currentPagegosto + 1);
     setcurrentPagebetrai(currentPagebetrai + 1);
     setcurrentPagebegai(currentPagebegai + 1);
+    setcurrentPagesearch(currentPagesearch + 1);
+
     window.scrollTo({
-      top: 700,
+      top: 400,
       behavior: "smooth",
     });
   }
@@ -75,7 +79,8 @@ export default function Pagination() {
     currentPagepk === 1 ||
     currentPagegosto === 1 ||
     currentPagebetrai === 1 ||
-    currentPagebegai === 1
+    currentPagebegai === 1 ||
+    currentPagesearch === 1
   ) {
     return (
       <div id="pagination">
@@ -112,7 +117,8 @@ export default function Pagination() {
     currentPagepk >= total ||
     currentPagegosto >= total ||
     currentPagebetrai >= total ||
-    currentPagebegai >= total
+    currentPagebegai >= total ||
+    currentPagesearch >= total
   ) {
     return (
       <div id="pagination">

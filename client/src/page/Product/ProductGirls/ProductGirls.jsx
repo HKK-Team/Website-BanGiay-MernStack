@@ -53,7 +53,7 @@ export default function ProductFemale() {
       <Header />
       <SliderProduct slider={silder} />
       <Announcement />
-      <ListPageProductsProduct array={arrayPrBeGai} name="BÉ GÁI" />
+      <ListPageProductsProduct arrayall={product_begai} array={arrayPrBeGai} name="BÉ GÁI" />
       <GoogleMap />
       <Footer />
     </Fragment>

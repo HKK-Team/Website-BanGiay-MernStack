@@ -11,11 +11,20 @@ import { GlobalState } from "../../GlobalState";
 export default function Search() {
   const state = useContext(GlobalState);
   const [products] = state.searchProductApi.products
+
+    //Get current pages and post current
+    const [currentPagesearch, setcurrentPagesearch] = state.searchProductApi.currentPagesearch
+    const [postsPerPagesearch] = state.searchProductApi.postsPerPagesearch
+    // Get current posts
+    const indexofLastPost = currentPagesearch * postsPerPagesearch;
+    const indexofFirstPost = indexofLastPost - postsPerPagesearch;
+     const currentPost = products.slice(indexofFirstPost, indexofLastPost)
+
   var allproduct = []; // khởi tạo mảng lưu trữ
   // push all product
   allproduct.push(
     // lấy dữ liệu trong data ra rồi push vô mảng
-    products.map(
+    currentPost.map(
       (
         item // sử dụng map đẻ lấy dữ liệu trong collection
       ) => (
@@ -25,7 +34,7 @@ export default function Search() {
           key={item._id}
           masp={item.idCategory_product}
           image={item.image}
-          TotalSize={item.size.length}
+          TotalSize={Object.keys(item.size).length}
           valueSize_1={item.size.size1}
           valueSize_2={item.size.size2}
           valueSize_3={item.size.size3}
@@ -34,7 +43,8 @@ export default function Search() {
           name={item.nameProduct}
           typee="nam"
           type={item.nameCategoryProduct}
-          prime={item.price}
+          prime={item.price.toLocaleString()}
+          price = {item.price}
         />
       )
     )

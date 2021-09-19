@@ -10,7 +10,7 @@ function ProductBetraiApi() {
     const [detailCategorybetrai, setdetailCategorybetrai] = useState(' ')
     const [sizemaxbetrai, setsizemaxbetrai] = useState(' ')
     const [currentPagebetrai, setcurrentPagebetrai] = useState(1)
-    const [postsPerPagebetrai] = useState(12)
+    const [postsPerPagebetrai] = useState(9)
     const [maxPicebetrai, setmaxPicebetrai] = useState([])
     const [minPricebetrai, setminPricebetrai] = useState([])
 

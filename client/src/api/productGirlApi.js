@@ -10,7 +10,7 @@ function ProductGirlApi() {
     const [detailCategorygirl, setdetailCategorygirl] = useState(' ')
     const [sizemaxgirl, setsizemaxgirl] = useState(' ')
     const [currentPagegirl, setcurrentPagegirl] = useState(1)
-    const [postsPerPagegirl] = useState(12)
+    const [postsPerPagegirl] = useState(9)
     const [maxPicegirl, setmaxPicegirl] = useState([])
     const [minPricegirl, setminPricegirl] = useState([])
 
