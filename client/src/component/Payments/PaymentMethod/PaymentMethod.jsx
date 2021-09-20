@@ -137,7 +137,7 @@ export default function PaymentMethod() {
                 padding: 10,
               }}
             >
-              Total: $ {Math.round(sum / 22.7).toLocaleString()}
+              Total: $ {Math.round(sum / 23000).toLocaleString()}
             </h3>
             <PaypalButton total={sum} tranSuccess={tranSuccess} currency="USD"/>
           </div>
