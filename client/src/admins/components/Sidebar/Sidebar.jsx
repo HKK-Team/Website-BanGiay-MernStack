@@ -23,19 +23,21 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Bảng điều khiển</h3>
           <ul className="sidebarList">
             <Link to="/DashBoard" className="link">
-            <li className="sidebarListItem activeAdmin">
-              <LineStyle className="sidebarIcon" />
-              Home
-            </li>
+              <li className="sidebarListItem activeAdmin">
+                <LineStyle className="sidebarIcon" />
+                Home
+              </li>
             </Link>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Phân tích
             </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Bán hàng
-            </li>
+            <Link to="/SalesAnalysis" className="link">
+              <li className="sidebarListItem">
+                <TrendingUp className="sidebarIcon" />
+                Bán hàng
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -54,10 +56,10 @@ export default function Sidebar() {
               </li>
             </Link>
             <Link to="/BillsAdmin" className="link">
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Giao dịch
-            </li>
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Giao dịch
+              </li>
             </Link>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />

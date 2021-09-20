@@ -1,6 +1,7 @@
 import React from "react";
 import "./Topbar.css";
-import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { NotificationsNone, Language, Settings} from "@material-ui/icons";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Topbar() {
   return (
@@ -21,7 +22,12 @@ export default function Topbar() {
           <div className="topbarIconContainer">
             <Settings />
           </div>
-          <img src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="topAvatar" />
+          <div className="topbarIconContainer">
+          <img src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg" alt="" className="topAvatar" onClick={()=>{alert("hello")}}/>
+          </div>
+          <div className="topbarIconContainer">
+            <LogoutIcon />
+          </div>
         </div>
       </div>
     </div>

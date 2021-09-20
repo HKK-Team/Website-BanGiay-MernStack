@@ -62,6 +62,78 @@
 .account_box-info {
   padding: 0px 15px;
 }
+
+/* modal-ConfirmPassword */
+#modal-ConfirmPassword{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4);
+
+  transition: all 1s ease;
+}
+.modal-content{
+  border-radius: 20px;
+  padding: 20px;
+  width: 450px;
+  height: 150px;
+  background: white;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  transition: all 1s ease;
+}
+.modal-content i{
+  float: right;
+  font-size: 18px;
+  cursor: pointer;
+}
+.newUserForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.newUserItem {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.newUserItem > label {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(151, 150, 150);
+}
+
+.newUserItem > input {
+  height: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.newUserButton{
+  width: 150px !important;
+  border: none;
+  background-color: darkblue;
+  color: white;
+  padding: 7px 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 10px !important;
+  cursor: pointer;
+}
 /* Reponsive  */
 @media screen and (max-width:715px) {
   .account_wrapper{

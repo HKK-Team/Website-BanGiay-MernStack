@@ -12,29 +12,17 @@ const handelSingleBadge = () => {
     }
   }
 };
+
 //  xác nhận mật khẩu
-var errPasswordCount = 0; // Đếm số lần nhập sai
-const ConfirmPassword = () => {
-  var password = prompt('Vui lòng nhập mật khẩu', ' ');
-  if (password === "hello") {
-    handelSingleBadge();
-    alert("Thay đổi của bạn đã đc ghi lại");
-  } else if (password === " ") {
-    alert("Vui lòng nhập mật khẩu");
-  } else {
-    errPasswordCount++;
-    alert(`Xin lỗi ! Mật khẩu không chính xác lần ${errPasswordCount}`);
-  }
-  if (errPasswordCount === 3) {
-    // logout
-    window.location.href = "/";
-  }
+const OpenConfirmPassword = () => {
+  var x = document.getElementById("modal-ConfirmPassword");
+  x.style.display="block"
 };
 export default function Account_OrderManagement() {
   return (
     <div className="user-box">
       <h2 className="title_detail">Danh sách đơn hàng mới nhất</h2>
-      <button className="btn-oder" onClick={ConfirmPassword}>
+      <button className="btn-oder" onClick={OpenConfirmPassword}>
         Lưu thay đổi
       </button>
       {/* <p>Bạn chưa đặt mua sản phẩm.</p> */}

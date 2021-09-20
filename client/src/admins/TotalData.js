@@ -1,4 +1,4 @@
-// khởi tạo dữ liêu người dùng dạng biểu đồ
+// khởi tạo dữ liêu hoạt động của người dùng dạng biểu đồ 
 export const userData = [
   {
     name: "Jan",
@@ -49,6 +49,100 @@ export const userData = [
     "Active User": 3000,
   },
 ];
+// khởi tạo dữ liêu doanh thu hàng tháng của dạng biểu đồ 
+export const monthlyRevenueData = [
+  {
+    name: "Jan",
+    "Doanh Thu": 4000 ,
+  },
+  {
+    name: "Feb",
+    "Doanh Thu": 3000,
+  },
+  {
+    name: "Mar",
+    "Doanh Thu": 5000,
+  },
+  {
+    name: "Apr",
+    "Doanh Thu": 4000,
+  },
+  {
+    name: "May",
+    "Doanh Thu": 3000,
+  },
+  {
+    name: "Jun",
+    "Doanh Thu": 2000,
+  },
+  {
+    name: "Jul",
+    "Doanh Thu": 4000,
+  },
+  {
+    name: "Agu",
+    "Doanh Thu": 3000,
+  },
+  {
+    name: "Sep",
+    "Doanh Thu": 4000,
+  },
+  {
+    name: "Oct",
+    "Doanh Thu": 1000,
+  },
+  {
+    name: "Nov",
+    "Doanh Thu": 4000,
+  },
+  {
+    name: "Dec",
+    "Doanh Thu": 3000,
+  },
+];
+// khởi tạo dữ liêu doanh thu các quý của dạng biểu đồ 
+export const quarterlyRevenueData = [
+  {
+    name: "Quý 1",
+    Sales: 40000,
+  },
+  {
+    name: "Quý 2",
+    Sales: 30000,
+  },
+  {
+    name: "Quý 3",
+    Sales: 50000,
+  },
+  {
+    name: "Quý 4",
+    Sales: 50000,
+  },
+];
+// khởi tạo dữ liêu doanh thu các năm của dạng biểu đồ 
+export const annualRevenueData = [
+  {
+    name: "2017",
+    Sales: 90000,
+  },
+  {
+    name: "2018",
+    Sales: 100000,
+  },
+  {
+    name: "2019",
+    Sales:350000,
+  },
+  {
+    name: "2020",
+    Sales: 330000,
+  },
+  {
+    name: "2021",
+    Sales: 450000,
+  },
+
+];
 // khởi tạo dữ liêu sản phẩm dạng biểu đồ
 export const productData = [
   {
@@ -64,6 +158,8 @@ export const productData = [
     Sales: 5000,
   },
 ];
+
+
 // khởi tạo dữ liêu người dùng
 export const userRows = [
   {

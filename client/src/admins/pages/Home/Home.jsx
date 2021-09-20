@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="home">
       <FeaturedInfo />
-      <Chart data={userData} title="Phân tích tần suất hoạt động của người dùng" grid dataKey="Active User"/>
+      <Chart data={userData} color='#5550bd' title="Phân tích tần suất hoạt động của người dùng" grid dataKey="Active User"/>
       <div className="homeWidgets">
         <WidgetSm/>
         <WidgetLg/>

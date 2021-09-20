@@ -10,45 +10,34 @@ import ProductList from "./pages/ProductList/ProductList";
 import Product from "./pages/Product/Product";
 import NewProduct from "./pages/NewProduct/NewProduct";
 import BillList from "./pages/BillList/BillList";
-import AdminLogin from './../admins/pages/AdminLogins/AdminLogins'
+import AdminLogin from "./../admins/pages/AdminLogins/AdminLogins";
+import SalesAnalysis from './pages/SalesAnalysis/SalesAnalysis'
 function NavBarAdmin() {
   return (
     <Router>
-      <Route exact path="/Admin" component={AdminLogin}></Route>
+      <Route exact path="/Admin" component={AdminLogin} />
       <Topbar />
       <div className="containerAdmin">
         <Sidebar /> {/* Menu nav */}
         {/* Link url */}
-        <Switch> 
-          <Route exact path="/Dashboard">
-            <Home />
-          </Route>
-          <Route path="/usersAdmin">
-            <UserList />
-          </Route>
-          <Route path="/userAdmin/:userAdminId">
-            <User />
-          </Route>
-          <Route path="/newUserAdmin">
-            <NewUser />
-          </Route>
-          <Route path="/productsAdmin">
-            <ProductList />
-          </Route>
-          <Route path="/productAdmin/:productAdminId">
-            <Product />
-          </Route>
-          <Route path="/newproductAdmin">
-            <NewProduct />
-          </Route>
-          <Route path="/BillsAdmin">
-            <BillList />
-          </Route>
+        <Switch>
+          <Route exact path="/SalesAnalysis" component={SalesAnalysis} />
+          <Route exact path="/Dashboard" component={Home} />
+          <Route exact path="/usersAdmin" component={UserList} />
+          <Route exact path="/userAdmin/:userAdminId" component={User} />
+          <Route exact path="/newUserAdmin" component={NewUser} />
+          <Route exact path="/productsAdmin" component={ProductList} />
+          <Route
+            exact
+            path="/productAdmin/:productAdminId"
+            component={Product}
+          />
+          <Route exact path="/newproductAdmin" component={NewProduct} />
+          <Route exact path="/BillsAdmin" component={BillList} />
         </Switch>
         {/* Link url */}
       </div>
     </Router>
-    
   );
 }
 
