@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 import "./Account_Infomation.css";
 import {Link} from "react-router-dom"
 import { GlobalState } from "../../../GlobalState";
-export default function Account_Infomation() {
+export default function Account_Infomation(props) {
   // get object
   const state = useContext(GlobalState);
   const [profile] = state.userAPI.user;
@@ -26,8 +26,6 @@ export default function Account_Infomation() {
       <Link to = "#" id="view-address">
         Xem địa chỉ <i class="fa fa-share"></i>
       </Link>
-      <h2 className="title-detail">Danh sách đơn hàng mới nhất</h2>
-      <p>Bạn chưa đặt mua sản phẩm nào</p>
     </div>
   );
 }

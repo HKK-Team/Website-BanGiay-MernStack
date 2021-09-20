@@ -11,8 +11,8 @@ export default function Account_Infomation() {
       <Title name="Thông tin tài khoản" />
       <ListAccount
           // eslint-disable-next-line react/jsx-pascal-case
-            link ={<Account_Infomations/>}
-            title="TÀI KHOẢN CỦA BẠN"
+          link ={<Account_Infomations/>}
+          title="TÀI KHOẢN CỦA BẠN"
       />
       <Footer />
     </Fragment>

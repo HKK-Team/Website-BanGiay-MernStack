@@ -21,14 +21,16 @@ mongoose.connect(URI, {
     }, err => {
         if (err) throw err;
         console.log('Connected to MongoDB')
-    })
-    // Routes
+    }
+)
+// Routes
 app.use('/api', require('./src/user/routers/menuRouter'))
 app.use('/api', require('./src/user/routers/bannerRouter'))
 app.use('/api', require('./src/user/routers/productRouter'))
 app.use('/user', require('./src/user/routers/userRouter'))
 app.use('/api', require('./src/user/routers/favoriteRouter'))
 app.use('/payment', require('./src/user/routers/paymentRouter'))
+app.use('/admin', require('./src/admin/routers/adminRouter'))
 
 // load token for server
 if (process.env.NODE_ENV === 'production') {

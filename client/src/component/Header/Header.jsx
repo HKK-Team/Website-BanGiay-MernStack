@@ -235,9 +235,11 @@ export default function Header(props) {
                 <div id="toggle">
                   <i class="fas fa-bars" onClick={open}></i>
                 </div>
-                <div className="header_bottom-icon">
-                  <img src={Logo} alt="/" />
-                </div>
+                <Link to = "/">
+                  <div className="header_bottom-icon">
+                    <img src={Logo} alt = "/"/>
+                  </div>
+                </Link>
                 <nav className="header_bottom-menu">
                   <ul className="header_bottom-list">
                     {menus2.map((item) => (
