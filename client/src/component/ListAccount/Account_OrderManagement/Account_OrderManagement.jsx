@@ -24,7 +24,11 @@ export default function Account_OrderManagement(props) {
       )
     }
   }
-  // check not delivered
+//  xác nhận mật khẩu
+const OpenConfirmPassword = () => {
+  var x = document.getElementById("modal-ConfirmPassword");
+  x.style.display="block"
+}
   const checkk= () =>{
     if(props.status===false)
     {

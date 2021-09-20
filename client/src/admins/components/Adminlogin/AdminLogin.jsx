@@ -46,7 +46,10 @@ export default function AdminLogin() {
         />
         <button>Đăng nhập</button>
       </form>
-      <h2>Trang quản trị <br/>copyright © 2021 HKK team</h2>
+      <h2>
+        Trang quản trị <br />
+        copyright © 2021 HKK team
+      </h2>
     </div>
   );
 }
