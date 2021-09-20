@@ -3,11 +3,11 @@ import Chart from "../../components/Chart/Chart";
 import { monthlyRevenueData } from "../../TotalData";
 import { quarterlyRevenueData } from "../../TotalData";
 import { annualRevenueData } from "../../TotalData";
-import "./SalesAnalysis.css";
+import "./Statistic.css";
 
-export default function SalesAnalysis() {
+export default function Statistic() {
   return (
-    <div className="SalesAnalysis">
+    <div className="Statistic">
       <Chart
         data={monthlyRevenueData}
         title="Phân tích doanh thu các tháng (USD)"

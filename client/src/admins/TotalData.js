@@ -1,3 +1,6 @@
+import MostPopularProducts from "./components/MostPopularProducts/MostPopularProducts";
+import SellingProducts from "./components/SellingProducts/SellingProducts";
+import WidgetLg from './components/WidgetLg/WidgetLg'
 // khởi tạo dữ liêu hoạt động của người dùng dạng biểu đồ 
 export const userData = [
   {
@@ -143,7 +146,7 @@ export const annualRevenueData = [
   },
 
 ];
-// khởi tạo dữ liêu sản phẩm dạng biểu đồ
+// khởi tạo dữ liêu sản phẩm dạng biểu đồ 
 export const productData = [
   {
     name: "Jan",
@@ -160,7 +163,7 @@ export const productData = [
 ];
 
 
-// khởi tạo dữ liêu người dùng
+// khởi tạo dữ liêu bảng người dùng
 export const userRows = [
   {
     id: "613604a85baff7dc5fe145e1",
@@ -171,7 +174,143 @@ export const userRows = [
     transaction: "$120.00",
   },
 ];
-// khởi tạo dữ liêu sản phẩm
+// khởi tạo dữ liệu loại mặt hàng bán chạy dạng biểu đồ ( / sản phẩm )
+export const bestSellingItemData = [
+  {
+    name: "Hunter Nam",
+    Sales: 40000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 30000,
+  },
+  {
+    name: "Gosto",
+    Sales: 50000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 50000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 50000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 50000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 1 dạng biểu đồ 
+export const itemTypeRevenueData_Precious1 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 2 dạng biểu đồ 
+export const itemTypeRevenueData_Precious2 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 3 dạng biểu đồ 
+export const itemTypeRevenueData_Precious3 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 4 dạng biểu đồ 
+export const itemTypeRevenueData_Precious4 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+
+// khởi tạo dữ liêu bảng sản phẩm
 export const productRows = [
   {
     id: "61263c32cd0782f5f0743775",
@@ -184,7 +323,7 @@ export const productRows = [
     price: "699000",
   },
 ];
-// khởi tạo dữ liêu hóa đơn
+// khởi tạo dữ liêu bảng hóa đơn
 export const billRows = [
   {
     id: "61418541fe13317461458808",
@@ -202,3 +341,43 @@ export const billRows = [
     createdAt: "2021-09-15T05:31:45.273+00:00",
   },
 ];
+
+// dữ liêu sản phẩm bán chạy nhất
+export const sellingProductsData = [];
+for (let i = 0; i < 5; i++) {
+  sellingProductsData.push(
+  <SellingProducts
+    image="https://product.hstatic.net/1000230642/product/03900cam__2__5ed808cd7e35480dbb0340cf7e57c71a_1024x1024.jpg"
+    codeproduct="DSMH03900CAM44"
+    totalquality={200}
+    price={990000}
+  />
+);
+}
+
+// dữ liêu sản phẩm yêu thích nhất
+export const mostPopularProductsData = [];
+for (let i = 0; i < 5; i++) {
+  mostPopularProductsData.push(
+    <MostPopularProducts
+    image="https://product.hstatic.net/1000230642/product/03900cam__2__5ed808cd7e35480dbb0340cf7e57c71a_1024x1024.jpg"
+    codeproduct="DSMH03900CAM44"
+    totallike={2000}
+    totalquality={200}
+    price={990000}
+  />
+);
+}
+
+// dữ liêu giao dịch gần nhất
+export const mostRecentTransactionDate = [];
+for (let i = 0; i < 5; i++) {
+  mostRecentTransactionDate.push(
+    <WidgetLg
+    fullname="Đoàn Minh Khánh"
+    date ="20-09-2001"
+    totalprice={20000}
+    codebill= "121231231212"
+  />
+);
+}

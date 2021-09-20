@@ -11,6 +11,8 @@ import Product from "./pages/Product/Product";
 import NewProduct from "./pages/NewProduct/NewProduct";
 import BillList from "./pages/BillList/BillList";
 import AdminLogin from "./../admins/pages/AdminLogins/AdminLogins";
+import Statistic from './pages/Statistic/Statistic'
+import MarketAnalysis from "./pages/MarketAnalysis/MarketAnalysis";
 import SalesAnalysis from './pages/SalesAnalysis/SalesAnalysis'
 function NavBarAdmin() {
   return (
@@ -21,7 +23,9 @@ function NavBarAdmin() {
         <Sidebar /> {/* Menu nav */}
         {/* Link url */}
         <Switch>
+          <Route exact path="/Statistic" component={Statistic} />
           <Route exact path="/SalesAnalysis" component={SalesAnalysis} />
+          <Route exact path="/MarketAnalysis" component={MarketAnalysis} />
           <Route exact path="/Dashboard" component={Home} />
           <Route exact path="/usersAdmin" component={UserList} />
           <Route exact path="/userAdmin/:userAdminId" component={User} />

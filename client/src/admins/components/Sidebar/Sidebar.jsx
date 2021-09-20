@@ -13,7 +13,8 @@ import {
   WorkOutline,
   Report,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link , NavLink} from "react-router-dom";
+
 
 export default function Sidebar() {
   return (
@@ -22,49 +23,53 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Bảng điều khiển</h3>
           <ul className="sidebarList">
-            <Link to="/DashBoard" className="link">
+            <NavLink to="/DashBoard" className="link">
               <li className="sidebarListItem activeAdmin">
                 <LineStyle className="sidebarIcon" />
                 Home
               </li>
-            </Link>
+            </NavLink>
+            <NavLink to="/MarketAnalysis" className="link">
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Phân tích
             </li>
-            <Link to="/SalesAnalysis" className="link">
+            </NavLink>
+            <NavLink to="/SalesAnalysis" className="link">
               <li className="sidebarListItem">
                 <TrendingUp className="sidebarIcon" />
                 Bán hàng
               </li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            <Link to="/usersAdmin" className="link">
+            <NavLink to="/usersAdmin" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Người dùng
               </li>
-            </Link>
-            <Link to="/productsAdmin" className="link">
+            </NavLink>
+            <NavLink to="/productsAdmin" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Các sản phảm
               </li>
-            </Link>
-            <Link to="/BillsAdmin" className="link">
+            </NavLink>
+            <NavLink to="/BillsAdmin" className="link">
               <li className="sidebarListItem">
                 <AttachMoney className="sidebarIcon" />
                 Giao dịch
               </li>
-            </Link>
+            </NavLink>
+            <NavLink to="/Statistic" className="link">
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Báo cáo
             </li>
+            </NavLink>
           </ul>
         </div>
         <div className="sidebarMenu">

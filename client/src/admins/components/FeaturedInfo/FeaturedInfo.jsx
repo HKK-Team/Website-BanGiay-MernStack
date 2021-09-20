@@ -1,4 +1,4 @@
-  
+
 import "./FeaturedInfo.css";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 
