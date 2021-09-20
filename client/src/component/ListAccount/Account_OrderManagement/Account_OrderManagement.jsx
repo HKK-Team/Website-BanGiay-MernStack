@@ -2,6 +2,16 @@
 import React from "react";
 import "./Account_OrderManagement.css";
 export default function Account_OrderManagement(props) {
+  // Xử lý sự kiện hủy đơn
+  const handelSingleBadge = () => {
+    var checkbox = document.getElementsByName("SingleBadge");
+    var result = ""; //array chưa id hủy đơn 
+    for (let i = 0; i < checkbox.length; i++) {
+      if (checkbox[i].checked === true) {
+        result += " [" + checkbox[i].value + "]";
+      }
+    }
+  };
   // check delivered
   const check= () =>{
     if(props.status===true)
