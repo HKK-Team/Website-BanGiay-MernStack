@@ -51,7 +51,7 @@ export default class PaypalButton extends React.Component {
             <PaypalExpressBtn 
             env={env} client={client} 
             currency={currency} 
-            total={total} onError={onError} 
+            total={Math.round(total / 22.7).toLocaleString()} onError={onError} 
             onSuccess={onSuccess} onCancel={onCancel}
             style={style} />
         );

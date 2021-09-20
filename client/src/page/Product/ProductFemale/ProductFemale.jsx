@@ -40,6 +40,7 @@ export default function ProductFemale() {
           typee="nu"
           type={item.nameCategoryProduct}
           prime={item.price.toLocaleString()}
+          price={item.price}
         />
       ))
     );

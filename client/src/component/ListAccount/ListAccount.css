@@ -62,7 +62,6 @@
 .account_box-info {
   padding: 0px 15px;
 }
-
 /* modal-ConfirmPassword */
 #modal-ConfirmPassword{
   display: none; /* Hidden by default */
@@ -84,7 +83,6 @@
   width: 450px;
   height: 150px;
   background: white;
-  
   position: absolute;
   top: 50%;
   left: 50%;
