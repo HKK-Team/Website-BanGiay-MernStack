@@ -24,7 +24,9 @@ export const GlobalState = createContext()
 
 export const DataProvider = ({children}) =>{
     const [token, setToken] = useState(false)
+    const [tokenn,setTokenn] = useState(false)
     useEffect(() =>{
+        // token login user
         const firstLogin = localStorage.getItem('firstLogin')
         if(firstLogin){
             const refreshToken = async () =>{
@@ -36,11 +38,24 @@ export const DataProvider = ({children}) =>{
             }
             refreshToken()
         }
+        // token login admin
+        const adminlogin = localStorage.getItem('AdminLogin')
+        if(adminlogin){
+            const refreshToken = async () =>{
+                const res = await axios.get('/admin/refresh_token')
+                setTokenn(res.data.accesstoken)
+                setTimeout(() =>{
+                    refreshToken()
+                },10 * 60 *1000)
+            }
+            refreshToken()
+        }
     },[])
-
     const state = {
         token:[token, setToken],
         userAPI : UserApi(token),
+        tokenn :[tokenn,setTokenn],
+        adminApi : AdminApi(tokenn),
         menu1API:Menu1API(),
         menu2API:Menu2API(),
         bannerboyAPI:BannerBoyAPI(),
@@ -58,11 +73,10 @@ export const DataProvider = ({children}) =>{
         productFavorites:ProductFavorites(),
         searchProductApi : SearchProductApi(),
         list_oderApi : List_OderApi(),
-        adminApi : AdminApi(token)
     }
     return (
         <GlobalState.Provider value={state}>
             {children}
         </GlobalState.Provider>
-    )
+    );
 }

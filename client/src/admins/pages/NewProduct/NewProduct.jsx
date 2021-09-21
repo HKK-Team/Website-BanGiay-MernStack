@@ -23,6 +23,17 @@ export default function NewProduct() {
           <input type="text" placeholder="Màu sắc" />
         </div>
         <div className="addProductItem">
+          <label>Loại sản phẩm</label>
+          <select name="active" id="active">
+            <option value="Male">Hunter Nam</option>
+            <option value="Female">Hunter Nữ</option>
+            <option value="Gosto">Gosto</option>
+            <option value="Accessory">Phụ Kiện</option>
+            <option value="Boys">Bé Trai</option>
+            <option value="Girls">Bé Gái</option>
+          </select>
+        </div>
+        <div className="addProductItem">
           <label>Số size</label>
           <input type="text" placeholder="39 , 40 , 41 , 42 , 43" />
         </div>

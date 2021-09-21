@@ -3,7 +3,6 @@ import FeaturedInfo from "../../components/FeaturedInfo/FeaturedInfo";
 import "./Home.css";
 import { userData,mostRecentTransactionDate } from "../../TotalData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
-
 var mostRecentTransaction = [...mostRecentTransactionDate];
 export default function Home() {
   return (
