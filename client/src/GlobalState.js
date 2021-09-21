@@ -19,6 +19,7 @@ import axios from 'axios'
 import SearchProductApi from './api/searchProductApi';
 import List_OderApi from './api/list_oderApi';
 import AdminApi from './api/adminApi'
+import ChartAPI from './admins/api/chartApi'
 //gọi lại api ở file client/api chuyển thành dạng dữ liệu object state
 export const GlobalState = createContext()
 
@@ -73,6 +74,7 @@ export const DataProvider = ({children}) =>{
         productFavorites:ProductFavorites(),
         searchProductApi : SearchProductApi(),
         list_oderApi : List_OderApi(),
+        chartAPI:ChartAPI()
     }
     return (
         <GlobalState.Provider value={state}>

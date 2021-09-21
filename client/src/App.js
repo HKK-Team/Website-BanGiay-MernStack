@@ -4,11 +4,11 @@ import { DataProvider } from "./GlobalState";
 import Pages from "./page/Pages";
 function App() {
   return (
-      <DataProvider>
+    <DataProvider>
         <Router>
           <Pages>{/* VD : localhost:3000/header */}</Pages>
         </Router>
-      </DataProvider>
+    </DataProvider>
   );
 }
 
