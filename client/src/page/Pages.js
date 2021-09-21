@@ -24,7 +24,7 @@ import PaymentNoLogged from "./Payment/PaymentNoLogged";
 import PaymentMethods from "../page/PaymentMethods/PaymentMethods";
 
 // admin
-import NavBarAdmin from "./../admins/NavBarAdmin";
+import NavBarAdmin from "../admins/NavBarAdmin";
 function Pages() {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
