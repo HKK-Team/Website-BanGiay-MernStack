@@ -3,7 +3,6 @@ import axios from 'axios'
 
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
-    const [isAdmin, setIsAdmin] = useState(false)
     const [user, setuser] = useState([])
     const [iduser, setiduser] = useState([])
     useEffect(() => {
@@ -16,7 +15,6 @@ function UserAPI(token) {
                     setuser(res.data)
                     setIsLogged(true)
                     setiduser(res.data._id)
-                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
                 } catch (err) {
                     alert(err.response.data.msg)
                 }
@@ -32,7 +30,6 @@ function UserAPI(token) {
     return {
         user: [user, setuser],
         isLogged: [isLogged, setIsLogged],
-        isAdmin: [isAdmin, setIsAdmin],
         iduser: [iduser, setiduser]
     }
 }

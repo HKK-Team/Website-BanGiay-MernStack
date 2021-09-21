@@ -18,6 +18,7 @@ export default function AdminLogin() {
           await axios.post('/admin/login', {...admin})
           localStorage.setItem('AdminLogin', true)
           alert("Login Successfully!")
+          window.location.href = "/Dashboard";
       } catch (err) {
           alert(err.response.data.msg)
       }

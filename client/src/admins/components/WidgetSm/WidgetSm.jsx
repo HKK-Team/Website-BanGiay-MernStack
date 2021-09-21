@@ -43,7 +43,7 @@ export default function WidgetSm() {
             className="widgetSmImg"
           />
           <div className="widgetSmUser">
-            <span className="widgetSmUsername">Huynh Đức Huy</span>
+            <span className="widgetSmUsername">Huỳnh Đức Huy</span>
             <span className="widgetSmUserTitle">Mopping the floor</span>
           </div>
           <button className="widgetSmButton">
