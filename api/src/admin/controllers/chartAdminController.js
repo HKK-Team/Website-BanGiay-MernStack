@@ -5,10 +5,29 @@ const chartCtrl = {
     try {
       const chartdata = await Payments.aggregate([
         {
+          $project: {
+            _id: 1,
+            total_price: 1,
+            orderDate: 1,
+            Sum: {
+              $cond: [
+                {
+                  $eq: [
+                    { $year: "$orderDate" },
+                    { $year: new Date(Date.now()) },
+                  ],
+                },
+                "$total_price",
+                0,
+              ],
+            },
+          },
+        },
+        {
           $group: {
             _id: { $dateToString: { format: "%m", date: "$orderDate" } },
             total: {
-              $sum: "$total_price",
+              $sum: "$Sum",
             },
           },
         },
@@ -35,7 +54,6 @@ const chartCtrl = {
             },
           },
         },
-
         {
           $sort: { _id: 1 },
         },
@@ -96,11 +114,17 @@ const chartCtrl = {
   getdatabyqui: async (req, res) => {
     try {
       const chartdata = await Payments.aggregate([
+          { $project: {
+            _id: 1,
+            total_price: 1,
+            orderDate:1,
+            Sum: {$cond: [{$eq: [{ $year: "$orderDate" } ,{ $year: new Date(Date.now()) }]}, '$total_price',0]}
+        }},
         {
           $group: {
             _id: { $dateToString: { format: "%m", date: "$orderDate" } },
             total: {
-              $sum: "$total_price",
+              $sum: "$Sum",
             },
           },
         },
@@ -109,10 +133,42 @@ const chartCtrl = {
             name: {
               $switch: {
                 branches: [
-                  { case: { $and:[{$gte: ["$_id", "01"] },{$lte:["$_id","03"]}] }, then: "Quý 1" },
-                  { case: { $and:[{$gte: ["$_id", "04"] },{$lte:["$_id","06"]}] }, then: "Quý 2" },
-                  { case: { $and:[{$gte: ["$_id", "07"] },{$lte:["$_id","09"]}] }, then: "Quý 3" },
-                  { case: { $and:[{$gte: ["$_id", "10"] },{$lte:["$_id","12"]}] }, then: "Quý 4" },
+                  {
+                    case: {
+                      $and: [
+                        { $gte: ["$_id", "01"] },
+                        { $lte: ["$_id", "03"] },
+                      ],
+                    },
+                    then: "Quý 1",
+                  },
+                  {
+                    case: {
+                      $and: [
+                        { $gte: ["$_id", "04"] },
+                        { $lte: ["$_id", "06"] },
+                      ],
+                    },
+                    then: "Quý 2",
+                  },
+                  {
+                    case: {
+                      $and: [
+                        { $gte: ["$_id", "07"] },
+                        { $lte: ["$_id", "09"] },
+                      ],
+                    },
+                    then: "Quý 3",
+                  },
+                  {
+                    case: {
+                      $and: [
+                        { $gte: ["$_id", "10"] },
+                        { $lte: ["$_id", "12"] },
+                      ],
+                    },
+                    then: "Quý 4",
+                  },
                 ],
                 default: "No scores",
               },
@@ -120,16 +176,19 @@ const chartCtrl = {
           },
         },
         {
-            $group: {
-              _id: {name:"$name"},
-            //   name:{
-
-            //   },
-              total: {
-                $sum: "$total",
-              },
+          $group: {
+            _id: {name:"$name"},
+            total: {
+              $sum: "$total",
             },
           },
+        },
+        {
+          $addFields:
+            {
+              name : "$_id.name"
+            }
+        },
         {
           $sort: { _id: 1 },
         },
@@ -140,5 +199,4 @@ const chartCtrl = {
     }
   },
 };
-
 module.exports = chartCtrl;
