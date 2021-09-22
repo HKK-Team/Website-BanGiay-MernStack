@@ -18,7 +18,7 @@ import ProductFavorites from './api/favoriteApi'
 import axios from 'axios'
 import SearchProductApi from './api/searchProductApi';
 import List_OderApi from './api/list_oderApi';
-import AdminApi from './api/adminApi'
+import AdminApi from './admins/api/adminApi'
 //gọi lại api ở file client/api chuyển thành dạng dữ liệu object state
 export const GlobalState = createContext()
 

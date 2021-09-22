@@ -1,6 +1,21 @@
 import MostPopularProducts from "./components/MostPopularProducts/MostPopularProducts";
 import SellingProducts from "./components/SellingProducts/SellingProducts";
 import WidgetLg from './components/WidgetLg/WidgetLg'
+import {useContext} from "react";
+import { GlobalState } from "../GlobalState";
+
+export var getdata ={}; // khởi tạo array object chứa các mảng dữ liệu 
+export default function GetData(){
+    const state = useContext(GlobalState);
+    // const [chartbymonth] = state.chartAPI.chartbymonth;
+    const [allproduct] = state.productDetailApi.productDetail;
+    getdata ={
+      // monthlyRevenueData : [...chartbymonth],
+      // quarterlyRevenueData : [...chartbymonth],
+      productRows : [...allproduct]
+    }   
+    return getdata;
+}
 // khởi tạo dữ liêu hoạt động của người dùng dạng biểu đồ 
 export const userData = [
   {
@@ -310,19 +325,7 @@ export const itemTypeRevenueData_Precious4 = [
   },
 ];
 
-// khởi tạo dữ liêu bảng sản phẩm
-export const productRows = [
-  {
-    id: "61263c32cd0782f5f0743775",
-    idCategory_product: "DSMH02400CAM47",
-    name: "Giày Thể Thao Nam Biti’s Hunter Core Z Collection Stone DSMH06400DEN",
-    image:
-      "https://product.hstatic.net/1000230642/product/dsc_0016_7dcbe3d255e843...",
-    nameCategoryProduct: "Hunter Nam",
-    color: "Đen",
-    price: "699000",
-  },
-];
+
 // khởi tạo dữ liêu bảng hóa đơn
 export const billRows = [
   {

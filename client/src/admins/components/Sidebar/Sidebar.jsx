@@ -14,9 +14,11 @@ import {
   Report,
 } from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
+import Getdata from './../../TotalData';
 
 
 export default function Sidebar() {
+  Getdata();
   return (
     <div className="sidebarAdmin">
       <div className="sidebarWrapper">

@@ -1,12 +1,14 @@
 import "./ProductList.css";
 import {  DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { DeleteOutline } from "@material-ui/icons";
-import { productRows } from "../../TotalData";
+import { getdata } from "../../TotalData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function ProductList() {
-  const [data, setData] = useState(productRows);
+  
+  const [data, setData] = useState(getdata.productRows);
+  console.log(data);
 
 //Xóa sản phẩm
   const handleDelete = (id) => {
@@ -14,17 +16,17 @@ export default function ProductList() {
   };
 // khởi tạo dữ liệu sản phẩm dạng cột
   const columns = [
-    { field: "id", headerName: "ID", width: 250 },
+    { field: "_id", headerName: "ID", width: 250 },
     { field: "idCategory_product", headerName: "Mã sản phẩm", width: 165 },
     {
-      field: "product",
+      field: "nameProduct",
       headerName: "Product",
       width: 300,
       renderCell: (params) => {
         return (
           <div className="productListItem" style={{overflow:'auto'}}>
             <img className="productListImg" src={params.row.image} alt="" />
-            {params.row.name}
+            {params.row.nameProduct}
           </div>
         );
       },
@@ -54,12 +56,12 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/productAdmin/" + params.row.id}>
+            <Link to={"/productAdmin/" + params.row._id}>
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -70,6 +72,7 @@ export default function ProductList() {
   return (
     <div className="productList">
       <DataGrid
+        getRowId ={(row) => row._id}
         rows={data}
         disableSelectionOnClick
         columns={columns}
