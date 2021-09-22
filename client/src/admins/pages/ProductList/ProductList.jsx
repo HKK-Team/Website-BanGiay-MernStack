@@ -4,16 +4,20 @@ import { DeleteOutline } from "@material-ui/icons";
 import { getdata } from "../../TotalData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import axios from "axios"
 export default function ProductList() {
   
-  const [data, setData] = useState(getdata.productRows);
+  const [data] = useState(getdata.productRows);
 
-//Xóa sản phẩm
+  //Xóa sản phẩm
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    if(window.confirm("Bạn thực sự muốn xóa sản phẩm này không?")){
+      axios.delete(`http://localhost:5000/admin/deleteProduct/${id}`);
+      alert("Deleted Product Successfully!");
+      window.location.href = "/productsAdmin";
+    }
   };
-// khởi tạo dữ liệu sản phẩm dạng cột
+  // khởi tạo dữ liệu sản phẩm dạng cột
   const columns = [
     { field: "_id", headerName: "ID", width: 250 },
     { field: "idCategory_product", headerName: "Mã sản phẩm", width: 165 },

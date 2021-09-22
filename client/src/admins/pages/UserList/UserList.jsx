@@ -4,13 +4,17 @@ import { DeleteOutline } from "@material-ui/icons";
 import { getdata } from "../../TotalData";
 import { Link } from "react-router-dom";
 import { useState} from "react";
-
+import axios from "axios"
 // bảng người dùng
 export default function UserList() {
-  const [data, setData] = useState(getdata.allusers);
-  // xóa user khỏi bảng
+  const [data] = useState(getdata.allusers);
+  // xóa user khỏi db
   const handleDelete = (id) => {
-    setData(data.filter((item) => item._id !== id));
+    if(window.confirm("Bạn thực sự muốn xóa User này không?")){
+      axios.delete(`http://localhost:5000/admin/deleteUser/${id}`);
+      alert("Deleted User Successfully!");
+      window.location.href = "/usersAdmin";
+    }
   };
 // khởi tạo dữ liệu bảng
   const columns = [

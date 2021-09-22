@@ -33,7 +33,8 @@ app.use('/payment', require('./src/user/routers/paymentRouter'))
 app.use('/admin', require('./src/admin/routers/adminRouter'))
 app.use('/admin', require('./src/admin/routers/chartAdmin'))
 app.use('/admin', require('./src/admin/routers/userRouter'))
-
+app.use('/admin', require('./src/admin/routers/paymentRouter'))
+app.use('/admin', require('./src/admin/routers/productRouter'))
 // load token for server
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
