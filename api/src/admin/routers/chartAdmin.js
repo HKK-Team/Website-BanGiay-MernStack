@@ -7,4 +7,10 @@ router.route('/chart')
     router.route('/chartall')
     .get(chartCtrl.getdataall)
 
+    router.route('/chartbyyear')
+    .get(chartCtrl.getdatabyyear)
+
+    router.route('/chartbyqui')
+    .get(chartCtrl.getdatabyqui)
+
 module.exports = router

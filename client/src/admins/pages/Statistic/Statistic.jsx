@@ -1,32 +1,30 @@
 import React from "react";
 import Chart from "../../components/Chart/Chart";
-import { monthlyRevenueData } from "../../TotalData";
-import { quarterlyRevenueData } from "../../TotalData";
-import { annualRevenueData } from "../../TotalData";
 import "./Statistic.css";
+import { getdata } from "../../TotalData";
 
 export default function Statistic() {
   return (
     <div className="Statistic">
       <Chart
-        data={monthlyRevenueData}
+        data={getdata.monthlyRevenueData}
         title="Phân tích doanh thu các tháng (USD)"
         grid
-        dataKey="Doanh Thu"
+        dataKey="total"
         color='#5550bd'
       />
       <Chart
-        data={quarterlyRevenueData}
+        data={getdata.chartbyqui}
         title="Phân tích doanh thu các quý (USD)"
         grid
-        dataKey="Sales"
+        dataKey="total"
         color="green"
       />
       <Chart
-        data={annualRevenueData}
+        data={getdata.chartbyyear}
         title="Phân tích doanh thu các năm gần đây (USD)"
         grid
-        dataKey="Sales"
+        dataKey="total"
         color="red"
       />
     </div>

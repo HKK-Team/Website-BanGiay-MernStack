@@ -11,12 +11,17 @@ export default function GetData(){
     const [allproduct] = state.productDetailApi.productDetail;
     const [alluser] = state.alluserApi.allusers;
     const [allpayments] = state.paymentsApi.payments;
+    const [chartbyyear] = state.chartbyyearAPI.chartbyyear;
+    const [chartbyqui] =  state.chartbyquiAPI.chartbyqui;
+
     getdata ={
       monthlyRevenueData : [...chartbymonth],
       quarterlyRevenueData : [...chartbymonth],
       productRows : [...allproduct],
       allusers : [...alluser],
-      payments : [...allpayments]
+      payments : [...allpayments],
+      chartbyyear:[...chartbyyear],
+      chartbyqui:[...chartbyqui]
     }   
     return getdata;
 }
