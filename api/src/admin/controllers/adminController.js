@@ -1,8 +1,9 @@
 const Admins = require('../models/adminModels')
 const bcrypt = require('bcrypt')
+const Users = require('../../user/models/userModels')
 const jwt = require('jsonwebtoken')
 const adminCtrl = {
-    // login
+    // login admin
     login: async (req, res) =>{
         try {
             const {email, password} = req.body;
@@ -31,7 +32,7 @@ const adminCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
-    // logout
+    // logout admin
     logout: async (req, res) =>{
         try {
             // clear refreshtoken (refresh_token = thẻ để ra vào) 
@@ -60,6 +61,7 @@ const adminCtrl = {
         }
         
     },
+    // get infor admin
     getAdmin: async (req, res) =>{
         try {
             const user = await Admins.findById(req.admin.id).select('-password')
@@ -70,6 +72,7 @@ const adminCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
+    // get all admin
     getAdmins: async (req, res) =>{
         try {
             const admins = await Admins.find()
@@ -78,6 +81,15 @@ const adminCtrl = {
             return res.status(500).json({msg: err.message})
         }
     }, 
+    // get all user
+    getAllUser : async(req,res) =>{
+        try {
+            const alluser = await Users.find()
+            res.json(alluser)
+        }catch(err){
+            return res.status(500).json({msg:err.message})
+        }
+    }
 }
 const createAccessToken = (admin) =>{
     return jwt.sign(admin, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '11m'})

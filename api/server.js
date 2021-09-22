@@ -32,6 +32,7 @@ app.use('/api', require('./src/user/routers/favoriteRouter'))
 app.use('/payment', require('./src/user/routers/paymentRouter'))
 app.use('/admin', require('./src/admin/routers/adminRouter'))
 app.use('/admin', require('./src/admin/routers/chartAdmin'))
+app.use('/admin', require('./src/admin/routers/userRouter'))
 
 // load token for server
 if (process.env.NODE_ENV === 'production') {

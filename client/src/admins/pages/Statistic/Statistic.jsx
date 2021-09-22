@@ -4,17 +4,16 @@ import { monthlyRevenueData } from "../../TotalData";
 import { quarterlyRevenueData } from "../../TotalData";
 import { annualRevenueData } from "../../TotalData";
 import "./Statistic.css";
-import { getdata } from "../../TotalData";
 
 export default function Statistic() {
   return (
     <div className="Statistic">
       <Chart
-        data={getdata.monthlyRevenueData}
+        data={monthlyRevenueData}
         title="Phân tích doanh thu các tháng (USD)"
         grid
-        dataKey="total"
-        color="#5550bd"
+        dataKey="Doanh Thu"
+        color='#5550bd'
       />
       <Chart
         data={quarterlyRevenueData}

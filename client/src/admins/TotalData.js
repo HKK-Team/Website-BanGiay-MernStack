@@ -9,9 +9,12 @@ export default function GetData(){
     const state = useContext(GlobalState);
     const [chartbymonth] = state.chartAPI.chartbymonth;
     const [allproduct] = state.productDetailApi.productDetail;
+    const [alluser] = state.alluserApi.allusers;
     getdata ={
       monthlyRevenueData : [...chartbymonth],
-      productRows : [...allproduct]
+      quarterlyRevenueData : [...chartbymonth],
+      productRows : [...allproduct],
+      allusers : [...alluser]
     }   
     return getdata;
 }
