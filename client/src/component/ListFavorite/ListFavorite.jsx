@@ -12,6 +12,7 @@ export default function ListFavorite() {
     // tìm và trả về đối tượng chứa thuộc tính của giày
     return item.iduser === iduser;
   });
+  console.log(detail)
   var favoriteCount = detail.length;
   return (
     <section className="favortite">
@@ -48,6 +49,7 @@ export default function ListFavorite() {
                       price={item.price}
                       idproduct={item._id}
                       id_product = {item.idCategory_product}
+                      nameCategoryProduct = {item.nameCategoryProduct}
                     />
                 ))}
                 {/* list favorite */}

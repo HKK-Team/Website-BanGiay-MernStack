@@ -2,30 +2,19 @@ import { useContext } from "react";
 import MostPopularProducts from "./components/MostPopularProducts/MostPopularProducts";
 import SellingProducts from "./components/SellingProducts/SellingProducts";
 import WidgetLg from './components/WidgetLg/WidgetLg'
-import {useContext} from "react";
 import { GlobalState } from "../GlobalState";
 
 export var getdata ={}; // khởi tạo array object chứa các mảng dữ liệu 
 export default function GetData(){
     const state = useContext(GlobalState);
-    // const [chartbymonth] = state.chartAPI.chartbymonth;
-    const [allproduct] = state.productDetailApi.productDetail;
-    getdata ={
-      // monthlyRevenueData : [...chartbymonth],
-      // quarterlyRevenueData : [...chartbymonth],
-      productRows : [...allproduct]
-    }   
-    return getdata;
-}
-// khởi tạo dữ liêu hoạt động của người dùng dạng biểu đồ 
-import { GlobalState } from "../GlobalState"; 
-
-export var getdata ={}; // khởi tạo array object chứa các mảng dữ liệu 
-export default function GetData(){
-    const state = useContext(GlobalState);
     const [chartbymonth] = state.chartAPI.chartbymonth;
+    const [allproduct] = state.productDetailApi.productDetail;
+    const [alluser] = state.alluserApi.allusers;
     getdata ={
       monthlyRevenueData : [...chartbymonth],
+      quarterlyRevenueData : [...chartbymonth],
+      productRows : [...allproduct],
+      allusers : [...alluser]
     }   
     return getdata;
 }

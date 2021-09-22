@@ -1,25 +1,26 @@
-import React, {createContext, useState,useEffect} from 'react'
-import Menu1API from './api/menu1Api'
-import Menu2API from './api/menu2Api'
-import BannerAPI from './api/bannerApi'
-import BannerBoyAPI from './api/bannerBoyApi'
-import BannerGirlAPI from './api/bannerGirlApi'
-import ProductBoyApi from './api/productBoyApi'
-import ProductGirlApi from './api/productGirlApi'
-import ProductGostoApi from './api/productGostoApi'
-import ProductPkApi from './api/productPkApi'
-import ProductBetraiApi from './api/productBetraiApi'
-import ProductBegaiApi from './api/productBegaiApi'
-import ProductDetailApi from './api/productDetailApi'
-import PriceProductApimax from './api/getmaxPrice'
-import UserApi from './api/userApi'
-import Banner_mainAPI from './api/banner_mainApi'
-import ProductFavorites from './api/favoriteApi'
-import axios from 'axios'
+import React, {createContext, useState,useEffect} from 'react';
+import Menu1API from './api/menu1Api';
+import Menu2API from './api/menu2Api';
+import BannerAPI from './api/bannerApi';
+import BannerBoyAPI from './api/bannerBoyApi';
+import BannerGirlAPI from './api/bannerGirlApi';
+import ProductBoyApi from './api/productBoyApi';
+import ProductGirlApi from './api/productGirlApi';
+import ProductGostoApi from './api/productGostoApi';
+import ProductPkApi from './api/productPkApi';
+import ProductBetraiApi from './api/productBetraiApi';
+import ProductBegaiApi from './api/productBegaiApi';
+import ProductDetailApi from './api/productDetailApi';
+import PriceProductApimax from './api/getmaxPrice';
+import UserApi from './api/userApi';
+import Banner_mainAPI from './api/banner_mainApi';
+import ProductFavorites from './api/favoriteApi';
+import axios from 'axios';
 import SearchProductApi from './api/searchProductApi';
 import List_OderApi from './api/list_oderApi';
-import AdminApi from './api/adminApi'
-import ChartAPI from './admins/api/chartApi'
+import AdminApi from './admins/api/adminApi';
+import ChartAPI from './admins/api/chartApi';
+import Admin_User from "./admins/api/userApi";
 //gọi lại api ở file client/api chuyển thành dạng dữ liệu object state
 export const GlobalState = createContext()
 
@@ -74,7 +75,8 @@ export const DataProvider = ({children}) =>{
         productFavorites:ProductFavorites(),
         searchProductApi : SearchProductApi(),
         list_oderApi : List_OderApi(),
-        chartAPI:ChartAPI()
+        chartAPI:ChartAPI(),
+        alluserApi : Admin_User()
     }
     return (
         <GlobalState.Provider value={state}>

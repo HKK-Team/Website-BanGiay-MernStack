@@ -8,7 +8,6 @@ import { useState } from "react";
 export default function ProductList() {
   
   const [data, setData] = useState(getdata.productRows);
-  console.log(data);
 
 //Xóa sản phẩm
   const handleDelete = (id) => {
@@ -44,7 +43,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            {params.row.price} VND
+            {params.row.price.toLocaleString()} VND
           </div>
         );
       },

@@ -6,6 +6,7 @@ import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
 
 export default function Favorite(props) {
+  console.log(props)
   const state = useContext(GlobalState);
   const [iduser] = state.userAPI.iduser;
   const [productFavorites] =
@@ -42,6 +43,7 @@ export default function Favorite(props) {
       size: props.size,
       image: props.image,
       quantity: quantity,
+      nameCategoryProduct : props.nameCategoryProduct
     };
 
     if (sessionStorage.getItem("settings") === null) {
