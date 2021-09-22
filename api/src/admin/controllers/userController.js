@@ -39,7 +39,16 @@ const userCtrl = {
         await Users.updateOne({ _id: req.body._id }, editUser);
         return res.status(200).json({msg : "Update Users successfully!"})
 
-    }
+    },
+    // delete user from admin
+    deleteUser: async(req, res) => {
+        try {
+            await Users.findByIdAndDelete(req.params.id)
+            res.json({ msg: "Deleted User Successfully" })
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
  }
 
 module.exports = userCtrl
