@@ -1,10 +1,10 @@
 import Chart from "../../components/Chart/Chart";
 import FeaturedInfo from "../../components/FeaturedInfo/FeaturedInfo";
 import "./Home.css";
-import  React, {useContext } from "react"; 
-import { GlobalState } from "../../../GlobalState";
+import  React from "react"; 
+// import { GlobalState } from "../../../GlobalState";
 import { getdata } from "../../TotalData";
-import { userData,mostRecentTransactionDate } from "../../TotalData";
+import { mostRecentTransactionDate } from "../../TotalData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
 var mostRecentTransaction = [...mostRecentTransactionDate];
 

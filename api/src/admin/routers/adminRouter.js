@@ -11,4 +11,6 @@ router.route('/logout')
     .get(adminCtrl.logout)
 router.route('/admin')
     .get(adminCtrl.getAdmins)
+router.route('/alluser')
+    .get(adminCtrl.getAllUser)
 module.exports = router
