@@ -14,9 +14,11 @@ import {
   Report,
 } from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
+import GetData from "../../TotalData";
 
 
 export default function Sidebar() {
+  GetData();// hàm getall dữ liệu
   return (
     <div className="sidebarAdmin">
       <div className="sidebarWrapper">
