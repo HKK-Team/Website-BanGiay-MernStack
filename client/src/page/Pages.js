@@ -37,7 +37,12 @@ function Pages() {
       <Route exact path="/be-trai" component={ProductBoys}></Route>
       <Route exact path="/be-gai" component={ProductGirls}></Route>
       <Route exact path="/phu-kien" component={ProductAccessory}></Route>
-      <Route exact path="/:typee/:id" component={ProductDetails}></Route>
+      <Route exact path="/nam/:id" component={ProductDetails}></Route>
+      <Route exact path="/nu/:id" component={ProductDetails}></Route>
+      <Route exact path="/gosto/:id" component={ProductDetails}></Route>
+      <Route exact path="/be-trai/:id" component={ProductDetails}></Route>
+      <Route exact path="/be-gai/:id" component={ProductDetails}></Route>
+      <Route exact path="/phu-kien/:id" component={ProductDetails}></Route>
       <Route
         exact
         path="/Login"
