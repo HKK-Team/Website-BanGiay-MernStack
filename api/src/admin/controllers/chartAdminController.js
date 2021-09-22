@@ -122,9 +122,9 @@ const chartCtrl = {
         {
             $group: {
               _id: {name:"$name"},
-              name:{
-                  
-              },
+            //   name:{
+
+            //   },
               total: {
                 $sum: "$total",
               },
