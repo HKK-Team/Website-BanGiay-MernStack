@@ -7,6 +7,9 @@ const favorites = new mongoose.Schema({
     nameProduct: {
         type: String,
     },
+    nameCategoryProduct: {
+        type: String,
+    },
     color: {
         type: String,
     },

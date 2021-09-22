@@ -17,6 +17,7 @@ export default function Product(props) {
         idproduct: props.key,
         id_product: props.masp,
         nameProduct: props.name,
+        nameCategoryProduct:props.type,
         price: props.price,
         totalprice: props.price,
         size: sizebychoice,

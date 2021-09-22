@@ -9,7 +9,7 @@ const chartCtrl = {
                     $group: {
                         _id: { $dateToString: { format: "%m", date: "$orderDate" } },
                         total: {
-                            $sum: "$total_price"
+                             $sum: "$total_price"
                         }
                     },
                 },
@@ -43,6 +43,19 @@ const chartCtrl = {
                 },
                 ] )
             res.json(chartdata)
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    getdataall: async (req, res) =>{
+        try {
+            const chartdataall = await Payments.aggregate( [
+                 {
+                      $project : { cart : 1 } 
+                } 
+                ] )
+            res.json(chartdataall)
 
         } catch (err) {
             return res.status(500).json({msg: err.message})

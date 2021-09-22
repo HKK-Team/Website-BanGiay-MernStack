@@ -3,7 +3,7 @@ const Favorites = require('../models/favoriteModels')
 const favoriteCtrl = {
     savefavoritePro: async(req, res) => {
         try {
-            const { idCategory_product, nameProduct, color, price, image, size, iduser } = req.body;
+            const { idCategory_product, nameProduct,nameCategoryProduct, color, price, image, size, iduser } = req.body;
 
             const IdCategory_product = await Favorites.findOne({ $and: [{ idCategory_product }, { iduser }] })
             if (IdCategory_product) return res.status(400).json({ msg: "Products already exists." })
@@ -11,6 +11,7 @@ const favoriteCtrl = {
             const newfavorite = new Favorites({
                     idCategory_product,
                     nameProduct,
+                    nameCategoryProduct,
                     color,
                     price,
                     image,

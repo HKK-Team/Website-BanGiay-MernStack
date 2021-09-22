@@ -135,6 +135,7 @@ export default function ProductDetail(props) {
         idproduct: detail[0]._id,
         id_product: detail[0].idCategory_product,
         nameProduct: detail[0].nameProduct,
+        nameCategoryProduct:detail[0].nameCategoryProduct,
         color: detail[0].color,
         price: detail[0].price,
         totalprice: detail[0].price,
@@ -172,6 +173,7 @@ export default function ProductDetail(props) {
         data: {
           idCategory_product: detail[0].idCategory_product,
           nameProduct: detail[0].nameProduct,
+          nameCategoryProduct:detail[0].nameCategoryProduct,
           color: detail[0].color,
           price: detail[0].price,
           image: detail[0].image,
