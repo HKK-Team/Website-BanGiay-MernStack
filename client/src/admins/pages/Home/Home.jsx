@@ -7,17 +7,20 @@ import { userData,mostRecentTransactionDate } from "../../TotalData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
 var mostRecentTransaction = [...mostRecentTransactionDate];
 
-
 export default function Home() {
+
+  const state = useContext(GlobalState)
+  const [chartbymonth, setchartbymonth] = state.chartAPI.chartbymonth
+
   return (
     <div className="home">
       <FeaturedInfo />
       <Chart
-        data={userData}
+        data={chartbymonth}
         color="#5550bd"
         title="Phân tích tần suất hoạt động của người dùng"
         grid
-        dataKey="Active User"
+        dataKey="total"
       />
       <div className="homeWidgets">
         <WidgetSm />

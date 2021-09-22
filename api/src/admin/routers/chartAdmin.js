@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const chartCtrl = require('../controllers/chartAdmin')
+const chartCtrl = require('../controllers/chartAdminController')
 
 router.route('/chart')
     .get(chartCtrl.getdata)
