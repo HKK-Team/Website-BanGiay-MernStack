@@ -17,14 +17,14 @@ export default function Statistic() {
         color="#5550bd"
       />
       <Chart
-        data={getdata.quarterlyRevenueData}
+        data={quarterlyRevenueData}
         title="Phân tích doanh thu các quý (USD)"
         grid
         dataKey="Sales"
         color="green"
       />
       <Chart
-        data={getdata.monthlyRevenueData}
+        data={annualRevenueData}
         title="Phân tích doanh thu các năm gần đây (USD)"
         grid
         dataKey="Sales"
