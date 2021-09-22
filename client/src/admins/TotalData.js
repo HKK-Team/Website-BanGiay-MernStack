@@ -11,7 +11,6 @@ export default function GetData(){
     const [chartbymonth] = state.chartAPI.chartbymonth;
     getdata ={
       monthlyRevenueData : [...chartbymonth],
-      quarterlyRevenueData : [...chartbymonth],
     }   
     return getdata;
 }

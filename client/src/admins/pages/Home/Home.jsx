@@ -3,22 +3,19 @@ import FeaturedInfo from "../../components/FeaturedInfo/FeaturedInfo";
 import "./Home.css";
 import  React, {useContext } from "react"; 
 import { GlobalState } from "../../../GlobalState";
+import { getdata } from "../../TotalData";
 import { userData,mostRecentTransactionDate } from "../../TotalData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
 var mostRecentTransaction = [...mostRecentTransactionDate];
 
 
-
 export default function Home() {
-
-  const state = useContext(GlobalState)
-  const [chartbymonth, setchartbymonth] = state.chartAPI.chartbymonth
 
   return (
     <div className="home">
       <FeaturedInfo />
       <Chart
-        data={chartbymonth}
+        data={getdata.monthlyRevenueData}
         color="#5550bd"
         title="Phân tích tần suất hoạt động của người dùng"
         grid

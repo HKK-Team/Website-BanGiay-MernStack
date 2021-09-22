@@ -5,6 +5,7 @@ import {
     mostPopularProductsData,
   } from "../../TotalData";
   import Chart from "../../components/Chart/Chart";
+  import { getdata } from "../../TotalData";
 
 // sản phẩm bán chạy
 var sellingProducts = [...sellingProductsData];
@@ -14,11 +15,11 @@ export default function SalesAnalysis() {
     return (
         <div className="MarketAnaly">
         <Chart
-          data={userData}
+        data={getdata.monthlyRevenueData}
           color="#5550bd"
           title="Phân tích tần suất hoạt động của người dùng"
           grid
-          dataKey="Active User"
+          dataKey="total"
         />
         <div className="homeWidgets">
           {/* sản phẩm bán chạy */}
