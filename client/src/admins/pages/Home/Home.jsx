@@ -7,6 +7,8 @@ import { userData,mostRecentTransactionDate } from "../../TotalData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
 var mostRecentTransaction = [...mostRecentTransactionDate];
 
+
+
 export default function Home() {
 
   const state = useContext(GlobalState)
