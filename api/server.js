@@ -35,6 +35,7 @@ app.use('/admin', require('./src/admin/routers/chartAdmin'))
 app.use('/admin', require('./src/admin/routers/userRouter'))
 app.use('/admin', require('./src/admin/routers/paymentRouter'))
 app.use('/admin', require('./src/admin/routers/productRouter'))
+app.use('/admin', require('./src/admin/routers/upload_Image'))
 // load token for server
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))

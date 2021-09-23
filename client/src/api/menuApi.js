@@ -6,14 +6,6 @@ function MenuAPI() {
     const [menus2, setMenus2] = useState([])
     const [callback, setCallback] = useState(false)
     useEffect(() => {
-        // const getmenu = async() => {
-        //     const res = await axios.get('http://localhost:5000/api/menu1');
-        //     setMenus(res.data)
-        //     const ress = await axios.get('http://localhost:5000/api/menu2');
-        //     setMenus2(ress.data)
-        // }
-        // getmenu();
-
         const promise1 = axios.get('/api/menu1');
         const promise2 = axios.get('http://localhost:5000/api/menu2');
 
