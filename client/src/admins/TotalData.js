@@ -7,12 +7,12 @@ import { GlobalState } from "../GlobalState";
 export var getdata ={}; // khởi tạo array object chứa các mảng dữ liệu 
 export default function GetData(){
     const state = useContext(GlobalState);
-    const [chartbymonth] = state.chartAPI.chartbymonth;
+    const [chartbymonth] = state.chartAdminAPI.chartbymonth;
     const [allproduct] = state.productDetailApi.productDetail;
     const [alluser] = state.alluserApi.allusers;
     const [allpayments] = state.paymentsApi.payments;
-    const [chartbyyear] = state.chartbyyearAPI.chartbyyear;
-    const [chartbyqui] =  state.chartbyquiAPI.chartbyqui;
+    const [chartbyyear] = state.chartAdminAPI.chartbyyear;
+    const [chartbyqui] =  state.chartAdminAPI.chartbyqui;
 
     getdata ={
       monthlyRevenueData : [...chartbymonth],
