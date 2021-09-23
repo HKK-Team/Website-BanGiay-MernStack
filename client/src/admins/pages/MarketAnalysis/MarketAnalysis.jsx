@@ -18,7 +18,7 @@ export default function MarketAnalysis() {
         color="#5550bd"
         title="Thống kê loại mặt hàng bán chạy (sản phẩm)"
         grid
-        dataKey="total"
+        dataKey="Quantity"
       />
       <Chart
         data={getdata.chartbyproducthotquy1}

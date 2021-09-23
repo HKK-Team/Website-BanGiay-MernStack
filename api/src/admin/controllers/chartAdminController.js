@@ -243,6 +243,7 @@ const chartCtrl = {
             total: {
               $sum: "$Sum",
             },
+            Quantity:{$sum:1}
           },
         },
         {
@@ -936,6 +937,74 @@ const chartCtrl = {
         },
       ]);
       res.json(chartdataall);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getdatacountuser: async (req, res) => {
+    try {
+      const chartdata = await Payments.aggregate([
+        {
+          $project: {
+            _id: 1,
+            orderDate: 1,
+            userid: {
+              $cond: [
+                {
+                  $eq: [
+                    { $year: "$orderDate" },
+                    { $year: new Date(Date.now()) },
+                  ],
+                },
+                "$user_id",
+                "0",
+              ],
+            },
+          },
+        },
+        { $match: { "userid": { "$ne": "0" }}},
+        { $group: {
+          _id: {
+            _id: { $dateToString: { format: "%m", date: "$orderDate" } },
+            userid:"$userid",
+          },
+          "count": { "$sum": 1 }
+      }
+      },
+        {
+          $group: {
+            _id: "$_id._id",
+            User: { "$sum": 1 }
+          },
+        },
+        {
+          $addFields: {
+            name: {
+              $switch: {
+                branches: [
+                  { case: { $eq: ["$_id", "01"] }, then: "Jan" },
+                  { case: { $eq: ["$_id", "02"] }, then: "Feb" },
+                  { case: { $eq: ["$_id", "03"] }, then: "Mar" },
+                  { case: { $eq: ["$_id", "04"] }, then: "Apr" },
+                  { case: { $eq: ["$_id", "05"] }, then: "May" },
+                  { case: { $eq: ["$_id", "06"] }, then: "Jun" },
+                  { case: { $eq: ["$_id", "07"] }, then: "Jul" },
+                  { case: { $eq: ["$_id", "08"] }, then: "Agu" },
+                  { case: { $eq: ["$_id", "09"] }, then: "Sep" },
+                  { case: { $eq: ["$_id", "10"] }, then: "Oct" },
+                  { case: { $eq: ["$_id", "11"] }, then: "Nov" },
+                  { case: { $eq: ["$_id", "12"] }, then: "Dec" },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $sort: { _id: 1 },
+        },
+      ]);
+      res.json(chartdata);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

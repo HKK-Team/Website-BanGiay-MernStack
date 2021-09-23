@@ -15,11 +15,11 @@ export default function Home() {
     <div className="home">
       <FeaturedInfo />
       <Chart
-        data={getdata.monthlyRevenueData}
+        data={getdata.chartbycountuser}
         color="#5550bd"
         title="Phân tích tần suất hoạt động của người dùng"
         grid
-        dataKey="total"
+        dataKey="User"
       />
       <div className="homeWidgets">
         <WidgetSm />

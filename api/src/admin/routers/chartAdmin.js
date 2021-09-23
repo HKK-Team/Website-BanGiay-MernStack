@@ -28,5 +28,8 @@ router.route('/chart')
     router.route('/chartbyproducthotquy4')
     .get(chartCtrl.getdatabyproducthotquy4)
 
+    router.route('/chartbycountuser')
+    .get(chartCtrl.getdatacountuser)
+
 
 module.exports = router

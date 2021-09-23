@@ -14,11 +14,11 @@ export default function SalesAnalysis() {
     return (
         <div className="MarketAnaly">
         <Chart
-        data={getdata.monthlyRevenueData}
+        data={getdata.chartbycountuser}
           color="#5550bd"
           title="Phân tích tần suất hoạt động của người dùng"
           grid
-          dataKey="total"
+          dataKey="User"
         />
         <div className="homeWidgets">
           {/* sản phẩm bán chạy */}
