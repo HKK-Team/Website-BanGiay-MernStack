@@ -114,12 +114,25 @@ const chartCtrl = {
   getdatabyqui: async (req, res) => {
     try {
       const chartdata = await Payments.aggregate([
-          { $project: {
+        {
+          $project: {
             _id: 1,
             total_price: 1,
-            orderDate:1,
-            Sum: {$cond: [{$eq: [{ $year: "$orderDate" } ,{ $year: new Date(Date.now()) }]}, '$total_price',0]}
-        }},
+            orderDate: 1,
+            Sum: {
+              $cond: [
+                {
+                  $eq: [
+                    { $year: "$orderDate" },
+                    { $year: new Date(Date.now()) },
+                  ],
+                },
+                "$total_price",
+                0,
+              ],
+            },
+          },
+        },
         {
           $group: {
             _id: { $dateToString: { format: "%m", date: "$orderDate" } },
@@ -177,23 +190,752 @@ const chartCtrl = {
         },
         {
           $group: {
-            _id: {name:"$name"},
+            _id: { name: "$name" },
             total: {
               $sum: "$total",
             },
           },
         },
         {
-          $addFields:
-            {
-              name : "$_id.name"
-            }
+          $addFields: {
+            name: "$_id.name",
+          },
         },
         {
           $sort: { _id: 1 },
         },
       ]);
       res.json(chartdata);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getdatabyproducthot: async (req, res) => {
+    try {
+      const chartdata = await Payments.aggregate([
+        {
+          $project: {
+            _id: 1,
+            orderDate: 1,
+            cart: { nameCategoryProduct: 1, totalprice: 1 },
+          },
+        },
+        { $unwind: "$cart" },
+        {
+          $addFields: {
+            Sum: {
+              $cond: [
+                {
+                  $eq: [
+                    { $year: "$orderDate" },
+                    { $year: new Date(Date.now()) },
+                  ],
+                },
+                "$cart.totalprice",
+                0,
+              ],
+            },
+          },
+        },
+        {
+          $group: {
+            _id: "$cart.nameCategoryProduct",
+            total: {
+              $sum: "$Sum",
+            },
+          },
+        },
+        {
+          $addFields: {
+            name: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: "Hunter Nam",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: "Hunter Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: "Gosto",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: "Giày Bé Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: "Phụ Kiện",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: "Giày Bé Trai",
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $addFields: {
+            stt: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: 1,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: 2,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: 3,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: 4,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: 6,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: 5,
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $sort: { stt: 1 },
+        },
+      ]);
+      res.json(chartdata);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getdatabyproducthotquy1: async (req, res) => {
+    try {
+      const chartdataall = await Payments.aggregate([
+        {
+          $project: {
+            _id: 1,
+            orderDate: 1,
+            cart: { nameCategoryProduct: 1, totalprice: 1 },
+          },
+        },
+        { $unwind: "$cart" },
+        {
+          $addFields: {
+            Sum: {
+              $cond: [
+                {
+                  $and: [
+                    {
+                      $gte: [{ $month: "$orderDate" }, 1],
+                    },
+                    {
+                      $lte: [{ $month: "$orderDate" }, 3],
+                    },
+                    {
+                      $eq: [
+                        { $year: "$orderDate" },
+                        { $year: new Date(Date.now()) },
+                      ],
+                    },
+                  ],
+                },
+                "$cart.totalprice",
+                0,
+              ],
+            },
+          },
+        },
+        {
+          $group: {
+            _id: "$cart.nameCategoryProduct",
+            total: {
+              $sum: "$Sum",
+            },
+          },
+        },
+        {
+          $addFields: {
+            name: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: "Hunter Nam",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: "Hunter Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: "Gosto",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: "Giày Bé Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: "Phụ Kiện",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: "Giày Bé Trai",
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $addFields: {
+            stt: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: 1,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: 2,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: 3,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: 4,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: 6,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: 5,
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $sort: { stt: 1 },
+        },
+      ]);
+      res.json(chartdataall);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getdatabyproducthotquy2: async (req, res) => {
+    try {
+      const chartdataall = await Payments.aggregate([
+        {
+          $project: {
+            _id: 1,
+            orderDate: 1,
+            cart: { nameCategoryProduct: 1, totalprice: 1 },
+          },
+        },
+        { $unwind: "$cart" },
+        {
+          $addFields: {
+            Sum: {
+              $cond: [
+                {
+                  $and: [
+                    {
+                      $gte: [{ $month: "$orderDate" }, 4],
+                    },
+                    {
+                      $lte: [{ $month: "$orderDate" }, 6],
+                    },
+                    {
+                      $eq: [
+                        { $year: "$orderDate" },
+                        { $year: new Date(Date.now()) },
+                      ],
+                    },
+                  ],
+                },
+                "$cart.totalprice",
+                0,
+              ],
+            },
+          },
+        },
+        {
+          $group: {
+            _id: "$cart.nameCategoryProduct",
+            total: {
+              $sum: "$Sum",
+            },
+          },
+        },
+        {
+          $addFields: {
+            name: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: "Hunter Nam",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: "Hunter Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: "Gosto",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: "Giày Bé Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: "Phụ Kiện",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: "Giày Bé Trai",
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $addFields: {
+            stt: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: 1,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: 2,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: 3,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: 4,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: 6,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: 5,
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $sort: { stt: 1 },
+        },
+      ]);
+      res.json(chartdataall);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getdatabyproducthotquy3: async (req, res) => {
+    try {
+      const chartdataall = await Payments.aggregate([
+        {
+          $project: {
+            _id: 1,
+            orderDate: 1,
+            cart: { nameCategoryProduct: 1, totalprice: 1 },
+          },
+        },
+        { $unwind: "$cart" },
+        {
+          $addFields: {
+            Sum: {
+              $cond: [
+                {
+                  $and: [
+                    {
+                      $gte: [{ $month: "$orderDate" }, 7],
+                    },
+                    {
+                      $lte: [{ $month: "$orderDate" }, 9],
+                    },
+                    {
+                      $eq: [
+                        { $year: "$orderDate" },
+                        { $year: new Date(Date.now()) },
+                      ],
+                    },
+                  ],
+                },
+                "$cart.totalprice",
+                0,
+              ],
+            },
+          },
+        },
+        {
+          $group: {
+            _id: "$cart.nameCategoryProduct",
+            total: {
+              $sum: "$Sum",
+            },
+          },
+        },
+        {
+          $addFields: {
+            name: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: "Hunter Nam",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: "Hunter Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: "Gosto",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: "Giày Bé Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: "Phụ Kiện",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: "Giày Bé Trai",
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $addFields: {
+            stt: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: 1,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: 2,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: 3,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: 4,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: 6,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: 5,
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $sort: { stt: 1 },
+        },
+      ]);
+      res.json(chartdataall);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  getdatabyproducthotquy4: async (req, res) => {
+    try {
+      const chartdataall = await Payments.aggregate([
+        {
+          $project: {
+            _id: 1,
+            orderDate: 1,
+            cart: { nameCategoryProduct: 1, totalprice: 1 },
+          },
+        },
+        { $unwind: "$cart" },
+        {
+          $addFields: {
+            Sum: {
+              $cond: [
+                {
+                  $and: [
+                    {
+                      $gte: [{ $month: "$orderDate" }, 10],
+                    },
+                    {
+                      $lte: [{ $month: "$orderDate" }, 12],
+                    },
+                    {
+                      $eq: [
+                        { $year: "$orderDate" },
+                        { $year: new Date(Date.now()) },
+                      ],
+                    },
+                  ],
+                },
+                "$cart.totalprice",
+                0,
+              ],
+            },
+          },
+        },
+        {
+          $group: {
+            _id: "$cart.nameCategoryProduct",
+            total: {
+              $sum: "$Sum",
+            },
+          },
+        },
+        {
+          $addFields: {
+            name: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: "Hunter Nam",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: "Hunter Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: "Gosto",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: "Giày Bé Nữ",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: "Phụ Kiện",
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: "Giày Bé Trai",
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $addFields: {
+            stt: {
+              $switch: {
+                branches: [
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nam"] }],
+                    },
+                    then: 1,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Hunter Nữ"] }],
+                    },
+                    then: 2,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Gosto"] }],
+                    },
+                    then: 3,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nữ"] }],
+                    },
+                    then: 4,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Phụ Kiện"] }],
+                    },
+                    then: 6,
+                  },
+                  {
+                    case: {
+                      $and: [{ $eq: ["$_id", "Bé Nam"] }],
+                    },
+                    then: 5,
+                  },
+                ],
+                default: "No scores",
+              },
+            },
+          },
+        },
+        {
+          $sort: { stt: 1 },
+        },
+      ]);
+      res.json(chartdataall);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

@@ -13,6 +13,11 @@ export default function GetData(){
     const [allpayments] = state.paymentsApi.payments;
     const [chartbyyear] = state.chartAdminAPI.chartbyyear;
     const [chartbyqui] =  state.chartAdminAPI.chartbyqui;
+    const [chartbyproducthot]  = state.chartAdminAPI.chartbyproducthot;
+    const [chartbyproducthotquy1 ] = state.chartAdminAPI.chartbyproducthotquy1;
+    const [chartbyproducthotquy2 ] = state.chartAdminAPI.chartbyproducthotquy2;
+    const [chartbyproducthotquy3 ] = state.chartAdminAPI.chartbyproducthotquy3;
+    const [chartbyproducthotquy4] = state.chartAdminAPI.chartbyproducthotquy4;
 
     getdata ={
       monthlyRevenueData : [...chartbymonth],
@@ -21,7 +26,12 @@ export default function GetData(){
       allusers : [...alluser],
       payments : [...allpayments],
       chartbyyear:[...chartbyyear],
-      chartbyqui:[...chartbyqui]
+      chartbyqui:[...chartbyqui],
+      chartbyproducthot:[...chartbyproducthot],
+      chartbyproducthotquy1:[...chartbyproducthotquy1],
+      chartbyproducthotquy2:[...chartbyproducthotquy2],
+      chartbyproducthotquy3:[...chartbyproducthotquy3],
+      chartbyproducthotquy4:[...chartbyproducthotquy4]
     }   
     return getdata;
 }
