@@ -13,16 +13,22 @@ const productSchema = new mongoose.Schema({
     },
     nameCategoryProduct: String,
     dateCreate: { type: Date, default: Date.now },
-    codeHot: Boolean,
-    codeSale: Boolean,
+    codeHot: {
+        type : Boolean,
+        default : false
+    },
+    codeSale: {
+        type : Boolean,
+        default : false
+    },
     price: Number,
     codeNew: Boolean,
     detailImages: {
-        image1: String,
-        image2: String,
-        image3: String,
-        image4: String,
-        image5: String
+        images1: String,
+        images2: String,
+        images3: String,
+        images4: String,
+        images5: String
     },
     slug: String,
     image: String,

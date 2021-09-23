@@ -3,11 +3,11 @@ import { useState} from "react"
 import axios from "axios" 
 // tạo mới người dùng
 export default function NewUser() {
-  // Edit User
+  // New User
   const [users, setUser] = useState({
     firstname:'', lastname : '',email : '',password : '',phonenumber : '',address : ''
   });
-  // set Edit User
+  // set New User
   const onChangeInput = e =>{
     const {name, value} = e.target;
     setUser({...users, [name]:value,})

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Product.css";
-import Chart from "../../components/Chart/Chart"
+import Chart from "../../components/Chart/Chart";
 import {productData} from "../../TotalData"
 import { Publish } from "@material-ui/icons";
 import {useParams} from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
-import { useContext } from "react";
+import { useContext,useState} from "react";
+import axios from "axios";
 // chỉnh sửa sản phẩm
 export default function Product() {
     // use param get productAdminId
@@ -16,7 +17,53 @@ export default function Product() {
     // get the corresponding product
     const [data] = product.filter((item) => {
         return item._id === params.productAdminId
-    })
+    });
+    // Edit Product
+    const [products, setProducts] = useState({
+        nameProduct : '',idCategory_product : '',color :'',addsize :'',deletesize :'', price:'',image : '', _id : data._id
+    });
+    // set Edit Product
+    const onChangeInput = e =>{
+        const {name, value} = e.target;
+        setProducts({...products, [name]:value,})
+    }
+    // post from client to server
+    const EditProductSubmit = async e =>{
+        e.preventDefault()
+        try {
+            await axios.post('http://localhost:5000/admin/editProduct', {...products})
+            alert("Update Product Succesfully!")
+            window.location.href = "/productsAdmin";
+        } catch (err) {
+            alert(err.response.data.msg)
+        }
+    };
+    // save image to cloud
+    const handleUpload = async e =>{
+        e.preventDefault()
+        try {
+            const file = e.target.files[0]
+            
+            if(!file) return alert("File not exist.")
+
+            if(file.size > 1024 * 1024) // 1mb
+                return alert("Size too large!")
+
+            if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
+                return alert("File format is incorrect.")
+
+            let formData = new FormData()
+            formData.append('file', file)
+
+            const res = await axios.post('/admin/upload', formData, {
+                headers: {'content-type': 'multipart/form-data'}
+            })
+            setProducts({...products,image : res.data.image})
+
+        } catch (err) {
+            alert(err.response.data.msg)
+        }
+    };
     return (
         <div className="product">
         <div className="productTitleContainer">
@@ -63,20 +110,56 @@ export default function Product() {
             </div>
         </div>
         <div className="productBottom">
-            <form className="productForm">
+            <form className="productForm" onSubmit={EditProductSubmit}>
                 <div className="productFormLeft">
                     <label>Product Name</label>
-                    <input type="text" placeholder="Giày Thể Thao Nam Biti’s Hunter Core Z Collection Stone DSMH06400DEN" />
+                    <input 
+                        type="text" 
+                        placeholder="Giày Thể Thao Nam Biti’s Hunter Core Z Collection Stone DSMH06400DEN" 
+                        name = "nameProduct"
+                        value={products.nameProduct} 
+                        onChange={onChangeInput}
+                    />
                     <label>Mã sản phẩm</label>
-                    <input type="text" placeholder="DSMH02400CAM47" />
+                    <input 
+                        type="text" 
+                        placeholder="DSMH02400CAM47"
+                        name = "idCategory_product"
+                        value={products.idCategory_product} 
+                        onChange={onChangeInput} 
+                    />
                     <label>Màu sắc</label>
-                    <input type="text" placeholder="Trăng" />
+                    <input 
+                        type="text" 
+                        placeholder="Trăng"
+                        name = "color"
+                        value={products.color} 
+                        onChange={onChangeInput} 
+                    />
                     <label>Thêm size</label>
-                    <input type="number" placeholder="45" />
+                    <input 
+                        type="number" 
+                        placeholder="45" 
+                        name = "addsize"
+                        value={products.addsize} 
+                        onChange={onChangeInput} 
+                    />
                     <label>Xóa size</label>
-                    <input type="number" placeholder="39" />
+                    <input 
+                        type="number" 
+                        placeholder="39" 
+                        name = "deletesize"
+                        value={products.deletesize} 
+                        onChange={onChangeInput} 
+                    />
                     <label>Giá</label>
-                    <input type="number" placeholder="1.999.000 VND" />
+                    <input 
+                        type="number" 
+                        placeholder="1.999.000 VND" 
+                        name = "price"
+                        value={products.price} 
+                        onChange={onChangeInput}
+                    />
                     <label>Trong kho</label>
                     <select name="inStock" id="idStock">
                         <option value="yes">Còn</option>
@@ -84,16 +167,21 @@ export default function Product() {
                     </select>
                 </div>
                 <div className="productFormRight">
-                    <div className="productUpload">
-                        <img src="https://product.hstatic.net/1000230642/product/ahuh00300trg__3__3988f87ca24d4588b3531392ff2df45e_1024x1024.jpg" alt="" className="productUploadImg" />
-                        <label for="file">
-                            <Publish/>
-                        </label>
-                        <input type="file" id="file" style={{display:"none"}} />
-                    </div>
                     <button className="productButton">Update</button>
                 </div>
             </form>
+            <div className="productUpload">
+                <img src={data.image} alt="" className="productUploadImg" />
+                <label for="file">
+                    <Publish/>
+                </label>
+                <input 
+                    type="file" 
+                    id="file" 
+                    style={{display:"none"}}
+                    onChange = {handleUpload}
+                />
+            </div>
         </div>
         </div>
     );
