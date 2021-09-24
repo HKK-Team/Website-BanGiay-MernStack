@@ -1,16 +1,26 @@
 import Chart from "../../components/Chart/Chart";
 import FeaturedInfo from "../../components/FeaturedInfo/FeaturedInfo";
 import "./Home.css";
-import  React from "react"; 
-// import { GlobalState } from "../../../GlobalState";
+import  React,{useState} from "react"; 
 import { getdata } from "../../TotalData";
-import { mostRecentTransactionDate } from "../../TotalData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
-var mostRecentTransaction = [...mostRecentTransactionDate];
+import WidgetLg from "../../components/WidgetLg/WidgetLg";
 
 
 export default function Home() {
-
+  const [payment] = useState(getdata.payments)
+  // get the last 5 bills
+  var arr = [];
+  arr.push(
+    payment.slice(-5).map((item) =>(
+      <WidgetLg
+        fullname={item.fullName}
+        date ={item.orderDate}
+        totalprice={item.total_price}
+        codebill= {item._id}
+      />
+    ))
+  )
   return (
     <div className="home">
       <FeaturedInfo />
@@ -33,7 +43,7 @@ export default function Home() {
               <th className="widgetLgTh">Mã hóa đơn</th>
               <th className="widgetLgTh">Trạng thái</th>
             </tr>
-            {mostRecentTransaction}
+            {arr}
           </table>
         </div>
       </div>
