@@ -26,7 +26,7 @@ export default function WidgetLg(props) {
       </td>
       <td className="widgetLgDate">{props.codebill}</td>
       <td className="widgetLgStatus">
-        <Button type="Approved" />
+        <Button type="Pending" />
       </td>
     </tr>
   );

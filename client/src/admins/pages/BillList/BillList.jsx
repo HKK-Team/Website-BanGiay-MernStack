@@ -110,7 +110,7 @@ export default function BillList() {
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={10}
+        pageSize={9}
         checkboxSelection
         localeText={{
           toolbarDensity: "Size",

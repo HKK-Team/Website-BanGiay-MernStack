@@ -3,6 +3,8 @@
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     padding: 20px;
+    max-height: 320px;
+    overflow: auto;
   }
   
   .widgetLgTitle {
@@ -13,9 +15,9 @@
   .widgetLgTable{
     width: 100%;
     border-spacing: 20px;
-    margin-top: 16px;
-  }
+    margin-top: 16px
 
+  }
   .widgetLgTh{
     text-align: left;
   }
@@ -36,6 +38,7 @@
   
   .widgetLgDate,.widgetLgAmount{
     font-weight: 300;
+    vertical-align: middle;
   }
   
   .widgetLgButton {
@@ -54,7 +57,11 @@
   
   }
   .widgetLgButton.Pending{
-      background-color: #ebf1fe;
-      color: #2a7ade;
+      background-color: rgb(158,106, 3, 0.2);
+      color: rgb(158,106, 3);
+      border: 1px solid rgb(158,106, 3);
   
+  }
+  .widgetLgStatus{
+    vertical-align: middle;
   }

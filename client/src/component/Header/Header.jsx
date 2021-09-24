@@ -25,25 +25,23 @@ export default function Header(props) {
   });
 
   //get values form input search
-  const [statetemp, setstatetemp]= useState('');
-  function handleChange(e){
+  const [statetemp, setstatetemp] = useState("");
+  function handleChange(e) {
     setstatetemp(e.toString());
   }
   // event enter then begin search
   function eventSearch() {
     if (statetemp === "") {
       setSearch("Không tìm thấy sản phẩm!!!");
-    }
-    else {
+    } else {
       var temp = statetemp[0].toUpperCase();
       for (let i = 1; i < statetemp.length; i++) {
         let code = statetemp.charCodeAt(i);
         let codeprev = statetemp.charCodeAt(i - 1);
         if (code >= 97 && code <= 122 && codeprev === 32) {
           code -= 32;
-        }
-        else if(statetemp[i] === 'đ'){
-          temp += 'Đ';
+        } else if (statetemp[i] === "đ") {
+          temp += "Đ";
           continue;
         }
         temp += String.fromCharCode(code);
@@ -177,14 +175,15 @@ export default function Header(props) {
   useEffect(() => {
     var setHeight = cartCount * 135.6;
     if (cartCount !== 0 && setHeight <= 350) {
-      var loop = setInterval(function () {
-        document.getElementsByClassName(
-          "cart_box_wrapper"
-        )[0].style.height = `${setHeight}px`;
-      });
+      document.getElementsByClassName(
+        "cart_box_wrapper"
+      )[0].style.height = `${setHeight}px`;
+    } else if (cartCount === 0) {
+      document.getElementsByClassName("cart_box_wrapper")[0].style.display =
+        "none";
     }
-    return () => clearInterval(loop);
-  }, []);
+    return () => null;
+  }, [cartCount]);
   return (
     <Fragment>
       <header>
@@ -235,9 +234,9 @@ export default function Header(props) {
                 <div id="toggle">
                   <i class="fas fa-bars" onClick={open}></i>
                 </div>
-                <Link to = "/">
+                <Link to="/">
                   <div className="header_bottom-icon">
-                    <img src={Logo} alt = "/"/>
+                    <img src={Logo} alt="/" />
                   </div>
                 </Link>
                 <nav className="header_bottom-menu">
@@ -290,9 +289,12 @@ export default function Header(props) {
                     {/* Thẻ Cart ẩn  */}
                     <div className="header_bottom-cart-empty">
                       {cartCount < 1 && (
-                        <div className="Cart_empty">
-                          <span>Hiện chưa có sản phẩm.</span>
-                        </div>
+                        <Fragment>
+                          <div className="cart_box_wrapper"></div>
+                          <div className="Cart_empty">
+                            <span>Hiện chưa có sản phẩm.</span>
+                          </div>
+                        </Fragment>
                       )}
                       {cartCount >= 1 && (
                         <div className="cart_box_wrapper">

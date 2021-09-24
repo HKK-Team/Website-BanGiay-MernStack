@@ -79,7 +79,7 @@ export default function ProductList() {
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
+        pageSize={9}
         checkboxSelection
 
         localeText={{

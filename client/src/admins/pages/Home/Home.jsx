@@ -12,7 +12,7 @@ export default function Home() {
   // get the last 5 bills
   var arr = [];
   arr.push(
-    payment.slice(-5).map((item) =>(
+    payment.slice(-20).map((item) =>(
       <WidgetLg
         fullname={item.fullName}
         date ={item.orderDate}
