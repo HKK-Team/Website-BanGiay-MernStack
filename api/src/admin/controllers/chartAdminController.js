@@ -63,18 +63,6 @@ const chartCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  getdataall: async (req, res) => {
-    try {
-      const chartdataall = await Payments.aggregate([
-        {
-          $project: { cart: 1 },
-        },
-      ]);
-      res.json(chartdataall);
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
   getdatabyyear: async (req, res) => {
     try {
       const chartdata = await Payments.aggregate([

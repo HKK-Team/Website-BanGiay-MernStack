@@ -19,6 +19,37 @@ export default function GetData(){
     const [chartbyproducthotquy3 ] = state.chartAdminAPI.chartbyproducthotquy3;
     const [chartbyproducthotquy4] = state.chartAdminAPI.chartbyproducthotquy4;
     const [chartbycountuser]  = state.chartAdminAPI.chartbycountuser;
+    const [hotproduct] =  state.favAndHotAPI.hotproduct;
+    const [favproduct] =  state.favAndHotAPI.favproduct;
+
+    console.log(favproduct)
+
+    var  sellingProductsData =[]; 
+    sellingProductsData.push(
+      hotproduct.slice(0, 5).map((item) => (
+        <SellingProducts key={item._id}
+        image={item._id.image}
+        codeproduct={item._id.id_product}
+        price={item.total}
+        totalquality={item.count}
+        />
+      ))
+  );
+
+  // dữ liêu sản phẩm yêu thích nhất
+  var mostPopularProductsData = [];
+  mostPopularProductsData.push(
+    favproduct.slice(0, 5).map((item) => (
+      <MostPopularProducts key={item._id}
+      image={item._id.image}
+      codeproduct={item._id._id}
+      totallike={item._id.count}
+      totalquality={item.quantity}
+      price={item.total}
+      />
+    ))
+);
+    
 
     getdata ={
       monthlyRevenueData : [...chartbymonth],
@@ -33,7 +64,9 @@ export default function GetData(){
       chartbyproducthotquy2:[...chartbyproducthotquy2],
       chartbyproducthotquy3:[...chartbyproducthotquy3],
       chartbyproducthotquy4:[...chartbyproducthotquy4],
-      chartbycountuser:[...chartbycountuser]
+      chartbycountuser:[...chartbycountuser],
+      sellingProductsData:sellingProductsData,
+      mostPopularProductsData:mostPopularProductsData,
     }   
     return getdata;
 }
@@ -367,32 +400,19 @@ export const billRows = [
   },
 ];
 
-// dữ liêu sản phẩm bán chạy nhất
-export const sellingProductsData = [];
-for (let i = 0; i < 5; i++) {
-  sellingProductsData.push(
-  <SellingProducts
-    image="https://product.hstatic.net/1000230642/product/03900cam__2__5ed808cd7e35480dbb0340cf7e57c71a_1024x1024.jpg"
-    codeproduct="DSMH03900CAM44"
-    totalquality={200}
-    price={990000}
-  />
-);
-}
+// // dữ liêu sản phẩm bán chạy nhất
+// export const sellingProductsData = [];
+//   sellingProductsData.push(
+//     getdata.hotproduct.slice(0, 4).map((item) => (
+//       <SellingProducts key={item._id}
+//       image={item._id.image}
+//       codeproduct={item._id.image}
+//       price={item.total}
+//       totalquality={item.count}
+//       />
+//     ))
+// );
 
-// dữ liêu sản phẩm yêu thích nhất
-export const mostPopularProductsData = [];
-for (let i = 0; i < 5; i++) {
-  mostPopularProductsData.push(
-    <MostPopularProducts
-    image="https://product.hstatic.net/1000230642/product/03900cam__2__5ed808cd7e35480dbb0340cf7e57c71a_1024x1024.jpg"
-    codeproduct="DSMH03900CAM44"
-    totallike={2000}
-    totalquality={200}
-    price={990000}
-  />
-);
-}
 
 // dữ liêu giao dịch gần nhất
 export const mostRecentTransactionDate = [];

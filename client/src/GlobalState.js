@@ -22,6 +22,7 @@ import AdminApi from './admins/api/adminApi';
 import Admin_User from "./admins/api/userApi";
 import PaymentsApi from "./admins/api/paymentApi";
 import ChartAdminAPI from "./admins/api/chartAdminApi";
+import FavAndHotAPI from "./admins/api/favoriteproductandhotApi";
 //gọi lại api ở file client/api chuyển thành dạng dữ liệu object state
 export const GlobalState = createContext()
 
@@ -78,7 +79,8 @@ export const DataProvider = ({children}) =>{
         list_oderApi : List_OderApi(),
         alluserApi : Admin_User(),
         paymentsApi : PaymentsApi(),
-        chartAdminAPI:ChartAdminAPI()
+        chartAdminAPI:ChartAdminAPI(),
+        favAndHotAPI:FavAndHotAPI()
     }
     return (
         <GlobalState.Provider value={state}>
