@@ -1,11 +1,4 @@
 import "./MarketAnalysis.css";
-import {
-  itemTypeRevenueData_Precious1,
-  itemTypeRevenueData_Precious2,
-  itemTypeRevenueData_Precious3,
-  itemTypeRevenueData_Precious4,
-  bestSellingItemData,
-} from "../../TotalData";
 import Chart from "../../components/Chart/Chart";
 import { getdata } from "../../TotalData";
 

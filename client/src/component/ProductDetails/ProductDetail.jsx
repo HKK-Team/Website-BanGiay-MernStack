@@ -468,7 +468,7 @@ export default function ProductDetail(props) {
                 Có thể bạn sẽ thích
               </h3>
               <div className="xlab-main">
-                {recomment.slice(0, 4).map((item) => (
+                {recomment.slice(0, 3).map((item) => (
                   <AdvertisingCard
                     key={item._id}
                     image={item.image}

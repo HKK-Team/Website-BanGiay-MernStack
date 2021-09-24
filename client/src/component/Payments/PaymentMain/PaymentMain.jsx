@@ -23,11 +23,15 @@ export default function PaymentMain() {
         sum += storedArray[i].totalprice;
   };
   // useState Logged
-  const [payment] = useState({
+  const [payment,setPayment] = useState({
     user_id : profile._id, fullName : profile.firstname + " " + profile.lastname,
     email : profile.email,phone_number : profile.phonenumber , address : profile.address, cart : storedArray,total_price : sum
   })
   window.sessionStorage.setItem('payment', JSON.stringify(payment))
+  const onChangeInput = e =>{
+    const {name, value} = e.target;
+    setPayment({...payment, [name]:value,})
+  };
   return (
     <div className="main">
       <div className="main_header">
@@ -62,9 +66,11 @@ export default function PaymentMain() {
                         <input
                           type="text"
                           size="30"
+                          name ="fullName"
                           className="field-input"
                           placeholder="Họ và tên"
-                          value = {profile.firstname +" "+ profile.lastname}
+                          value = {payment.fullName}
+                          onChange={onChangeInput}
                         />
                       </div>
                       <div className="field">
@@ -72,8 +78,10 @@ export default function PaymentMain() {
                           className="field-input"
                           placeholder="Email"
                           type="email"
-                          value = {profile.email}
+                          name = "email"
+                          value = {payment.email}
                           size="30"
+                          onChange={onChangeInput}
                         />
                       </div>
                       <div className="field">
@@ -81,9 +89,11 @@ export default function PaymentMain() {
                           size="30"
                           maxLength="10"
                           type="tel"
+                          name = "phone_number"
                           className="field-input"
                           placeholder="Số điện thoại"
-                          value = {profile.phonenumber}
+                          value = {payment.phone_number}
+                          onChange={onChangeInput}
                         />
                       </div>
                       <div className="field">
@@ -91,8 +101,10 @@ export default function PaymentMain() {
                           type="text"
                           size="30"
                           className="field-input"
+                          name = "address"
                           placeholder="Địa chỉ"
-                          value = {profile.address}
+                          value = {payment.address}
+                          onChange={onChangeInput}
                         />
                       </div>
                     </div>

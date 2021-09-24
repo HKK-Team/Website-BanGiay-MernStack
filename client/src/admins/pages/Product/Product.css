@@ -100,8 +100,8 @@
   
   .productFormLeft >select{
     margin-bottom: 10px;
+    height: 40px;
   }
-  
   .productUploadImg{
     width: 100px;
     height: 100px;
@@ -115,12 +115,16 @@
     flex-direction: column;
     justify-content: space-around;
   }
-  
   .productUpload{
     display: flex;
     align-items: center;
   }
-  
+  .productFormRight button{
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    margin-left: 60%;
+  }
   .productButton{
     border: none;
     padding: 5px;

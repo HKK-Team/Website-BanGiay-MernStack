@@ -38,15 +38,19 @@ const productCtrl = {
     // update product from admin
     updateProduct: async(req, res) =>{
         try {
-            console.log(req.body)
             // check image exist or not exist
-            const {nameProduct,idCategory_product,color,addsize,deletesize, price,image} = req.body;
+            const {nameProduct,idCategory_product,color,size1,size2,size3,size4,size5, price,image} = req.body;
             if(!image) return res.status(400).json({msg: "No image upload"})
             // search id product and update to mongodb
             await Products.findOneAndUpdate({_id: req.body._id}, {
-                nameProduct,idCategory_product,color, price,image
+                nameProduct,idCategory_product,color,size :{
+                    size1,
+                    size2,
+                    size3,
+                    size4,
+                    size5
+                }, price,image
             })
-            
             res.json({msg: "Updated a Product"})
         } catch (err) {
             return res.status(500).json({msg: err.message})

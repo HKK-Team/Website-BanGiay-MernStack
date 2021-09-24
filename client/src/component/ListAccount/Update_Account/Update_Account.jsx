@@ -7,22 +7,23 @@ export default function Update_Account() {
   const state = useContext(GlobalState)
   const [profile] = state.userAPI.user;
   const [user, setUser] = useState({
-    firstname:'', lastname : '',address : '', nationality : '' ,phonenumber : '', _id : profile._id
-})
+    firstname:profile.firstname, lastname : profile.lastname,address : profile.address, nationality : profile.nationality ,phonenumber : profile.phonenumber,email :profile.email, _id : profile._id
+  })
 
-const onChangeInput = e =>{
-    const {name, value} = e.target;
-    setUser({...user, [name]:value,})
-}
-const EditUserSubmit = async e =>{
-    e.preventDefault()
-    try {
-        await axios.post('http://localhost:5000/user/editUser', {...user})
-        alert("Update User Succesfully!")
-    } catch (err) {
-        alert(err.response.data.msg)
-    }
-}
+  const onChangeInput = e =>{
+      const {name, value} = e.target;
+      setUser({...user, [name]:value,})
+  }
+  const EditUserSubmit = async e =>{
+      e.preventDefault()
+      try {
+          await axios.post('http://localhost:5000/user/editUser', {...user})
+          alert("Update User Succesfully!")
+          window.location.href = "/Profile"
+      } catch (err) {
+          alert(err.response.data.msg)
+      }
+  };
   return (
     <div className="user-boxx">
       <form onSubmit={EditUserSubmit}>
@@ -50,7 +51,7 @@ const EditUserSubmit = async e =>{
           className="input_text"
           placeholder="Nhập Email (*)"
           name = "email"
-          value={profile.email} 
+          value={user.email} 
         />
         <input
           type="tel"

@@ -21,7 +21,7 @@ export default function NewProduct() {
       try {
           await axios.post('http://localhost:5000/admin/Create_Product', {...products})
           alert("Create Users Succesfully!")
-          window.location.href = "/usersAdmin";
+          window.location.href = "/productsAdmin";
       } catch (err) {
           alert(err.response.data.msg)
       }
@@ -182,7 +182,6 @@ export default function NewProduct() {
           alert(err.response.data.msg)
       }
     };
-  console.log(products);
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
@@ -250,6 +249,7 @@ export default function NewProduct() {
             <option value="Xám">Xám</option>
             <option value="Xanh Nhạt">Xanh Nhạt</option>
             <option value="Kem Đậm">Kem Đậm</option>
+            <option value="Tím">Tím</option>
           </select>
         </div>
         <div className="addProductItem">
