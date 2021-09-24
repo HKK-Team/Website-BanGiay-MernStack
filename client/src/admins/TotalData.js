@@ -37,6 +37,21 @@ export default function GetData(){
     }   
     return getdata;
 }
+// khởi tạo dữ liêu sản phẩm dạng biểu đồ 
+export const productData = [
+  {
+    name: "Jan",
+    Sales: 4000,
+  },
+  {
+    name: "Feb",
+    Sales: 3000,
+  },
+  {
+    name: "Mar",
+    Sales: 5000,
+  },
+];
 // dữ liêu sản phẩm bán chạy nhất
 export const sellingProductsData = [];
 for (let i = 0; i < 5; i++) {
