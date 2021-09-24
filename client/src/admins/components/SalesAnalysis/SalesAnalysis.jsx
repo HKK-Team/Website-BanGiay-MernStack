@@ -1,16 +1,9 @@
-import React from 'react'
-import {
-    sellingProductsData,
-    mostPopularProductsData,
-  } from "../../TotalData";
+import { useContext } from "react";
   import Chart from "../../components/Chart/Chart";
   import { getdata } from "../../TotalData";
 
-// sản phẩm bán chạy
-var sellingProducts = [...sellingProductsData];
-// sản phẩm yêu thích nhất
-var mostPopularProducts = [...mostPopularProductsData];
 export default function SalesAnalysis() {
+
     return (
         <div className="MarketAnaly">
         <Chart
@@ -31,7 +24,7 @@ export default function SalesAnalysis() {
                 <th className="widgetLgTh">Trị giá</th>
                 <th className="widgetLgTh">Trạng thái</th>
               </tr>
-              {sellingProducts}
+              {getdata.sellingProductsData}
             </table>
           </div>
           {/* sản phâm yêu thích nhất */}
@@ -45,7 +38,7 @@ export default function SalesAnalysis() {
                 <th className="widgetLgTh">Trị giá</th>
                 <th className="widgetLgTh">Trạng thái</th>
               </tr>
-              {mostPopularProducts}
+              {getdata.mostPopularProductsData}
             </table>
           </div>
         </div>

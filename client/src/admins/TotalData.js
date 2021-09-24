@@ -19,6 +19,37 @@ export default function GetData(){
     const [chartbyproducthotquy3 ] = state.chartAdminAPI.chartbyproducthotquy3;
     const [chartbyproducthotquy4] = state.chartAdminAPI.chartbyproducthotquy4;
     const [chartbycountuser]  = state.chartAdminAPI.chartbycountuser;
+    const [hotproduct] =  state.favAndHotAPI.hotproduct;
+    const [favproduct] =  state.favAndHotAPI.favproduct;
+
+    console.log(favproduct)
+
+    var  sellingProductsData =[]; 
+    sellingProductsData.push(
+      hotproduct.slice(0, 5).map((item) => (
+        <SellingProducts key={item._id}
+        image={item._id.image}
+        codeproduct={item._id.id_product}
+        price={item.total}
+        totalquality={item.count}
+        />
+      ))
+  );
+
+  // dữ liêu sản phẩm yêu thích nhất
+  var mostPopularProductsData = [];
+  mostPopularProductsData.push(
+    favproduct.slice(0, 5).map((item) => (
+      <MostPopularProducts key={item._id}
+      image={item._id.image}
+      codeproduct={item._id._id}
+      totallike={item._id.count}
+      totalquality={item.quantity}
+      price={item.total}
+      />
+    ))
+);
+    
 
     getdata ={
       monthlyRevenueData : [...chartbymonth],
@@ -33,7 +64,9 @@ export default function GetData(){
       chartbyproducthotquy2:[...chartbyproducthotquy2],
       chartbyproducthotquy3:[...chartbyproducthotquy3],
       chartbyproducthotquy4:[...chartbyproducthotquy4],
-      chartbycountuser:[...chartbycountuser]
+      chartbycountuser:[...chartbycountuser],
+      sellingProductsData:sellingProductsData,
+      mostPopularProductsData:mostPopularProductsData,
     }   
     return getdata;
 }
@@ -52,31 +85,175 @@ export const productData = [
     Sales: 5000,
   },
 ];
-// dữ liêu sản phẩm bán chạy nhất
-export const sellingProductsData = [];
-for (let i = 0; i < 5; i++) {
-  sellingProductsData.push(
-  <SellingProducts
-    image="https://product.hstatic.net/1000230642/product/03900cam__2__5ed808cd7e35480dbb0340cf7e57c71a_1024x1024.jpg"
-    codeproduct="DSMH03900CAM44"
-    totalquality={200}
-    price={990000}
-  />
-);
-}
-// dữ liêu sản phẩm yêu thích nhất
-export const mostPopularProductsData = [];
-for (let i = 0; i < 5; i++) {
-  mostPopularProductsData.push(
-    <MostPopularProducts
-    image="https://product.hstatic.net/1000230642/product/03900cam__2__5ed808cd7e35480dbb0340cf7e57c71a_1024x1024.jpg"
-    codeproduct="DSMH03900CAM44"
-    totallike={2000}
-    totalquality={200}
-    price={990000}
-  />
-);
-}
+
+
+// khởi tạo dữ liêu bảng người dùng
+export const userRows = [
+  {
+    id: "613604a85baff7dc5fe145e1",
+    firstname: "Khanh",
+    lastname: "Doan Minh",
+    email: "kdoan696@gmail.com",
+    bornday: "2021-09-06T12:15:14.183+00:00",
+    transaction: "$120.00",
+  },
+];
+// khởi tạo dữ liệu loại mặt hàng bán chạy dạng biểu đồ ( / sản phẩm )
+export const bestSellingItemData = [
+  {
+    name: "Hunter Nam",
+    Sales: 40000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 30000,
+  },
+  {
+    name: "Gosto",
+    Sales: 50000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 50000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 50000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 50000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 1 dạng biểu đồ 
+export const itemTypeRevenueData_Precious1 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 2 dạng biểu đồ 
+export const itemTypeRevenueData_Precious2 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 3 dạng biểu đồ 
+export const itemTypeRevenueData_Precious3 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+// khởi tạo dữ liệu doanh thu các loại mặt hàng quý 4 dạng biểu đồ 
+export const itemTypeRevenueData_Precious4 = [
+  {
+    name: "Hunter Nam",
+    Sales: 400000,
+  },
+  {
+    name: "Hunter Nữ",
+    Sales: 300000,
+  },
+  {
+    name: "Gosto",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Trai",
+    Sales: 500000,
+  },
+  {
+    name: "Giày Bé Gái",
+    Sales: 500000,
+  },
+  {
+    name: "Phụ Kiện",
+    Sales: 500000,
+  },
+];
+
+
+// khởi tạo dữ liêu bảng hóa đơn
+export const billRows = [
+  {
+    id: "61418541fe13317461458808",
+    user_id: "6135998ac8727f629ac60f11",
+    fullName: "Huỳnh Đức Huy",
+    email: "huynhduchuy2001@gmail.com",
+    address: "Bình Phước",
+    phone_number: "0336755506",
+    total_price: 1897000,
+    Cart: [
+      { id_product: "DSMH02400CAM34", quality: 1 },
+      { id_product: "DSMH02400CAM34", quality: 1 },
+      { id_product: "DSMH02400CAM34", quality: 1 },
+    ],
+    createdAt: "2021-09-15T05:31:45.273+00:00",
+  },
+];
+
 // dữ liêu giao dịch gần nhất
 export const mostRecentTransactionDate = [];
 for (let i = 0; i < 5; i++) {
