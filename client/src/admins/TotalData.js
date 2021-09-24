@@ -18,6 +18,7 @@ export default function GetData(){
     const [chartbyproducthotquy2 ] = state.chartAdminAPI.chartbyproducthotquy2;
     const [chartbyproducthotquy3 ] = state.chartAdminAPI.chartbyproducthotquy3;
     const [chartbyproducthotquy4] = state.chartAdminAPI.chartbyproducthotquy4;
+    const [chartbycountuser]  = state.chartAdminAPI.chartbycountuser;
 
     getdata ={
       monthlyRevenueData : [...chartbymonth],
@@ -31,7 +32,8 @@ export default function GetData(){
       chartbyproducthotquy1:[...chartbyproducthotquy1],
       chartbyproducthotquy2:[...chartbyproducthotquy2],
       chartbyproducthotquy3:[...chartbyproducthotquy3],
-      chartbyproducthotquy4:[...chartbyproducthotquy4]
+      chartbyproducthotquy4:[...chartbyproducthotquy4],
+      chartbycountuser:[...chartbycountuser]
     }   
     return getdata;
 }

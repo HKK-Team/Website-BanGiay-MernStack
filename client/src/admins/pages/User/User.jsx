@@ -25,7 +25,7 @@ export default function User() {
   });
   // Edit User
   const [users, setUser] = useState({
-    username : '',firstname:'', lastname : '',address : '', nationality : '' ,phonenumber : '', _id : data._id
+    username : data.username,firstname: data.firstname, lastname : data.lastname,email : data.email,address : data.address, nationality : data.nationality ,phonenumber : data.phonenumber, _id : data._id
   });
   // set Edit User
   const onChangeInput = e =>{
@@ -133,7 +133,7 @@ export default function User() {
                   placeholder="abc@gmail.com"
                   className="userUpdateInput"
                   name = "email"
-                  value={data.email} 
+                  value={users.email} 
                   onChange={onChangeInput}
                 />
               </div>

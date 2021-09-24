@@ -20,7 +20,7 @@ export default function WidgetLg(props) {
         />
         <span className="widgetLgName">{props.fullname}</span>
       </td>
-      <td className="widgetLgDate">{props.date}</td>
+      <td className="widgetLgDate">{props.date.slice(0,10)}</td>
       <td className="widgetLgAmount">
         {formatter.format(props.totalprice / 23000)}
       </td>

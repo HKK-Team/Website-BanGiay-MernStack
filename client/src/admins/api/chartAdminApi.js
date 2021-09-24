@@ -10,6 +10,7 @@ function ChartAdminAPI() {
   const [chartbyproducthotquy2, setchartbyproducthotquy2] = useState([]);
   const [chartbyproducthotquy3, setchartbyproducthotquy3] = useState([]);
   const [chartbyproducthotquy4, setchartbyproducthotquy4] = useState([]);
+  const [chartbycountuser, setchartbycountuser] = useState([]);
 
   //call api xu li du lieu thong ke doanh thu theo thang
   useEffect(() => {
@@ -90,6 +91,17 @@ function ChartAdminAPI() {
     getdata();
   }, []);
 
+    //call api xu li du lieu thong ke theo user su dung hang thang
+    useEffect(() => {
+      const getdata = async () => {
+        const res = await axios.get(
+          "http://localhost:5000/admin/chartbycountuser"
+        );
+        setchartbycountuser(res.data);
+      };
+      getdata();
+    }, []);
+
   return {
     chartbymonth: [chartbymonth, setchartbymonth],
     chartbyyear: [chartbyyear, setchartbyyear],
@@ -99,6 +111,7 @@ function ChartAdminAPI() {
     chartbyproducthotquy2: [chartbyproducthotquy2, setchartbyproducthotquy2],
     chartbyproducthotquy3: [chartbyproducthotquy3, setchartbyproducthotquy3],
     chartbyproducthotquy4: [chartbyproducthotquy4, setchartbyproducthotquy4],
+    chartbycountuser:[chartbycountuser, setchartbycountuser] 
   };
 }
 export default ChartAdminAPI;

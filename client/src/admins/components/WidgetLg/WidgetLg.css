@@ -15,17 +15,17 @@
     border-spacing: 20px;
     margin-top: 16px;
   }
-  
+
   .widgetLgTh{
     text-align: left;
   }
-  
+
   .widgetLgUser{
     display: flex;
     align-items: center;
     font-weight: 600;
   }
-  
+
   .widgetLgImg {
     width: 40px;
     height: 40px;

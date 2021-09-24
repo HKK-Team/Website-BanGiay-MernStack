@@ -28,6 +28,8 @@ export default function PaymentMethod() {
       alert("You have successfully placed your order!");
       window.sessionStorage.removeItem("settings");
       window.sessionStorage.removeItem("payment");
+      window.confirm("Cảm ơn bạn đã đặt hàng tại hệ thống Cửa Hàng HKK Team! Quay lại trang chủ để tiếp tục mua hàng nhé!")
+      window.location.href = "/";
     } catch (err) {}
   };
   // payment with paypal
@@ -37,6 +39,8 @@ export default function PaymentMethod() {
     alert("You have successfully placed your order!");
     window.sessionStorage.removeItem("settings");
     window.sessionStorage.removeItem("payment");
+    window.confirm("Cảm ơn bạn đã đặt hàng tại hệ thống Cửa Hàng HKK Team! Quay lại trang chủ để tiếp tục mua hàng nhé!")
+    window.location.href = "/";
   };
   // checked radio
   const [checked, setchecked] = useState(false);
