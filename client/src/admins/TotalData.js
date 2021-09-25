@@ -22,7 +22,6 @@ export default function GetData(){
     const [hotproduct] =  state.favAndHotAPI.hotproduct;
     const [favproduct] =  state.favAndHotAPI.favproduct;
 
-    console.log(favproduct)
 
     var  sellingProductsData =[]; 
     sellingProductsData.push(
