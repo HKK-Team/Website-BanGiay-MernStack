@@ -12,7 +12,7 @@ export default function Home() {
   // get the last 5 bills
   var arr = [];
   arr.push(
-    payment.slice(-20).map((item) =>(
+    payment.slice(-20).reverse().map((item) =>(
       <WidgetLg
         fullname={item.fullName}
         date ={item.orderDate}
@@ -20,7 +20,8 @@ export default function Home() {
         codebill= {item._id}
       />
     ))
-  )
+  );
+  console.log(arr)
   return (
     <div className="home">
       <FeaturedInfo />

@@ -1,6 +1,5 @@
-import { useContext } from "react";
-  import Chart from "../../components/Chart/Chart";
-  import { getdata } from "../../TotalData";
+import Chart from "../../components/Chart/Chart";
+import { getdata } from "../../TotalData";
 
 export default function SalesAnalysis() {
 
