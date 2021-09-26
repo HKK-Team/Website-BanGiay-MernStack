@@ -4,6 +4,7 @@ import "./Cart.css";
 
 export default function Cart(props) {
   var storedArray = JSON.parse(sessionStorage.getItem("settings"));
+  console.log(storedArray)
   const ltg = storedArray.length;
 
   var quantity = 1;
