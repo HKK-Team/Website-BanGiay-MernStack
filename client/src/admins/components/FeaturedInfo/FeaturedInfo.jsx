@@ -8,50 +8,73 @@ export default function FeaturedInfo() {
   const state = useContext(GlobalState);
   const [widget] = state.widgetAPI.widget;
   const [widgetbyyear] = state.widgetAPI.widgetbyyear;
-  const [chartbyyear] = state.chartAdminAPI.chartbyyear;
 
-  //get tổng tiền năm hiện tại
-  var currentyear;
-  for (let i = chartbyyear.length - 1; i >= 0; i--) {
-    currentyear = chartbyyear[i].total;
-    break;
-  }
   // chuyển vnd thành usd
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
   var iconwidget;
-  if (widget[0].total / widget[1].total >= 0) {
+  var totalcurrentmonth;
+  for(let i = 0; i < widget.length;i++){
+    totalcurrentmonth = widget[i].total;
+    break;
+  }
+  var totalprevmonth;
+  for(let i = 1; i < widget.length;i++){
+    totalprevmonth = widget[i].total;
+    break;
+  }
+
+  if (totalcurrentmonth / totalprevmonth >= 0) {
     iconwidget = <ArrowUpward className="featuredIcon" />;
   } else {
     iconwidget = <ArrowDownward className="featuredIcon negative" />;
   }
 
   var iconwidget1;
-  if (widget[0].count - widget[1].count >= 0) {
+  var countcurrentmonth;
+  for(let i = 0; i < widget.length;i++){
+    countcurrentmonth = widget[i].count;
+    break;
+  }
+  var countprevmonth;
+  for(let i = 1; i < widget.length;i++){
+    countprevmonth = widget[i].count;
+    break;
+  }
+  if (countcurrentmonth - countprevmonth >= 0) {
     iconwidget1 = <ArrowUpward className="featuredIcon" />;
   } else {
     iconwidget1 = <ArrowDownward className="featuredIcon negative" />;
   }
 
   var iconwidget2;
-  if (widgetbyyear[0].total / currentyear >= 0) {
+  var totalcurrentyear;
+  for(let i = 0; i < widgetbyyear.length;i++){
+    totalcurrentyear = widgetbyyear[i].total;
+    break;
+  }
+    var totalprevyear;
+  for(let i = 1; i < widgetbyyear.length;i++){
+    totalprevyear = widgetbyyear[i].total;
+    break;
+  }
+  if (totalcurrentyear / totalprevyear >= 1) {
     iconwidget2 = <ArrowUpward className="featuredIcon" />;
   } else {
     iconwidget2 = <ArrowDownward className="featuredIcon negative" />;
   }
-
   return (
     <div className="featured">
       <div className="featuredItem">
         <span className="featuredTitle">Doanh Thu</span>
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">
-            {widget[0].total.toLocaleString()}
+            {totalcurrentmonth}
           </span>
           <span className="featuredMoneyRate">
-            {(widget[0].total / widget[1].total).toString().slice(0, 4) + "%"}{" "}
+            {(totalcurrentmonth / totalprevmonth).toString().slice(0, 4) + "%"}{" "}
             {iconwidget}
           </span>
         </div>
@@ -61,9 +84,9 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Bán hàng</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">{widget[0].count}</span>
+          <span className="featuredMoney">{countcurrentmonth}</span>
           <span className="featuredMoneyRate">
-            {widget[0].count - widget[1].count + " sản phẩm"} {iconwidget1}
+            {(countcurrentmonth - countprevmonth) + " sản phẩm"} {iconwidget1}
           </span>
         </div>
         <span className="featuredSub">So với tháng trước</span>
@@ -72,9 +95,9 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Trị giá</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">{formatter.format(widgetbyyear[0].total/230000)}</span>
+          <span className="featuredMoney">{formatter.format(totalcurrentyear/230000)}</span>
           <span className="featuredMoneyRate">
-            {(widgetbyyear[0].total / currentyear).toString().slice(0, 4) + "%"}{" "}
+            {(totalcurrentyear / totalprevyear).toString().slice(0, 4) + "%"}{" "}
             {iconwidget2}
           </span>
         </div>

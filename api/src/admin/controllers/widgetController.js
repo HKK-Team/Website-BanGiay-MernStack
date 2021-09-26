@@ -73,9 +73,9 @@ const widgetCtrl = {
               },
             },
             {
-              $sort: { total: -1 },
+              $sort: { _id: -1 },
             },
-            { $limit : 1 }
+            { $limit : 2 }
           ]);
           res.json(chartdata);
         } catch (err) {
