@@ -79,7 +79,7 @@ export default function FeaturedInfo() {
           </span>
           <span className="featuredMoneyRate">
              {/* nếu tháng hiên tại thấp hơn tháng trước */}
-            {totalcurrentmonth < totalprevmonth &&((1-(totalcurrentmonth /  totalprevmonth))*100).toString().slice(0, 4) + "%"}{" "}
+            {totalcurrentmonth <= totalprevmonth &&((1-(totalcurrentmonth /  totalprevmonth))*100).toString().slice(0, 4) + "%"}{" "}
              {/* nếu tháng hiên tại lớn hơn tháng trước */}
              {totalcurrentmonth > totalprevmonth &&((totalcurrentmonth /  totalprevmonth)*100).toString().slice(0, 4) + "%"}{" "}
             {iconwidget}
@@ -105,7 +105,7 @@ export default function FeaturedInfo() {
           <span className="featuredMoney">{formatter.format(totalcurrentyear/22765)}</span>
           <span className="featuredMoneyRate">
              {/* nếu năm hiên tại thấp hơn năm trước */}
-            {totalcurrentyear < totalprevyear &&((1-(totalcurrentyear /  totalprevyear))*100).toString().slice(0, 4) + "%"}{" "}
+            {totalcurrentyear <= totalprevyear &&((1-(totalcurrentyear /  totalprevyear))*100).toString().slice(0, 4) + "%"}{" "}
              {/* nếu năm hiên tại lớn hơn năm trước */}
              {totalcurrentyear > totalprevyear &&((totalcurrentyear /  totalprevyear)*100).toString().slice(0, 4) + "%"}{" "}
             {iconwidget2}
