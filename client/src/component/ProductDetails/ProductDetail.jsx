@@ -399,7 +399,7 @@ export default function ProductDetail(props) {
               <form action="">
                 <div className="productDetail_information-color">
                   <label htmlFor="">Màu sắc</label>
-                  <span>{props.color}</span>
+                  <span><img src ={props.image} alt = {props.color}></img>{props.color}</span>
                 </div>
                 <div className="productDetail_information-size">
                   <label htmlFor="">Kích thước</label>

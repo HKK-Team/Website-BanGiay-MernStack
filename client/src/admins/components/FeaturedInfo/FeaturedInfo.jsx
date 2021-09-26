@@ -65,7 +65,7 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Trị giá</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">{widgetbyyear[0].total.toLocaleString()}</span>
+          <span className="featuredMoney">{widgetbyyear[0].total}</span>
           <span className="featuredMoneyRate">
             {(widgetbyyear[0].total / currentyear).toString().slice(0,4)} {iconwidget2}
           </span>
