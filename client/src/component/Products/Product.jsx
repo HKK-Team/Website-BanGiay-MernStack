@@ -23,6 +23,7 @@ export default function Product(props) {
         size: sizebychoice,
         image: props.image,
         quantity: 1,
+        color : props.color
       };
 
       if (sessionStorage.getItem("settings") === null) {

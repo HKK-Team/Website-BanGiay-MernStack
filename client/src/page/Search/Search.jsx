@@ -45,6 +45,7 @@ export default function Search() {
           type={item.nameCategoryProduct}
           prime={item.price.toLocaleString()}
           price = {item.price}
+          color = {item.color}
         />
       )
     )

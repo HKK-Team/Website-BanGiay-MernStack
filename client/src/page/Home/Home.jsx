@@ -51,6 +51,7 @@ export default function Home() {
           typee="nam"
           masp={item.idCategory_product}
           price = {item.price}
+          color = {item.color}
         />
       ))
     );
@@ -71,6 +72,7 @@ export default function Home() {
           typee="nu"
           masp={item.idCategory_product}
           price = {item.price}
+          color = {item.color}
         />
       ))
     );
@@ -91,6 +93,7 @@ export default function Home() {
           typee="phu-kien"
           masp={item.idCategory_product}
           price = {item.price}
+          color = {item.color}
         />
       ))
     );
@@ -111,6 +114,7 @@ export default function Home() {
           typee="gosto"
           masp={item.idCategory_product}
           price = {item.price}
+          color = {item.color}
         />
       ))
     );
@@ -131,6 +135,7 @@ export default function Home() {
           typee="be-trai"
           masp={item.idCategory_product}
           price = {item.price}
+          color = {item.color}
         />
       ))
     );
@@ -151,6 +156,7 @@ export default function Home() {
           typee="be-gai"
           masp={item.idCategory_product}
           price = {item.price}
+          color = {item.color}
         />
       ))
     );
