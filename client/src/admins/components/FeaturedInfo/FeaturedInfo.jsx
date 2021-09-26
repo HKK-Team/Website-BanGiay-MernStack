@@ -9,6 +9,7 @@ export default function FeaturedInfo() {
   const [widget] = state.widgetAPI.widget;
   const [widgetbyyear] = state.widgetAPI.widgetbyyear;
 
+
   // chuyển vnd thành usd
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -65,6 +66,8 @@ export default function FeaturedInfo() {
   } else {
     iconwidget2 = <ArrowDownward className="featuredIcon negative" />;
   }
+  console.log(totalcurrentyear)
+  console.log(totalprevyear)
 
   return (
     <div className="featured">
@@ -75,7 +78,10 @@ export default function FeaturedInfo() {
             {totalcurrentmonth.toLocaleString()}
           </span>
           <span className="featuredMoneyRate">
-            {(Math.abs(((totalcurrentmonth -  totalprevmonth) / totalprevmonth))).toString().slice(0, 4) + "%"}{" "}
+             {/* nếu tháng hiên tại thấp hơn tháng trước */}
+            {totalcurrentmonth < totalprevmonth &&((1-(totalcurrentmonth /  totalprevmonth))*100).toString().slice(0, 4) + "%"}{" "}
+             {/* nếu tháng hiên tại lớn hơn tháng trước */}
+             {totalcurrentmonth > totalprevmonth &&((totalcurrentmonth /  totalprevmonth)*100).toString().slice(0, 4) + "%"}{" "}
             {iconwidget}
           </span>
         </div>
@@ -96,9 +102,12 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Trị giá</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">{formatter.format(totalcurrentyear/230000)}</span>
+          <span className="featuredMoney">{formatter.format(totalcurrentyear/22765)}</span>
           <span className="featuredMoneyRate">
-            {(Math.abs(((totalcurrentyear - totalprevyear) / totalprevyear) * 100)).toString().slice(0, 4) + "%"}{" "}
+             {/* nếu năm hiên tại thấp hơn năm trước */}
+            {totalcurrentyear < totalprevyear &&((1-(totalcurrentyear /  totalprevyear))*100).toString().slice(0, 4) + "%"}{" "}
+             {/* nếu năm hiên tại lớn hơn năm trước */}
+             {totalcurrentyear > totalprevyear &&((totalcurrentyear /  totalprevyear)*100).toString().slice(0, 4) + "%"}{" "}
             {iconwidget2}
           </span>
         </div>
