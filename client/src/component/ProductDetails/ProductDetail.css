@@ -100,7 +100,9 @@
 .productDetail_information-color span {
   background-color: #ffffff;
   background-position: 100% 100%;
+  background: url('https://theme.hstatic.net/1000230642/1000679613/14/bg-product.png?v=3041') right bottom no-repeat #fff;
   border: 1px solid #e42127;
+  border-radius: 6px 6px 6px 6px;
   display: flex;
   font-size: 12px;
   line-height: 20px;
