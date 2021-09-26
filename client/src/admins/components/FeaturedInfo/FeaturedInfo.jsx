@@ -71,7 +71,7 @@ export default function FeaturedInfo() {
         <span className="featuredTitle">Doanh Thu</span>
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">
-            {totalcurrentmonth}
+            {totalcurrentmonth.toLocaleString()}
           </span>
           <span className="featuredMoneyRate">
             {(totalcurrentmonth / totalprevmonth).toString().slice(0, 4) + "%"}{" "}

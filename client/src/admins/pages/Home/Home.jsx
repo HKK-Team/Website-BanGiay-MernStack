@@ -9,7 +9,7 @@ import WidgetLg from "../../components/WidgetLg/WidgetLg";
 
 export default function Home() {
   const [payment] = useState(getdata.payments)
-  // get the last 5 bills
+  // get the last 20 bills
   var arr = [];
   arr.push(
     payment.slice(-20).reverse().map((item) =>(
