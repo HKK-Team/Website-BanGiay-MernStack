@@ -2,7 +2,7 @@ import Chart from "../../components/Chart/Chart";
 import { getdata } from "../../TotalData";
 
 export default function SalesAnalysis() {
-
+  console.log(getdata.sellingProductsData);
     return (
         <div className="MarketAnaly">
         <Chart
