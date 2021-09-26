@@ -26,7 +26,7 @@ export default function FeaturedInfo() {
     break;
   }
 
-  if (totalcurrentmonth / totalprevmonth >= 0) {
+  if ((totalcurrentmonth -  totalprevmonth) / totalprevmonth >= 0) {
     iconwidget = <ArrowUpward className="featuredIcon" />;
   } else {
     iconwidget = <ArrowDownward className="featuredIcon negative" />;
@@ -60,11 +60,12 @@ export default function FeaturedInfo() {
     totalprevyear = widgetbyyear[i].total;
     break;
   }
-  if (totalcurrentyear / totalprevyear >= 1) {
+  if ((totalcurrentyear - totalprevyear) / totalprevyear >= 0) {
     iconwidget2 = <ArrowUpward className="featuredIcon" />;
   } else {
     iconwidget2 = <ArrowDownward className="featuredIcon negative" />;
   }
+
   return (
     <div className="featured">
       <div className="featuredItem">
@@ -74,7 +75,7 @@ export default function FeaturedInfo() {
             {totalcurrentmonth.toLocaleString()}
           </span>
           <span className="featuredMoneyRate">
-            {(totalcurrentmonth / totalprevmonth).toString().slice(0, 4) + "%"}{" "}
+            {(Math.abs(((totalcurrentmonth -  totalprevmonth) / totalprevmonth))).toString().slice(0, 4) + "%"}{" "}
             {iconwidget}
           </span>
         </div>
@@ -97,7 +98,7 @@ export default function FeaturedInfo() {
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">{formatter.format(totalcurrentyear/230000)}</span>
           <span className="featuredMoneyRate">
-            {(totalcurrentyear / totalprevyear).toString().slice(0, 4) + "%"}{" "}
+            {(Math.abs(((totalcurrentyear - totalprevyear) / totalprevyear) * 100)).toString().slice(0, 4) + "%"}{" "}
             {iconwidget2}
           </span>
         </div>
