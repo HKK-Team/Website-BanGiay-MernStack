@@ -12,11 +12,15 @@ export default function FeaturedInfo() {
 
   //get tổng tiền năm hiện tại
   var currentyear;
-  for(let i = chartbyyear.length - 1;i >= 0;i--){
+  for (let i = chartbyyear.length - 1; i >= 0; i--) {
     currentyear = chartbyyear[i].total;
     break;
   }
-
+  // chuyển vnd thành usd
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
   var iconwidget;
   if (widget[0].total / widget[1].total >= 0) {
     iconwidget = <ArrowUpward className="featuredIcon" />;
@@ -43,9 +47,12 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Doanh Thu</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">{widget[0].total}</span>
+          <span className="featuredMoney">
+            {widget[0].total.toLocaleString()}
+          </span>
           <span className="featuredMoneyRate">
-            {(widget[0].total / widget[1].total).toString().slice(0,4)} {iconwidget}
+            {(widget[0].total / widget[1].total).toString().slice(0, 4) + "%"}{" "}
+            {iconwidget}
           </span>
         </div>
         <span className="featuredSub">So với tháng trước</span>
@@ -56,21 +63,22 @@ export default function FeaturedInfo() {
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">{widget[0].count}</span>
           <span className="featuredMoneyRate">
-            {widget[0].count - widget[1].count} {iconwidget1}
+            {widget[0].count - widget[1].count + " sản phẩm"} {iconwidget1}
           </span>
         </div>
         <span className="featuredSub">So với tháng trước</span>
       </div>
-      
+
       <div className="featuredItem">
         <span className="featuredTitle">Trị giá</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">{widgetbyyear[0].total}</span>
+          <span className="featuredMoney">{formatter.format(widgetbyyear[0].total/230000)}</span>
           <span className="featuredMoneyRate">
-            {(widgetbyyear[0].total / currentyear).toString().slice(0,4)} {iconwidget2}
+            {(widgetbyyear[0].total / currentyear).toString().slice(0, 4) + "%"}{" "}
+            {iconwidget2}
           </span>
         </div>
-        <span className="featuredSub">So với năm hiện tại</span>
+        <span className="featuredSub">So với năm trước</span>
       </div>
     </div>
   );

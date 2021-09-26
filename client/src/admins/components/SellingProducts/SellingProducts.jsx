@@ -19,7 +19,7 @@ export default function SellingProducts(props) {
       </td>
       <td className="widgetLgDate">{props.totalquality}</td>
       <td className="widgetLgAmount">
-        {formatter.format((props.totalquality * props.price) / 23000)}
+        {formatter.format((props.price) / 23000)}
       </td>
       <td className="widgetLgStatus">
         <Button type="Approved" />

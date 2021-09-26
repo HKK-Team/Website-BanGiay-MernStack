@@ -16,28 +16,28 @@ export default function MarketAnalysis() {
       <Chart
         data={getdata.chartbyproducthotquy1}
         color="#7FFF00"
-        title="Thống kê doanh thu các mặt hàng quý 1 (USD)"
+        title="Thống kê doanh thu các mặt hàng quý 1 (VND)"
         grid
         dataKey="total"
       />
       <Chart
         data={getdata.chartbyproducthotquy2}
         color="#E74C3C"
-        title="Thống kê doanh thu các mặt hàng quý 2 (USD)"
+        title="Thống kê doanh thu các mặt hàng quý 2 (VND)"
         grid
         dataKey="total"
       />
       <Chart
         data={getdata.chartbyproducthotquy3}
         color="#F1C40F"
-        title="Thống kê doanh thu các mặt hàng quý 3 (USD)"
+        title="Thống kê doanh thu các mặt hàng quý 3 (VND)"
         grid
         dataKey="total"
       />
       <Chart
         data={getdata.chartbyproducthotquy4}
         color="#ABB2B9"
-        title="Thống kê doanh thu các mặt hàng quý 4 (USD)"
+        title="Thống kê doanh thu các mặt hàng quý 4 (VND)"
         grid
         dataKey="total"
       />

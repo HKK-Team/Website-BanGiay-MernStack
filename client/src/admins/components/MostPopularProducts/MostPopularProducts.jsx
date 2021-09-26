@@ -21,7 +21,7 @@ export default function MostPopularProducts(props) {
       <td className="widgetLgDate">{props.totallike}</td>
       <td className="widgetLgAmount">{props.totalquality}</td>
       <td className="widgetLgAmount">
-        {formatter.format((props.totalquality * props.price) / 23000)}
+        {formatter.format((props.price) / 23000)}
       </td>
       <td className="widgetLgStatus">
         <Button type="Approved" />

@@ -8,21 +8,21 @@ export default function Statistic() {
     <div className="Statistic">
       <Chart
         data={getdata.monthlyRevenueData}
-        title="Phân tích doanh thu các tháng (USD)"
+        title="Phân tích doanh thu các tháng (VND)"
         grid
         dataKey="total"
         color='#5550bd'
       />
       <Chart
         data={getdata.chartbyqui}
-        title="Phân tích doanh thu các quý (USD)"
+        title="Phân tích doanh thu các quý (VND)"
         grid
         dataKey="total"
         color="green"
       />
       <Chart
         data={getdata.chartbyyear}
-        title="Phân tích doanh thu các năm gần đây (USD)"
+        title="Phân tích doanh thu các năm gần đây (VND)"
         grid
         dataKey="total"
         color="red"
