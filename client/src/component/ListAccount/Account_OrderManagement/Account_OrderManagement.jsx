@@ -2,16 +2,6 @@
 import React from "react";
 import "./Account_OrderManagement.css";
 export default function Account_OrderManagement(props) {
-  // Xử lý sự kiện hủy đơn
-  const handelSingleBadge = () => {
-    var checkbox = document.getElementsByName("SingleBadge");
-    var result = ""; //array chưa id hủy đơn 
-    for (let i = 0; i < checkbox.length; i++) {
-      if (checkbox[i].checked === true) {
-        result += " [" + checkbox[i].value + "]";
-      }
-    }
-  };
   // check delivered
   const check= () =>{
     if(props.status===true)
@@ -19,23 +9,18 @@ export default function Account_OrderManagement(props) {
       return(
         <div className="product-oder-status">
           <span></span>
-          <p>Đã giao hàng</p>
+          <p>Đang giao hàng</p>
         </div>
       )
     }
   }
-//  xác nhận mật khẩu
-const OpenConfirmPassword = () => {
-  var x = document.getElementById("modal-ConfirmPassword");
-  x.style.display="block"
-}
   const checkk= () =>{
     if(props.status===false)
     {
       return(
         <div className="product-oder-status">
           <span></span>
-          <p>Đang giao hàng</p>
+          <p>Chưa duyệt đơn hàng</p>
         </div>
       )
     }

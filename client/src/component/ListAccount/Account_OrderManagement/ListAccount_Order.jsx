@@ -1,7 +1,19 @@
-import React, { Fragment }  from "react";
+import React, { Fragment,useState ,useContext}  from "react";
 import "../ListAccount.css";
 import {Link} from "react-router-dom";
+import { GlobalState } from "../../../GlobalState";
+import axios from "axios"
 export default function ListAccount(props) {
+  // call api
+  const state = useContext(GlobalState);
+  const [profile] = state.userAPI.user;
+  const [list_order] = state.list_oderApi.list_oder;
+  // get all list_order
+  const order = list_order.filter((item)=>{
+    return item.user_id === profile._id && item.status===true
+  })
+  // get last one list_order
+  const arr = (order[order.length-1])
   //  xác nhận mật khẩu
   const OpenConfirmPassword = () => {
     var x = document.getElementById("modal-ConfirmPassword");
@@ -12,15 +24,38 @@ export default function ListAccount(props) {
     var x = document.getElementById("modal-ConfirmPassword");
     x.style.display="none"
   };
+  const[cancel,setcancel] = useState({
+    _id : profile._id,password : '',status : 'false',id : arr._id
+  });
+  const onChangeInput = e =>{
+    const {name, value} = e.target;
+    setcancel({...cancel, [name]:value})
+  };
+  const PassWordSubmit = async e =>{
+    e.preventDefault()
+    try {
+        await axios.post('/payment/CancelOder', {...cancel})
+        alert("You have successfully cancel orders!")
+        window.location.href = "/AccountOderManagement";
+    } catch (err) {
+        alert(err.response.data.msg)
+    }
+  }
   return (
     <Fragment>
       <div id="modal-ConfirmPassword">
         <div className="modal-content">
           <i class="fas fa-times" onClick={CloseConfirmPassword}></i>
-          <form action="" className="newUserForm">
+          <form action="" className="newUserForm" onSubmit = {PassWordSubmit}>
             <div className="newUserItem">
               <label>Vui lòng nhập mặt khẩu của bạn</label>
-              <input type="password" placeholder="Please enter a password" />
+              <input 
+                type="password" 
+                placeholder="Please enter a password" 
+                name = "password"
+                value = {cancel.password}
+                onChange={onChangeInput}
+              />
             </div>
             <button className="newUserButton">Confirm</button>
           </form>
@@ -42,7 +77,7 @@ export default function ListAccount(props) {
                 <i class="fa fa-list"></i>Quản lý đơn hàng
               </Link>
               <Link to='/AccountAddress'>
-                <i class="fa fa-map-marker"></i>Danh sách địa chỉ
+                <i class="fa fa-map-marker"></i>Danh sách địa chỉ cửa hàng
               </Link>
             </div>
             <div className="account_box-info">

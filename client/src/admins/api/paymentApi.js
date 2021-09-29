@@ -8,8 +8,17 @@ export default function UsersApi (){
             setpayments(res.data)
         }
         getPayments()
+    },[]);
+    const [orderbrowsing,setorderbrowsing] = useState([]);
+    useEffect(() =>{
+        const getOrderBrowsing = async() =>{
+            const res = await axios.get('/admin/OrderBrowsing');
+            setorderbrowsing(res.data)
+        }
+        getOrderBrowsing()
     },[])
     return{
-        payments :[payments,setpayments]
+        payments :[payments,setpayments],
+        orderbrowsings : [orderbrowsing,setorderbrowsing]
     }
 }

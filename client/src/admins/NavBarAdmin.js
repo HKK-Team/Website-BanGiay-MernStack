@@ -17,6 +17,7 @@ import MarketAnalysis from "./pages/MarketAnalysis/MarketAnalysis";
 import SalesAnalysis from "./components/SalesAnalysis/SalesAnalysis";
 import { GlobalState } from "../GlobalState";
 import NotFound from "../component/utils/not_found/NotFound"
+import OrderBrowsing from "../admins/pages/OrderBrowsing/OrderBrowsing"
 function NavBarAdmin() {
   const state = useContext(GlobalState);
   const [isLogin] = state.adminApi.isLogin;
@@ -43,6 +44,7 @@ function NavBarAdmin() {
           />
           <Route exact path="/newproductAdmin" component={isLogin ? NewProduct : NotFound} />
           <Route exact path="/BillsAdmin" component={isLogin ? BillList : NotFound} />
+          <Route exact path="/OrderBrowsing" component={isLogin ? OrderBrowsing : NotFound} />
         </Switch>
         {/* Link url */}
       </div>

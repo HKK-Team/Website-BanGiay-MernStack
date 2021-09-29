@@ -1,27 +1,9 @@
 import React, { Fragment } from "react";
 import "./ListAccount.css";
 import { Link } from "react-router-dom";
-
-//Đóng form xác nhận mật khẩu
-const CloseConfirmPassword = () => {
-  var x = document.getElementById("modal-ConfirmPassword");
-  x.style.display="none"
-};
 export default function ListAccount(props) {
   return (
     <Fragment>
-      <div id="modal-ConfirmPassword">
-        <div className="modal-content">
-          <i class="fas fa-times" onClick={CloseConfirmPassword}></i>
-          <form action="" className="newUserForm">
-            <div className="newUserItem">
-              <label>Vui lòng nhập mặt khẩu của bạn</label>
-              <input type="password" placeholder="Please enter a password" />
-            </div>
-            <button className="newUserButton">Confirm</button>
-          </form>
-        </div>
-      </div>
       <section className="account">
         <div className="container">
           <div className="row">
@@ -38,7 +20,7 @@ export default function ListAccount(props) {
                   <i class="fa fa-list"></i>Quản lý đơn hàng
                 </Link>
                 <Link to="/AccountAddress">
-                  <i class="fa fa-map-marker"></i>Danh sách địa chỉ
+                  <i class="fa fa-map-marker"></i>Danh sách địa chỉ cửa hàng
                 </Link>
               </div>
               <div className="account_box-info">{props.link}</div>

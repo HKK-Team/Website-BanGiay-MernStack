@@ -66,6 +66,12 @@ export default function Sidebar() {
                 Giao dịch
               </li>
             </NavLink>
+            <NavLink to="/OrderBrowsing" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Duyệt đơn hàng
+              </li>
+            </NavLink>
             <NavLink to="/Statistic" className="link">
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />

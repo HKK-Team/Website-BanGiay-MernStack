@@ -20,6 +20,7 @@ export default function GetData(){
     const [chartbycountuser]  = state.chartAdminAPI.chartbycountuser;
     const [hotproduct] =  state.favAndHotAPI.hotproduct;
     const [favproduct] =  state.favAndHotAPI.favproduct;
+    const [orderbrowsings] = state.paymentsApi.orderbrowsings;
 
     var  sellingProductsData =[]; 
     sellingProductsData.push(
@@ -64,6 +65,7 @@ export default function GetData(){
       chartbycountuser:[...chartbycountuser],
       sellingProductsData:sellingProductsData,
       mostPopularProductsData:mostPopularProductsData,
+      orderbrowsing : [...orderbrowsings],
     }   
     return getdata;
 }
