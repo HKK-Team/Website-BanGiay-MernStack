@@ -13,7 +13,7 @@ export default function Account_OderManagement() {
   const [list_order] = state.list_oderApi.list_oder;
   // get all list_order
   const order = list_order.filter((item)=>{
-    return item.user_id === profile._id && item.status===true
+    return item.user_id === profile._id
   })
   // get last one list_order
   const arr = (order[order.length-1])

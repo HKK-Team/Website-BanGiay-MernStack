@@ -23,7 +23,7 @@ export default function BillList() {
     try {
         await axios.post('http://localhost:5000/admin/editOrderBrowsing', {...orderbrowsing})
         alert("Order Browsing Succesfully!")
-        window.location.href = "/DashBoard";
+        window.location.href = "/OrderBrowsing";
     } catch (err) {
         alert(err.response.data.msg)
     }
