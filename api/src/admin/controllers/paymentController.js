@@ -12,7 +12,7 @@ const paymentCtrl = {
     // get orderbrowsing
     getOrderBrowsing : async(req,res) => {
         try {
-            const payment = await Payments.find({ status: { $eq: "false" } })
+            const payment = await Payments.find({ status: { $eq: "Chưa duyệt đơn hàng" } })
             res.json(payment)
         }catch(err){
             return res.status(500).json({msg : err.message})

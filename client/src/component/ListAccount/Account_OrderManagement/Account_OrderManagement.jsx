@@ -2,35 +2,13 @@
 import React from "react";
 import "./Account_OrderManagement.css";
 export default function Account_OrderManagement(props) {
-  // check delivered
-  const check= () =>{
-    if(props.status===true)
-    {
-      return(
-        <div className="product-oder-status">
-          <span></span>
-          <p>Đang giao hàng</p>
-        </div>
-      )
-    }
-  }
-  const checkk= () =>{
-    if(props.status===false)
-    {
-      return(
-        <div className="product-oder-status">
-          <span></span>
-          <p>Chưa duyệt đơn hàng</p>
-        </div>
-      )
-    }
-  }
   return (
     <div className="user-box">
       <div className="product-oder-box">
-        {
-          props.status ? check() : checkk()
-        }
+        <div className="product-oder-status">
+          <span></span>
+          <p>{props.status}</p>
+        </div>
         {/*  */}
         <div className="product-oder-list">
           <img src={props.image} alt="" />

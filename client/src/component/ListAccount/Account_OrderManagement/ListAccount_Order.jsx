@@ -10,7 +10,7 @@ export default function ListAccount(props) {
   const [list_order] = state.list_oderApi.list_oder;
   // get all list_order
   const order = list_order.filter((item)=>{
-    return item.user_id === profile._id && item.status===true
+    return item.user_id === profile._id
   })
   // get last one list_order
   const arr = (order[order.length-1])
@@ -25,7 +25,7 @@ export default function ListAccount(props) {
     x.style.display="none"
   };
   const[cancel,setcancel] = useState({
-    _id : profile._id,password : '',status : 'false',id : arr._id
+    _id : profile._id,password : '',status : 'Hủy đơn hàng',id : arr._id
   });
   const onChangeInput = e =>{
     const {name, value} = e.target;

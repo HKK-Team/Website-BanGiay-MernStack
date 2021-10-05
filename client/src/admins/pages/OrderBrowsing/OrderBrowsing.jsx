@@ -16,7 +16,7 @@ export default function BillList() {
     }
   };
   const [orderbrowsing, setorderbrowsing] = useState({
-    _id :'',status:'true'
+    _id :'',status:'Đang giao hàng'
   });
   const OrderBrowsing = async e =>{
     e.preventDefault()

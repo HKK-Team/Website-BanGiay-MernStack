@@ -30,8 +30,8 @@ const paymentSchema = new mongoose.Schema({
         default: Date.now 
     },
     status:{
-        type: Boolean,
-        default: false
+        type: String,
+        default: "Chưa duyệt đơn hàng"
     }    
 }, 
 {
