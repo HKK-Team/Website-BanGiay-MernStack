@@ -10,6 +10,18 @@ export default function WidgetLg(props) {
     style: "currency",
     currency: "USD",
   });
+
+
+  // check status đơn hàng 
+  let status;
+    if (props.status === "Chưa duyệt đơn hàng") {
+      status =   <Button type='Pending' />;
+    }else if(props.status === "Đang giao hàng"){
+      status =   <Button type='Success' />;
+    }else if (props.status === "Hủy đơn hàng"){
+      status =   <Button type='Cancel' />;
+    }
+
   return (
     <tr className="widgetLgTr">
       <td className="widgetLgUser">
@@ -20,13 +32,13 @@ export default function WidgetLg(props) {
         />
         <span className="widgetLgName">{props.fullname}</span>
       </td>
-      <td className="widgetLgDate">{props.date.slice(0,10)}</td>
+      <td className="widgetLgDate">{props.date.slice(0, 10)}</td>
       <td className="widgetLgAmount">
         {formatter.format(props.totalprice / 23000)}
       </td>
       <td className="widgetLgDate">{props.codebill}</td>
       <td className="widgetLgStatus">
-        <Button type="Pending" />
+       {status}
       </td>
     </tr>
   );

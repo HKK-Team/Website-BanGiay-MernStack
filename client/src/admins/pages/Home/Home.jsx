@@ -18,6 +18,7 @@ export default function Home() {
         date ={item.orderDate}
         totalprice={item.total_price}
         codebill= {item._id}
+        status = {item.status}
       />
     ))
   );
