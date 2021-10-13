@@ -1,0 +1,69 @@
+.Cart_title {
+  padding: 0px 10px;
+}
+.Cart_title h1 {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 33.6px;
+  margin: 25px 0px;
+  text-align: center;
+}
+.empty_cart {
+  background-color: #ffffff;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0px 30px 30px;
+  text-align: center;
+}
+.empty_cart img {
+  display: inline;
+  text-align: center;
+}
+.message {
+  font-family: Open Sans;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0px 0px 10px;
+  text-align: center;
+}
+.myoder {
+  color: #4a4a4a;
+
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 20px;
+  margin: 15px 0px 0px;
+  padding: 9.5px 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-red {
+  background-color: #f72b3f;
+  border-radius: 4px;
+
+  color: #ffffff;
+  display: inline-block;
+  font-family: Open Sans;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+
+  margin: 15px 0px 0px;
+  padding: 9.5px 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.Cartt {
+  width: 677.5px;
+  height: 271.6px;
+}
+.Cartt .containerr {
+  width: 677.5px;
+  height: 271.6px;  
+}

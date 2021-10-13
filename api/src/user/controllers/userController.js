@@ -7,7 +7,7 @@ const userCtrl = {
     register: async (req, res) =>{
         try {
             const {firstname,lastname, email, password,address,nationality,phonenumber} = req.body;
-
+            if(req.body.confirm_password !== password)  return res.status(400).json({msg : "Confirm_password incorrect, please try again."});
             const user = await Users.findOne({email})
             // check email
             if(user) return res.status(400).json({msg: "The email already exists."})
@@ -120,6 +120,22 @@ const userCtrl = {
             return res.status(200).json("Bạn đã update thông tin thành công!")
 
         } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    // edit password
+    editPassword : async (req,res) =>{
+        // check password
+        let user = await Users.findById(req.body._id);
+        const check = await bcrypt.compare(req.body.old_password, user.password)
+        if(!check) return res.status(400).json({msg : "Old_password incorrect, please try again."});
+        if(req.body.confirm_password !== req.body.password)  return res.status(400).json({msg : "Confirm_password incorrect, please try again."});
+        const passwordHash = await bcrypt.hash(req.body.password, 10);
+        try{
+            await Users.findOneAndUpdate({email : req.body.email},{password : passwordHash});
+            return res.status(200).json("Bạn đã đổi mật khẩu thành công!")
+        }
+        catch (err) {
             return res.status(500).json({msg: err.message})
         }
     }

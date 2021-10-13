@@ -22,7 +22,7 @@ import Search from "./Search/Search";
 import Payment from "./Payment/Payment";
 import PaymentNoLogged from "./Payment/PaymentNoLogged";
 import PaymentMethods from "../page/PaymentMethods/PaymentMethods";
-
+import Charge_Password from "../page/Account/Charge_password";
 // admin
 import NavBarAdmin from "../admins/NavBarAdmin";
 function Pages() {
@@ -71,6 +71,7 @@ function Pages() {
       <Route exact path="/PaymentNoLogged" component={PaymentNoLogged}></Route>
       <Route exact path="/UpdateAccount" component={UpdateAccount}></Route>
       <Route exact path="/PaymentMethods" component={PaymentMethods}></Route>
+      <Route exact path="/Charge_Password" component={Charge_Password}></Route>
       {/* admin  */}
       <NavBarAdmin />
     </Switch>
