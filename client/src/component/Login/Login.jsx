@@ -14,7 +14,6 @@ function Login() {
       const {name, value} = e.target;
       setUser({...user, [name]:value})
   }
-
   const loginSubmit = async e =>{
       e.preventDefault()
       try {
@@ -81,7 +80,7 @@ function Login() {
                   <Link to='/Register'>Chưa có tài khoản? Đăng ký</Link>
                 </div>
                 <div className="req_pass">
-                  <Link to="#">Quên mật khẩu</Link>
+                  <Link to="/ForgotPassword">Quên mật khẩu</Link>
                 </div>
               </form>
               <div id="btn-facebook-login" className="face-btn">

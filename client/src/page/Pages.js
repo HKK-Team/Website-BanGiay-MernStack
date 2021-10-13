@@ -13,6 +13,7 @@ import Cart from "./Cart/Cart";
 import Favorite from "./Favorite/Favorite";
 import Account_OderManagement from "./Account/Account_OderManagement";
 import Account_Address from "./Account/Account_Address";
+import ForgotPassword from "../page/Login/ForgotPassword/ForgotPassword";
 import Home from "./Home/Home";
 import Profile from "../page/Account/Account_Infomation";
 import { GlobalState } from "../GlobalState";
@@ -66,6 +67,7 @@ function Pages() {
         component={isLogged ? Account_Address : NotFound}
       ></Route>
       <Route exact path="/Profile" component={Profile}></Route>
+      <Route exact path="/ForgotPassword" component={ForgotPassword}></Route>
       <Route exact path="/Search" component={Search}></Route>
       <Route exact path="/Payment" component={Payment}></Route>
       <Route exact path="/PaymentNoLogged" component={PaymentNoLogged}></Route>
