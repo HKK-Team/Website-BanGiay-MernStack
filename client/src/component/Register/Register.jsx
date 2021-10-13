@@ -5,7 +5,7 @@ import "./Register.css";
 
 export default function Register() {
   const [user, setUser] = useState({
-    firstname:'', lastname : '', email:'', password: '',address : '', nationality : '' ,phonenumber : '',
+    firstname:'', lastname : '', email:'',confirm_password : '', password: '',address : '', nationality : '' ,phonenumber : '',
 })
 
 const onChangeInput = e =>{
@@ -96,6 +96,29 @@ const registerSubmit = async e =>{
                     pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
                     autoComplete="on"
                     value={user.password} 
+                    onChange={onChangeInput}                
+                  />
+                  {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
+                    Mật khẩu phải chứa ít nhất một ký tự Latinh viết thường [a-z].
+                    Mật khẩu phải chứa ít nhất một ký tự Latinh viết hoa [A-Z].
+                    Mật khẩu phải chứa ít nhất một ký tự đặc biệt như! @ # & ().
+                    Mật khẩu phải có độ dài ít nhất 6 ký tự và tối đa 20 ký tự. */}
+                </div>
+                <div className="password input">
+                  <label htmlFor="" className="icon-field">
+                    <i className="fa fa-lock"></i>
+                  </label>
+                  <input
+                    type="password"
+                    id="password-user"
+                    className="text"
+                    name = "confirm_password"
+                    placeholder="Nhập lại mật khẩu"
+                    size="32"
+                    required
+                    pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
+                    autoComplete="on"
+                    value={user.confirm_password} 
                     onChange={onChangeInput}                
                   />
                   {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].

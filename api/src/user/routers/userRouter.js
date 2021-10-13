@@ -13,4 +13,6 @@ router.route('/logout')
     .get(userCtrl.logout)
 router.route('/editUser')
     .post(userCtrl.editUser)
+router.route('/editPassword')
+    .post(userCtrl.editPassword)
 module.exports = router
