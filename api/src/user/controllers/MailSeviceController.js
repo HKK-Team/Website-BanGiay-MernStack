@@ -1,23 +1,22 @@
 const nodemailer = require("nodemailer");
 
-module.exports = class mailSevice {
+class MailSevice {
   #codeOTP; // lưu trữ mã otp
   #mailManage = "hkkteamsp@gmail.com"; // Mail quản lý
   #passWordManage = "khanhvlcm12"; // password quản lý
-  #mailUser = 'khanhdoan693@gmail.com'; // mail người dùng
   #isResetOtp = false; // Mã otp đã được gửi chưa
-  #title;
-  #context;
+  #title = "Hello";
+  #context = "Nice to much you !, how are you today";
 
   // tạo mail quản lý
   addMailManage(user = "hkkteamsp@gmail.com", password = "khanhvlcm12") {
     this.#mailManage = user;
     this.#passWordManage = password;
   }
-
-  // thêm mail người dùng
-  addMailUser(...mailUser) {
-    this.#mailUser = mailUser;
+  // tạo context cho email
+  addMailContex(title, context) {
+    this.#title = title;
+    this.#context = context;
   }
 
   //reset mã otp
@@ -40,19 +39,28 @@ module.exports = class mailSevice {
   }
 
   // xác nhận mã otp
-  conFirmOtpCode(inputSeletor) {
-    let otpCodeValue = inputSeletor;
-    let isOtp = false;
-    if (Number(otpCodeValue) === this.#codeOTP) {
-      isOtp = true;
+  // [post] /sendMail/:otp/confrimOtp
+  conFirmOtpCode = async (req, res) => {
+    try {
+      let otpCodeValue = req.params.otp;
+      let isOtp = false;
+      if (Number(otpCodeValue) === this.#codeOTP) {
+        isOtp = true;
+      }
+      res.status(200).json(isOtp);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
     }
-    return isOtp;
-  }
+  };
 
   // gửi mail mã otp xác nhận
-  sendMailOtpcode(email) {
-    this.createtOptCode();
+  // [post] /sendMail/:email
+  sendMailOtpcode = async (req, res) => {
+    try {
+      this.createtOptCode();
       let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
         service: "gmail",
         auth: {
           user: this.#mailManage,
@@ -61,26 +69,23 @@ module.exports = class mailSevice {
       });
       let mailOptions = {
         from: this.#mailManage,
-        to: this.#mailUser = email,
+        to: req.params.email,
         subject: `Xác nhập mã otp đến từ HKK team`,
         html: `<h1>Xin chào.</h1><h2>Chúng tôi nhận được yêu cầu xác nhận, Mã OTP của bạn là: ${
           this.#codeOTP
         }</h2>
       <strong>Mã của bạn sẽ hết hạn sau 5 phút</strong>`,
       };
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
-    this.#isResetOtp = true;
-    this.resetOtpCode();
+      transporter.sendMail(mailOptions);
+      res.status(200).json("Send email otp code successfully");
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
   };
 
   // gửi mail context
-  sendMailContext = async (request, response) => {
+  // [post] /sendMail/:email
+  sendMailContext = async (req, res) => {
     try {
       let transporter = nodemailer.createTransport({
         service: "gmail",
@@ -91,14 +96,16 @@ module.exports = class mailSevice {
       });
       let mailOptions = {
         from: this.#mailManage,
-        to: this.#mailUser,
-        subject: this.title,
-        text: this.context,
+        to: req.params.id,
+        subject: this.#title,
+        text: this.#context,
       };
       transporter.sendMail(mailOptions);
-      response.status(201).json("Send email successfully");
+      res.status(201).json("Send email successfully");
     } catch (error) {
-      response.status(409).json({ message: error.message });
+      res.status(409).json({ message: error.message });
     }
   };
 }
+
+module.exports = new MailSevice();

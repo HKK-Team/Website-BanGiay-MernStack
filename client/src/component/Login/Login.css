@@ -88,6 +88,18 @@
 .req_pass a:hover {
   color: red;
 }
+.req_pass button{
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  color: blue;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.req_pass button:hover{
+  color: red;
+}
 #btn-facebook-login:hover span{
     transform: translateX(25px);
 

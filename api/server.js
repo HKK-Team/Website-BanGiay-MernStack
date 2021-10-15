@@ -24,6 +24,7 @@ mongoose.connect(URI, {
     }
 )
 // Routes
+app.use('/sendMail', require('./src/user/routers/mailSeriveRoutes'))
 app.use('/api', require('./src/user/routers/menuRouter'))
 app.use('/api', require('./src/user/routers/bannerRouter'))
 app.use('/api', require('./src/user/routers/productRouter'))
