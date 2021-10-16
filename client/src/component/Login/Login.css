@@ -164,3 +164,10 @@
   text-align: left;
   transition: all 1s ease;
 }
+#message-error{
+  color:  red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}

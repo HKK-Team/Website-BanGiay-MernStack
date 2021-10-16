@@ -1,33 +1,63 @@
 import React, { useState } from "react";
-import { sendMailOtpcode, conFirmOtpCode } from "../../../api/mailSeviceApi";
+import {
+  sendMailOtpcode,
+  conFirmOtpCode,
+  conFirmEmail,
+} from "../../../api/mailSeviceApi";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function ForgotPassword() {
-  const [email, setMail] = useState({ email: "" });
+  const [email, setMail] = useState({ value: "" });
   const [otpCode, setOtpCode] = useState();
-  const onChangeSeletor = (e) => {
+  const [user, setUser] = useState({
+    password: "",
+    confirm_password: "",
+    email: "",
+  });
+
+  const errMessage = document.getElementById("message-error");
+  // lắng nghe input password
+  const onChangeSeletorPassWord = (e) => {
     const { name, value } = e.target;
-    setMail({ ...email, [name]: value });
+    setUser({ ...user, [name]: value });
   };
+
+  // lắng nghe input email
+  const onChangeSeletor = (e) => {
+    const { value } = e.target;
+    setMail({ value });
+  };
+
+  // lắng nghe input mã otp
   const onChangeSeletorOptCode = (e) => {
     const { value } = e.target;
     setOtpCode({ value });
   };
+
   // xử lý sự kiện gửi mail
-  const handleBtnCick = async (e) => {
-    try {
-      if (email.email.includes("@")) {
-        sendMailOtpcode(email.email);
-        countDownReqSendMail();
-      } else {
-        alert("vui lòng nhập email của bạn");
-      }
-    } catch (err) {
-      console.log(err);
+  const submitSendMail = async (e) => {
+    if (email.value !== "") {
+      conFirmEmail(email.value)
+        .then((data) => {
+          if (data.data) {
+            sendMailOtpcode(email.value);
+            handleSendMail();
+          }
+        })
+        .catch((err) => {
+          errMessage.innerText = err.response.data.msg;
+        });
+    } else {
+      errMessage.innerText = "vui lòng nhập email của bạn";
     }
   };
 
   // xứ lý sự kiện gửi lại mail
-  const countDownReqSendMail = () => {
+  const handleSendMail = () => {
+    const errMessage = document.getElementById("message-error");
+    errMessage.textContent = "";
+
     let btnOtpCode = document.querySelector('button[name="OtpCode"]');
     btnOtpCode.style.display = "block";
     let btnEmail = document.querySelector('button[name="conFirmEmail"]');
@@ -56,30 +86,58 @@ function ForgotPassword() {
       }
     }, 1000);
   };
+
   // hàm gửi lại mail
   const handleReqMail = (e) => {
     e.preventDefault();
     try {
-      sendMailOtpcode(email.email);
-      countDownReqSendMail();
+      sendMailOtpcode(email.value);
+      handleSendMail();
     } catch (err) {
       console.log(err);
     }
   };
-  // hàm xác nhập otp code
+
+  // hàm sử lý khi xác nhận otp code
   const handleConFirmOtpCode = () => {
+    let FormConFirmOtp = document.querySelector('form[name="conFrimOtp"]');
+    FormConFirmOtp.style.display = "none";
+    let FormConFirmPassWord = document.querySelector(
+      'form[name="conFrimPassword"]'
+    );
+    FormConFirmPassWord.style.display = "block";
+  };
+
+  // hàm xác nhập otp code
+  const submitConFirmOtpCode = () => {
+    const errMessage = document.getElementById("message-error");
     try {
-      conFirmOtpCode(otpCode.value)
-        .then((value) => value.data)
-        .then((value) => {
-          if (value) {
-            alert("xác thực thành công");
-          } else {
-            alert("vui lòng kiểm tra lại mã otp");
-          }
-        });
+      conFirmOtpCode(otpCode.value).then((value) => {
+        if (value.data) {
+          handleConFirmOtpCode();
+          errMessage.textContent = "";
+        } else {
+          errMessage.textContent = "vui lòng kiểm tra lại mã otp !!!";
+        }
+      });
     } catch (err) {
       console.log(err);
+      errMessage.textContent = "vui lòng kiểm tra lại mã otp";
+    }
+  };
+
+  // hàm xác nhận mật khẩu
+  const submitChangePassword = async (e) => {
+    e.preventDefault();
+    setUser((user.email = email.value));
+    try {
+      await axios.put("http://localhost:3000/sendMail/editPassword", {
+        ...user,
+      });
+      errMessage.textContent = "Thay đổi mật khẩu thành công!!";
+      window.location.href = "/login";
+    } catch (err) {
+      errMessage.innerText = err.response.data.msg;
     }
   };
   return (
@@ -89,7 +147,9 @@ function ForgotPassword() {
           <div className="register_wrapper">
             <div id="login" className="user_box">
               <h1 className="account-title">Quên Mật khẩu</h1>
-              <form action="/sendMail" id="customer_register">
+              <span id="message-error"></span>
+
+              <form action="/sendMail" id="customer_register" name="conFrimOtp">
                 <div className="email input">
                   <label htmlFor="" className="icon-field">
                     <i className="fa fa-envelope"></i>
@@ -119,26 +179,25 @@ function ForgotPassword() {
                     onChange={onChangeSeletorOptCode}
                   />
                 </div>
-
+                {/* xác nhận mã otp */}
                 <button
                   style={{ display: "none" }}
                   name="OtpCode"
                   type="button"
                   className="btn-signin"
-                  onClick={handleConFirmOtpCode}
+                  onClick={submitConFirmOtpCode}
                 >
                   Xác thực
                 </button>
-
+                {/* xác nhận email */}
                 <button
                   name="conFirmEmail"
                   type="button"
                   className="btn-signin"
-                  onClick={handleBtnCick}
+                  onClick={submitSendMail}
                 >
                   Xác nhận
                 </button>
-
                 <div className="req_pass">
                   <button
                     type="button"
@@ -147,6 +206,59 @@ function ForgotPassword() {
                   >
                     Gửi lại mã (<span>30</span>)
                   </button>
+                </div>
+              </form>
+
+              {/* form đổi pass word */}
+              <form
+                // action="/sendMail"
+                name="conFrimPassword"
+                style={{ display: "none" }}
+              >
+                <div className="email input">
+                  <label htmlFor="" className="icon-field">
+                    <i className="fa fa-lock"></i>
+                  </label>
+                  <input
+                    type="password"
+                    className="text"
+                    name="password"
+                    placeholder="Nhập mật khẩu mới"
+                    size="32"
+                    required
+                    autoComplete="on"
+                    onChange={onChangeSeletorPassWord}
+                  />
+                </div>
+                <div className="email input">
+                  <label htmlFor="" className="icon-field">
+                    <i className="fa fa-lock"></i>
+                  </label>
+                  <input
+                    type="password"
+                    className="text"
+                    name="confirm_password"
+                    placeholder="Xác nhận mật khẩu mới"
+                    size="32"
+                    required
+                    autoComplete="on"
+                    onChange={onChangeSeletorPassWord}
+                  />
+                </div>
+                {/* xác nhận đổi mật khẩu */}
+                <button
+                  name="conFirmPassWord"
+                  type="button"
+                  className="btn-signin"
+                  onClick={submitChangePassword}
+                >
+                  Xác nhận
+                </button>
+
+                <div className="req_pass">
+                  <Link to="/" type="button">
+                    Hủy
+                  </Link>
                 </div>
               </form>
             </div>

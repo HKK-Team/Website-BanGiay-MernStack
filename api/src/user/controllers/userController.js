@@ -8,12 +8,7 @@ const userCtrl = {
         try {
             const {firstname,lastname, email, password,address,nationality,phonenumber} = req.body;
 
-            const user = await Users.findOne({email})
-            // check email
-            if(user) return res.status(400).json({msg: "The email already exists."})
-            // check password
-            if(password.length < 6) 
-                return res.status(400).json({msg: "Password is at least 6 characters long."})
+       
 
             // Password Encryption
             const passwordHash = await bcrypt.hash(password, 10)
