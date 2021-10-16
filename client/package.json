@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@babel/plugin-proposal-private-methods": "^7.14.5",
         "@emotion/react": "^11.4.1",
         "@emotion/styled": "^11.3.0",
         "@material-ui/core": "^4.12.3",
@@ -18,6 +19,7 @@
         "cloudinary": "^1.27.0",
         "fs": "^0.0.1-security",
         "google-map-react": "^2.1.10",
+        "nodemailer": "^6.7.0",
         "query-string": "^7.0.1",
         "react": "^17.0.2",
         "react-bootstrap": "^2.0.0-beta.6",
