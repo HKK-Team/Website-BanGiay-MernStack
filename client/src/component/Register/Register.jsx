@@ -3,7 +3,7 @@ import {
   conFirmEmail,
   sendMailOtpcode,
   conFirmOtpCode,
-  sendMailContext
+  sendMailContext,
 } from "../../api/mailSeviceApi";
 // import {Link} from 'react-router-dom'
 import axios from "axios";
@@ -11,9 +11,17 @@ import "./Register.css";
 
 export default function Register() {
   const [user, setUser] = useState({
-    firstname:'', lastname : '', email:'',confirm_password : '', password: '',address : '', nationality : '' ,phonenumber : '',
-})
-const [otpCode, setOtpCode] = useState();
+    firstname: "",
+    lastname: "",
+    email: "",
+    confirm_password: "",
+    password: "",
+    address: "",
+    nationality: "",
+    phonenumber: "",
+  });
+  const [isRegister, setIsRegister] = useState(false);
+  const [otpCode, setOtpCode] = useState();
   // lắng nghe input mã otp
   const onChangeSeletorOptCode = (e) => {
     const { value } = e.target;
@@ -63,8 +71,11 @@ const [otpCode, setOtpCode] = useState();
 
   // hàm sử lý khi xác nhận đăng ký
   const handleConFirmOtpCode = () => {
+    const errorMessage = document.getElementById("message-error");
+    errorMessage.innerText = "";
     let FormConFirmOtp = document.querySelector('form[name="conFrimOtp"]');
     FormConFirmOtp.style.display = "block";
+    handleSendMail();
     let FormConFirmPassWord = document.querySelector(
       'form[name="form-Register"]'
     );
@@ -102,13 +113,19 @@ const [otpCode, setOtpCode] = useState();
       .then((data) => {
         if (data.data) {
           try {
-            axios.post("http://localhost:5000/user/register", {
-              ...user,
-            });
-            localStorage.setItem("firstLogin", true);
-            errMessage.innerText = "Đăng ký tài khoản thành công!";
-            sendMailContext(user.email);
-            window.location.href = "/Login";
+            axios
+              .post("http://localhost:5000/user/register", {
+                ...user,
+              })
+              .then(() => {
+                localStorage.setItem("firstLogin", true);
+                errMessage.innerText = "Đăng ký tài khoản thành công!";
+                setIsRegister(true);
+                window.location.href = "/Login";
+              })
+              .catch((err) => {
+                errMessage.innerText = err.response.data.msg;
+              });
           } catch (err) {
             errMessage.innerText = err.response.data.msg;
           }
@@ -118,6 +135,15 @@ const [otpCode, setOtpCode] = useState();
         errMessage.innerText = err.response.data.msg;
       });
   };
+
+  // kiểm tra nếu đã đăng ký thì gửi mail xác nhận
+  if (isRegister) {
+    sendMailContext(user.email)
+      .then((data) => console.log("sendMail thanh cong"))
+      .catch((err) => {
+        console.log(err.response.data.msg);
+      });
+  }
 
   return (
     <section className="register">
@@ -199,10 +225,6 @@ const [otpCode, setOtpCode] = useState();
                     value={user.password}
                     onChange={onChangeInput}
                   />
-                  {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
-                    Mật khẩu phải chứa ít nhất một ký tự Latinh viết thường [a-z].
-                    Mật khẩu phải chứa ít nhất một ký tự Latinh viết hoa [A-Z].
-                    Mật khẩu phải có độ dài ít nhất 6 ký tự và tối đa 20 ký tự. */}
                 </div>
                 <div className="password input">
                   <label htmlFor="" className="icon-field">
@@ -212,24 +234,20 @@ const [otpCode, setOtpCode] = useState();
                     type="password"
                     id="password-user"
                     className="text"
-                    name = "confirm_password"
+                    name="confirm_password"
                     placeholder="Nhập lại mật khẩu"
                     size="32"
                     required
                     pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
                     autoComplete="on"
-                    value={user.confirm_password} 
-                    onChange={onChangeInput}                
+                    value={user.confirm_password}
+                    onChange={onChangeInput}
                   />
-                  {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
-                    Mật khẩu phải chứa ít nhất một ký tự Latinh viết thường [a-z].
-                    Mật khẩu phải chứa ít nhất một ký tự Latinh viết hoa [A-Z].
-                    Mật khẩu phải chứa ít nhất một ký tự đặc biệt như! @ # & ().
-                    Mật khẩu phải có độ dài ít nhất 6 ký tự và tối đa 20 ký tự. */}
                 </div>
                 <input type="submit" value="Đăng ký" className="btn-signin" />
               </form>
 
+              {/* form xác nhận mã otp */}
               <form
                 action="/sendMail"
                 id="customer_register"
@@ -274,11 +292,7 @@ const [otpCode, setOtpCode] = useState();
                 </button>
                 {/* xác nhận email */}
                 <div className="req_pass">
-                  <button
-                    type="button"
-                    onClick={handleReqMail}
-                    style={{ display: "none" }}
-                  >
+                  <button type="button" onClick={handleReqMail}>
                     Gửi lại mã (<span>30</span>)
                   </button>
                 </div>

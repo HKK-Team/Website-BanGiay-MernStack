@@ -57,30 +57,28 @@ class MailSevice {
 
   // xác thực email
   // [post] /sendMail/:email/conFirmEmail
-  conFirmEmail = async(req,res) =>{
+  conFirmEmail = async (req, res) => {
     let isEmail = true;
     const regex = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
-    if (!regex.test(req.params.email)){
-      isEmail = false
+    if (!regex.test(req.params.email)) {
+      isEmail = false;
       return res.status(400).json({ msg: "Trường này phải là Email." });
     }
-      
-      
+
     const email = req.params.email;
     const user = await Users.findOne({ email });
     // check email
-    if (user === null){
-      isEmail = false
+    if (user === null) {
+      isEmail = false;
       return res.status(400).json({ msg: "Email này không tồn tại." });
     }
     res.status(200).json(isEmail);
-  }
+  };
 
   // gửi mail mã otp xác nhận
   // [post] /sendMail/:email
   sendMailOtpcode = async (req, res) => {
     try {
-  
       this.createtOptCode();
       let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
@@ -121,12 +119,12 @@ class MailSevice {
       });
       let mailOptions = {
         from: this.#mailManage,
-        to: req.params.id,
+        to: req.params.email,
         subject: `Xác nhận đăng ký tài khoản `,
-        text: `Xin chào. 
-        Tài khoản với email ${req.params.id} của bạn đã được đăng ký bên chúng tôi.
-        Cảm ơn bạn đã xử dụng dịch vụ. Chúc bạn một ngày tốt lành
-        Trân trọng.`,
+        html: `<h1>Xin chào.</h1> 
+        <h3>Tài khoản với email <strong>${req.params.email}</strong> của bạn đã được đăng ký bên chúng tôi.<h3>
+        <h3>Cảm ơn bạn đã sử dụng dịch vụ. Chúc bạn một ngày tốt lành</h3>
+        <h2>Trân trọng.</h2>`,
       };
       transporter.sendMail(mailOptions);
       res.status(201).json("Send email successfully");
