@@ -6,6 +6,8 @@ import Title from "./../../component/ProductDetails/Titlebar/Titlebar";
 import ListAccount_Order from "../../component/ListAccount/Account_OrderManagement/ListAccount_Order";
 import Account_OrderManagement from "../../component/ListAccount/Account_OrderManagement/Account_OrderManagement";
 import { GlobalState } from "../../GlobalState";
+import ListAccount_OrderEmpty from "../../component/ListAccount/Account_OrderManagement_Empty/ListAccount_Order";
+import Account_OrderManagement_Empty from "../../component/ListAccount/Account_OrderManagement_Empty/Account_OrderManager_Empty";
 export default function Account_OderManagement() {
   // call api
   const state = useContext(GlobalState);
@@ -15,12 +17,13 @@ export default function Account_OderManagement() {
   const order = list_order.filter((item)=>{
     return item.user_id === profile._id
   })
-  // get last one list_order
-  const arr = (order[order.length-1])
-  // get object cart in object arr
-  const ar = (Object.assign({},arr.cart))
-  // conver object to array
-  const result = Object.keys(ar).map((key) => ar[key]);
+  if(order.length !== 0){
+      // get last one list_order
+    const arr = (order[order.length-1])
+    // get object cart in object arr
+    const ar = (Object.assign({},arr.cart))
+    // conver object to array
+    const result = Object.keys(ar).map((key) => ar[key]);
   return (
     <Fragment>
       <Header />
@@ -44,4 +47,17 @@ export default function Account_OderManagement() {
       <Footer />
     </Fragment>
   );
+  }else{
+    return(
+      <Fragment>
+        <Header />
+        <Title name="Danh sách đơn hàng" />
+        <ListAccount_OrderEmpty  
+          order = {<Account_OrderManagement_Empty/>}
+          title="DANH SÁCH ĐƠN HÀNG TRÊN WEBSITE"
+        />
+        <Footer />
+      </Fragment>
+    );
+  }
 }

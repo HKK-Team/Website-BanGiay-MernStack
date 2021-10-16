@@ -71,13 +71,16 @@ export default function ListAccount(props) {
             <div className="account_box-menu">
               <h2>Tài Khoản</h2>
               <Link to='/Profile'>
-                <i class="fa fa-user"></i>Thông tin tài khoản
+                <i class="fa fa-user"></i> Thông tin tài khoản
               </Link>
               <Link to='/AccountOderManagement'>
-                <i class="fa fa-list"></i>Quản lý đơn hàng
+                <i class="fa fa-list"></i> Quản lý đơn hàng
               </Link>
+              <Link to="/Charge_Password">
+                  <i class="fa fa-lock"></i> Đổi mật khẩu
+                </Link>
               <Link to='/AccountAddress'>
-                <i class="fa fa-map-marker"></i>Danh sách địa chỉ cửa hàng
+                <i class="fa fa-map-marker"></i> Danh sách địa chỉ cửa hàng
               </Link>
             </div>
             <div className="account_box-info">
