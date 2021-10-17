@@ -15,8 +15,9 @@ function ForgotPassword() {
     confirm_password: "",
     email: "",
   });
-
+  // khai báo error message
   const errMessage = document.getElementById("message-error");
+
   // lắng nghe input password
   const onChangeSeletorPassWord = (e) => {
     const { name, value } = e.target;
@@ -55,7 +56,6 @@ function ForgotPassword() {
 
   // xứ lý sự kiện gửi lại mail
   const handleSendMail = () => {
-    const errMessage = document.getElementById("message-error");
     errMessage.textContent = "";
 
     let btnOtpCode = document.querySelector('button[name="OtpCode"]');
@@ -110,7 +110,6 @@ function ForgotPassword() {
 
   // hàm xác nhập otp code
   const submitConFirmOtpCode = () => {
-    const errMessage = document.getElementById("message-error");
     try {
       conFirmOtpCode(otpCode.value).then((value) => {
         if (value.data) {

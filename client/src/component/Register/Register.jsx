@@ -10,6 +10,8 @@ import axios from "axios";
 import "./Register.css";
 
 export default function Register() {
+  // khai báo error message
+  const errMessage = document.getElementById("message-error");
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -84,7 +86,6 @@ export default function Register() {
 
   // xứ lý sự kiện gửi lại mail
   const handleSendMail = () => {
-    const errMessage = document.getElementById("message-error");
     errMessage.textContent = "";
 
     let selector = document.querySelector(".req_pass button");
@@ -108,7 +109,6 @@ export default function Register() {
 
   // hàm xác nhận otp code
   const submitConFirmOtpCode = () => {
-    const errMessage = document.getElementById("message-error");
     conFirmOtpCode(otpCode.value)
       .then((data) => {
         if (data.data) {
