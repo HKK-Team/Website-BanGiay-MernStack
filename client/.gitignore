@@ -6,6 +6,7 @@
 .pnp.js
 .history
 .vscode
+/build
 # testing
 /coverage
 
