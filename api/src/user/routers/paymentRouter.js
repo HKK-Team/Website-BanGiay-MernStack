@@ -6,4 +6,6 @@ router.route('/creat_payment')
     .post(paymentCtrl.creatPayment)
 router.route('/CancelOder')
     .post(paymentCtrl.cancelOrders)
+router.route('/ConfirmOrder')
+    .post(paymentCtrl.ConfirmOrder)
 module.exports = router

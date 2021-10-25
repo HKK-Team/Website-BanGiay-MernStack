@@ -25,7 +25,7 @@ export default function PaymentMain() {
   // useState Logged
   const [payment,setPayment] = useState({
     user_id : profile._id, fullName : profile.firstname + " " + profile.lastname,
-    email : profile.email,phone_number : profile.phonenumber , address : profile.address, cart : storedArray,total_price : sum
+    email : profile.email,phone_number : profile.phonenumber , address : profile.address, cart : storedArray,total_price : sum,payment_status : ''
   })
   window.sessionStorage.setItem('payment', JSON.stringify(payment))
   const onChangeInput = e =>{
