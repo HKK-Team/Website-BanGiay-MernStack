@@ -86,6 +86,7 @@
 }
 /* btn-oder */
 .btn-oder{
+  margin-top: 10px;
   float: right;
   color: white;
   background-color: #f72b3f;

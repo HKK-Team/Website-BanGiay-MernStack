@@ -5,9 +5,9 @@ const paymentCtrl = {
     // creat bills
     creatPayment : async (req,res) =>{
         try {
-            const {user_id,paymentID,fullName,email,phone_number,address,cart,total_price,status} = req.body;
+            const {user_id,paymentID,fullName,email,phone_number,address,cart,total_price,status,payment_status} = req.body;
             const newPayment = new Payments({
-                user_id,paymentID,fullName,email,phone_number,address,cart,total_price,status
+                user_id,paymentID,fullName,email,phone_number,address,cart,total_price,status,payment_status
             })
             // Save mongodb
             await newPayment.save()
@@ -36,6 +36,18 @@ const paymentCtrl = {
             if(!check) return res.status(400).json({msg: "Wrong email or password, Please re-enter your account or password."})
             await Payments.findOneAndUpdate({_id: req.body.id}, {
                 status
+            })
+            res.json({msg: "Updated a Payments"})
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    ConfirmOrder: async(req, res) =>{
+        try {
+            const {status,payment_status} = req.body;
+            // search id Payments and cancel order to mongodb
+            await Payments.findOneAndUpdate({_id: req.body.id}, {
+                status,payment_status
             })
             res.json({msg: "Updated a Payments"})
         } catch (err) {

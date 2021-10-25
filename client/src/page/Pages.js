@@ -24,6 +24,7 @@ import Payment from "./Payment/Payment";
 import PaymentNoLogged from "./Payment/PaymentNoLogged";
 import PaymentMethods from "../page/PaymentMethods/PaymentMethods";
 import Charge_Password from "../page/Account/Charge_password";
+import OrderConfirmation from "../page/Account/Order_Confirmation";
 // admin
 import NavBarAdmin from "../admins/NavBarAdmin";
 function Pages() {
@@ -74,6 +75,7 @@ function Pages() {
       <Route exact path="/UpdateAccount" component={UpdateAccount}></Route>
       <Route exact path="/PaymentMethods" component={PaymentMethods}></Route>
       <Route exact path="/Charge_Password" component={Charge_Password}></Route>
+      <Route exact path="/Account_OrderConfirmation" component={OrderConfirmation}></Route>
       {/* admin  */}
       <NavBarAdmin />
     </Switch>

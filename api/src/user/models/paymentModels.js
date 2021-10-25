@@ -32,7 +32,10 @@ const paymentSchema = new mongoose.Schema({
     status:{
         type: String,
         default: "Chưa duyệt đơn hàng"
-    }    
+    },
+    payment_status : {
+        type : String,
+    }   
 }, 
 {
     timestamps: true

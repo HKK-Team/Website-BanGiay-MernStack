@@ -61,6 +61,8 @@ export default function PaymentMethod() {
     });
     return () => null;
   }, [checkedPayPal]);
+  const payment_status = checked===true ? "Chưa thanh toán" : "Đã thanh toán";
+  payment.payment_status = payment_status;
   return (
     <div className="main">
       <div className="main_header">

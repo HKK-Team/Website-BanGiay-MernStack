@@ -85,7 +85,19 @@ export default function BillList() {
         headerName: "Ngày Mua",
         type: "date",
         width: 300,
-      },
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      type: "string",
+      width: 200,
+    },
+    {
+      field: "payment_status",
+      headerName: "Payment Status",
+      type: "string",
+      width: 150,
+    },
     {
       field: "action",
       headerName: "Action",

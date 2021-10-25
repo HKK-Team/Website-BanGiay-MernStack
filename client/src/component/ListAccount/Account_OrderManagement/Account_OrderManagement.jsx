@@ -30,5 +30,5 @@ export default function Account_OrderManagement(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }

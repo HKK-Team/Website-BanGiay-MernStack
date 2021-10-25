@@ -76,18 +76,18 @@ export default function ListAccount(props) {
               <Link to='/AccountOderManagement'>
                 <i class="fa fa-list"></i> Quản lý đơn hàng
               </Link>
+              <Link to="/Account_OrderConfirmation">
+                  <i class="fa fa-list-alt"></i> Xác nhận đã nhận được hàng
+              </Link>
               <Link to="/Charge_Password">
                   <i class="fa fa-lock"></i> Đổi mật khẩu
-                </Link>
+              </Link>
               <Link to='/AccountAddress'>
                 <i class="fa fa-map-marker"></i> Danh sách địa chỉ cửa hàng
               </Link>
             </div>
             <div className="account_box-info">
                 <h2 className="title_detail">Danh sách đơn hàng mới nhất</h2>
-                <button className="btn-oder" onClick={OpenConfirmPassword}>
-                    Lưu thay đổi
-                </button>
                 {/* <p>Bạn chưa đặt mua sản phẩm.</p> */}
                 <div className="product-oder-header">
                     <h3>Tình trạng</h3>
@@ -97,6 +97,9 @@ export default function ListAccount(props) {
                     <h3>Yêu cầu</h3>
                 </div>
                 {props.order}
+                <button className="btn-oder" onClick={OpenConfirmPassword}>
+                    Lưu thay đổi
+                </button>
             </div>
           </div>
         </div>

@@ -19,6 +19,9 @@ export default function ListAccount(props) {
                 <Link to="/AccountOderManagement">
                   <i class="fa fa-list"></i> Quản lý đơn hàng
                 </Link>
+                <Link to="/Account_OrderConfirmation">
+                  <i class="fa fa-list-alt"></i> Xác nhận đã nhận được hàng
+                </Link>
                 <Link to="/Charge_Password">
                   <i class="fa fa-lock"></i> Đổi mật khẩu
                 </Link>

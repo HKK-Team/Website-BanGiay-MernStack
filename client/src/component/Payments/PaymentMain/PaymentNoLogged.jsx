@@ -22,7 +22,7 @@ export default function PaymentMain() {
   // useState no login
   const [payments,setpayments] = useState({
     user_id : '', fullName : '',phone_number : '',
-    email : '', address : '', cart : storedArray,total_price : sum
+    email : '', address : '', cart : storedArray,total_price : sum,payment_status :''
   })
   // onchage no login
   const onChangeInput = e =>{
