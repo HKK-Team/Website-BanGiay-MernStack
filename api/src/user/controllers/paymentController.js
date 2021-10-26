@@ -6,6 +6,10 @@ const paymentCtrl = {
     creatPayment : async (req,res) =>{
         try {
             const {user_id,paymentID,fullName,email,phone_number,address,cart,total_price,status,payment_status} = req.body;
+            if(fullName==="") return res.status(400).json({msg : "Fullname is empty. Please enter again!"});
+            if(email ==="") return res.status(400).json({msg : "Email is empty. Please enter again!"});
+            if(phone_number ==="") return res.status(400).json({msg : "Phone number is empty. Please enter again!"});
+            if(address ==="") return res.status(400).json({msg : "Adress is empty. Please enter again!"});
             const newPayment = new Payments({
                 user_id,paymentID,fullName,email,phone_number,address,cart,total_price,status,payment_status
             })
