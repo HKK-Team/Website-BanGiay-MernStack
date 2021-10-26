@@ -31,7 +31,7 @@ export default function ListAccount(props) {
   const checkk = () => {
     return (
       <Link to="/AccountOderManagement">
-        <span className="btn-oder">Xem đơn hàng của bạn</span>
+        <span className="btn-oder">Xem chi tiết đơn hàng của bạn</span>
       </Link>
     );
   };

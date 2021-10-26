@@ -50,11 +50,6 @@ export default function UserList() {
       width: 260,
     },
     {
-      field: "transaction",
-      headerName: "Transaction Volume",
-      width: 160,
-    },
-    {
       field: "action",
       headerName: "Action",
       width: 150,
