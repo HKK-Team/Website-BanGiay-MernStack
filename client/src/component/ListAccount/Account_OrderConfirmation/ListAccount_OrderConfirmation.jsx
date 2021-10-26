@@ -16,6 +16,27 @@ export default function ListAccount(props) {
   const [confirm] = useState({
     id : arr._id,status : 'Giao hàng thành công',payment_status : 'Đã thanh toán'
   })
+  const check = () =>{
+    if(arr.status=== "Đang giao hàng")
+    {
+      return(
+        <form onSubmit = {Confirmation}>
+          <button className="btn-oder" >
+            Xác nhận đã nhận được hàng
+          </button>
+        </form>
+      );
+    }
+  }
+  const checkk = () =>{
+    return(
+      <Link to = "/AccountOderManagement">
+        <span className="btn-oder" >
+            Xem đơn hàng của bạn
+        </span>
+      </Link>
+    )
+  }
   const Confirmation = async e =>{
     e.preventDefault()
     try {
@@ -64,11 +85,7 @@ export default function ListAccount(props) {
                     <h3>Vận chuyển</h3>
                 </div>
                 {props.order}
-                <form onSubmit = {Confirmation}>
-                  <button className="btn-oder" >
-                      Xác nhận đã nhận được hàng
-                  </button>
-                </form>
+                {arr.status ==="Đang giao hàng" ? check() : checkk()}
             </div>
           </div>
         </div>

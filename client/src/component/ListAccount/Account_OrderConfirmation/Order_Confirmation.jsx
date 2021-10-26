@@ -5,7 +5,7 @@ export default function Account_OrderManagement(props) {
     <div className="order-box">
       <div className="order-oder-box">
         <div className="order-oder-status">
-          <p>#{props.id.slice(0,10)}</p>
+          <p>#{props.id.slice(0,12)}</p>
         </div>
         {/*  */}
         <div className="order-oder-list">

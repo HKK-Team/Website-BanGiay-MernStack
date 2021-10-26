@@ -17,6 +17,7 @@
         "@testing-library/user-event": "^12.1.10",
         "axios": "^0.21.1",
         "cloudinary": "^1.27.0",
+        "es-abstract": "^1.19.1",
         "fs": "^0.0.1-security",
         "google-map-react": "^2.1.10",
         "nodemailer": "^6.7.0",
