@@ -5,6 +5,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {GlobalState} from '../../../GlobalState';
+import { toastSuccess } from "../ToastMassage/ToastMassage";
 export default function Topbar() {
   const state = useContext(GlobalState);
   const [admin] = state.adminApi.admin;
@@ -35,7 +36,7 @@ export default function Topbar() {
             <Settings />
           </div>
           <div className="topbarIconContainer">
-          <img src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg" alt="" className="topAvatar" onClick={()=>{alert("Hello Admin " + admin.username)}}/>
+          <img src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg" alt="" className="topAvatar" onClick={()=>{toastSuccess("Hello Admin " + admin.username)}}/>
           </div>
           <div className="topbarIconContainer">
           <Link to="/Admin" onClick={logoutUser}>

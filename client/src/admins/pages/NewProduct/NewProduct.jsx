@@ -1,241 +1,263 @@
 import "./NewProduct.css";
-import { useState} from "react"
-import axios from "axios"
+import { useState } from "react";
+import axios from "axios";
+import { toastError, toastPromise } from "../../components/ToastMassage/ToastMassage";
 // thêm sản phẩm mới
 export default function NewProduct() {
   // New Product
   const [products, setProducts] = useState({
-    image : '',images1 :'',images2 :'',images3:'',images4:'',images5:'',
-    nameProduct : '',idCategory_product :'',color : '',detailCategory:'',
-    nameCategoryProduct:'',size1 : '',size2 :'',size3 :'',
-    size4 : '',size5 :'',price :''
+    image: "",
+    images1: "",
+    images2: "",
+    images3: "",
+    images4: "",
+    images5: "",
+    nameProduct: "",
+    idCategory_product: "",
+    color: "",
+    detailCategory: "",
+    nameCategoryProduct: "",
+    size1: "",
+    size2: "",
+    size3: "",
+    size4: "",
+    size5: "",
+    price: "",
   });
   // set New Product
-  const onChangeInput = e =>{
-    const {name, value} = e.target;
-    setProducts({...products, [name]:value,})
-  }
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setProducts({ ...products, [name]: value });
+  };
   // post from client to server
-  const NewProductSubmit = async e =>{
-      e.preventDefault()
-      try {
-          await axios.post('http://localhost:5000/admin/Create_Product', {...products})
-          alert("Create Users Succesfully!")
-          window.location.href = "/productsAdmin";
-      } catch (err) {
-          alert(err.response.data.msg)
+  const NewProductSubmit = async (e) => {
+    e.preventDefault();
+    await toastPromise(
+      axios.post("http://localhost:5000/admin/Create_Product", { ...products }),
+      () => {
+        setTimeout(() => (window.location.href = "/productsAdmin"), 2000);
+        return "Create Users Succesfully!";
       }
+    );
   };
   // save image to cloud
-  const handleUpload = async e =>{
-    e.preventDefault()
+  const handleUpload = async (e) => {
+    e.preventDefault();
     try {
-        const file = e.target.files[0]
-        
-        if(!file) return alert("File not exist.")
+      const file = e.target.files[0];
 
-        if(file.size > 1024 * 1024) // 1mb
-            return alert("Size too large!")
+      if (!file) return toastError("File not exist.");
 
-        if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-            return alert("File format is incorrect.")
+      if (file.size > 1024 * 1024)
+        // 1mb
+        return toastError("Size too large!");
 
-        let formData = new FormData()
-        formData.append('file', file)
+      if (file.type !== "image/jpeg" && file.type !== "image/png")
+        // 1mb
+        return toastError("File format is incorrect.");
 
-        const res = await axios.post('/admin/upload', formData, {
-            headers: {'content-type': 'multipart/form-data'}
-        })
-        setProducts({...products,image : res.data.image})
+      let formData = new FormData();
+      formData.append("file", file);
 
+      const res = await axios.post("/admin/upload", formData, {
+        headers: { "content-type": "multipart/form-data" },
+      });
+      setProducts({ ...products, image: res.data.image });
     } catch (err) {
-        alert(err.response.data.msg)
+      toastError(err.response.data.msg);
     }
   };
-    // save image to cloud
-    const handleUpload1 = async e =>{
-      e.preventDefault()
-      try {
-          const file = e.target.files[0]
-          
-          if(!file) return alert("File not exist.")
-  
-          if(file.size > 1024 * 1024) // 1mb
-              return alert("Size too large!")
-  
-          if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-              return alert("File format is incorrect.")
-  
-          let formData = new FormData()
-          formData.append('file', file)
-  
-          const res = await axios.post('/admin/upload', formData, {
-              headers: {'content-type': 'multipart/form-data'}
-          })
-          setProducts({...products,images1 : res.data.image})
-  
-      } catch (err) {
-          alert(err.response.data.msg)
-      }
-    };
-      // save image to cloud
-  const handleUpload2 = async e =>{
-    e.preventDefault()
+  // save image to cloud
+  const handleUpload1 = async (e) => {
+    e.preventDefault();
     try {
-        const file = e.target.files[0]
-        
-        if(!file) return alert("File not exist.")
+      const file = e.target.files[0];
 
-        if(file.size > 1024 * 1024) // 1mb
-            return alert("Size too large!")
+      if (!file) return toastError("File not exist.");
 
-        if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-            return alert("File format is incorrect.")
+      if (file.size > 1024 * 1024)
+        // 1mb
+        return toastError("Size too large!");
 
-        let formData = new FormData()
-        formData.append('file', file)
+      if (file.type !== "image/jpeg" && file.type !== "image/png")
+        // 1mb
+        return toastError("File format is incorrect.");
 
-        const res = await axios.post('/admin/upload', formData, {
-            headers: {'content-type': 'multipart/form-data'}
-        })
-        setProducts({...products,images2 : res.data.image})
+      let formData = new FormData();
+      formData.append("file", file);
 
+      const res = await axios.post("/admin/upload", formData, {
+        headers: { "content-type": "multipart/form-data" },
+      });
+      setProducts({ ...products, images1: res.data.image });
     } catch (err) {
-        alert(err.response.data.msg)
+      toastError(err.response.data.msg);
     }
   };
-    // save image to cloud
-    const handleUpload3 = async e =>{
-      e.preventDefault()
-      try {
-          const file = e.target.files[0]
-          
-          if(!file) return alert("File not exist.")
-  
-          if(file.size > 1024 * 1024) // 1mb
-              return alert("Size too large!")
-  
-          if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-              return alert("File format is incorrect.")
-  
-          let formData = new FormData()
-          formData.append('file', file)
-  
-          const res = await axios.post('/admin/upload', formData, {
-              headers: {'content-type': 'multipart/form-data'}
-          })
-          setProducts({...products,images3 : res.data.image})
-  
-      } catch (err) {
-          alert(err.response.data.msg)
-      }
-    };
-      // save image to cloud
-  const handleUpload4 = async e =>{
-    e.preventDefault()
+  // save image to cloud
+  const handleUpload2 = async (e) => {
+    e.preventDefault();
     try {
-        const file = e.target.files[0]
-        
-        if(!file) return alert("File not exist.")
+      const file = e.target.files[0];
 
-        if(file.size > 1024 * 1024) // 1mb
-            return alert("Size too large!")
+      if (!file) return toastError("File not exist.");
 
-        if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-            return alert("File format is incorrect.")
+      if (file.size > 1024 * 1024)
+        // 1mb
+        return toastError("Size too large!");
 
-        let formData = new FormData()
-        formData.append('file', file)
+      if (file.type !== "image/jpeg" && file.type !== "image/png")
+        // 1mb
+        return toastError("File format is incorrect.");
 
-        const res = await axios.post('/admin/upload', formData, {
-            headers: {'content-type': 'multipart/form-data'}
-        })
-        setProducts({...products,images4 : res.data.image})
+      let formData = new FormData();
+      formData.append("file", file);
 
+      const res = await axios.post("/admin/upload", formData, {
+        headers: { "content-type": "multipart/form-data" },
+      });
+      setProducts({ ...products, images2: res.data.image });
     } catch (err) {
-        alert(err.response.data.msg)
+      toastError(err.response.data.msg);
     }
   };
-    // save image to cloud
-    const handleUpload5 = async e =>{
-      e.preventDefault()
-      try {
-          const file = e.target.files[0]
-          
-          if(!file) return alert("File not exist.")
-  
-          if(file.size > 1024 * 1024) // 1mb
-              return alert("Size too large!")
-  
-          if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-              return alert("File format is incorrect.")
-  
-          let formData = new FormData()
-          formData.append('file', file)
-  
-          const res = await axios.post('/admin/upload', formData, {
-              headers: {'content-type': 'multipart/form-data'}
-          })
-          setProducts({...products,images5 : res.data.image})
-  
-      } catch (err) {
-          alert(err.response.data.msg)
-      }
-    };
+  // save image to cloud
+  const handleUpload3 = async (e) => {
+    e.preventDefault();
+    try {
+      const file = e.target.files[0];
+
+      if (!file) return toastError("File not exist.");
+
+      if (file.size > 1024 * 1024)
+        // 1mb
+        return toastError("Size too large!");
+
+      if (file.type !== "image/jpeg" && file.type !== "image/png")
+        // 1mb
+        return toastError("File format is incorrect.");
+
+      let formData = new FormData();
+      formData.append("file", file);
+
+      const res = await axios.post("/admin/upload", formData, {
+        headers: { "content-type": "multipart/form-data" },
+      });
+      setProducts({ ...products, images3: res.data.image });
+    } catch (err) {
+      toastError(err.response.data.msg);
+    }
+  };
+  // save image to cloud
+  const handleUpload4 = async (e) => {
+    e.preventDefault();
+    try {
+      const file = e.target.files[0];
+
+      if (!file) return toastError("File not exist.");
+
+      if (file.size > 1024 * 1024)
+        // 1mb
+        return toastError("Size too large!");
+
+      if (file.type !== "image/jpeg" && file.type !== "image/png")
+        // 1mb
+        return toastError("File format is incorrect.");
+
+      let formData = new FormData();
+      formData.append("file", file);
+
+      const res = await axios.post("/admin/upload", formData, {
+        headers: { "content-type": "multipart/form-data" },
+      });
+      setProducts({ ...products, images4: res.data.image });
+    } catch (err) {
+      toastError(err.response.data.msg);
+    }
+  };
+  // save image to cloud
+  const handleUpload5 = async (e) => {
+    e.preventDefault();
+    try {
+      const file = e.target.files[0];
+
+      if (!file) return toastError("File not exist.");
+
+      if (file.size > 1024 * 1024)
+        // 1mb
+        return toastError("Size too large!");
+
+      if (file.type !== "image/jpeg" && file.type !== "image/png")
+        // 1mb
+        return toastError("File format is incorrect.");
+
+      let formData = new FormData();
+      formData.append("file", file);
+
+      const res = await axios.post("/admin/upload", formData, {
+        headers: { "content-type": "multipart/form-data" },
+      });
+      setProducts({ ...products, images5: res.data.image });
+    } catch (err) {
+      toastError(err.response.data.msg);
+    }
+  };
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
       <div className="addProductItem">
         <label>Hình ảnh main</label>
-        <input type="file" id="file" onChange = {handleUpload}/>
+        <input type="file" id="file" onChange={handleUpload} />
       </div>
       <div className="addProductItem">
         <label>Hình ảnh 1</label>
-        <input type="file" id="file" onChange = {handleUpload1}/>
+        <input type="file" id="file" onChange={handleUpload1} />
       </div>
       <div className="addProductItem">
         <label>Hình ảnh 2</label>
-        <input type="file" id="file" onChange = {handleUpload2}/>
+        <input type="file" id="file" onChange={handleUpload2} />
       </div>
       <div className="addProductItem">
         <label>Hình ảnh 3</label>
-        <input type="file" id="file" onChange = {handleUpload3}/>
+        <input type="file" id="file" onChange={handleUpload3} />
       </div>
       <div className="addProductItem">
         <label>Hình ảnh 4</label>
-        <input type="file" id="file" onChange = {handleUpload4}/>
+        <input type="file" id="file" onChange={handleUpload4} />
       </div>
       <div className="addProductItem">
         <label>Hình ảnh 5</label>
-        <input type="file" id="file" onChange = {handleUpload5}/>
+        <input type="file" id="file" onChange={handleUpload5} />
       </div>
       <form className="addProductForm" onSubmit={NewProductSubmit}>
         <div className="addProductItem">
           <label>Product name</label>
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Product name"
-            name = "nameProduct"
+            name="nameProduct"
             required
-            value={products.nameProduct} 
-            onChange={onChangeInput}  
+            value={products.nameProduct}
+            onChange={onChangeInput}
           />
         </div>
         <div className="addProductItem">
           <label>Mã sản phẩm</label>
-          <input 
-            type="text" 
-            placeholder="Mã sản phẩm" 
-            name = "idCategory_product"
+          <input
+            type="text"
+            placeholder="Mã sản phẩm"
+            name="idCategory_product"
             required
-            value={products.idCategory_product} 
-            onChange={onChangeInput}  
+            value={products.idCategory_product}
+            onChange={onChangeInput}
           />
         </div>
         <div className="addProductItem">
           <label>Màu sắc</label>
-          <select name="color" id="active" onChange={onChangeInput} >
-            <option value="">--------------------Select--------------------</option>
+          <select name="color" id="active" onChange={onChangeInput}>
+            <option value="">
+              --------------------Select--------------------
+            </option>
             <option value="Trắng">Trắng</option>
             <option value="Đen">Đen</option>
             <option value="Đỏ">Đỏ</option>
@@ -254,8 +276,10 @@ export default function NewProduct() {
         </div>
         <div className="addProductItem">
           <label>Loại sản phẩm</label>
-          <select name="detailCategory" id="active" onChange={onChangeInput} >
-            <option value="">--------------------Select--------------------</option>
+          <select name="detailCategory" id="active" onChange={onChangeInput}>
+            <option value="">
+              --------------------Select--------------------
+            </option>
             <option value="hunter">Hunter</option>
             <option value="sandal">Sandal</option>
             <option value="giaythethao">Giày thể thao</option>
@@ -267,8 +291,14 @@ export default function NewProduct() {
         </div>
         <div className="addProductItem">
           <label>Tên loại sản phẩm</label>
-          <select name = "nameCategoryProduct" id="active" onChange={onChangeInput} >
-            <option value="">--------------------Select--------------------</option>
+          <select
+            name="nameCategoryProduct"
+            id="active"
+            onChange={onChangeInput}
+          >
+            <option value="">
+              --------------------Select--------------------
+            </option>
             <option value="Hunter Nam">Hunter Nam</option>
             <option value="Hunter Nữ">Hunter Nữ</option>
             <option value="Gosto">Gosto</option>
@@ -279,67 +309,67 @@ export default function NewProduct() {
         </div>
         <div className="addProductItem">
           <label>Số size 1</label>
-          <input 
-            type="number" 
-            placeholder="size1..." 
-            name = "size1"
+          <input
+            type="number"
+            placeholder="size1..."
+            name="size1"
             required
-            value={products.size1} 
+            value={products.size1}
             onChange={onChangeInput}
           />
         </div>
         <div className="addProductItem">
           <label>Số size 2</label>
-          <input 
-            type="number" 
-            placeholder="size2..." 
-            name = "size2"
+          <input
+            type="number"
+            placeholder="size2..."
+            name="size2"
             required
-            value={products.size2} 
+            value={products.size2}
             onChange={onChangeInput}
           />
         </div>
         <div className="addProductItem">
           <label>Số size 3</label>
-          <input 
-            type="number" 
-            placeholder="size3..." 
-            name = "size3"
+          <input
+            type="number"
+            placeholder="size3..."
+            name="size3"
             required
-            value={products.size3} 
+            value={products.size3}
             onChange={onChangeInput}
           />
         </div>
         <div className="addProductItem">
           <label>Số size 4</label>
-          <input 
-            type="number" 
-            placeholder="size4..." 
-            name = "size4"
+          <input
+            type="number"
+            placeholder="size4..."
+            name="size4"
             required
-            value={products.size4} 
+            value={products.size4}
             onChange={onChangeInput}
           />
         </div>
         <div className="addProductItem">
           <label>Số size 5</label>
-          <input 
-            type="number" 
-            placeholder="size5..." 
-            name = "size5"
+          <input
+            type="number"
+            placeholder="size5..."
+            name="size5"
             required
-            value={products.size5} 
+            value={products.size5}
             onChange={onChangeInput}
           />
         </div>
         <div className="addProductItem">
           <label>Giá</label>
-          <input 
-            type="number" 
-            placeholder="Giá" 
-            name = "price"
+          <input
+            type="number"
+            placeholder="Giá"
+            name="price"
             required
-            value={products.price} 
+            value={products.price}
             onChange={onChangeInput}
           />
         </div>

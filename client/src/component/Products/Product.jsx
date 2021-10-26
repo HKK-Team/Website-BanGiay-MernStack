@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./Product.css";
 import iconNew from "../../images/images/new.webp";
 import { Link } from "react-router-dom";
+import { toastInfor, toastSuccess } from "../../admins/components/ToastMassage/ToastMassage";
 export default function Product(props) {
   // props là dữ liệu được lưu trong mảng
   const [sizebychoice, setsizebychoice] = useState(0);
@@ -11,7 +12,7 @@ export default function Product(props) {
   function eventaddcart(e) {
     e.preventDefault();
     if (sizebychoice === 0) {
-      alert("Vui lòng chọn size sản phẩm !!");
+      toastInfor("Vui lòng chọn size sản phẩm !!");
     } else {
       const settings = {
         idproduct: props.key,
@@ -30,14 +31,14 @@ export default function Product(props) {
         var data = [];
         data.push(settings);
         sessionStorage.setItem("settings", JSON.stringify(data));
-        alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+        toastSuccess("Sản phẩm đã được thêm vào giỏ hàng !!!");
       } else {
         data = JSON.parse(sessionStorage.getItem("settings"));
         if (data.map((e) => e.id_product).indexOf(settings.id_product) === -1) {
           data.push(settings);
-          alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+          toastSuccess("Sản phẩm đã được thêm vào giỏ hàng !!!");
         } else {
-          alert("Sản phẩm đã tồn tại trong giỏ hàng !!!");
+          toastInfor("Sản phẩm đã tồn tại trong giỏ hàng !!!");
         }
         sessionStorage.setItem("settings", JSON.stringify(data));
       }

@@ -5,6 +5,10 @@ import "./PaymentMethod.css";
 import logo from "./../../../images/images/CôngtyTNHHABC.png";
 import axios from "axios";
 import PaypalButton from "../../PaymentPayPal/PaypalButton";
+import {
+  toastPromise,
+  toastSuccess,
+} from "../../../admins/components/ToastMassage/ToastMassage";
 export default function PaymentMethod() {
   // get information payment
   const payment = JSON.parse(sessionStorage.getItem("payment"));
@@ -23,24 +27,42 @@ export default function PaymentMethod() {
   // post
   const paymentSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post("http://localhost:5000/payment/creat_payment", payment);
-      alert("You have successfully placed your order!");
-      window.sessionStorage.removeItem("settings");
-      window.sessionStorage.removeItem("payment");
-      window.confirm("Cảm ơn bạn đã đặt hàng tại hệ thống Cửa Hàng HKK Team! Quay lại trang chủ để tiếp tục mua hàng nhé!")
-      window.location.href = "/";
-    } catch (err) {}
+
+    await toastPromise(
+      axios.post("http://localhost:5000/payment/creat_payment", payment),
+      () => {
+        window.sessionStorage.removeItem("settings");
+        window.sessionStorage.removeItem("payment");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+        setTimeout(() => {
+          toastSuccess(
+            "Cảm ơn bạn đã đặt hàng tại hệ thống Cửa Hàng HKK Team! Quay lại trang chủ để tiếp tục mua hàng nhé!"
+          );
+        }, 1000);
+        return "You have successfully placed your order!";
+      }
+    );
   };
   // payment with paypal
   const tranSuccess = async () => {
-    await axios.post("http://localhost:5000/payment/creat_payment",payment
+    await toastPromise(
+      axios.post("http://localhost:5000/payment/creat_payment", payment),
+      () => {
+        window.sessionStorage.removeItem("settings");
+        window.sessionStorage.removeItem("payment");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+        setTimeout(() => {
+          toastSuccess(
+            "Cảm ơn bạn đã đặt hàng tại hệ thống Cửa Hàng HKK Team! Quay lại trang chủ để tiếp tục mua hàng nhé!"
+          );
+        }, 1000);
+        return "You have successfully placed your order!";
+      }
     );
-    alert("You have successfully placed your order!");
-    window.sessionStorage.removeItem("settings");
-    window.sessionStorage.removeItem("payment");
-    window.confirm("Cảm ơn bạn đã đặt hàng tại hệ thống Cửa Hàng HKK Team! Quay lại trang chủ để tiếp tục mua hàng nhé!")
-    window.location.href = "/";
   };
   // checked radio
   const [checked, setchecked] = useState(false);
@@ -61,7 +83,7 @@ export default function PaymentMethod() {
     });
     return () => null;
   }, [checkedPayPal]);
-  const payment_status = checked===true ? "Chưa thanh toán" : "Đã thanh toán";
+  const payment_status = checked === true ? "Chưa thanh toán" : "Đã thanh toán";
   payment.payment_status = payment_status;
   return (
     <div className="main">
@@ -142,7 +164,11 @@ export default function PaymentMethod() {
             >
               Total: $ {Math.round(sum / 23000).toLocaleString()}
             </h3>
-            <PaypalButton total={sum} tranSuccess={tranSuccess} currency="USD"/>
+            <PaypalButton
+              total={sum}
+              tranSuccess={tranSuccess}
+              currency="USD"
+            />
           </div>
         ) : (
           <div></div>

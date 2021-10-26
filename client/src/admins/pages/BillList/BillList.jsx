@@ -4,6 +4,7 @@ import { DeleteOutline } from "@material-ui/icons";
 import { useState } from "react";
 import { getdata } from "../../TotalData";
 import axios from "axios"
+import { toastSuccess } from "../../components/ToastMassage/ToastMassage";
 // bảng hóa đơn
 export default function BillList() {
   const [data] = useState(getdata.payments);
@@ -12,7 +13,7 @@ export default function BillList() {
   const handleDelete = (id) => {
     if(window.confirm("Bạn thực sự muốn xóa Bills này không?")){
       axios.delete(`http://localhost:5000/admin/deletePayment/${id}`);
-      alert("Deleted Bills Successfully!");
+      toastSuccess("Deleted Bills Successfully!");
       window.location.href = "/BillsAdmin";
     }
   };

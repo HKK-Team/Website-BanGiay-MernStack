@@ -1,16 +1,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, {  useState, useContext } from "react";
+import React, { useState, useContext } from "react";
+import {
+  toastSuccess,
+  toastError,
+  toastPromise,
+} from "./../../../admins/components/ToastMassage/ToastMassage";
 import "./Favorite.css";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
 
 export default function Favorite(props) {
-  console.log(props)
+  console.log(props);
   const state = useContext(GlobalState);
   const [iduser] = state.userAPI.iduser;
-  const [productFavorites] =
-    state.productFavorites.productFavorites;
+  const [productFavorites] = state.productFavorites.productFavorites;
 
   const detail = productFavorites.filter((item) => {
     return item.iduser === iduser;
@@ -20,22 +24,30 @@ export default function Favorite(props) {
   function eventdelete(e) {
     e.preventDefault();
     for (let i = 0; i < detail.length; i++) {
-        if (detail[i]._id === props.idproduct) {
-          if(window.confirm("Bạn thực sự muốn bỏ yêu thích sản phẩm ?")){
-              axios.delete(`http://localhost:5000/api/favorite/${props.idproduct}`);
-              window.location.reload(false);
-          }
-          else{
-            break;
-          }
+      if (detail[i]._id === props.idproduct) {
+        if (window.confirm("Bạn thực sự muốn bỏ yêu thích sản phẩm ?")) {
+          toastPromise(
+            axios.delete(
+              `http://localhost:5000/api/favorite/${props.idproduct}`
+            ),
+            () => {
+              setTimeout(() => {
+                window.location.reload(false);
+              }, 2000);
+              return "Bạn đã bỏ yêu thích sản phẩm thành công";
+            }
+          );
+        } else {
+          break;
         }
+      }
     }
   }
   function eventcart(e) {
     e.preventDefault();
-      const settings = {
-      idproduct:props.idproduct,
-      id_product : props.id_product,
+    const settings = {
+      idproduct: props.idproduct,
+      id_product: props.id_product,
       nameProduct: props.name,
       color: props.color,
       price: props.price,
@@ -43,28 +55,26 @@ export default function Favorite(props) {
       size: props.size,
       image: props.image,
       quantity: quantity,
-      nameCategoryProduct : props.nameCategoryProduct
+      nameCategoryProduct: props.nameCategoryProduct,
     };
 
     if (sessionStorage.getItem("settings") === null) {
       var data = [];
       data.push(settings);
       sessionStorage.setItem("settings", JSON.stringify(data));
-      alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+      toastSuccess("Sản phẩm đã được thêm vào giỏ hàng !!!");
     } else {
       data = JSON.parse(sessionStorage.getItem("settings"));
-      
-      if(data.map(e => e.id_product).indexOf(settings.id_product) === -1){
+
+      if (data.map((e) => e.id_product).indexOf(settings.id_product) === -1) {
         data.push(settings);
-        alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
-      }
-      else{
-        alert("Sản phẩm đã tồn tại trong giỏ hàng !!!");
+        toastSuccess("Sản phẩm đã được thêm vào giỏ hàng !!!");
+      } else {
+        toastError("Sản phẩm đã tồn tại trong giỏ hàng !!!");
       }
       sessionStorage.setItem("settings", JSON.stringify(data));
     }
   }
-    
 
   return (
     <tbody className="wish-list">
@@ -101,7 +111,9 @@ export default function Favorite(props) {
         </td>
         <td className="customer-wishlist-item-price">
           <p className="special-price">
-            <span className="price">{(props.price * quantity).toLocaleString()} đ</span>
+            <span className="price">
+              {(props.price * quantity).toLocaleString()} đ
+            </span>
           </p>
         </td>
         <td className="customer-wishlist-item-cart">

@@ -8,10 +8,11 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import "./User.css";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
-import { useState,useContext } from "react"
-import axios from "axios" 
+import { useState, useContext } from "react";
+import axios from "axios";
+import { toastPromise } from "../../components/ToastMassage/ToastMassage";
 // chỉnh sửa thông tin khách hàng
 export default function User() {
   // use param get userAdminId
@@ -21,28 +22,37 @@ export default function User() {
   const [user] = state.alluserApi.allusers;
   // get the corresponding product
   const [data] = user.filter((item) => {
-      return item._id === params.userAdminId
+    return item._id === params.userAdminId;
   });
   // Edit User
   const [users, setUser] = useState({
-    username : data.username,firstname: data.firstname, lastname : data.lastname,email : data.email,address : data.address, nationality : data.nationality ,phonenumber : data.phonenumber, _id : data._id
+    username: data.username,
+    firstname: data.firstname,
+    lastname: data.lastname,
+    email: data.email,
+    address: data.address,
+    nationality: data.nationality,
+    phonenumber: data.phonenumber,
+    _id: data._id,
   });
   // set Edit User
-  const onChangeInput = e =>{
-    const {name, value} = e.target;
-    setUser({...users, [name]:value,})
-  }
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...users, [name]: value });
+  };
   // post from client to server
-  const EditUserSubmit = async e =>{
-      e.preventDefault()
-      try {
-          await axios.post('http://localhost:5000/admin/editUser', {...users})
-          alert("Update Users Succesfully!")
+  const EditUserSubmit = async (e) => {
+    e.preventDefault();
+    await toastPromise(
+      axios.post("http://localhost:5000/admin/editUser", { ...users }),
+      () => {
+        setTimeout(() => {
           window.location.href = "/usersAdmin";
-      } catch (err) {
-          alert(err.response.data.msg)
+        }, 2000);
+        return "Update Users Succesfully!";
       }
-  }
+    );
+  };
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -60,7 +70,9 @@ export default function User() {
               className="userShowImg"
             />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">{data.firstname} {data.lastname}</span>
+              <span className="userShowUsername">
+                {data.firstname} {data.lastname}
+              </span>
               <span className="userShowUserTitle">{data.username}</span>
             </div>
           </div>
@@ -72,7 +84,9 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
-              <span className="userShowInfoTitle">{data.bornday.slice(0,10)}</span>
+              <span className="userShowInfoTitle">
+                {data.bornday.slice(0, 10)}
+              </span>
             </div>
             <span className="userShowTitle">Chi tiết liên hệ</span>
             <div className="userShowInfo">
@@ -85,7 +99,9 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">{data.address} | {data.nationality} | VN</span>
+              <span className="userShowInfoTitle">
+                {data.address} | {data.nationality} | VN
+              </span>
             </div>
           </div>
         </div>
@@ -99,8 +115,8 @@ export default function User() {
                   type="text"
                   placeholder="user name"
                   className="userUpdateInput"
-                  name = "username"
-                  value={users.username} 
+                  name="username"
+                  value={users.username}
                   onChange={onChangeInput}
                 />
               </div>
@@ -110,8 +126,8 @@ export default function User() {
                   type="text"
                   placeholder="Nguyễn"
                   className="userUpdateInput"
-                  name = "firstname"
-                  value={users.firstname} 
+                  name="firstname"
+                  value={users.firstname}
                   onChange={onChangeInput}
                 />
               </div>
@@ -121,8 +137,8 @@ export default function User() {
                   type="text"
                   placeholder="Văn A"
                   className="userUpdateInput"
-                  name = "lastname"
-                  value={users.lastname} 
+                  name="lastname"
+                  value={users.lastname}
                   onChange={onChangeInput}
                 />
               </div>
@@ -132,8 +148,8 @@ export default function User() {
                   type="text"
                   placeholder="abc@gmail.com"
                   className="userUpdateInput"
-                  name = "email"
-                  value={users.email} 
+                  name="email"
+                  value={users.email}
                   onChange={onChangeInput}
                 />
               </div>
@@ -143,8 +159,8 @@ export default function User() {
                   type="text"
                   placeholder="+ 098 494 385 1"
                   className="userUpdateInput"
-                  name = "phonenumber"
-                  value={users.phonenumber} 
+                  name="phonenumber"
+                  value={users.phonenumber}
                   onChange={onChangeInput}
                 />
               </div>
@@ -154,8 +170,8 @@ export default function User() {
                   type="text"
                   placeholder="Biên Hòa | VN"
                   className="userUpdateInput"
-                  name = "address"
-                  value={users.address} 
+                  name="address"
+                  value={users.address}
                   onChange={onChangeInput}
                 />
               </div>

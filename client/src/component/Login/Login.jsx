@@ -3,28 +3,29 @@ import "./Login.css";
 import facebook from "./../../images/images/fb-btn.png";
 import google from "./../../images/images/google-btn.png";
 import { Link } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
+import { toastPromise } from "../../admins/components/ToastMassage/ToastMassage";
 
 function Login() {
   const [user, setUser] = useState({
-      email:'', password: ''
-  })
+    email: "",
+    password: "",
+  });
 
-  const onChangeInput = e =>{
-      const {name, value} = e.target;
-      setUser({...user, [name]:value})
-  }
-  const loginSubmit = async e =>{
-      e.preventDefault()
-      try {
-          await axios.post('/user/login', {...user})
-          localStorage.setItem('firstLogin', true)
-          alert("Login Successfully!")
-          window.location.href = "/";
-      } catch (err) {
-          alert(err.response.data.msg)
-      }
-  }
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+  const loginSubmit = async (e) => {
+    e.preventDefault();
+    await toastPromise(axios.post("/user/login", { ...user }), () => {
+      localStorage.setItem("firstLogin", true);
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
+      return "Login Successfully!";
+    });
+  };
   return (
     <section className="login">
       <div className="container">
@@ -32,7 +33,11 @@ function Login() {
           <div className="register_wrapper">
             <div id="login" className="user_box">
               <h1 className="account-title">Đăng nhập</h1>
-              <form action="/login" id="customer_register" onSubmit={loginSubmit}>
+              <form
+                action="/login"
+                id="customer_register"
+                onSubmit={loginSubmit}
+              >
                 <div className="email input">
                   <label htmlFor="" className="icon-field">
                     <i className="fa fa-envelope"></i>
@@ -41,13 +46,13 @@ function Login() {
                     type="email"
                     id="email-user"
                     className="text"
-                    name = "email"
+                    name="email"
                     placeholder="Email"
                     size="32"
                     required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     autoComplete="on"
-                    value={user.email} 
+                    value={user.email}
                     onChange={onChangeInput}
                   />
                 </div>
@@ -59,13 +64,13 @@ function Login() {
                     type="password"
                     id="password-user"
                     className="text"
-                    name = "password"
+                    name="password"
                     placeholder="Mật khẩu"
                     size="32"
                     required
                     pattern="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]){6,20})"
                     autoComplete="on"
-                    value={user.password} 
+                    value={user.password}
                     onChange={onChangeInput}
                   />
                   {/* Mật khẩu phải chứa ít nhất một chữ số [0-9].
@@ -73,11 +78,10 @@ function Login() {
                     Mật khẩu phải chứa ít nhất một ký tự Latinh viết hoa [A-Z].
                     Mật khẩu phải chứa ít nhất một ký tự đặc biệt như! @ # & ().
                     Mật khẩu phải có độ dài ít nhất 6 ký tự và tối đa 20 ký tự. */}
-
                 </div>
                 <input type="submit" value="Đăng nhập" className="btn-signin" />
                 <div className="req_pass">
-                  <Link to='/Register'>Chưa có tài khoản? Đăng ký</Link>
+                  <Link to="/Register">Chưa có tài khoản? Đăng ký</Link>
                 </div>
                 <div className="req_pass">
                   <Link to="/ForgotPassword">Quên mật khẩu</Link>
@@ -97,5 +101,5 @@ function Login() {
       </div>
     </section>
   );
-};
-export default Login
+}
+export default Login;

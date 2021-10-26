@@ -3,31 +3,40 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { useState } from "react";
 import { getdata } from "../../TotalData";
-import axios from "axios"
+import axios from "axios";
+import { toastPromise } from "../../components/ToastMassage/ToastMassage";
 // bảng hóa đơn
 export default function BillList() {
   const [data] = useState(getdata.orderbrowsing);
+  console.log(data);
   // xóa hóa đơn khỏi bảng
   const handleDelete = (id) => {
-    if(window.confirm("Bạn thực sự muốn hủy đơn hàng này không?")){
-      axios.delete(`http://localhost:5000/admin/deletePayment/${id}`);
-      alert("Deleted Bills Successfully!");
-      window.location.href = "/BillsAdmin";
+    if (window.confirm("Bạn thực sự muốn hủy đơn hàng này không?")) {
+      toastPromise(
+        axios.delete(`http://localhost:5000/admin/deletePayment/${id}`),
+        () => {
+          setTimeout(() => (window.location.href = "/BillsAdmin"), 2000);
+          return "Deleted Bills Successfully!";
+        }
+      );
     }
   };
   const [orderbrowsing, setorderbrowsing] = useState({
-    _id :'',status:'Đang giao hàng'
+    _id: "",
+    status: "Đang giao hàng",
   });
-  const OrderBrowsing = async e =>{
-    e.preventDefault()
-    try {
-        await axios.post('http://localhost:5000/admin/editOrderBrowsing', {...orderbrowsing})
-        alert("Order Browsing Succesfully!")
-        window.location.href = "/OrderBrowsing";
-    } catch (err) {
-        alert(err.response.data.msg)
-    }
-  }
+  const OrderBrowsing = async (e) => {
+    e.preventDefault();
+    await toastPromise(
+      axios.post("http://localhost:5000/admin/editOrderBrowsing", {
+        ...orderbrowsing,
+      }),
+      () => {
+        setTimeout(() => (window.location.href = "/OrderBrowsing"), 2000);
+        return "Order Browsing Succesfully!";
+      }
+    );
+  };
   // khởi tạo dữ liệu bảng
   const columns = [
     { field: "_id", headerName: "ID", width: 250 },
@@ -68,7 +77,9 @@ export default function BillList() {
       width: 150,
       renderCell: (params) => {
         return (
-          <div className="productListItem">{params.row.total_price.toLocaleString()} VND</div>
+          <div className="productListItem">
+            {params.row.total_price.toLocaleString()} VND
+          </div>
         );
       },
     },
@@ -80,12 +91,13 @@ export default function BillList() {
         return (
           <div
             className="productListItem-wrapper"
-            style={{ display:'flex', overflow: "auto" }}
+            style={{ display: "flex", overflow: "auto" }}
           >
             {params.row.cart.map((item) => (
-              <span style={{marginRight:15}} >
+              <span style={{ marginRight: 15 }}>
                 {" "}
-                <span style={{color:'red'}}>@</span>Mã sản phẩm: {item.id_product} - Số lượng: {item.quantity} 
+                <span style={{ color: "red" }}>@</span>Mã sản phẩm:{" "}
+                {item.id_product} - Số lượng: {item.quantity}
               </span>
             ))}
           </div>
@@ -93,11 +105,11 @@ export default function BillList() {
       },
     },
     {
-        field: "createdAt",
-        headerName: "Ngày Mua",
-        type: "date",
-        width: 300,
-      },
+      field: "createdAt",
+      headerName: "Ngày Mua",
+      type: "date",
+      width: 300,
+    },
     {
       field: "action",
       headerName: "Action",
@@ -106,7 +118,14 @@ export default function BillList() {
         return (
           <>
             <form onSubmit={OrderBrowsing}>
-                <button className="productListEdit" onClick = {()=>setorderbrowsing({...orderbrowsing,_id : params.row._id})}>Duyệt đơn hàng</button>
+              <button
+                className="productListEdit"
+                onClick={() =>
+                  setorderbrowsing({ ...orderbrowsing, _id: params.row._id })
+                }
+              >
+                Duyệt đơn hàng
+              </button>
             </form>
             <DeleteOutline
               className="userListDelete"
@@ -121,7 +140,7 @@ export default function BillList() {
   return (
     <div className="userList">
       <DataGrid
-        getRowId ={(row) => row._id}
+        getRowId={(row) => row._id}
         rows={data}
         disableSelectionOnClick
         columns={columns}

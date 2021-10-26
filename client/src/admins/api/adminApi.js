@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { toastError } from '../components/ToastMassage/ToastMassage'
 import axios from 'axios'
 
 function AdminAPI(token) {
@@ -16,7 +17,7 @@ function AdminAPI(token) {
                     setIsLogin(true)
                     setidadmin(res.data._id)
                 } catch (err) {
-                    alert(err.response.data.msg)
+                    toastError(err.response.data.msg)
                 }
             }
             getAdmin()

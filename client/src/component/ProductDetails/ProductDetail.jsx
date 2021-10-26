@@ -15,7 +15,10 @@ import { Link } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Alert } from '@mui/material';
+import {
+  toastInfor,
+  toastSuccess,
+} from "../../admins/components/ToastMassage/ToastMassage";
 
 export default function ProductDetail(props) {
   // zoom hình khi hover
@@ -122,20 +125,22 @@ export default function ProductDetail(props) {
 
   function eventfavorite(e) {
     e.preventDefault();
-    window.location.href = "/Login";
-    alert('Bạn cần đăng nhập để thêm sản phẩm yêu thích !!'); 
+    setTimeout(() => {
+      window.location.href = "/Login";
+    }, 2000);
+    toastInfor("Bạn cần đăng nhập để thêm sản phẩm yêu thích !!");
   }
 
   function eventbuynow(e) {
     e.preventDefault();
     if (sizebychoice === 0) {
-      alert("Vui lòng chọn size sản phẩm !!");
+      toastInfor("Vui lòng chọn size sản phẩm !!");
     } else {
       const settings = {
         idproduct: detail[0]._id,
         id_product: detail[0].idCategory_product,
         nameProduct: detail[0].nameProduct,
-        nameCategoryProduct:detail[0].nameCategoryProduct,
+        nameCategoryProduct: detail[0].nameCategoryProduct,
         color: detail[0].color,
         price: detail[0].price,
         totalprice: detail[0].price,
@@ -148,14 +153,14 @@ export default function ProductDetail(props) {
         var data = [];
         data.push(settings);
         sessionStorage.setItem("settings", JSON.stringify(data));
-        alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+        toastSuccess("Sản phẩm đã được thêm vào giỏ hàng !!!");
       } else {
         data = JSON.parse(sessionStorage.getItem("settings"));
         if (data.map((e) => e.id_product).indexOf(settings.id_product) === -1) {
           data.push(settings);
-          alert("Sản phẩm đã được thêm vào giỏ hàng !!!");
+          toastSuccess("Sản phẩm đã được thêm vào giỏ hàng !!!");
         } else {
-          alert("Sản phẩm đã tồn tại trong giỏ hàng !!!");
+          toastInfor("Sản phẩm đã tồn tại trong giỏ hàng !!!");
         }
         sessionStorage.setItem("settings", JSON.stringify(data));
       }
@@ -165,7 +170,7 @@ export default function ProductDetail(props) {
   function eventfavoriteIsLogin(e) {
     e.preventDefault();
     if (sizebychoice === 0) {
-      alert("Vui lòng chọn size sản phẩm !!");
+      toastInfor("Vui lòng chọn size sản phẩm !!");
     } else {
       axios({
         method: "post",
@@ -173,7 +178,7 @@ export default function ProductDetail(props) {
         data: {
           idCategory_product: detail[0].idCategory_product,
           nameProduct: detail[0].nameProduct,
-          nameCategoryProduct:detail[0].nameCategoryProduct,
+          nameCategoryProduct: detail[0].nameCategoryProduct,
           color: detail[0].color,
           price: detail[0].price,
           image: detail[0].image,
@@ -181,13 +186,13 @@ export default function ProductDetail(props) {
           iduser: iduser,
         },
       });
-      alert("Sản phẩm đã được thêm vào yêu thích !!");
+      toastSuccess("Sản phẩm đã được thêm vào yêu thích !!");
       window.location.reload(false);
     }
   }
   function eventunfavorite(e) {
     e.preventDefault();
-    alert("Sản phẩm đã được bỏ khỏi yêu thích !!");
+    toastInfor("Sản phẩm đã được bỏ khỏi yêu thích !!");
     for (let i = 0; i < productFavorites.length; i++) {
       if (
         iduser === productFavorites[i].iduser &&
@@ -399,7 +404,10 @@ export default function ProductDetail(props) {
               <form action="">
                 <div className="productDetail_information-color">
                   <label htmlFor="">Màu sắc</label>
-                  <span><img src ={props.image} alt = {props.color}></img>{props.color}</span>
+                  <span>
+                    <img src={props.image} alt={props.color}></img>
+                    {props.color}
+                  </span>
                 </div>
                 <div className="productDetail_information-size">
                   <label htmlFor="">Kích thước</label>

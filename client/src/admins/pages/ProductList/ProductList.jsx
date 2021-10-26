@@ -1,20 +1,26 @@
 import "./ProductList.css";
-import {  DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { getdata } from "../../TotalData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios"
+import axios from "axios";
+import { toastPromise } from "../../components/ToastMassage/ToastMassage";
 export default function ProductList() {
-  
   const [data] = useState(getdata.productRows);
 
   //Xóa sản phẩm
   const handleDelete = (id) => {
-    if(window.confirm("Bạn thực sự muốn xóa sản phẩm này không?")){
-      axios.delete(`http://localhost:5000/admin/deleteProduct/${id}`);
-      alert("Deleted Product Successfully!");
-      window.location.href = "/productsAdmin";
+    if (window.confirm("Bạn thực sự muốn xóa sản phẩm này không?")) {
+      toastPromise(
+        axios.delete(`http://localhost:5000/admin/deleteProduct/${id}`),
+        () => {
+          setTimeout(() => {
+            window.location.href = "/productsAdmin";
+          }, 2000);
+          return "Deleted Product Successfully!";
+        }
+      );
     }
   };
   // khởi tạo dữ liệu sản phẩm dạng cột
@@ -27,7 +33,7 @@ export default function ProductList() {
       width: 300,
       renderCell: (params) => {
         return (
-          <div className="productListItem" style={{overflow:'auto'}}>
+          <div className="productListItem" style={{ overflow: "auto" }}>
             <img className="productListImg" src={params.row.image} alt="" />
             {params.row.nameProduct}
           </div>
@@ -42,7 +48,7 @@ export default function ProductList() {
     },
     {
       field: "price",
-      headerName: "Price" ,
+      headerName: "Price",
       width: 160,
       renderCell: (params) => {
         return (
@@ -75,19 +81,18 @@ export default function ProductList() {
   return (
     <div className="productList">
       <DataGrid
-        getRowId ={(row) => row._id}
+        getRowId={(row) => row._id}
         rows={data}
         disableSelectionOnClick
         columns={columns}
         pageSize={9}
         checkboxSelection
-
         localeText={{
-          toolbarDensity: 'Size',
-          toolbarDensityLabel: 'Size',
-          toolbarDensityCompact: 'Small',
-          toolbarDensityStandard: 'Medium',
-          toolbarDensityComfortable: 'Large',
+          toolbarDensity: "Size",
+          toolbarDensityLabel: "Size",
+          toolbarDensityCompact: "Small",
+          toolbarDensityStandard: "Medium",
+          toolbarDensityComfortable: "Large",
         }}
         components={{
           Toolbar: GridToolbar,

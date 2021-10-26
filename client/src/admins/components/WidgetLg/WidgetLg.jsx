@@ -11,16 +11,23 @@ export default function WidgetLg(props) {
     currency: "USD",
   });
 
-
-  // check status đơn hàng 
+  // check status đơn hàng
   let status;
-    if (props.status === "Chưa duyệt đơn hàng") {
-      status =   <Button type='Pending' />;
-    }else if(props.status === "Đang giao hàng"){
-      status =   <Button type='Success' />;
-    }else if (props.status === "Hủy đơn hàng"){
-      status =   <Button type='Cancel' />;
-    }
+  switch (props.status) {
+    case "Chưa duyệt đơn hàng":
+      status = <Button type="Pending" />;
+      break;
+    case "Giao hàng thành công":
+      status = <Button type="Success" />;
+      break;
+    case "Đang giao hàng":
+      status = <Button type="Waiting" />;
+      break;
+    case "Hủy đơn hàng":
+      status = <Button type="Cancel" />;
+      break;
+    default:
+  }
 
   return (
     <tr className="widgetLgTr">
@@ -37,9 +44,7 @@ export default function WidgetLg(props) {
         {formatter.format(props.totalprice / 23000)}
       </td>
       <td className="widgetLgDate">{props.codebill}</td>
-      <td className="widgetLgStatus">
-       {status}
-      </td>
+      <td className="widgetLgStatus">{status}</td>
     </tr>
   );
 }

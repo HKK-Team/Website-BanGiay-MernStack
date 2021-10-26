@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { toastError } from '../admins/components/ToastMassage/ToastMassage'
 
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
@@ -16,7 +17,7 @@ function UserAPI(token) {
                     setIsLogged(true)
                     setiduser(res.data._id)
                 } catch (err) {
-                    alert(err.response.data.msg)
+                    toastError(err.response.data.msg)
                 }
             }
 

@@ -12,7 +12,7 @@ const adminCtrl = {
             // check user
             if(!admin) return res.status(400).json({msg: "User does not exist."})
             // check password
-            if(admin.password != password)
+            if(admin.password !== password)
             {
                 return res.status(400).json({msg: "Wrong email or password, Please re-enter your account or password."})
             }

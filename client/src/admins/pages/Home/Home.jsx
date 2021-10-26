@@ -1,27 +1,31 @@
 import Chart from "../../components/Chart/Chart";
 import FeaturedInfo from "../../components/FeaturedInfo/FeaturedInfo";
 import "./Home.css";
-import  React,{useState} from "react"; 
+import React, { useState } from "react";
 import { getdata } from "../../TotalData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
 import WidgetLg from "../../components/WidgetLg/WidgetLg";
 
-
 export default function Home() {
-  const [payment] = useState(getdata.payments)
+  const [payment] = useState(getdata.payments);
   // get the last 20 bills
   var arr = [];
   arr.push(
-    payment.slice(-20).reverse().map((item) =>(
-      <WidgetLg
-        fullname={item.fullName}
-        date ={item.orderDate}
-        totalprice={item.total_price}
-        codebill= {item._id}
-        status = {item.status}
-      />
-    ))
+    payment
+      .slice(-20)
+      .reverse()
+      .map((item) => (
+        <WidgetLg
+          fullname={item.fullName}
+          date={item.orderDate}
+          totalprice={item.total_price}
+          codebill={item._id}
+          status={item.status}
+        />
+      ))
   );
+  console.log(arr);
+
   return (
     <div className="home">
       <FeaturedInfo />

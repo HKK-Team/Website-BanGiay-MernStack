@@ -8,7 +8,7 @@ export default function WidgetSm() {
       <ul className="widgetSmList">
         <li className="widgetSmListItem">
           <img
-            src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.15752-9/175549131_930244867711789_2505231581677305611_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=JH7qcxswaTYAX-yV-yV&_nc_ht=scontent.fsgn5-6.fna&oh=605998dda415b30e5d0d27bd838e11f1&oe=616BB348"
+            src="https://scontent.xx.fbcdn.net/v/t1.15752-9/p206x206/232065590_2026390717508739_7062352108676249331_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=aee45a&_nc_ohc=3ehxPeSWN-EAX8BYbF-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=dc01a19e5b85eddabc8699023e9506ec&oe=619E4C89"
             alt=""
             className="widgetSmImg"
           />
@@ -23,7 +23,7 @@ export default function WidgetSm() {
         </li>
         <li className="widgetSmListItem">
           <img
-            src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.15752-9/168270377_794225684834473_2331803775706012068_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=CWhoGWw-T-cAX9Hu9cU&_nc_ht=scontent.fsgn5-6.fna&oh=bef9e73023bcf7b2f20c9fdddd52723d&oe=616BED67"
+            src="https://scontent.xx.fbcdn.net/v/t1.15752-9/p206x206/168270377_794225684834473_2331803775706012068_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=aee45a&_nc_ohc=7sYCr7W9GdoAX8U-LQb&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=0a828aa61892fd28cddcbfab44e50037&oe=61798464"
             alt=""
             className="widgetSmImg"
           />
@@ -38,7 +38,7 @@ export default function WidgetSm() {
         </li>
         <li className="widgetSmListItem">
           <img
-            src="https://scontent.fsgn5-7.fna.fbcdn.net/v/t1.6435-9/219368961_2670798456546860_270148802336329804_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=8ahukAUeL90AX_-l6Vx&_nc_ht=scontent.fsgn5-7.fna&oh=6593ca1dc333d0ce878821b1410786eb&oe=616E2EFC"
+            src="https://scontent.xx.fbcdn.net/v/t1.15752-9/p206x206/207009728_773893093278214_4569051617534937648_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=aee45a&_nc_ohc=IPh9ai4_X54AX-rMaoo&_nc_oc=AQmbdF_IPosRZFZgXHuLYE44kMScFlX0wWVPbtJkHGRaX53wd0MDEnYEy8s97-taoF2kEmhqQ8pfdClX6pdZVLY6&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=a291be8b043b807da28bd6c7d0d6fddc&oe=619C5598"
             alt=""
             className="widgetSmImg"
           />
@@ -53,7 +53,7 @@ export default function WidgetSm() {
         </li>
         <li className="widgetSmListItem">
           <img
-            src="https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.15752-9/226645643_194980795927524_8293117425506626985_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=1269wGoRi4AAX9BPbjk&_nc_ht=scontent.fsgn5-4.fna&oh=eb0f0519c1fde8a094fda0392f2738a7&oe=616A6EBF"
+            src="https://scontent.xx.fbcdn.net/v/t1.15752-9/s370x247/146943164_1374494206223588_6536604324837126473_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=aee45a&_nc_ohc=eWAE7qzM90wAX8q6oDd&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=e7696d22c32f8cb1a0fba419f4f87bf9&oe=619C13F6"
             alt=""
             className="widgetSmImg"
           />

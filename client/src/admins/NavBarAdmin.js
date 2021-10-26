@@ -16,35 +16,79 @@ import Statistic from "./pages/Statistic/Statistic";
 import MarketAnalysis from "./pages/MarketAnalysis/MarketAnalysis";
 import SalesAnalysis from "./components/SalesAnalysis/SalesAnalysis";
 import { GlobalState } from "../GlobalState";
-import NotFound from "../component/utils/not_found/NotFound"
-import OrderBrowsing from "../admins/pages/OrderBrowsing/OrderBrowsing"
+import NotFound from "../component/utils/not_found/NotFound";
+import OrderBrowsing from "../admins/pages/OrderBrowsing/OrderBrowsing";
 function NavBarAdmin() {
   const state = useContext(GlobalState);
   const [isLogin] = state.adminApi.isLogin;
   return (
     <Router>
-      <Route exact path="/Admin" component={AdminLogin} />
+        <Route exact path="/Admin" component={AdminLogin} />
       <Topbar />
       <div className="containerAdmin">
         <Sidebar /> {/* Menu nav */}
         {/* Link url */}
         <Switch>
-        <Route exact path="/Statistic" component={isLogin ? Statistic : NotFound} />
-          <Route exact path="/SalesAnalysis" component={isLogin ? SalesAnalysis : NotFound} />
-          <Route exact path="/MarketAnalysis" component={isLogin ? MarketAnalysis : NotFound} />
-          <Route exact path="/Dashboard" component={isLogin ? Home : NotFound} />
-          <Route exact path="/usersAdmin" component={isLogin ? UserList : NotFound} />
-          <Route exact path="/userAdmin/:userAdminId" component={isLogin ? User : NotFound} />
-          <Route exact path="/newUserAdmin" component={isLogin ? NewUser : NotFound} />
-          <Route exact path="/productsAdmin" component={isLogin ? ProductList : NotFound} />
+          <Route
+            exact
+            path="/Statistic"
+            component={isLogin ? Statistic : NotFound}
+          />
+          <Route
+            exact
+            path="/SalesAnalysis"
+            component={isLogin ? SalesAnalysis : NotFound}
+          />
+          <Route
+            exact
+            path="/MarketAnalysis"
+            component={isLogin ? MarketAnalysis : NotFound}
+          />
+          <Route
+            exact
+            path="/Dashboard"
+            component={isLogin ? Home : NotFound}
+          />
+          <Route
+            exact
+            path="/usersAdmin"
+            component={isLogin ? UserList : NotFound}
+          />
+          <Route
+            exact
+            path="/userAdmin/:userAdminId"
+            component={isLogin ? User : NotFound}
+          />
+          <Route
+            exact
+            path="/newUserAdmin"
+            component={isLogin ? NewUser : NotFound}
+          />
+          <Route
+            exact
+            path="/productsAdmin"
+            component={isLogin ? ProductList : NotFound}
+          />
           <Route
             exact
             path="/productAdmin/:productAdminId"
             component={isLogin ? Product : NotFound}
           />
-          <Route exact path="/newproductAdmin" component={isLogin ? NewProduct : NotFound} />
-          <Route exact path="/BillsAdmin" component={isLogin ? BillList : NotFound} />
-          <Route exact path="/OrderBrowsing" component={isLogin ? OrderBrowsing : NotFound} />
+          <Route
+            exact
+            path="/newproductAdmin"
+            component={isLogin ? NewProduct : NotFound}
+          />
+          <Route
+            exact
+            path="/BillsAdmin"
+            component={isLogin ? BillList : NotFound}
+          />
+          <Route
+            exact
+            path="/OrderBrowsing"
+            component={isLogin ? OrderBrowsing : NotFound}
+          />
         </Switch>
         {/* Link url */}
       </div>

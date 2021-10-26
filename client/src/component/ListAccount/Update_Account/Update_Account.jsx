@@ -1,28 +1,38 @@
-import React,{useState,useContext} from "react";
+import React, { useState, useContext } from "react";
 import "./Update_Account.css";
-import axios from 'axios';
-import {Link} from 'react-router-dom';
+import axios from "axios";
+import { Link } from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
+import { toastPromise } from "../../../admins/components/ToastMassage/ToastMassage";
 export default function Update_Account() {
-  const state = useContext(GlobalState)
+  const state = useContext(GlobalState);
   const [profile] = state.userAPI.user;
   const [user, setUser] = useState({
-    firstname:profile.firstname, lastname : profile.lastname,address : profile.address, nationality : profile.nationality ,phonenumber : profile.phonenumber,email :profile.email, _id : profile._id
-  })
+    firstname: profile.firstname,
+    lastname: profile.lastname,
+    address: profile.address,
+    nationality: profile.nationality,
+    phonenumber: profile.phonenumber,
+    email: profile.email,
+    _id: profile._id,
+  });
 
-  const onChangeInput = e =>{
-      const {name, value} = e.target;
-      setUser({...user, [name]:value,})
-  }
-  const EditUserSubmit = async e =>{
-      e.preventDefault()
-      try {
-          await axios.post('http://localhost:5000/user/editUser', {...user})
-          alert("Update User Succesfully!")
-          window.location.href = "/Profile"
-      } catch (err) {
-          alert(err.response.data.msg)
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+  const EditUserSubmit = async (e) => {
+    e.preventDefault();
+
+    await toastPromise(
+      axios.post("http://localhost:5000/user/editUser", { ...user }),
+      () => {
+        setTimeout(() => {
+          window.location.href = "/Profile";
+        }, 2000);
+        return "Update User Succesfully!";
       }
+    );
   };
   return (
     <div className="user-boxx">
@@ -32,17 +42,17 @@ export default function Update_Account() {
           id="first_name"
           className="input_text"
           placeholder="Nhập họ (*)"
-          name = "firstname"
-          value={user.firstname} 
-          onChange={onChangeInput} 
+          name="firstname"
+          value={user.firstname}
+          onChange={onChangeInput}
         />
         <input
           type="text"
           id="last_name"
           className="input_text"
           placeholder="Nhập tên (*)"
-          name = "lastname"
-          value={user.lastname} 
+          name="lastname"
+          value={user.lastname}
           onChange={onChangeInput}
         />
         <input
@@ -50,8 +60,8 @@ export default function Update_Account() {
           id="email"
           className="input_text"
           placeholder="Nhập Email (*)"
-          name = "email"
-          value={user.email} 
+          name="email"
+          value={user.email}
         />
         <input
           type="tel"
@@ -59,8 +69,8 @@ export default function Update_Account() {
           className="input_text"
           placeholder="Số điện thoại (*)"
           pattern="[0-9]{10,}"
-          name = "phonenumber"
-          value={user.phonenumber} 
+          name="phonenumber"
+          value={user.phonenumber}
           onChange={onChangeInput}
         />
         <input
@@ -69,15 +79,14 @@ export default function Update_Account() {
           className="input_text"
           placeholder="Ngày sinh (dd/mm/yyyy) (*)"
           title="Định dạng dd/mm/yyyy"
-
         />
         <input
           type="text"
           id="staff_address"
           className="input_text"
           placeholder="Địa chỉ"
-          name = "address"
-          value={user.address} 
+          name="address"
+          value={user.address}
           onChange={onChangeInput}
         />
         <select
@@ -86,8 +95,8 @@ export default function Update_Account() {
           data-selected="true"
           data-label-id="0"
           data-metatip="true"
-          name = "nationality"
-          value={user.nationality} 
+          name="nationality"
+          value={user.nationality}
           onChange={onChangeInput}
         >
           <option disabled="" selected="" value="">
@@ -159,9 +168,9 @@ export default function Update_Account() {
           <option value="YB">Yên Bái</option>
         </select>
         <div className="button">
-          <input type="submit" className="btn" value="Cập nhật"/>
+          <input type="submit" className="btn" value="Cập nhật" />
           <span>
-            Hoặc <Link to = "/UpdateAccount">Hủy</Link>
+            Hoặc <Link to="/UpdateAccount">Hủy</Link>
           </span>
         </div>
       </form>
