@@ -5,7 +5,7 @@ export default function ListAccount(props) {
   return (
     <Fragment>
       <section className="account">
-      <div className="container">
+      <div className="container" style={{margin:'0px 100px'}}>
         <div className="row">
           <div className="Cart_title">
             <h1>{props.title}</h1>
