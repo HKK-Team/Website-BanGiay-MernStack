@@ -65,51 +65,90 @@ export default function Catalog() {
   const [minPricebetrai, setminPricebetrai] = state.productbetraiApi.minPricebetrai;
   const [maxPicebetrai, setmaxPicebetrai] = state.productbetraiApi.maxPicebetrai;
 
+  var temp = window.location.href;
+  const arr = [];
+  for(let i = temp.length - 1;i >= 0;i--)
+  {
+    if (temp[i] === "/") break;
+    arr.push(temp[i]);
+  }
+  var strtemp = arr.reverse().toString().replaceAll(",", "");
+  
 
   //add event cho mỗi màu khi click
   function eventBlack(e) {
     e.preventDefault();
+    if(strtemp === "nam")
     setcolorboy("color=Đen");
+    if(strtemp === "nu")
     setcolorgirl("color=Đen");
+    if(strtemp === "phu-kien")
     setcolorpk("color=Đen");
+    if(strtemp === "gosto")
     setcolorgosto("color=Đen");
+    if(strtemp === "be-trai")
     setcolorbetrai("color=Đen");
+    if(strtemp === "be-gai")
     setcolorbegai("color=Đen");
   }
   function eventWhile(e) {
     e.preventDefault();
+    if(strtemp === "nam")
     setcolorboy("color=Trắng");
+    if(strtemp === "nu")
     setcolorgirl("color=Trắng");
+    if(strtemp === "phu-kien")
     setcolorpk("color=Trắng");
+    if(strtemp === "gosto")
     setcolorgosto("color=Trắng");
+    if(strtemp === "be-trai")
     setcolorbetrai("color=Trắng");
+    if(strtemp === "be-gai")
     setcolorbegai("color=Trắng");
   }
   function eventcam(e) {
     e.preventDefault();
+    if(strtemp === "nam")
     setcolorboy("color=Cam");
+    if(strtemp === "nu")
     setcolorgirl("color=Cam");
+    if(strtemp === "phu-kien")
     setcolorpk("color=Cam");
+    if(strtemp === "gosto")
     setcolorgosto("color=Cam");
+    if(strtemp === "be-trai")
     setcolorbetrai("color=Cam");
+    if(strtemp === "be-gai")
     setcolorbegai("color=Cam");
   }
   function eventdocam(e) {
     e.preventDefault();
+    if(strtemp === "nam")
     setcolorboy("color=Đỏ Cam");
+    if(strtemp === "nu")
     setcolorgirl("color=Đỏ Cam");
+    if(strtemp === "phu-kien")
     setcolorpk("color=Đỏ Cam");
+    if(strtemp === "gosto")
     setcolorgosto("color=Đỏ Cam");
+    if(strtemp === "be-trai")
     setcolorbetrai("color=Đỏ Cam");
+    if(strtemp === "be-gai")
     setcolorbegai("color=Đỏ Cam");
   }
   function eventdo(e) {
     e.preventDefault();
+    if(strtemp === "nam")
     setcolorboy("color=Đỏ");
+    if(strtemp === "nu")
     setcolorgirl("color=Đỏ");
+    if(strtemp === "phu-kien")
     setcolorpk("color=Đỏ");
+    if(strtemp === "gosto")
     setcolorgosto("color=Đỏ");
+    if(strtemp === "be-trai")
     setcolorbetrai("color=Đỏ");
+    if(strtemp === "be-gai")
     setcolorbegai("color=Đỏ");
   }
   function eventkemdam(e) {
@@ -221,8 +260,10 @@ export default function Catalog() {
     setcolorbegai("color=Hồng");
   }
 //filtering by size event
-function eventsize24(e) {
-  e.preventDefault();
+ const eventsize24 = (e) =>{
+
+  console.log(e.currentTarget.textContent)
+
   setsizeminboy('size.size1[lte]=24')
   setsizemaxboy('size.size5[gte]=24')
 
@@ -728,7 +769,9 @@ function eventsize45(e) {
         <div className="sidebar_collection-catalog">
           <span className="sidebar_collection-catalog-subtitle">Size:</span>
           <label className="sidebar_collection-size-item">
-            <span onClick={eventsize24}>24</span>
+            <span contentEditable="true" onInput={eventsize24}>
+            24
+            </span>
           </label>
           <label className="sidebar_collection-size-item">
             <span onClick={eventsize25}>25</span>

@@ -5,11 +5,33 @@ import { GlobalState } from "../../../../GlobalState";
 
 export default function SortBy() {
   const state = useContext(GlobalState);
+
   //information by color
   const [colorboy, setcolorboy] = state.productboyApi.colorboy;
+  const [colorgirl, setcolorgirl] = state.productgirlApi.colorgirl;
+  const [colorpk, setcolorpk] = state.productpkApi.colorpk;
+  const [colorgosto, setcolorgosto] = state.productgostoApi.colorgosto;
+  const [colorbetrai, setcolorbetrai] = state.productbetraiApi.colorbetrai;
+  const [colorbegai, setcolorbegai] = state.productbegaiApi.colorbegai;
+
   //information by size product
   const [sizeminboy, setsizeminboy] = state.productboyApi.sizeminboy;
   const [sizemaxboy, setsizemaxboy] = state.productboyApi.sizemaxboy;
+
+  const [sizemingirl, setsizemingirl] = state.productgirlApi.sizemingirl;
+  const [sizemaxgirl, setsizemaxgirl] = state.productgirlApi.sizemaxgirl;
+
+  const [sizeminpk, setsizeminpk] = state.productpkApi.sizeminpk;
+  const [sizemaxpk, setsizemaxpk] = state.productpkApi.sizemaxpk;
+
+  const [sizemingosto, setsizemingosto] = state.productgostoApi.sizemingosto;
+  const [sizemaxgosto, setsizemaxgosto] = state.productgostoApi.sizemaxgosto;
+
+  const [sizeminbetrai, setsizeminbetrai] = state.productbetraiApi.sizeminbetrai;
+  const [sizemaxbetrai, setsizemaxbetrai] = state.productbetraiApi.sizemaxbetrai;
+
+  const [sizeminbegai, setsizeminbegai] = state.productbegaiApi.sizeminbegai;
+  const [sizemaxbegai, setsizemaxbegai] = state.productbegaiApi.sizemaxbegai;
 
   //đỉnh cao việt nam là đây
   const temp = [];
@@ -26,11 +48,31 @@ export default function SortBy() {
   function eventchangecolor(e) {
     e.preventDefault();
     setcolorboy(" ");
+    setcolorgirl(" ");
+    setcolorpk(" ");
+    setcolorgosto(" ");
+    setcolorbetrai(" ");
+    setcolorbegai(" ");
   }
   function eventchangesize(e) {
     e.preventDefault();
     setsizeminboy(" ");
     setsizemaxboy(" ");
+
+    setsizemingirl(" ");
+    setsizemaxgirl(" ");
+
+    setsizeminpk(" ");
+    setsizemaxpk(" ");
+
+    setsizemingosto(" ");
+    setsizemaxgosto(" ");
+
+    setsizeminbetrai(" ");
+    setsizemaxbetrai(" ");
+
+    setsizeminbegai(" ");
+    setsizemaxbegai(" ");
   }
   if (colorboy !== " " || sizeminboy !== " ") {
     return (
