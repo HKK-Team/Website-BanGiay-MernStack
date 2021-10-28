@@ -1,56 +1,12 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment } from "react";
 import "../ListAccount.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { GlobalState } from "../../../GlobalState";
-import { toastPromise } from "../../../admins/components/ToastMassage/ToastMassage";
 export default function ListAccount(props) {
-  const state = useContext(GlobalState);
-  const [list_order] = state.list_oderApi.list_oder;
-  const [profile] = state.userAPI.user;
-  // get all list_order
-  const order = list_order.filter((item) => {
-    return item.user_id === profile._id;
-  });
-  // get last one list_order
-  const arr = order[order.length - 1];
-  const [confirm] = useState({
-    id: arr._id,
-    status: "Giao hàng thành công",
-    payment_status: "Đã thanh toán",
-  });
-  const check = () => {
-    if (arr.status === "Đang giao hàng") {
-      return (
-        <form onSubmit={Confirmation}>
-          <button className="btn-oder">Xác nhận đã nhận được hàng</button>
-        </form>
-      );
-    }
-  };
-  const checkk = () => {
-    return (
-      <Link to="/AccountOderManagement">
-        <span className="btn-oder">Xem chi tiết đơn hàng của bạn</span>
-      </Link>
-    );
-  };
-  const Confirmation = async (e) => {
-    e.preventDefault();
-    await toastPromise(
-      axios.post("/payment/ConfirmOrder", { ...confirm }),
-      () => {
-        setTimeout(() => {
-          window.location.href = "/Account_OrderConfirmation";
-        }, 2000);
-        return "Thanks you have confirmaiton orders!";
-      }
-    );
-  };
+  
   return (
     <Fragment>
       <section className="account">
-        <div className="container">
+        <div className="container" style={{margin:'0px 100px'}}>
           <div className="row">
             <div className="Cart_title">
               <h1>{props.title}</h1>
@@ -83,9 +39,9 @@ export default function ListAccount(props) {
                   <h3>Thành tiền</h3>
                   <h3>Tình trạng thanh toán</h3>
                   <h3>Vận chuyển</h3>
+                  <h3>Hoạt động</h3>
                 </div>
-                {props.order}
-                {arr.status === "Đang giao hàng" ? check() : checkk()}
+                {props.order }    
               </div>
             </div>
           </div>

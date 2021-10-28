@@ -5,10 +5,11 @@ import { useState } from "react";
 import { getdata } from "../../TotalData";
 import axios from "axios";
 import { toastPromise } from "../../components/ToastMassage/ToastMassage";
+import { sendMailOrderStatus } from "../../../api/mailSeviceApi";
 // bảng hóa đơn
 export default function BillList() {
   const [data] = useState(getdata.orderbrowsing);
-  console.log(data);
+
   // xóa hóa đơn khỏi bảng
   const handleDelete = (id) => {
     if (window.confirm("Bạn thực sự muốn hủy đơn hàng này không?")) {
@@ -21,6 +22,23 @@ export default function BillList() {
       );
     }
   };
+  //xử lý gửi mail status đã duyệt cho khách hàng
+  const handleSendMailOrderStatus = () => {
+    let order = data.find(item => item._id === orderbrowsing._id )
+    let obj = {};
+    obj.context = [...order.cart];
+    obj.title = `Thông báo đơn hàng mã số #${order._id} đã phê duyệt`;
+    obj.contextStatus =
+      `Xin lỗi vì sự chậm trễ này.Khi nhận được hàng hãy vào phần xác nhận đơn hàng tại đây http://localhost:3000/Account_OrderConfirmation xác nhận giúp chúng tôi. Đơn hàng của bạn sẽ được giao trong vòng 3 - 5 ngày, trừ các ngày cuối tuần, cảm ơn`;
+    obj.contextTitle = "Đơn hàng của bạn đã được phê duyệt";
+    obj.email = order.email;
+    obj.address = order.address;
+    obj.fullName = order.fullName;
+    obj.phone_number = order.phone_number;
+    obj.total_price = order.total_price;
+    obj.orderDate = order.orderDate;
+    sendMailOrderStatus(obj);
+  };
   const [orderbrowsing, setorderbrowsing] = useState({
     _id: "",
     status: "Đang giao hàng",
@@ -32,7 +50,10 @@ export default function BillList() {
         ...orderbrowsing,
       }),
       () => {
-        setTimeout(() => (window.location.href = "/OrderBrowsing"), 2000);
+        setTimeout(() => {
+          window.location.href = "/OrderBrowsing";
+          handleSendMailOrderStatus();
+        }, 2000);
         return "Order Browsing Succesfully!";
       }
     );

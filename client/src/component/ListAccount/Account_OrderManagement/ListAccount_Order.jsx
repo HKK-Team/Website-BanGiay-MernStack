@@ -3,22 +3,32 @@ import "../ListAccount.css";
 import { Link } from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
-import { toastPromise } from "../../../admins/components/ToastMassage/ToastMassage";
+import {
+  toastInfor,
+  toastPromise,
+} from "../../../admins/components/ToastMassage/ToastMassage";
+import { sendMailOrderStatus } from "../../../api/mailSeviceApi";
 export default function ListAccount(props) {
   // call api
   const state = useContext(GlobalState);
   const [profile] = state.userAPI.user;
   const [list_order] = state.list_oderApi.list_oder;
+  const checkbox = state.CheckBoxCancelOrder;
   // get all list_order
   const order = list_order.filter((item) => {
     return item.user_id === profile._id;
   });
-  // get last one list_order
-  const arr = order[order.length - 1];
+  console.log(checkbox[0]);
+  console.log(checkbox);
   //  xác nhận mật khẩu
   const OpenConfirmPassword = () => {
-    var x = document.getElementById("modal-ConfirmPassword");
-    x.style.display = "block";
+    let arr = checkbox.find((item) => item !== undefined);
+    if (checkbox.length === 0 || arr === undefined) {
+      toastInfor("vui lòng lựa chọn trước khi thay đổi");
+    } else {
+      var x = document.getElementById("modal-ConfirmPassword");
+      x.style.display = "block";
+    }
   };
   //Đóng form xác nhận mật khẩu
   const CloseConfirmPassword = () => {
@@ -29,22 +39,55 @@ export default function ListAccount(props) {
     _id: profile._id,
     password: "",
     status: "Hủy đơn hàng",
-    id: arr._id,
+    id: [...checkbox],
   });
   const onChangeInput = (e) => {
     const { name, value } = e.target;
     setcancel({ ...cancel, [name]: value });
+    setcancel((prev) => {
+      return { ...prev, id: [...checkbox] };
+    });
+  };
+
+  // xử lý gửi mail status đã duyệt cho khách hàng
+  const handleSendMailOrderStatus = () => {
+    let arr = [];
+    for (let index = 0; index < checkbox.length; index++) {
+      if (checkbox[index]) {
+        arr.push(order.find((item) => item._id === checkbox[index]));
+      }
+    }
+    let orders = { ...arr };
+
+    for (let i = 0; i < arr.length; i++) {
+      if (orders[i]) {
+        let obj = {};
+        obj.context = [...orders[i].cart];
+        obj.title = `Thông báo hủy đơn hàng mã số #${orders[i]._id}`;
+        obj.contextStatus = `Đơn hàng của bạn đã hủy thành công, xin lỗi nếu bạn có điều không hài lòng về chúng tôi, cảm ơn`;
+        obj.contextTitle = "Đơn hàng của bạn đã được hủy thành công";
+        obj.email = orders[i].email;
+        obj.address = orders[i].address;
+        obj.fullName = orders[i].fullName;
+        obj.phone_number = orders[i].phone_number;
+        obj.total_price = orders[i].total_price;
+        obj.orderDate = orders[i].orderDate;
+        sendMailOrderStatus(obj);
+      }
+    }
   };
   const PassWordSubmit = async (e) => {
     e.preventDefault();
 
     await toastPromise(axios.post("/payment/CancelOder", { ...cancel }), () => {
+      handleSendMailOrderStatus();
       setTimeout(() => {
         window.location.href = "/AccountOderManagement";
-      }, 2000);
+      }, 3000);
       return "You have successfully cancel orders!";
     });
   };
+
   return (
     <Fragment>
       <div id="modal-ConfirmPassword">
@@ -66,7 +109,7 @@ export default function ListAccount(props) {
         </div>
       </div>
       <section className="account">
-        <div className="container">
+        <div className="container" style={{margin:'0px 100px'}}>
           <div className="row">
             <div className="Cart_title">
               <h1>{props.title}</h1>
@@ -92,18 +135,20 @@ export default function ListAccount(props) {
               </div>
               <div className="account_box-info">
                 <h2 className="title_detail">Danh sách đơn hàng mới nhất</h2>
+                <button className="btn-oder" onClick={OpenConfirmPassword}>
+                  Lưu thay đổi
+                </button>
                 {/* <p>Bạn chưa đặt mua sản phẩm.</p> */}
                 <div className="product-oder-header">
                   <h3>Tình trạng</h3>
+                  <h3>Đơn hàng</h3>
                   <h3>Sản phẩm</h3>
                   <h3>Giá tiền</h3>
+                  <h3>Tổng tiền</h3>
                   <h3>Ngày giao</h3>
                   <h3>Yêu cầu</h3>
                 </div>
                 {props.order}
-                <button className="btn-oder" onClick={OpenConfirmPassword}>
-                  Lưu thay đổi
-                </button>
               </div>
             </div>
           </div>

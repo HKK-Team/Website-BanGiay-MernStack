@@ -82,7 +82,8 @@ export const DataProvider = ({children}) =>{
         paymentsApi : PaymentsApi(),
         chartAdminAPI:ChartAdminAPI(),
         favAndHotAPI:FavAndHotAPI(),
-        widgetAPI:WidgetAPI()
+        widgetAPI:WidgetAPI(),
+        CheckBoxCancelOrder :[],
     }
     return (
         <GlobalState.Provider value={state}>

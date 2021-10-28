@@ -9,6 +9,7 @@ import {
   toastPromise,
   toastSuccess,
 } from "../../../admins/components/ToastMassage/ToastMassage";
+import { sendMailOrderStatus } from "../../../api/mailSeviceApi";
 export default function PaymentMethod() {
   // get information payment
   const payment = JSON.parse(sessionStorage.getItem("payment"));
@@ -24,6 +25,21 @@ export default function PaymentMethod() {
   for (let i = 0; i < ltg; i++) {
     sum += storedArray[i].totalprice;
   }
+
+  //xử lý gửi mail status cho khách hàng
+  const handleSendMailOrderStatus = () => {
+    let obj = {};
+    obj.context = [...storedArray];
+    obj.title = "Thông báo đặt hàng thành công";
+    obj.contextStatus = "Chúng tôi sẽ thông báo với bạn ngay khi đơn hàng được duyệt ,cảm ơn"
+    obj.contextTitle = "Chúng tôi đã nhận được đơn hàng của bạn"
+    obj.email = payment.email;
+    obj.address = payment.address;
+    obj.fullName = payment.fullName;
+    obj.phone_number = payment.phone_number;
+    obj.total_price = payment.total_price;
+    sendMailOrderStatus(obj);
+  };
   // post
   const paymentSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +56,7 @@ export default function PaymentMethod() {
           toastSuccess(
             "Cảm ơn bạn đã đặt hàng tại hệ thống Cửa Hàng HKK Team! Quay lại trang chủ để tiếp tục mua hàng nhé!"
           );
+          handleSendMailOrderStatus();
         }, 1000);
         return "You have successfully placed your order!";
       }

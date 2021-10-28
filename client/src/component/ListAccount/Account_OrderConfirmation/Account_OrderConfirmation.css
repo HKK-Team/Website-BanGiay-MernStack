@@ -29,20 +29,19 @@
     border-bottom: 1px solid #ebebeb;
   }
   /* Status */
-  .order-oder-status span{
-    width: 14px;
-    height: 14px;
-    background-color: rgb(162, 162, 58);
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 20px rgba(162, 162, 58), 0 0 40px rgba(162, 162, 58),
-    0 0 60px rgb(162, 162, 58), 0 0 80px rgba(162, 162, 58),
-    0 0 0 8px rgba(255,255,0, 0.1);
+  .order-oder-status{
+    width: 100px;
+  }
+  .success{
+    color: #3bb077 !important;
+  }
+  .waiting{
+    color: rgb(162, 162, 58) !important;
   }
   .order-oder-status p{
-    color: rgb(162, 162, 58);
     display: inline;
     padding-left: 10px;
+    overflow-wrap: break-word;
   }
   /* product-oder-list */
   .order-oder-list{
