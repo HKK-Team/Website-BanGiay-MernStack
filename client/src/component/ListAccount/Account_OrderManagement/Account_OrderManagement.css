@@ -1,14 +1,11 @@
-.title_detail {
+.title_detail--order {
   color: #f72b3f;
 
   font-family: Open Sans;
   font-size: 18px;
   font-weight: 500;
   line-height: 25.2px;
-
   margin: 10px 0px;
-  padding: 0px 0px 10px;
-  border-bottom: 1px solid #ebebeb;
 
   display: inline-block;
 }
@@ -108,15 +105,7 @@
   font-weight: bold;
   font-size: 16px;
 }
-/* .product-oder-header h3:nth-child(3){
-  transform: translateX(73px);
-}
-.product-oder-header h3:nth-child(4){
-  transform: translateX(32px);
-}
-.product-oder-header h3:nth-child(5){
-  transform: translateX(-28px);
-} */
+
 /* product-oder-singleBadge */
 .product-oder-singleBadge input {
   cursor: pointer;

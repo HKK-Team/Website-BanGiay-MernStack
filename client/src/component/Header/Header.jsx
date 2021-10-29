@@ -119,7 +119,7 @@ export default function Header(props) {
       <>
         <Link to="/favorite" className="" style={{ color: "black" }}>
           {" "}
-          <i class="far fa-heart"></i>{" "}
+          <i className="far fa-heart"></i>{" "}
           <span className="Cart_count">{detail.length}</span>
         </Link>
       </>
@@ -131,7 +131,7 @@ export default function Header(props) {
       <>
         <Link to="/Login" className="" style={{ color: "black" }}>
           {" "}
-          <i class="far fa-heart"></i> <span className="Cart_count">0</span>
+          <i className="far fa-heart"></i> <span className="Cart_count">0</span>
         </Link>
       </>
     );
@@ -198,7 +198,10 @@ export default function Header(props) {
                   {/* <load dữ liệu >*/}
                   {menus.map((item) => (
                     <li className="header_top-item" key={item._id}>
-                      <Link to={item.slug} className="header_top-link">
+                      <Link
+                        to={item.slug.toString()}
+                        className="header_top-link"
+                      >
                         {item.text}
                       </Link>
                     </li>
@@ -232,7 +235,7 @@ export default function Header(props) {
               <div className="header_bottom-wrapper">
                 {/* <header_bottom-icon>  */}
                 <div id="toggle">
-                  <i class="fas fa-bars" onClick={open}></i>
+                  <i className="fas fa-bars" onClick={open}></i>
                 </div>
                 <Link to="/">
                   <div className="header_bottom-icon">
@@ -245,7 +248,7 @@ export default function Header(props) {
                       <li className="header_bottom-item" key={item._id}>
                         <NavLink
                           activeClassName="active"
-                          to={item.slug}
+                          to={item.slug.toString()}
                           className="header_bottom-link"
                         >
                           {item.text}
@@ -255,7 +258,7 @@ export default function Header(props) {
                   </ul>
                 </nav>
                 <div className="header_bottom-search">
-                  <form action>
+                  <form action="">
                     <input
                       type="text"
                       placeholder="Nhập thông tin cần tìm..."
@@ -271,7 +274,7 @@ export default function Header(props) {
                         className="header_bottom-search-button"
                         onClick={eventSearch}
                       >
-                        <i class="fas fa-search"></i>
+                        <i className="fas fa-search"></i>
                       </button>
                     </Link>
                   </form>
@@ -282,7 +285,7 @@ export default function Header(props) {
                   </span>
                   <span className="header_bottom-cart-cart">
                     <Link to="/cart" style={{ color: "black" }}>
-                      <i class="fas fa-shopping-cart">
+                      <i className="fas fa-shopping-cart">
                         <span className="Cart_count">{ltg}</span>
                       </i>
                     </Link>
@@ -301,13 +304,13 @@ export default function Header(props) {
                           {/* cart_box_wrapper */}
                           {storedArray.map((item) => (
                             <div className="cart_item clearfix">
-                              <i class="fa fa-times"></i>
+                              <i className="fa fa-times"></i>
                               <img src={item.image} alt="" />
                               <div className="cart_item-info">
-                                <a href>
+                                <Link to>
                                   {item.nameProduct} <br /> {item.color} -{" "}
                                   {item.size}{" "}
-                                </a>
+                                </Link>
                                 <input
                                   value={quantity}
                                   type="text"

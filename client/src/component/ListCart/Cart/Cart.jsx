@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Cart.css";
 
 export default function Cart(props) {
-  var storedArray = JSON.parse(sessionStorage.getItem("settings"));
-  console.log(storedArray)
+  let storedArray = JSON.parse(sessionStorage.getItem("settings"));
   const ltg = storedArray.length;
 
-  var quantity = 1;
+  let quantity = 1;
 
   for (let i = 0; i < ltg; i++) {
     if (storedArray[i].idproduct === props.idproduct) {
@@ -35,7 +35,7 @@ export default function Cart(props) {
         <img className="Cart_image" alt="" src={props.image}></img>
       </div>
       <div className="line_item-title">
-        <a href>{props.name}</a>
+        <Link to>{props.name}</Link>
         <p className="variant_cart">
           <span className="variant_cart-title">Màu: </span>
           <span className="variant_cart-color">{props.color}</span>
@@ -44,9 +44,9 @@ export default function Cart(props) {
           <span className="variant_cart-title">Size: </span>
           <span className="variant_size">{props.size}</span>
         </p>
-        <a onClick={eventdelete} href className="cart_delete">
-          <i class="far fa-trash-alt"></i> Xóa
-        </a>
+        <Link onClick={eventdelete} to className="cart_delete">
+          <i className="far fa-trash-alt"></i> Xóa
+        </Link>
       </div>
       <div className="line_item-quality">
         <input

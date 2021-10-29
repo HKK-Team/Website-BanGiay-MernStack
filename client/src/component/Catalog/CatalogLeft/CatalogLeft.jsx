@@ -694,7 +694,7 @@ export default function CatalogLeft() {
     <aside id="catalogleft">
       <aside className="sidebar_collection_left">
         <div className="close">
-          <i class="fas fa-times" onClick={close}></i>
+          <i className="fas fa-times" onClick={close}></i>
         </div>
         <div className="block_content">
           <select

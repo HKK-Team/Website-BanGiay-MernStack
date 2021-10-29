@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./GoogleMaps.css";
 import Map from "./Map";
 export default function GoogleMaps() {
@@ -8,7 +9,7 @@ export default function GoogleMaps() {
       <div className="container">
         <div className="row">
           <h2 className="address_shop-title">
-            <a href>Hệ Thống cửa hàng</a>
+            <Link to>Hệ Thống cửa hàng</Link>
           </h2>
           <Map
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`}

@@ -38,14 +38,14 @@ export default function PaymentMain() {
             <img src={logo} alt="" />
           </h1>
         </Link>
-          <ul class="breadcrumb">
-            <li class="breadcrumb-item" data-metatip="true">
+          <ul className="breadcrumb">
+            <li className="breadcrumb-item" data-metatip="true">
               <Link to="/cart">Giỏ hàng {">"}</Link>
             </li>
-            <li class="breadcrumb-item breadcrumb-item-current">
+            <li className="breadcrumb-item breadcrumb-item-current">
               Thông tin giao hàng {">"}
             </li>
-            <li class="breadcrumb-item ">Phương thức thanh toán</li>
+            <li className="breadcrumb-item ">Phương thức thanh toán</li>
           </ul>
         </div>
           <div className="main_content">

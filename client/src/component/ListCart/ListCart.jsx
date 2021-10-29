@@ -96,7 +96,7 @@ export default function ListCart() {
             <div className="pull_left">
               <h3 className="continue_shopping">
                 <Link to="/" className="comeback">
-                  <i class="fa fa-reply"></i> Tiếp tục mua hàng
+                  <i className="fa fa-reply"></i> Tiếp tục mua hàng
                 </Link>
               </h3>
             </div>

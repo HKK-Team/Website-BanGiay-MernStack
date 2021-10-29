@@ -225,20 +225,20 @@ export default function ProductDetail(props) {
     if (isLogged) {
       favorite = (
         <Link to="#" onClick={eventfavoriteIsLogin}>
-          <i class="fas fa-heart"></i> Thêm vào yêu thích
+          <i className="fas fa-heart"></i> Thêm vào yêu thích
         </Link>
       );
     } else {
       favorite = (
         <Link to="#" onClick={eventfavorite}>
-          <i class="fas fa-heart"></i> Thêm vào yêu thích
+          <i className="fas fa-heart"></i> Thêm vào yêu thích
         </Link>
       );
     }
   } else if (check === false) {
     favorite = (
       <Link to="#" onClick={eventunfavorite}>
-        <i class="fas fa-heart-broken"></i> Bỏ yêu thích
+        <i className="fas fa-heart-broken"></i> Bỏ yêu thích
       </Link>
     );
   }
@@ -379,7 +379,7 @@ export default function ProductDetail(props) {
                     alt="image"
                     id="productDetail_image-image"
                   />
-                  <div id="myresult" class="img-zoom-result"></div>
+                  <div id="myresult" className="img-zoom-result"></div>
                   <div id="ZoomTint"></div>
                 </div>
                 <span className="new">

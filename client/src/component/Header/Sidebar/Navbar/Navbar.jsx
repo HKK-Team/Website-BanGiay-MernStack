@@ -26,9 +26,9 @@ export default function Navbar(props) {
       <div className="account-moble">
         <img src={logoMember} alt="" />
         <p>
-          <a href className="XinChao">
+          <Link to='/' className="XinChao">
             Xin chào!
-          </a>{" "}
+          </Link>{" "}
           <Link to="/Profile">
             {" "}
             {profile.lastname} {profile.firstname}
@@ -46,9 +46,9 @@ export default function Navbar(props) {
       <div className="account-moble">
         <img src={logoMember} alt="" />
         <p>
-          <a href className="XinChao">
+          <Link to className="XinChao">
             Xin chào!
-          </a>{" "}
+          </Link>{" "}
           <Link to="/Login">Đăng Nhập</Link>
         </p>
         <Link to="/Register" className="link">
@@ -68,7 +68,7 @@ export default function Navbar(props) {
         <div className="logo-nav">
           <img src={logo} alt="" />
           <span className="back" onClick={props.event}>
-            <i class="fas fa-chevron-left" onClick={close}></i>
+            <i className="fas fa-chevron-left" onClick={close}></i>
           </span>
         </div>
         {/* login */}
@@ -77,7 +77,7 @@ export default function Navbar(props) {
         <div className="mplus-menu">
           <ul className="mm-panel">
             {menus2.map((item) => (
-              <Link to={item.slug} key={item._id}>
+              <Link to={item.slug.toString()} key={item._id}>
                 {item.text}
               </Link>
             ))}

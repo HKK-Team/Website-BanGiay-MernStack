@@ -11,7 +11,7 @@ export default function Account_Infomation(props) {
       <h2 className="title-detail">
         Thông tin tài khoản
         <Link to="/UpdateAccount">
-          <i class="fas fa-edit"></i> Cập nhật thông tin khách hàng
+          <i className="fas fa-edit"></i> Cập nhật thông tin khách hàng
         </Link>
       </h2>
       <p>Họ và Tên : {profile.firstname +" "+ profile.lastname}</p>
@@ -24,7 +24,7 @@ export default function Account_Infomation(props) {
         Xem thêm chính sách khách hàng thân thiết.
       </Link>
       <Link to = "#" id="view-address">
-        Xem địa chỉ <i class="fa fa-share"></i>
+        Xem địa chỉ <i className="fa fa-share"></i>
       </Link>
     </div>
   );

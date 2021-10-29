@@ -49,7 +49,7 @@ export default function Footer() {
                 placeholder="Nhập E-Mail của bạn..."
               />
               <button type="submit" className="footer_top-sendmail-button">
-                <i class="fab fa-telegram-plane"></i>
+                <i className="fab fa-telegram-plane"></i>
                 <span> Đăng ký</span>
               </button>
             </form>

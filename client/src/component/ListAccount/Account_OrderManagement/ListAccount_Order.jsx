@@ -18,8 +18,6 @@ export default function ListAccount(props) {
   const order = list_order.filter((item) => {
     return item.user_id === profile._id;
   });
-  console.log(checkbox[0]);
-  console.log(checkbox);
   //  xác nhận mật khẩu
   const OpenConfirmPassword = () => {
     let arr = checkbox.find((item) => item !== undefined);
@@ -92,7 +90,7 @@ export default function ListAccount(props) {
     <Fragment>
       <div id="modal-ConfirmPassword">
         <div className="modal-content">
-          <i class="fas fa-times" onClick={CloseConfirmPassword}></i>
+          <i className="fas fa-times" onClick={CloseConfirmPassword}></i>
           <form action="" className="newUserForm" onSubmit={PassWordSubmit}>
             <div className="newUserItem">
               <label>Vui lòng nhập mặt khẩu của bạn</label>
@@ -109,7 +107,7 @@ export default function ListAccount(props) {
         </div>
       </div>
       <section className="account">
-        <div className="container" style={{margin:'0px 100px'}}>
+        <div className="container" style={{ margin: "0px 100px" }}>
           <div className="row">
             <div className="Cart_title">
               <h1>{props.title}</h1>
@@ -118,26 +116,29 @@ export default function ListAccount(props) {
               <div className="account_box-menu">
                 <h2>Tài Khoản</h2>
                 <Link to="/Profile">
-                  <i class="fa fa-user"></i> Thông tin tài khoản
+                  <i className="fa fa-user"></i> Thông tin tài khoản
                 </Link>
                 <Link to="/AccountOderManagement">
-                  <i class="fa fa-list"></i> Quản lý đơn hàng
+                  <i className="fa fa-list"></i> Quản lý đơn hàng
                 </Link>
                 <Link to="/Account_OrderConfirmation">
-                  <i class="fa fa-list-alt"></i> Xác nhận đã nhận được hàng
+                  <i className="fa fa-list-alt"></i> Xác nhận đã nhận được hàng
                 </Link>
                 <Link to="/Charge_Password">
-                  <i class="fa fa-lock"></i> Đổi mật khẩu
+                  <i className="fa fa-lock"></i> Đổi mật khẩu
                 </Link>
                 <Link to="/AccountAddress">
-                  <i class="fa fa-map-marker"></i> Danh sách địa chỉ cửa hàng
+                  <i className="fa fa-map-marker"></i> Danh sách địa chỉ cửa hàng
                 </Link>
               </div>
               <div className="account_box-info">
-                <h2 className="title_detail">Danh sách đơn hàng mới nhất</h2>
-                <button className="btn-oder" onClick={OpenConfirmPassword}>
-                  Lưu thay đổi
-                </button>
+                <div className="account_box-header">
+                  <h2 className="title_detail--order">Danh sách đơn hàng mới nhất</h2>
+                  {props.selector}
+                  <button className="btn-oder" onClick={OpenConfirmPassword}>
+                    Lưu thay đổi
+                  </button>
+                </div>
                 {/* <p>Bạn chưa đặt mua sản phẩm.</p> */}
                 <div className="product-oder-header">
                   <h3>Tình trạng</h3>

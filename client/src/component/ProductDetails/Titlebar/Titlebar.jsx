@@ -9,7 +9,7 @@ export default function Titlebar(props) {
             {/* titlebar_list */}
             <ol className="titlebar_list">
               <li className="titlebar_list-item">
-              <i class="fas fa-home"></i>{" Trang Chủ > "}
+              <i className="fas fa-home"></i>{" Trang Chủ > "}
                 <span>
                   {props.name}
                 </span>

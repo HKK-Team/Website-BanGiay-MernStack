@@ -73,7 +73,7 @@ export default function Account_OrderManagement(props) {
           <div className="order-oder-decs">
             <span> {props.delivery_date.slice(0, 10)}</span>
           </div>
-          <span class="order-oder-decst" style={{ color: "red" }}>
+          <span className="order-oder-decst" style={{ color: "red" }}>
             {props.totalPrice.toLocaleString()} đ
           </span>
         </div>

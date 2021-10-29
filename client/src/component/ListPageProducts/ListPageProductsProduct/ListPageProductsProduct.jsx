@@ -5,6 +5,7 @@ import Catalog from "../../Catalog/Catalog";
 import Pagination from "../../Pagination/Pagination";
 import SortBy from "./SortBy/SortBy";
 import { GlobalState } from '../../../GlobalState'
+import { Link } from "react-router-dom";
 
 
 export default function ListPageProductsProduct(props) {
@@ -103,22 +104,22 @@ export default function ListPageProductsProduct(props) {
             <h1>{props.name}</h1>
           </div>
           <ul className="menu_collection">
-            <a href onClick={eventhunter}>Hunter</a>
-            <a href onClick={eventsandal}>Sandal</a>
-            <a href onClick={eventthethao}>Giày Thể Thao</a>
-            <a href onClick={eventchaybo}>Giày Chạy Bộ</a>
-            <a href onClick={eventdabanh}>Giày Đá Banh</a>
-            <a href onClick={eventgiaytay}>Giày Tây</a>
-            <a href onClick={eventdep}>Dép</a>
+            <Link to onClick={eventhunter}>Hunter</Link>
+            <Link to onClick={eventsandal}>Sandal</Link>
+            <Link to onClick={eventthethao}>Giày Thể Thao</Link>
+            <Link to onClick={eventchaybo}>Giày Chạy Bộ</Link>
+            <Link to onClick={eventdabanh}>Giày Đá Banh</Link>
+            <Link to onClick={eventgiaytay}>Giày Tây</Link>
+            <Link to onClick={eventdep}>Dép</Link>
           </ul>
           <div className="container-product-wrapper">
             <Catalog />
             <div className="container-product_list-products">
               <SortBy />
               <div className="dis_inline">
-                <a href>
+                <Link >
                   <i className="fa fa-filter" onClick={open}></i>
-                </a>
+                </Link>
               </div>
               <div className="container-product_list-products-wrapper">
                 {props.array}
