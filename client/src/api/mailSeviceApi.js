@@ -12,3 +12,6 @@ export const conFirmOtpCode = async (otp) => {
 export const conFirmEmail = async (email) => {
   return await axios.post(`http://localhost:5000/sendMail/${email}/conFirmEmail`);
 };
+export const sendMailOrderStatus = async (obj) => {
+  return await axios.put(`http://localhost:5000/sendMail/OrderStatus`,obj);
+};

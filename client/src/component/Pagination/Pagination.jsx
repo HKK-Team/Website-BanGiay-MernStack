@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useContext ,NavLink } from "react";
+import React, { useEffect, useState, useContext, NavLink } from "react";
 import "./Pagination.css";
 import { GlobalState } from "../../GlobalState";
+import { Link } from "react-router-dom";
 
-export default function Pagination({quantity}) {
+export default function Pagination({ quantity }) {
   const state = useContext(GlobalState);
   const [currentPageboy, setcurrentPageboy] =
     state.productboyApi.currentPageboy;
@@ -16,8 +17,8 @@ export default function Pagination({quantity}) {
     state.productbetraiApi.currentPagebetrai;
   const [currentPagebegai, setcurrentPagebegai] =
     state.productbegaiApi.currentPagebegai;
-    const [currentPagesearch, setcurrentPagesearch] =
-     state.searchProductApi.currentPagesearch
+  const [currentPagesearch, setcurrentPagesearch] =
+    state.searchProductApi.currentPagesearch;
 
   //Get post current
   const total = Math.ceil(quantity.length / 9);
@@ -93,14 +94,13 @@ export default function Pagination({quantity}) {
           Trước
         </button>
         {pageNumber.map((number) => (
-          <a
+          <Link to
             onClick={() => paginate(number)}
-            href
             className="page_node"
             key={number}
           >
             {number}
-          </a>
+          </Link>
         ))}
         <button
           className="next "
@@ -130,14 +130,13 @@ export default function Pagination({quantity}) {
           Trước
         </button>
         {pageNumber.map((number) => (
-          <a
+          <Link to
             onClick={() => paginate(number)}
-            href
             className="page_node"
             key={number}
           >
             {number}
-          </a>
+          </Link>
         ))}
         <button
           style={{ display: "none" }}
@@ -160,14 +159,13 @@ export default function Pagination({quantity}) {
           Trước
         </button>
         {pageNumber.map((number) => (
-          <a
+          <Link to
             onClick={() => paginate(number)}
-            href
             className="page_node"
             key={number}
           >
             {number}
-          </a>
+          </Link>
         ))}
         <button
           className="next "

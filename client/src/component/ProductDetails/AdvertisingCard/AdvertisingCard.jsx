@@ -12,7 +12,7 @@ export default function AdvertisingCard(props) {
       <div className="xlab-card_pre">
         <Link to={props.masp} title={props.name}>{props.name}</Link>
         <div className="xlab-card_price">{props.price} đ</div>
-        <a className="xlab-card_btn" href={props.masp}>Xem chi tiết</a>
+        <a className="xlab-card_btn" href={props.masp.toString()}>Xem chi tiết</a>
       </div>
     </div>
   );

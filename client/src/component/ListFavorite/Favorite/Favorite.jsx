@@ -9,6 +9,7 @@ import {
 import "./Favorite.css";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Favorite(props) {
   console.log(props);
@@ -87,7 +88,7 @@ export default function Favorite(props) {
           />
         </td>
         <td className="customer-wishlist-item-info">
-          <a href>{props.name}</a>
+          <Link to>{props.name}</Link>
           <dt>
             Color: <dd>{props.color}</dd>
           </dt>
@@ -127,7 +128,7 @@ export default function Favorite(props) {
             className="favorite_remove"
             type="submit"
           >
-            <i class="far fa-trash-alt"></i>
+            <i className="far fa-trash-alt"></i>
           </button>
         </td>
       </tr>

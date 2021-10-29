@@ -91,7 +91,7 @@ export default function Update_Account() {
         />
         <select
           id="select_city"
-          class="input_text"
+          className="input_text"
           data-selected="true"
           data-label-id="0"
           data-metatip="true"

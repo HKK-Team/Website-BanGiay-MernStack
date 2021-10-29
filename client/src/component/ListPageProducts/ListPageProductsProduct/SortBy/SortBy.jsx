@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./SortBy.css";
 import { GlobalState } from "../../../../GlobalState";
+import { Link } from "react-router-dom";
 
 export default function SortBy() {
   const state = useContext(GlobalState);
@@ -79,14 +80,14 @@ export default function SortBy() {
       <div className="sort_by">
         <div className="sort_by-wrapper">
           <label htmlFor="">LỌC THEO : </label>
-          <a href>
+          <Link to>
             {temp.reverse().toString().replaceAll(",", "")}
-            <i class="fas fa-times" onClick={eventchangecolor}></i>
-          </a>
-          <a href>
+            <i className="fas fa-times" onClick={eventchangecolor}></i>
+          </Link>
+          <Link to>
             {tempsize.reverse().toString().replaceAll(",", "")}{" "}
-            <i class="fas fa-times" onClick={eventchangesize}></i>
-          </a>
+            <i className="fas fa-times" onClick={eventchangesize}></i>
+          </Link>
         </div>
       </div>
     );

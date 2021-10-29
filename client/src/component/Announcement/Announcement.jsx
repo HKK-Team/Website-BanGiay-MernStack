@@ -55,12 +55,12 @@ export default function Announcement() {
             </div>
             <div className="annoucement_arrows-left">
               <span onClick={arrows}>
-                <i class="fas fa-chevron-left"></i>
+                <i className="fas fa-chevron-left"></i>
               </span>
             </div>
             <div className="annoucement_arrows-right">
               <span onClick={arrows}>
-                <i class="fas fa-chevron-right"></i>
+                <i className="fas fa-chevron-right"></i>
               </span>
             </div>
           </div>

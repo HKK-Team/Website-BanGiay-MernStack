@@ -7,18 +7,11 @@ class MailSevice {
   #mailManage = "hkkteamsp@gmail.com"; // Mail quản lý
   #passWordManage = "khanhvlcm12"; // password quản lý
   #isResetOtp = false; // Mã otp đã được gửi chưa
-  #title = "Hello";
-  #context = "Nice to much you !, how are you today";
 
   // tạo mail quản lý
   addMailManage(user = "hkkteamsp@gmail.com", password = "khanhvlcm12") {
     this.#mailManage = user;
     this.#passWordManage = password;
-  }
-  // tạo context cho email
-  addMailContex(title, context) {
-    this.#title = title;
-    this.#context = context;
   }
 
   //reset mã otp
@@ -76,9 +69,12 @@ class MailSevice {
   };
 
   // gửi mail mã otp xác nhận
-  // [post] /sendMail/:email
+  // [put] /sendMail/:email
   sendMailOtpcode = async (req, res) => {
     try {
+      if(req.params.email === null || req.params.email === undefined){
+        res.status(400).json("Email null");
+      }
       this.createtOptCode();
       let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
@@ -107,9 +103,12 @@ class MailSevice {
   };
 
   // gửi mail context
-  // [post] /sendMail/:email
+  // [put] /sendMail/:email
   sendMailContext = async (req, res) => {
     try {
+      if(req.params.email === null || req.params.email === undefined){
+        res.status(400).json("Email null");
+      }
       let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -130,6 +129,81 @@ class MailSevice {
       res.status(201).json("Send email successfully");
     } catch (error) {
       res.status(409).json({ message: error.message });
+    }
+  };
+
+  // gửi mail tình trạng đơn hàng
+  // [put] /sendMail/:email
+  sendMailOrderStatust = async (req, res) => {
+    try {
+      if(req.body.email === null || req.body.email === undefined){
+        res.status(400).json("Email null");
+      }
+      let context = req.body.context;
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: this.#mailManage,
+          pass: this.#passWordManage,
+        },
+      });
+      let mailOptions = {
+        from: this.#mailManage,
+        to: req.body.email,
+        subject: req.body.title,
+        html: `<div style="">
+        <h1>Xin chào</h1>
+        <h3>${req.body.contextTitle}, hãy kiểm tra đơn hàng</h3>
+        <h2>Chi tiết đơn hàng</h2>
+          ${context.map(
+            (item) =>
+              `
+              <div style="background-color: white;padding: 50px;margin: 0 auto;">
+                <div  style="display: flex;border-bottom: 1px solid gray; padding-bottom: 10px;">
+                  <div className="product-thumbnail">
+                    <div className="product-thumbnail-wrapper">
+                      <img src=${
+                        item.image
+                      } alt="" style="width: 150px;height: 150px;object-fit: cover;" />
+                    </div>
+                  </div>
+                  <div style="display: grid;  grid-gap: 20px;grid-template-columns: repeat(1);padding-left: 20px;">
+                    <span style="color: black;font-size: 16px;">
+                      số lượng : ${item.quantity}
+                    </span>
+                    <span style="color: black;font-size: 16px;">${
+                      item.nameProduct
+                    }</span>
+                    <span style="color: black;font-size: 16px;">
+                      ${item.color} / ${item.size}
+                    </span>
+                    <div  style="color: red;font-size: 16px;">
+                      <span>${item.price.toLocaleString()} đ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>`
+          )}
+          <div>
+          <h4>Dear</h4>
+          <p style="font-size: 16px">Họ và tên : ${req.body.fullName}</p>
+          <p style="font-size: 16px">Địa chỉ : ${req.body.address}</p>
+          <p style="font-size: 16px">Số điện thoại : ${
+            req.body.phone_number
+          }</p>
+            <h3 style="color:red;font-size: 18px">Tổng tiền : ${
+              req.body.total_price
+            } VND</h3>
+          </div>
+        <h3>${req.body.contextStatus}</h3>
+        <h2>Trân trọng.</h2>
+        <h3>Ngày giờ : ${req.body.orderDate}</h3>
+        </div>`,
+      };
+      transporter.sendMail(mailOptions);
+      res.status(201).json("Send email successfully");
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   };
 

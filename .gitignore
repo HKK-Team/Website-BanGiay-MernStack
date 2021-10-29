@@ -6,7 +6,7 @@
 .pnp.js
 .history
 .vscode
-.yarn.lock
+
 # testing
 /coverage
 

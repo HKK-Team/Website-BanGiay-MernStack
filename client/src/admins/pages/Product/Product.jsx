@@ -236,7 +236,7 @@ export default function Product() {
         </form>
         <div className="productUpload">
           <img src={data.image} alt="" className="productUploadImg" />
-          <label for="file">
+          <label htmlFor="file">
             <Publish />
           </label>
           <input
