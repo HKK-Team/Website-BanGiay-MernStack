@@ -19,69 +19,30 @@ export default function ListPageProductsProduct(props) {
   const [detailCategorybetrai, setdetailCategorybetrai] = state.productbetraiApi.detailCategorybetrai
   const [detailCategorybegai, setdetailCategorybegai] = state.productbegaiApi.detailCategorybegai
 
-  function eventhunter(e) {
-    e.preventDefault();
-    setdetailCategoryboy('detailCategory=hunter')
-    setdetailCategorygirl('detailCategory=hunter')
-    setdetailCategorypk('detailCategory=hunter')
-    setdetailCategorygosto('detailCategory=hunter')
-    setdetailCategorybetrai('detailCategory=hunter')
-    setdetailCategorybegai('detailCategory=hunter')
+  var temp = window.location.href;
+  const arr = [];
+  for (let i = temp.length - 1; i >= 0; i--) {
+    if (temp[i] === "/") break;
+    arr.push(temp[i]);
   }
-  function eventsandal(e) {
-    e.preventDefault();
-    setdetailCategoryboy('detailCategory=sandal')
-    setdetailCategorygirl('detailCategory=sandal')
-    setdetailCategorypk('detailCategory=sandal')
-    setdetailCategorygosto('detailCategory=sandal')
-    setdetailCategorybetrai('detailCategory=sandal')
-    setdetailCategorybegai('detailCategory=sandal')
-  }
-  function eventthethao(e) {
-    e.preventDefault();
-    setdetailCategoryboy('detailCategory=giaythethao')
-    setdetailCategorygirl('detailCategory=giaythethao')
-    setdetailCategorypk('detailCategory=giaythethao')
-    setdetailCategorygosto('detailCategory=giaythethao')
-    setdetailCategorybetrai('detailCategory=giaythethao')
-    setdetailCategorybegai('detailCategory=giaythethao')
-  }
-  function eventchaybo(e) {
-    e.preventDefault();
-    setdetailCategoryboy('detailCategory=giaychaybo')
-    setdetailCategorygirl('detailCategory=giaychaybo')
-    setdetailCategorypk('detailCategory=giaychaybo')
-    setdetailCategorygosto('detailCategory=giaychaybo')
-    setdetailCategorybetrai('detailCategory=giaychaybo')
-    setdetailCategorybegai('detailCategory=giaychaybo')
-  }
-  function eventdabanh(e) {
-    e.preventDefault();
-    setdetailCategoryboy('detailCategory=giaydabanh')
-    setdetailCategorygirl('detailCategory=giaydabanh')
-    setdetailCategorypk('detailCategory=giaydabanh')
-    setdetailCategorygosto('detailCategory=giaydabanh')
-    setdetailCategorybetrai('detailCategory=giaydabanh')
-    setdetailCategorybegai('detailCategory=giaydabanh')
-  }
-  function eventgiaytay(e) {
-    e.preventDefault();
-    setdetailCategoryboy('detailCategory=giaytay')
-    setdetailCategorygirl('detailCategory=giaytay')
-    setdetailCategorypk('detailCategory=giaytay')
-    setdetailCategorygosto('detailCategory=giaytay')
-    setdetailCategorybetrai('detailCategory=giaytay')
-    setdetailCategorybegai('detailCategory=giaytay')
-  }
-  function eventdep(e) {
-    e.preventDefault();
-    setdetailCategoryboy('detailCategory=dep')
-    setdetailCategorygirl('detailCategory=dep')
-    setdetailCategorypk('detailCategory=dep')
-    setdetailCategorygosto('detailCategory=dep')
-    setdetailCategorybetrai('detailCategory=dep')
-    setdetailCategorybegai('detailCategory=dep')
-  }
+  var strtemp = arr.reverse().toString().replaceAll(",", "");
+
+  //lọc theo loại sản phẩm
+  const eventCategorys = (e) =>{
+    if (strtemp === "nam") {
+      setdetailCategoryboy(`detailCategory=${e}`)
+    } else if (strtemp === "nu") {
+      setdetailCategorygirl(`detailCategory=${e}`)
+    } else if (strtemp === "phu-kien") {
+      setdetailCategorypk(`detailCategory=${e}`)
+    } else if (strtemp === "gosto") {
+      setdetailCategorygosto(`detailCategory=${e}`)
+    } else if (strtemp === "be-trai") {
+      setdetailCategorybetrai(`detailCategory=${e}`)
+    } else if (strtemp === "be-gai") {
+      setdetailCategorybegai(`detailCategory=${e}`)
+    }
+  };
   //open catalogLeft
   const open =()=>{
     document.getElementById("catalogleft").style.transform="translate3d(-234.2px,0px,0px)"
@@ -104,13 +65,13 @@ export default function ListPageProductsProduct(props) {
             <h1>{props.name}</h1>
           </div>
           <ul className="menu_collection">
-            <Link to onClick={eventhunter}>Hunter</Link>
-            <Link to onClick={eventsandal}>Sandal</Link>
-            <Link to onClick={eventthethao}>Giày Thể Thao</Link>
-            <Link to onClick={eventchaybo}>Giày Chạy Bộ</Link>
-            <Link to onClick={eventdabanh}>Giày Đá Banh</Link>
-            <Link to onClick={eventgiaytay}>Giày Tây</Link>
-            <Link to onClick={eventdep}>Dép</Link>
+            <Link to onClick={(e) => eventCategorys(e.target.title)} title="hunter">Hunter</Link>
+            <Link to onClick={(e) => eventCategorys(e.target.title)} title="sandal">Sandal</Link>
+            <Link to onClick={(e) => eventCategorys(e.target.title)} title="giaythethao">Giày Thể Thao</Link>
+            <Link to onClick={(e) => eventCategorys(e.target.title)} title="giaychaybo">Giày Chạy Bộ</Link>
+            <Link to onClick={(e) => eventCategorys(e.target.title)} title="giaydabanh">Giày Đá Banh</Link>
+            <Link to onClick={(e) => eventCategorys(e.target.title)} title="giaytay">Giày Tây</Link>
+            <Link to onClick={(e) => eventCategorys(e.target.title)} title="dep">Dép</Link>
           </ul>
           <div className="container-product-wrapper">
             <Catalog />
