@@ -38,11 +38,11 @@ export default function SortBy() {
       <div className="sort_by">
         <div className="sort_by-wrapper">
           <label htmlFor="">LỌC THEO : </label>
-          <Link to>
+          <Link to="/">
             {temp.reverse().toString().replaceAll(",", "")}
             <i className="fas fa-times" onClick={eventchangecolor}></i>
           </Link>
-          <Link to>
+          <Link to="/">
             {tempsize.reverse().toString().replaceAll(",", "")}{" "}
             <i className="fas fa-times" onClick={eventchangesize}></i>
           </Link>

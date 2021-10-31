@@ -1,5 +1,5 @@
 import "./Home.css";
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import LogoGosto from "../../images/images/GOSTO.png";
 import Header from "../../component/Header/Header";
 import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
@@ -11,6 +11,7 @@ import HomeBanner from "../../component/Banners/HomeBanner/HomeBanner";
 import Product from "../../component/Products/Product";
 import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
 import { GlobalState } from "../../GlobalState";
+import Loading from "./../../component/utils/Loading/Loading";
 
 export default function Home() {
   const state = useContext(GlobalState);
@@ -159,66 +160,75 @@ export default function Home() {
     ))
   );
   //}
-
+  const [isLoading, setIsloading] = useState(false);
+  setTimeout(() => {
+    setIsloading(true);
+  }, 4000);
   return (
     <Fragment>
-      <Header />
-      {banner_main.map((item, index) => (
-        // load banner_main
-        <SliderHome
-          banner1={item.images.image1}
-          banner2={item.images.image2}
-          banner3={item.images.image3}
-          banner4={item.images.image4}
-        />
-      ))}
-      <Announcement />
-      <Banner />
-      {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}
-      <ListPageProductHome
-        name="NAM"
-        url="nam"
-        visible="none"
-        datalist={arrayPrBoy}
-      />
-      <ListPageProductHome
-        name="NỮ"
-        url="nu"
-        visible="none"
-        datalist={arrayPrGirl}
-      />
-      <ListPageProductHome
-        name="PHỤ KIỆN"
-        url="phu-kien"
-        visible="none"
-        datalist={arrayPrPK}
-      />
-      <ListPageProductHome
-        logo={LogoGosto}
-        url="gosto"
-        color="white"
-        datalist={arrayPrGosto}
-      />
-      {bannerboys.map((item) => (
-        <HomeBanner banner={item.images.image1} key={item._id} />
-      ))}
-      <ListPageProductHome
-        name="BÉ TRAI"
-        url="be-trai"
-        visible="none"
-        datalist={arrayPrBeTrai}
-      />
-      {bannergirls.map((item) => (
-        <HomeBanner banner={item.images.image1} key={item._id} />
-      ))}
-      <ListPageProductHome
-        name="BÉ GÁI"
-        url="be-gai"
-        visible="none"
-        datalist={arrayPrBeGai}
-      />
-      <GoogleMaps />
-      <Footer />
+      {!isLoading ? (
+        <Loading />
+      ) : (
+        <Fragment>
+          <Header />
+          {banner_main.map((item) => (
+            // load banner_main
+            <SliderHome
+              banner1={item.images.image1}
+              banner2={item.images.image2}
+              banner3={item.images.image3}
+              banner4={item.images.image4}
+            />
+          ))}
+          <Announcement />
+          <Banner />
+          {/* name là tên của loại sản phẩm , url là đường dẫn trang ,datalist là mảng chứa dữ liệu, visible and color là thuộc tính css riêng biệt của từng page */}
+          <ListPageProductHome
+            name="NAM"
+            url="nam"
+            visible="none"
+            datalist={arrayPrBoy}
+          />
+          <ListPageProductHome
+            name="NỮ"
+            url="nu"
+            visible="none"
+            datalist={arrayPrGirl}
+          />
+          <ListPageProductHome
+            name="PHỤ KIỆN"
+            url="phu-kien"
+            visible="none"
+            datalist={arrayPrPK}
+          />
+          <ListPageProductHome
+            logo={LogoGosto}
+            url="gosto"
+            color="white"
+            datalist={arrayPrGosto}
+          />
+          {bannerboys.map((item) => (
+            <HomeBanner banner={item.images.image1} key={item._id} />
+          ))}
+          <ListPageProductHome
+            name="BÉ TRAI"
+            url="be-trai"
+            visible="none"
+            datalist={arrayPrBeTrai}
+          />
+          {bannergirls.map((item) => (
+            <HomeBanner banner={item.images.image1} key={item._id} />
+          ))}
+          <ListPageProductHome
+            name="BÉ GÁI"
+            url="be-gai"
+            visible="none"
+            datalist={arrayPrBeGai}
+          />
+          <GoogleMaps />
+          <Footer />
+        </Fragment>
+      )}
     </Fragment>
   );
 }

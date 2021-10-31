@@ -10,6 +10,8 @@ import Model_7 from "../../images/mau/7.png";
 import Model_8 from "../../images/mau/8.png";
 import {Link} from "react-router-dom";
 import React from "react";
+import BoxChatMessenger from "../BoxChatMessenger/BoxChatMessenger";
+
 export default function Footer() {
   return (
     <footer>
@@ -141,6 +143,7 @@ export default function Footer() {
           Website bán giày công ty TNHH 4 thành viên
         </h2>
       </div>
+      <BoxChatMessenger/>
       <ScrollToOnTop />
     </footer>
   );

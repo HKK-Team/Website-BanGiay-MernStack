@@ -307,7 +307,7 @@ export default function Header(props) {
                               <i className="fa fa-times"></i>
                               <img src={item.image} alt="" />
                               <div className="cart_item-info">
-                                <Link to>
+                                <Link to='/'>
                                   {item.nameProduct} <br /> {item.color} -{" "}
                                   {item.size}{" "}
                                 </Link>

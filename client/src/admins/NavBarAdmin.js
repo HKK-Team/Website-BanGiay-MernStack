@@ -18,6 +18,7 @@ import SalesAnalysis from "./components/SalesAnalysis/SalesAnalysis";
 import { GlobalState } from "../GlobalState";
 import NotFound from "../component/utils/not_found/NotFound";
 import OrderBrowsing from "../admins/pages/OrderBrowsing/OrderBrowsing";
+import DashBoardMessengerPage from "./pages/DashBoardMessengerPage/DashBoardMessengerPage";
 function NavBarAdmin() {
   const state = useContext(GlobalState);
   const [isLogin] = state.adminApi.isLogin;
@@ -88,6 +89,11 @@ function NavBarAdmin() {
             exact
             path="/OrderBrowsing"
             component={isLogin ? OrderBrowsing : NotFound}
+          />
+          <Route
+            exact
+            path="/DashBoardMessenger"
+            component={isLogin ? DashBoardMessengerPage : NotFound}
           />
         </Switch>
         {/* Link url */}

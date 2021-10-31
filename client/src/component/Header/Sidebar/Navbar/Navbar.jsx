@@ -46,7 +46,7 @@ export default function Navbar(props) {
       <div className="account-moble">
         <img src={logoMember} alt="" />
         <p>
-          <Link to className="XinChao">
+          <Link to="/" className="XinChao">
             Xin chào!
           </Link>{" "}
           <Link to="/Login">Đăng Nhập</Link>

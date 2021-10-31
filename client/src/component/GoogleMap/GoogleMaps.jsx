@@ -9,7 +9,7 @@ export default function GoogleMaps() {
       <div className="container">
         <div className="row">
           <h2 className="address_shop-title">
-            <Link to>Hệ Thống cửa hàng</Link>
+            <Link to="/">Hệ Thống cửa hàng</Link>
           </h2>
           <Map
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`}

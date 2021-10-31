@@ -87,15 +87,15 @@ export default function ListPageProductsProduct(props) {
     document.getElementById("catalogleft").style.transform="translate3d(-234.2px,0px,0px)"
   }
   //auto close catalogLeft
-  useEffect(() => {
-    var lock = setInterval(function () {
-      if (document.getElementById("root").clientWidth > 1024) {
-        document.getElementById("catalogleft").style.transform =
-          "translate3d(0px,0px,0px)";
-      }
-    });
-    return () => clearInterval(lock);
-  }, []);
+  // useEffect(() => {
+  //   var lock = setInterval(function () {
+  //     if (document.getElementById("root").clientWidth > 1024) {
+  //       document.getElementById("catalogleft").style.transform =
+  //         "translate3d(0px,0px,0px)";
+  //     }
+  //   });
+  //   return () => clearInterval(lock);
+  // },[]);
   return (
     <section className="container-product">
       <div className="container">
@@ -104,13 +104,13 @@ export default function ListPageProductsProduct(props) {
             <h1>{props.name}</h1>
           </div>
           <ul className="menu_collection">
-            <Link to onClick={eventhunter}>Hunter</Link>
-            <Link to onClick={eventsandal}>Sandal</Link>
-            <Link to onClick={eventthethao}>Giày Thể Thao</Link>
-            <Link to onClick={eventchaybo}>Giày Chạy Bộ</Link>
-            <Link to onClick={eventdabanh}>Giày Đá Banh</Link>
-            <Link to onClick={eventgiaytay}>Giày Tây</Link>
-            <Link to onClick={eventdep}>Dép</Link>
+            <Link to="/" onClick={eventhunter}>Hunter</Link>
+            <Link to="/" onClick={eventsandal}>Sandal</Link>
+            <Link to="/" onClick={eventthethao}>Giày Thể Thao</Link>
+            <Link to="/" onClick={eventchaybo}>Giày Chạy Bộ</Link>
+            <Link to="/" onClick={eventdabanh}>Giày Đá Banh</Link>
+            <Link to="/" onClick={eventgiaytay}>Giày Tây</Link>
+            <Link to="/" onClick={eventdep}>Dép</Link>
           </ul>
           <div className="container-product-wrapper">
             <Catalog />
