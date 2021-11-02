@@ -93,7 +93,7 @@ export default function ListAccount(props) {
           <i className="fas fa-times" onClick={CloseConfirmPassword}></i>
           <form action="" className="newUserForm" onSubmit={PassWordSubmit}>
             <div className="newUserItem">
-              <label>Vui lòng nhập mặt khẩu của bạn</label>
+              <label>Vui lòng nhập mật khẩu của bạn</label>
               <input
                 type="password"
                 placeholder="Please enter a password"
@@ -134,6 +134,7 @@ export default function ListAccount(props) {
               <div className="account_box-info">
                 <div className="account_box-header">
                   <h2 className="title_detail--order">Danh sách đơn hàng mới nhất</h2>
+                  <h2 className="title_detail--order">Lọc đơn hàng theo tình trạng</h2>
                   {props.selector}
                   <button className="btn-oder" onClick={OpenConfirmPassword}>
                     Lưu thay đổi
