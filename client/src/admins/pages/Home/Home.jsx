@@ -24,7 +24,6 @@ export default function Home() {
         />
       ))
   );
-  console.log(arr);
 
   return (
     <div className="home">

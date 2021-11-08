@@ -163,7 +163,7 @@ export default function Home() {
   const [isLoading, setIsloading] = useState(false);
   setTimeout(() => {
     setIsloading(true);
-  }, 4000);
+  }, 2000);
   return (
     <Fragment>
       {!isLoading ? (

@@ -66,8 +66,6 @@ export default function FeaturedInfo() {
   } else {
     iconwidget2 = <ArrowDownward className="featuredIcon negative" />;
   }
-  console.log(totalcurrentyear)
-  console.log(totalprevyear)
 
   return (
     <div className="featured">
@@ -75,7 +73,7 @@ export default function FeaturedInfo() {
         <span className="featuredTitle">Doanh Thu</span>
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">
-            {totalcurrentmonth.toLocaleString()}
+            {totalcurrentmonth?.toLocaleString()}
           </span>
           <span className="featuredMoneyRate">
              {/* nếu tháng hiên tại thấp hơn tháng trước */}

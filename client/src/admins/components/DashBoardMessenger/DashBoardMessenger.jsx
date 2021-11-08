@@ -1,4 +1,3 @@
-import React from "react";
 import "./DashBoardMessenger.css";
 
 export default function DashBoardMessenger(props) {
@@ -22,22 +21,13 @@ export default function DashBoardMessenger(props) {
           {/*  */}
           <div className="DashBoardMessenger-listUser-users">
             {/*  */}
-            <div className="DashBoardMessenger-listUser-user">
-              <img
-                src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg"
-                alt=""
-              />
-              <div className="DashBoardMessenger-listUser-user-contact">
-                <h2>Minh Khánh</h2>
-                <p>helllooaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-              </div>
-            </div>
+            {props.listUserConnection}
             {/*  */}
           </div>
           {/*  */}
           <div className="DashBoardMessenger-listUser-admin">
-            <h2>Admin : MinhKhanh</h2>
-            <p>khanhdoan693@gmail.com</p>
+            <h2>Admin : {props.nameAdmin}</h2>
+            <p>{props.emailAdmin}</p>
           </div>
         </div>
         {props.contextMessenger}
@@ -46,55 +36,34 @@ export default function DashBoardMessenger(props) {
     </div>
   );
 }
-export function DashBoardContextMessenger() {
+
+export function DashBoardContextMessenger(props) {
   return (
     <div className="DashBoardMessenger-context-box">
       <div className="DashBoardMessenger-context">
         <div className="DashBoardMessenger-context-header">
-          <h2>Your message history with Minh Khánh</h2>
+          <h2>Your message history with {props.name}</h2>
           <span>
             <i className="fas fa-user-plus"></i>
           </span>
         </div>
         <div className="DashBoardMessenger-context-body">
           {/*  */}
-          <div className="messenger-admin-box">
-            <span
-              style={{
-                color: "black",
-                paddingLeft: "10px",
-                marginBottom: "5px",
-                display: "inline-block",
-              }}
-            >
-              Minh Khánh
-            </span>
-            <div>
-              <img
-                style={{ width: "50px", height: "50px" }}
-                className="messenger-admin-avatar"
-                src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg"
-                alt=""
-                title="Quản Trị viện Minh Khánh"
-              />
-              <p className="messenger-admin">
-                có làm thì mới có ăn k làm mà đòi có ăn thì ăn đb ăn cút
-              </p>
-            </div>
-          </div>
-          <div className="messenger-client-box" style={{ marginRight: "10px" }}>
-            <p className="messenger-client">hello mother fuckker</p>
-          </div>
+          {props.messenger}
           {/*  */}
         </div>
         <div className="DashBoardMessenger-context-footer">
           <form action="">
             <input
+              onKeyDown={props.input}
               type="text"
               className="DashBoardMessenger-context-footer-input"
               placeholder="Aa"
             />
-            <button className="DashBoardMessenger-context-footer-button">
+            <button
+              className="DashBoardMessenger-context-footer-button"
+              onClick={props.buton}
+            >
               <i className="fab fa-telegram-plane"></i>
             </button>
           </form>
