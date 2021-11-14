@@ -11,7 +11,7 @@ import HomeBanner from "../../component/Banners/HomeBanner/HomeBanner";
 import Product from "../../component/Products/Product";
 import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
 import { GlobalState } from "../../GlobalState";
-import Loading from "./../../component/utils/Loading/Loading";
+import Loading from "./../../component/utils/loading/Loading";
 
 export default function Home() {
   const state = useContext(GlobalState);

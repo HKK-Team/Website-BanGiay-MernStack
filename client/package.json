@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression": "^7.16.2",
         "@babel/plugin-proposal-private-methods": "^7.14.5",
         "@emotion/react": "^11.5.0",
         "@emotion/styled": "^11.3.0",

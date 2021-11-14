@@ -119,14 +119,14 @@ export default function BoxChatMessenger() {
               fontSize: "11px",
             }}
           >
-            Quản Trị viện {data.username}
+            Quản Trị Viên {data.username}
           </span>
           <div>
             <img
               className="messenger-admin-avatar"
               src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg"
               alt=""
-              title="Quản Trị viện Minh Khánh"
+              title="Quản Trị Viên Minh Khánh"
             />
             <p className="messenger-admin">{data.content}</p>
           </div>
