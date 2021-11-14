@@ -6,11 +6,11 @@ export default function AdvertisingCard(props) {
 
   return (
     <div className="xlab-card">
-      <Link to={props.masp} className="xlab-card_image" >
+      <Link to className="xlab-card_image" >
         <img src={props.image} alt="image"/>
       </Link>
       <div className="xlab-card_pre">
-        <Link to={props.masp} title={props.name}>{props.name}</Link>
+        <Link to title={props.name}>{props.name}</Link>
         <div className="xlab-card_price">{props.price} đ</div>
         <a className="xlab-card_btn" href={props.masp.toString()}>Xem chi tiết</a>
       </div>

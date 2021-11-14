@@ -29,13 +29,28 @@ export default function Pagination({ quantity }) {
     pageNumber.push(i);
   }
 
+  var temp = window.location.href;
+  const arr = [];
+  for (let i = temp.length - 1; i >= 0; i--) {
+    if (temp[i] === "/") break;
+    arr.push(temp[i]);
+  }
+  var strtemp = arr.reverse().toString().replaceAll(",", "");
+
   function paginate(number) {
-    setcurrentPageboy(number);
-    setcurrentPagegirl(number);
-    setcurrentPagepk(number);
-    setcurrentPagegosto(number);
-    setcurrentPagebetrai(number);
-    setcurrentPagebegai(number);
+    if (strtemp === "nam") {
+      setcurrentPageboy(number);
+    } else if (strtemp === "nu") {
+      setcurrentPagegirl(number);
+    } else if (strtemp === "phu-kien") {
+      setcurrentPagepk(number);
+    } else if (strtemp === "gosto") {
+      setcurrentPagegosto(number);
+    } else if (strtemp === "be-trai") {
+      setcurrentPagebetrai(number);
+    } else if (strtemp === "be-gai") {
+      setcurrentPagebegai(number);
+    }
     setcurrentPagesearch(number);
     window.scrollTo({
       top: 400,
@@ -45,12 +60,19 @@ export default function Pagination({ quantity }) {
 
   function eventpre(e) {
     e.preventDefault();
-    setcurrentPageboy(currentPageboy - 1);
-    setcurrentPagegirl(currentPagegirl - 1);
-    setcurrentPagepk(currentPagepk - 1);
-    setcurrentPagegosto(currentPagegosto - 1);
-    setcurrentPagebetrai(currentPagebetrai - 1);
-    setcurrentPagebegai(currentPagebegai - 1);
+    if (strtemp === "nam") {
+      setcurrentPageboy(currentPageboy - 1);
+    } else if (strtemp === "nu") {
+      setcurrentPagegirl(currentPagegirl - 1);
+    } else if (strtemp === "phu-kien") {
+      setcurrentPagepk(currentPagepk - 1);
+    } else if (strtemp === "gosto") {
+      setcurrentPagegosto(currentPagegosto - 1);
+    } else if (strtemp === "be-trai") {
+      setcurrentPagebetrai(currentPagebetrai - 1);
+    } else if (strtemp === "be-gai") {
+      setcurrentPagebegai(currentPagebegai - 1);
+    }
     setcurrentPagesearch(currentPagesearch - 1);
 
     window.scrollTo({
@@ -61,12 +83,19 @@ export default function Pagination({ quantity }) {
 
   function eventnext(e) {
     e.preventDefault();
-    setcurrentPageboy(currentPageboy + 1);
-    setcurrentPagegirl(currentPagegirl + 1);
-    setcurrentPagepk(currentPagepk + 1);
-    setcurrentPagegosto(currentPagegosto + 1);
-    setcurrentPagebetrai(currentPagebetrai + 1);
-    setcurrentPagebegai(currentPagebegai + 1);
+    if (strtemp === "nam") {
+      setcurrentPageboy(currentPageboy + 1);
+    } else if (strtemp === "nu") {
+      setcurrentPagegirl(currentPagegirl + 1);
+    } else if (strtemp === "phu-kien") {
+      setcurrentPagepk(currentPagepk + 1);
+    } else if (strtemp === "gosto") {
+      setcurrentPagegosto(currentPagegosto + 1);
+    } else if (strtemp === "be-trai") {
+      setcurrentPagebetrai(currentPagebetrai + 1);
+    } else if (strtemp === "be-gai") {
+      setcurrentPagebegai(currentPagebegai + 1);
+    }
     setcurrentPagesearch(currentPagesearch + 1);
 
     window.scrollTo({
