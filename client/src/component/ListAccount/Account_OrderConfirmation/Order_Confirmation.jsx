@@ -99,7 +99,7 @@ export default function Account_OrderManagement(props) {
         )}
         {props.status === "Đang giao hàng" ? (
           <form onSubmit={Confirmation}>
-            <button className="btn-oder">Xác nhận đã nhận được hàng</button>
+            <button className="btn-oder">Xác nhận đơn hàng</button>
           </form>
         ) : (
           <Link to="/AccountOderManagement">
