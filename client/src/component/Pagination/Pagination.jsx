@@ -123,7 +123,7 @@ export default function Pagination({ quantity }) {
           Trước
         </button>
         {pageNumber.map((number) => (
-          <Link to
+          <Link to="/"
             onClick={() => paginate(number)}
             className="page_node"
             key={number}
@@ -159,7 +159,7 @@ export default function Pagination({ quantity }) {
           Trước
         </button>
         {pageNumber.map((number) => (
-          <Link to
+          <Link to="/"
             onClick={() => paginate(number)}
             className="page_node"
             key={number}
@@ -188,7 +188,7 @@ export default function Pagination({ quantity }) {
           Trước
         </button>
         {pageNumber.map((number) => (
-          <Link to
+          <Link to="/"
             onClick={() => paginate(number)}
             className="page_node"
             key={number}

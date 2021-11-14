@@ -6,13 +6,20 @@ function Loading() {
         <div className="load-page">
             <div className="loader">
                 <div>
+                    L
                     <div>
+                        O
                         <div>
+                            A
                             <div>
+                                D
                                 <div>
+                                    I
                                     <div>
+                                        N
                                         <div>
-                                            <div></div>
+                                            G
+                                            <div>...</div>
                                         </div>
                                     </div>
                                 </div>

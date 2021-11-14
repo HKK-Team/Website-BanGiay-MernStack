@@ -91,10 +91,12 @@ export default function Sidebar() {
               <DynamicFeed className="sidebarIcon" />
               Feedback
             </li>
+            <NavLink to="/DashBoardMessenger" className="link">
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
             </li>
+            </NavLink>
           </ul>
         </div>
         <div className="sidebarMenu">

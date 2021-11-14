@@ -31,7 +31,7 @@ export default function ScrollToTop() {
     <div className="scroll-to-top">
       {isVisible && (
         <div onClick={scrollToTop}>
-          <Link to>
+          <Link to="/">
             <i className="fa fa-chevron-up"></i>
           </Link>
         </div>

@@ -48,15 +48,15 @@ export default function ListPageProductsProduct(props) {
     document.getElementById("catalogleft").style.transform="translate3d(-234.2px,0px,0px)"
   }
   //auto close catalogLeft
-  useEffect(() => {
-    var lock = setInterval(function () {
-      if (document.getElementById("root").clientWidth > 1024) {
-        document.getElementById("catalogleft").style.transform =
-          "translate3d(0px,0px,0px)";
-      }
-    });
-    return () => clearInterval(lock);
-  }, []);
+  // useEffect(() => {
+  //   var lock = setInterval(function () {
+  //     if (document.getElementById("root").clientWidth > 1024) {
+  //       document.getElementById("catalogleft").style.transform =
+  //         "translate3d(0px,0px,0px)";
+  //     }
+  //   });
+  //   return () => clearInterval(lock);
+  // },[]);
   return (
     <section className="container-product">
       <div className="container">

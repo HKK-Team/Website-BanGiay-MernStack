@@ -13,7 +13,7 @@ export default function Account_OrderManagement() {
             <p className="message">
               Không có sản phẩm nào trong đơn hàng của bạn.
             </p>
-            <Link to = "" className="myoder">
+            <Link to = "/" className="myoder">
               Đơn hàng của tôi
             </Link>
             <Link to = "/" className="btn-red">

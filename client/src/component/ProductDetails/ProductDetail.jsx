@@ -224,20 +224,20 @@ export default function ProductDetail(props) {
   if (check === true) {
     if (isLogged) {
       favorite = (
-        <Link to="#" onClick={eventfavoriteIsLogin}>
+        <Link to="/" onClick={eventfavoriteIsLogin}>
           <i className="fas fa-heart"></i> Thêm vào yêu thích
         </Link>
       );
     } else {
       favorite = (
-        <Link to="#" onClick={eventfavorite}>
+        <Link to="/" onClick={eventfavorite}>
           <i className="fas fa-heart"></i> Thêm vào yêu thích
         </Link>
       );
     }
   } else if (check === false) {
     favorite = (
-      <Link to="#" onClick={eventunfavorite}>
+      <Link to="/" onClick={eventunfavorite}>
         <i className="fas fa-heart-broken"></i> Bỏ yêu thích
       </Link>
     );
@@ -302,7 +302,7 @@ export default function ProductDetail(props) {
                 <svg viewBox="0 0 24 24">
                   <path d="M20.902 17.279c0.325 0.322 0.851 0.322 1.175 0 0.325-0.322 0.325-0.841 0-1.163l-9.49-9.396c-0.324-0.322-0.85-0.322-1.174 0l-9.49 9.396c-0.324 0.322-0.325 0.841 0 1.163s0.85 0.322 1.175 0l8.902-8.569 8.902 8.569z"></path>
                 </svg>
-                <Link to>
+                <Link to="/">
                   <img
                     src={props.imageValue1}
                     alt="image"
@@ -314,7 +314,7 @@ export default function ProductDetail(props) {
                     }}
                   />
                 </Link>
-                <Link to>
+                <Link to="/">
                   <img
                     src={props.imageValue2}
                     alt=" "
@@ -326,7 +326,7 @@ export default function ProductDetail(props) {
                     }}
                   />
                 </Link>
-                <Link to>
+                <Link to="/">
                   <img
                     src={props.imageValue3}
                     alt=" "
@@ -338,7 +338,7 @@ export default function ProductDetail(props) {
                     }}
                   />
                 </Link>
-                <Link to>
+                <Link to="/">
                   <img
                     src={props.imageValue4}
                     alt=" "
@@ -350,7 +350,7 @@ export default function ProductDetail(props) {
                     }}
                   />
                 </Link>
-                <Link to>
+                <Link to="/">
                   <img
                     src={props.imageValue5}
                     alt=" "
@@ -455,7 +455,7 @@ export default function ProductDetail(props) {
               </form>
               <div className="productDetail_information-hotline">
                 <div className="hotline-product">
-                  Tư vấn: <Link to="#">0984 943 851</Link>
+                  Tư vấn: <Link to="/">0984 943 851</Link>
                 </div>
                 <div className="payment-product">
                   <img src={zalopay} alt="zalo pay" />
