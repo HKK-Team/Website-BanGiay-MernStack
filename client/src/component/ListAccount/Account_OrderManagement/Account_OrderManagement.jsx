@@ -76,16 +76,18 @@ export default function Account_OrderManagement(props) {
             ) : (
               <span>Đơn hàng đã hủy</span>
             )
-          ) : (
-            <>
-              <input
-                type="checkbox"
-                name="SingleBadge"
-                id
-                onChange={onChangeCheckBox}
-              />{" "}
-              <span>Hủy đơn hàng</span>
-            </>
+          ) : (props.status === "Đang giao hàng"? (
+                <span>Đang giao hàng</span>
+              ) :(<>
+                <input
+                  type="checkbox"
+                  name="SingleBadge"
+                  id
+                  onChange={onChangeCheckBox}
+                />{" "}
+                <span>Hủy đơn hàng</span>
+              </>)
+            
           )}
         </div>
       </div>

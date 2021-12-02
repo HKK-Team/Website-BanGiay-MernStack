@@ -45,12 +45,12 @@ export default function Register() {
         Mật khẩu phải chứa ít nhất một ký tự Latinh viết hoa [A-Z].
         Mật khẩu phải có độ dài ít nhất 6 ký tự và tối đa 20 ký tự.`);
     else if (user.password !== user.confirm_password) {
-      return (errorMessage.innerText = `Xác nhận mật khẩu không chính xác. vui lòng kiểm tra lại`);
+      return (errorMessage.innerText = `Xác nhận mật khẩu không chính xác. Vui lòng kiểm tra lại`);
     } else {
       conFirmEmail(user.email)
         .then((data) => {
           if (data.data) {
-            errorMessage.innerText = "email này đã tồn tại !";
+            errorMessage.innerText = "Email này đã tồn tại !";
           }
         })
         .catch((err) => {
@@ -124,7 +124,8 @@ export default function Register() {
                 window.location.href = "/Login";
               })
               .catch((err) => {
-                errMessage.innerText = err.response.data.msg;
+                return (errMessage.innerText = `Mã xác thực không chính xác. Vui lòng kiểm tra lại`);
+                // errMessage.innerText = err.response.data.msg;
               });
           } catch (err) {
             errMessage.innerText = err.response.data.msg;
