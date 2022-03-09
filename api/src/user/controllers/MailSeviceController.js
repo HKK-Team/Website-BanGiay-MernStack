@@ -77,9 +77,7 @@ class MailSevice {
       }
       this.createtOptCode();
       let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        service: "gmail",
+        service: "Gmail",
         auth: {
           user: this.#mailManage,
           pass: this.#passWordManage,
@@ -110,7 +108,7 @@ class MailSevice {
         res.status(400).json("Email null");
       }
       let transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: "Gmail",
         auth: {
           user: this.#mailManage,
           pass: this.#passWordManage,
@@ -141,7 +139,7 @@ class MailSevice {
       }
       let context = req.body.context;
       let transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: "Gmail",
         auth: {
           user: this.#mailManage,
           pass: this.#passWordManage,
