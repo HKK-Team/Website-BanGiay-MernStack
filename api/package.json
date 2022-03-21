@@ -33,7 +33,13 @@
         "start": "nodemon --inspect server.js",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "client": "cd client && yarn start",
+        "server": "cd server && yarn start",
+        "server-install": "cd server && npm install",
+        "client-install": "cd client && npm install",
+        "install-all": "concurrently -k -n \"server, client\" -c \"green, blue\" \"yarn server-install\" \"yarn client-install\"",
+        "heroku-postbuild": "yarn build && yarn install-all && yarn start"
     },
     "eslintConfig": {
         "extends": [
