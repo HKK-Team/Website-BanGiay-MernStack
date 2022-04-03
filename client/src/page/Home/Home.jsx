@@ -1,18 +1,17 @@
-import "./Home.css";
 import React, { Fragment, useContext, useState } from "react";
-import LogoGosto from "../../images/images/GOSTO.png";
-import Header from "../../component/Header/Header";
-import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
-import Footer from "../../component/Footer/Footer";
 import Announcement from "../../component/Announcement/Announcement";
 import Banner from "../../component/Banners/Banner";
-import ListPageProductHome from "../../component/ListPageProducts/ListPageProductHome/ListPageProductHome";
 import HomeBanner from "../../component/Banners/HomeBanner/HomeBanner";
-import Product from "../../component/Products/Product";
+import Footer from "../../component/Footer/Footer";
 import GoogleMaps from "../../component/GoogleMap/GoogleMaps";
+import Header from "../../component/Header/Header";
+import ListPageProductHome from "../../component/ListPageProducts/ListPageProductHome/ListPageProductHome";
+import Product from "../../component/Products/Product";
+import SliderHome from "../../component/Sliders/SliderHome/SliderHome";
 import { GlobalState } from "../../GlobalState";
-import Loading from "./../../component/utils/loading/Loading";
-
+import LogoGosto from "../../images/images/GOSTO.png";
+import Loading from "./../../component/utils/Loading/Loading";
+import "./Home.css";
 export default function Home() {
   const state = useContext(GlobalState);
   const [bannerboys] = state.bannerboyAPI.bannerboys;

@@ -5,11 +5,11 @@ const Users = require("../models/userModels");
 class MailSevice {
   #codeOTP; // lưu trữ mã otp
   #mailManage = "hkkteamsp@gmail.com"; // Mail quản lý
-  #passWordManage = "khanhvlcm12"; // password quản lý
+  #passWordManage = "wtsgbjcnnayyzfit"; // password quản lý
   #isResetOtp = false; // Mã otp đã được gửi chưa
 
   // tạo mail quản lý
-  addMailManage(user = "hkkteamsp@gmail.com", password = "khanhvlcm12") {
+  addMailManage(user = "hkkteamsp@gmail.com", password = "wtsgbjcnnayyzfit") {
     this.#mailManage = user;
     this.#passWordManage = password;
   }
@@ -77,7 +77,7 @@ class MailSevice {
       }
       this.createtOptCode();
       let transporter = nodemailer.createTransport({
-        service: "Gmail",
+        service: "gmail",
         auth: {
           user: this.#mailManage,
           pass: this.#passWordManage,
@@ -108,7 +108,7 @@ class MailSevice {
         res.status(400).json("Email null");
       }
       let transporter = nodemailer.createTransport({
-        service: "Gmail",
+        service: "gmail",
         auth: {
           user: this.#mailManage,
           pass: this.#passWordManage,
@@ -139,7 +139,7 @@ class MailSevice {
       }
       let context = req.body.context;
       let transporter = nodemailer.createTransport({
-        service: "Gmail",
+        service: "gmail",
         auth: {
           user: this.#mailManage,
           pass: this.#passWordManage,
